@@ -19,8 +19,17 @@ const DEFAULT_ITEMS: MobileNavItem[] = [
   { label: 'Metodologia', href: '/metodologia/', available: false },
 ];
 
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+function getFocusable(container: HTMLElement): HTMLElement[] {
+  return Array.from(container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)).filter(
+    (el) => !el.hasAttribute('disabled') && el.getAttribute('aria-hidden') !== 'true',
+  );
+}
+
 export default function MobileNavigation({
-  title = 'Menu',
+  title = 'Menu de navegação',
   items = DEFAULT_ITEMS,
 }: MobileNavigationProps) {
   const [open, setOpen] = useState(false);
@@ -28,28 +37,63 @@ export default function MobileNavigation({
   const panelRef = useRef<HTMLDivElement>(null);
   const titleId = useId();
 
+  const closeMenu = () => {
+    setOpen(false);
+  };
+
   useEffect(() => {
     if (!open) return;
 
-    const previouslyFocused = buttonRef.current;
+    const opener = buttonRef.current;
     const panel = panelRef.current;
-    const firstLink = panel?.querySelector<HTMLElement>('a, button');
-    firstLink?.focus();
+    if (!panel) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const focusable = getFocusable(panel);
+    const first = focusable[0];
+    first?.focus();
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         event.preventDefault();
-        setOpen(false);
-        previouslyFocused?.focus();
+        closeMenu();
+        return;
+      }
+
+      if (event.key !== 'Tab') return;
+
+      const nodes = getFocusable(panel);
+      if (nodes.length === 0) {
+        event.preventDefault();
+        return;
+      }
+
+      const firstNode = nodes[0];
+      const lastNode = nodes[nodes.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+
+      if (event.shiftKey) {
+        if (active === firstNode || !panel.contains(active)) {
+          event.preventDefault();
+          lastNode.focus();
+        }
+        return;
+      }
+
+      if (active === lastNode || !panel.contains(active)) {
+        event.preventDefault();
+        firstNode.focus();
       }
     };
 
     document.addEventListener('keydown', onKeyDown);
-    document.body.style.overflow = 'hidden';
 
     return () => {
       document.removeEventListener('keydown', onKeyDown);
-      document.body.style.overflow = '';
+      document.body.style.overflow = previousOverflow;
+      opener?.focus();
     };
   }, [open]);
 
@@ -61,6 +105,7 @@ export default function MobileNavigation({
         className="mobile-nav__toggle"
         aria-expanded={open}
         aria-controls="mobile-nav-panel"
+        aria-haspopup="dialog"
         onClick={() => setOpen((value) => !value)}
       >
         <span className="mobile-nav__toggle-label">{open ? 'Fechar' : 'Menu'}</span>
@@ -78,6 +123,7 @@ export default function MobileNavigation({
           aria-labelledby={titleId}
           ref={panelRef}
         >
+          <div className="mobile-nav__backdrop" aria-hidden="true" onClick={closeMenu} />
           <div className="mobile-nav__panel-inner">
             <h2 id={titleId} className="mobile-nav__title">
               {title}
@@ -97,28 +143,14 @@ export default function MobileNavigation({
 
                 return (
                   <li key={item.label}>
-                    <a
-                      className="mobile-nav__link"
-                      href={withBase(item.href)}
-                      onClick={() => {
-                        setOpen(false);
-                        buttonRef.current?.focus();
-                      }}
-                    >
+                    <a className="mobile-nav__link" href={withBase(item.href)} onClick={closeMenu}>
                       {item.label}
                     </a>
                   </li>
                 );
               })}
             </ul>
-            <button
-              type="button"
-              className="mobile-nav__close"
-              onClick={() => {
-                setOpen(false);
-                buttonRef.current?.focus();
-              }}
-            >
+            <button type="button" className="mobile-nav__close" onClick={closeMenu}>
               Fechar menu
             </button>
           </div>
@@ -138,19 +170,25 @@ export default function MobileNavigation({
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          min-height: 2.75rem;
-          min-width: 2.75rem;
+          min-height: var(--touch-min);
+          min-width: var(--touch-min);
           padding: 0.5rem 0.85rem;
-          border-radius: 12px;
-          border: 2px solid #0d6870;
-          color: #0d6870;
+          border-radius: var(--radius-md);
+          border: var(--border-strong) solid var(--teal-700);
+          color: var(--teal-700);
+          background: transparent;
           font-weight: 600;
+          font-family: var(--font-body);
         }
         .mobile-nav__panel {
           position: fixed;
           inset: 0;
-          z-index: 300;
-          background: rgb(7 27 37 / 55%);
+          z-index: var(--z-overlay);
+        }
+        .mobile-nav__backdrop {
+          position: absolute;
+          inset: 0;
+          background: var(--overlay-scrim);
         }
         .mobile-nav__panel-inner {
           position: absolute;
@@ -158,17 +196,19 @@ export default function MobileNavigation({
           right: 0;
           width: min(100%, 22rem);
           height: 100%;
-          background: #f6f8f7;
-          color: #16313b;
+          background: var(--paper-50);
+          color: var(--ink-800);
           padding: 1.5rem;
           display: flex;
           flex-direction: column;
           gap: 1rem;
-          box-shadow: 0 2px 4px rgb(7 27 37 / 10%), 0 12px 24px rgb(7 27 37 / 8%);
+          box-shadow: var(--elevation-2);
+          z-index: 1;
         }
         .mobile-nav__title {
-          font-family: Manrope, 'Segoe UI', sans-serif;
+          font-family: var(--font-display);
           font-size: 1.25rem;
+          margin: 0;
         }
         .mobile-nav__list {
           display: flex;
@@ -182,29 +222,32 @@ export default function MobileNavigation({
           display: flex;
           align-items: center;
           justify-content: space-between;
-          min-height: 2.75rem;
+          min-height: var(--touch-min);
           padding: 0.75rem 0.85rem;
-          border-radius: 12px;
+          border-radius: var(--radius-md);
           text-decoration: none;
-          color: #16313b;
+          color: var(--ink-800);
           font-weight: 600;
+          font-family: var(--font-body);
         }
         .mobile-nav__link:hover,
         .mobile-nav__link:focus-visible {
-          background: #edf2f0;
-          color: #0d6870;
+          background: var(--paper-100);
+          color: var(--teal-700);
         }
         .mobile-nav__link--soon {
-          color: #45616a;
+          color: var(--ink-600);
           cursor: default;
         }
         .mobile-nav__close {
           margin-top: auto;
-          min-height: 2.75rem;
-          border-radius: 12px;
-          border: 2px solid #0d6870;
-          color: #0d6870;
+          min-height: var(--touch-min);
+          border-radius: var(--radius-md);
+          border: var(--border-strong) solid var(--teal-700);
+          color: var(--teal-700);
+          background: transparent;
           font-weight: 600;
+          font-family: var(--font-body);
         }
       `}</style>
     </div>

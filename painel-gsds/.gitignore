@@ -11,3 +11,5 @@ coverage
 *.log
 tests/visual/*.png
 !tests/visual/.gitkeep
+.local-fonts/
+Inter,Manrope.zip

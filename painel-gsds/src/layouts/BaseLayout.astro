@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import LocalFonts from '../components/layout/LocalFonts.astro';
 import SkipLink from '../components/layout/SkipLink.astro';
 import GlobalHeader from '../components/layout/GlobalHeader.astro';
 import GlobalFooter from '../components/layout/GlobalFooter.astro';
@@ -37,6 +38,7 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefin
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     {canonical && <link rel="canonical" href={canonical} />}
     <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
+    <LocalFonts />
     <title>{title}</title>
   </head>
   <body

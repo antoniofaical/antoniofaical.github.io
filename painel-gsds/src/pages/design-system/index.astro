@@ -80,8 +80,40 @@ const typeScale = [
       <PageContainer class="stack stack--lg">
         <h2 id="tipo-title">2. Escala tipográfica</h2>
         <p>
-          Manrope/Inter locais pendentes — fallbacks ativos. {FIXTURE_NOTICE}
+          Fontes locais em WOFF2 variável — Inter (corpo/interface, eixos opsz+wght) e Manrope
+          (display/títulos, eixo wght). Sem fontes externas. {FIXTURE_NOTICE}
         </p>
+        <dl class="font-roster" data-testid="font-roster">
+          <div>
+            <dt>Corpo / interface</dt>
+            <dd class="font-roster__body">
+              Inter variável · <code>inter-variable.woff2</code> +
+              <code>inter-italic-variable.woff2</code>
+            </dd>
+          </div>
+          <div>
+            <dt>Display / títulos</dt>
+            <dd class="font-roster__display">
+              Manrope variável · <code>manrope-variable.woff2</code>
+            </dd>
+          </div>
+        </dl>
+        <p class="font-loaded-status" data-testid="font-loaded-status" hidden></p>
+        <script>
+          const status = document.querySelector('[data-testid="font-loaded-status"]');
+          const bodySample = document.querySelector('.font-roster__body');
+          const displaySample = document.querySelector('.font-roster__display');
+          if (status instanceof HTMLElement && bodySample && displaySample && 'fonts' in document) {
+            void document.fonts.ready.then(() => {
+              const bodyFace = getComputedStyle(bodySample).fontFamily;
+              const displayFace = getComputedStyle(displaySample).fontFamily;
+              const interOk = /inter/i.test(bodyFace);
+              const manropeOk = /manrope/i.test(displayFace);
+              status.hidden = false;
+              status.textContent = `Carregadas no cliente: corpo=${interOk ? 'Inter' : bodyFace}; display=${manropeOk ? 'Manrope' : displayFace}.`;
+            });
+          }
+        </script>
         <div class="stack">
           {
             typeScale.map((item) => (
@@ -324,6 +356,45 @@ const typeScale = [
   .type-sample {
     display: grid;
     gap: var(--space-1);
+    max-width: none;
+  }
+
+  .font-roster {
+    display: grid;
+    gap: var(--space-4);
+    margin: 0;
+    padding: var(--space-4);
+    border: var(--border-thin) solid var(--line-200);
+    border-radius: var(--radius-md);
+    background: var(--paper-100);
+  }
+
+  .font-roster dt {
+    font-size: var(--annotation);
+    color: var(--ink-600);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .font-roster dd {
+    margin: var(--space-1) 0 0;
+    max-width: none;
+  }
+
+  .font-roster__body {
+    font-family: var(--font-body);
+    font-size: var(--body);
+  }
+
+  .font-roster__display {
+    font-family: var(--font-display);
+    font-size: var(--heading-3);
+    font-weight: 700;
+  }
+
+  .font-loaded-status {
+    font-size: var(--annotation);
+    color: var(--ink-600);
     max-width: none;
   }
 

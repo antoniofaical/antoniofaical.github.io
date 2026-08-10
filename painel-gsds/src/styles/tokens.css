@@ -1,6 +1,5 @@
 /* Design System tokens — Painel GSDs v0.2
-   Fontes Manrope/Inter: pendência — arquivos locais ainda não disponíveis.
-   Fallbacks tipográficos ativos abaixo. */
+   Tipografia: Inter (corpo) e Manrope (display) via WOFF2 locais em /fonts/. */
 
 :root {
   /* Cores — Design System v0.2 */
@@ -18,7 +17,7 @@
   --line-200: #d7e0dd;
   --white: #ffffff;
 
-  /* Tipografia — Manrope/Inter pendentes; fallbacks robustos */
+  /* Tipografia — Inter corpo/interface; Manrope display/títulos */
   --font-display: 'Manrope', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   --font-body: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 
@@ -84,4 +83,7 @@
   --surface-editorial-fg: var(--ink-800);
   --focus-ring: var(--teal-500);
   --touch-min: 2.75rem;
+
+  /* Overlay de modal / drawer */
+  --overlay-scrim: rgb(7 27 37 / 55%);
 }
