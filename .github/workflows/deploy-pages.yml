@@ -38,11 +38,13 @@ jobs:
           SITE_URL: https://antoniofaical.github.io
           BASE_PATH: /painel-gsds/
 
-      - name: Compose Pages artifact under /painel-gsds/
+      - name: Compose Pages artifact (root hub + /painel-gsds/)
         working-directory: .
         run: |
           mkdir -p site-output/painel-gsds
+          cp index.html site-output/index.html
           cp -R painel-gsds/dist/. site-output/painel-gsds/
+          test -f site-output/index.html
           test -f site-output/painel-gsds/index.html
 
       - name: Upload artifact

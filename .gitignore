@@ -1,2 +1,6 @@
 # Local GitHub Pages composition artifact (workflow / local smoke test)
 site-output/
+
+# Historical font TTF archives (WOFF2 + OFL live in painel-gsds/public/fonts/)
+Git-Ignore/Inter/
+Git-Ignore/Manrope/
