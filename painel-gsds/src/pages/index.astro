@@ -1,36 +1,303 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageContainer from '../components/layout/PageContainer.astro';
-import { withBase } from '../lib/paths/withBase';
+import SectionPortal from '../components/executive/SectionPortal.astro';
+import GlycogenBranchVisual from '../components/home/GlycogenBranchVisual.astro';
+import ProblemInOneMinute from '../components/home/ProblemInOneMinute.astro';
+import MechanismToLife from '../components/home/MechanismToLife.astro';
+import HomeMetrics from '../components/home/HomeMetrics.astro';
+import ObservedVsNeed from '../components/home/ObservedVsNeed.astro';
+import BrazilOverview from '../components/home/BrazilOverview.astro';
+import HomeMethodology from '../components/home/HomeMethodology.astro';
+import { loadHomeEvidence, getApprovedHomeClaims } from '../lib/data/loadHomeEvidence';
+import { withBase, withHash } from '../lib/paths/withBase';
+
+const evidence = loadHomeEvidence();
+const approvedClaims = getApprovedHomeClaims(evidence);
+const datasus = evidence.byMetricId['met-datasus-001'];
+const market = evidence.byMetricId['met-market-001'];
+
+const updatedAt = '2026-08-10';
+const sotCutoff = '2026-08-10';
 ---
 
 <BaseLayout
-  title="Painel GSDs — fundação"
-  description="Fundação técnica do Painel Global de Inovação em Glicogenoses. Home final ainda não implementada."
+  title="Painel GSDs — visão executiva"
+  description="Home executiva do Painel Global de Inovação em Glicogenoses: família heterogênea de doenças, carga socioeconômica, mercado observado e limites dos dados brasileiros."
+  currentPath={withBase('/')}
+  lastReviewedAt={updatedAt}
+  ogImage={withBase('favicon.svg')}
 >
-  <main id="conteudo-principal" class="section-space">
-    <PageContainer class="stack stack--lg">
-      <p class="eyebrow">Iteração 1</p>
-      <h1>Fundação técnica pronta</h1>
-      <p>
-        Esta rota é um marcador temporário. A Home final e o conteúdo científico serão implementados
-        em iterações posteriores, após validação.
-      </p>
-      <p>
-        Consulte a demonstração interna do Design System:
-        <a href={withBase('design-system/')}>/design-system/</a>
-      </p>
-    </PageContainer>
+  <main id="conteudo-principal">
+    <section
+      id="inicio"
+      class="home-hero section-space--executive surface-executive"
+      aria-labelledby="home-hero-title"
+    >
+      <div class="container home-hero__grid">
+        <div class="home-hero__copy stack stack--lg">
+          <p class="home-hero__context">Visão executiva · Iteração 2</p>
+          <h1 id="home-hero-title" class="home-hero__title display">
+            Glicogenoses: uma família de doenças, múltiplas jornadas.
+          </h1>
+          <p class="home-hero__subtitle">
+            O painel conecta bases clínicas, impacto socioeconômico e, futuramente, o ecossistema de
+            soluções — com sínteses rastreáveis e limites explícitos.
+          </p>
+          <div class="cluster">
+            <a class="btn btn--on-dark" href={withHash('problema')}>Entender o problema</a>
+            <a class="btn btn--on-dark-ghost" href={withHash('metodologia')}
+              >Ver como os dados foram tratados</a
+            >
+          </div>
+        </div>
+        <div class="home-hero__visual">
+          <GlycogenBranchVisual />
+        </div>
+      </div>
+    </section>
+
+    <ProblemInOneMinute
+      points={[
+        {
+          title: 'GSD não é um diagnóstico único',
+          body: 'Mais de 20 tipos e subtipos são reconhecidos; o tipo molecular orienta manifestação, prognóstico e manejo.',
+          claimId: 'clm-clinical-001',
+        },
+        {
+          title: 'Tecido e metabolismo mudam a jornada',
+          body: 'Formas hepáticas, musculares e multissistêmicas geram necessidades clínicas distintas ao longo da vida.',
+          claimId: 'clm-clinical-002',
+        },
+        {
+          title: 'A carga ultrapassa o sintoma',
+          body: 'Manejo diário, cuidado informal e barreiras de acesso fazem parte do problema — e são mensurados de forma desigual.',
+          claimId: 'clm-socio-001',
+        },
+      ]}
+    />
+
+    <MechanismToLife
+      caveat="Ponte conceitual para leitura executiva. Os padrões variam entre tipos e pacientes; não substitui fluxograma clínico causal."
+      steps={[
+        {
+          label: 'Defeito metabólico',
+          detail: 'Enzima ou transportador do metabolismo do glicogênio comprometido.',
+        },
+        {
+          label: 'Órgãos e funções',
+          detail: 'Fígado, músculo, coração, respiração ou múltiplos sistemas conforme o tipo.',
+        },
+        {
+          label: 'Manejo cotidiano',
+          detail: 'Dieta, monitoramento, reabilitação, infusões ou vigilância de complicações.',
+        },
+        {
+          label: 'Paciente, rede e sistema',
+          detail: 'Carga familiar, atraso diagnóstico, utilização hospitalar e acesso desigual.',
+        },
+      ]}
+    />
+
+    <HomeMetrics
+      framing="Estes números representam dimensões distintas — diversidade clínica, receita observada, utilização hospitalar e atraso diagnóstico em um subtipo. Não podem ser somados nem lidos como estimativa única de escala."
+      items={evidence.homeMetrics}
+    />
+
+    <ObservedVsNeed
+      insight="O mercado farmacêutico observado concentra-se em Pompe. População potencial, elegibilidade e necessidade total não são equivalentes a receita realizada."
+      observedNote={`A métrica ${market.metric.id} registra receita observada de ${market.metric.displayValue} em ${market.metric.period}, sem classificação TAM/SAM/SOM.`}
+      layers={[
+        {
+          title: 'População potencial',
+          body: 'Teto epidemiológico ou genético possível; inclui incerteza de penetrância e não equivale a demanda atendível.',
+        },
+        {
+          title: 'Diagnosticada / elegível / alcançável',
+          body: 'Camada intermediária que exige confirmação, critérios clínicos e capacidade de acesso — ainda incompleta para a maioria das GSDs.',
+        },
+        {
+          title: 'Cuidado ou mercado observado',
+          body: 'O que é publicamente mensurável hoje, como receita farmacêutica em Pompe ou AIHs hospitalares no Brasil.',
+        },
+        {
+          title: 'Dimensões não mensuradas',
+          body: 'Diagnóstico, nutrição, monitoramento, reabilitação e suporte permanecem necessidades centrais sem mercado estruturado comparável.',
+        },
+      ]}
+    />
+
+    <BrazilOverview
+      datasusMetric={datasus}
+      summary={[
+        'Não há denominador nacional confiável de prevalência para as glicogenoses.',
+        'Acesso e capacidade assistencial permanecem fragmentados entre territórios e tipos.',
+        'O SIH/SUS oferece observação hospitalar limitada (AIHs E74.0), não um censo de pacientes.',
+        'Existe capacidade clínica e científica no país; isso não autoriza inferir cobertura nacional.',
+      ]}
+    />
+
+    <section id="analises" class="section-space" aria-labelledby="analises-title">
+      <PageContainer class="stack stack--lg">
+        <header class="stack stack--tight">
+          <p class="section-kicker">Próximas profundidades</p>
+          <h2 id="analises-title">Explore as análises</h2>
+          <p class="section-lede">
+            As páginas analíticas completas serão publicadas em iterações posteriores. Os portais
+            abaixo deixam explícito o estado de desenvolvimento.
+          </p>
+        </header>
+        <div class="portals-grid">
+          <SectionPortal
+            question="Como o mecanismo molecular se traduz em diagnóstico, manejo e lacunas clínicas?"
+            summary="Bases clínicas: tipos, fenótipos, diagnóstico e opções terapêuticas com rastreabilidade."
+            href="#"
+            available={false}
+            unavailableLabel="Em desenvolvimento"
+          />
+          <SectionPortal
+            question="Qual é a carga socioeconômica e o que o mercado observado realmente captura?"
+            summary="Impacto socioeconômico e estrutura de mercado: custos, desigualdade, Brasil e limites de dimensionamento."
+            href="#"
+            available={false}
+            unavailableLabel="Em desenvolvimento"
+          />
+        </div>
+      </PageContainer>
+    </section>
+
+    <section id="inovacao" class="section-space surface-editorial" aria-labelledby="inovacao-title">
+      <PageContainer class="stack stack--lg">
+        <header class="stack stack--tight">
+          <p class="section-kicker">Reserva editorial</p>
+          <h2 id="inovacao-title">Ecossistema de inovação</h2>
+        </header>
+        <p class="section-lede">
+          Futuramente, o painel mapeará soluções diretamente ligadas às GSDs e tecnologias
+          adjacentes aplicáveis à jornada. Nesta iteração, o bloco permanece em desenvolvimento —
+          sem empresas, contadores, logos ou exemplos fictícios.
+        </p>
+        <p class="status-chip" role="status">Em desenvolvimento</p>
+      </PageContainer>
+    </section>
+
+    <HomeMethodology
+      updatedAt={updatedAt}
+      sotCutoff={sotCutoff}
+      claims={approvedClaims}
+      sources={evidence.sources}
+      limitations={[
+        'Sínteses executivas não substituem as análises aprofundadas nem a avaliação clínica individual.',
+        'Receita observada não deve ser lida como TAM, SAM ou SOM.',
+        'AIHs do SIH/SUS não equivalem a pacientes únicos.',
+        'Evidências de um subtipo (por exemplo, McArdle ou Pompe) não se generalizam automaticamente a todas as GSDs.',
+      ]}
+    />
   </main>
 </BaseLayout>
 
 <style>
-  .eyebrow {
+  .home-hero {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .home-hero__context {
+    font-size: var(--annotation);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.85;
+    max-width: none;
+  }
+
+  .home-hero__title {
+    font-size: var(--display-lg);
+    max-width: 16ch;
+    color: var(--paper-50);
+    margin: 0;
+  }
+
+  .home-hero__subtitle {
+    font-size: var(--editorial);
+    max-width: 42rem;
+    opacity: 0.92;
+    margin: 0;
+  }
+
+  .home-hero__grid {
+    display: grid;
+    gap: var(--space-7);
+    align-items: center;
+  }
+
+  @media (min-width: 64rem) {
+    .home-hero__grid {
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: var(--space-8);
+    }
+
+    .home-hero__visual {
+      justify-self: end;
+    }
+  }
+
+  .home-hero__visual {
+    display: grid;
+    place-items: center;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .home-hero__copy {
+      animation: home-reveal 520ms var(--ease-standard) both;
+    }
+  }
+
+  @keyframes home-reveal {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 0.6rem, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .section-kicker {
     font-size: var(--annotation);
     font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--teal-700);
     max-width: none;
+  }
+
+  .section-lede {
+    color: var(--ink-600);
+    max-width: 60ch;
+  }
+
+  .portals-grid {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  @media (min-width: 48rem) {
+    .portals-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .status-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--touch-min);
+    padding-inline: 0.9rem;
+    border-radius: var(--radius-md);
+    border: var(--border-strong) solid var(--teal-700);
+    color: var(--teal-700);
+    font-weight: 700;
+    max-width: max-content;
   }
 </style>

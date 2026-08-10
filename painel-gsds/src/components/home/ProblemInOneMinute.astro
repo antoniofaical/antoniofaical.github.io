@@ -1,0 +1,116 @@
+---
+export type ProblemPoint = {
+  title: string;
+  body: string;
+  claimId: string;
+};
+
+export interface Props {
+  heading?: string;
+  intro?: string;
+  points: ProblemPoint[];
+}
+
+const {
+  heading = 'O problema em um minuto',
+  intro = 'Três leituras executivas para orientar o restante do painel.',
+  points,
+} = Astro.props;
+---
+
+<section id="problema" class="section-space surface-editorial" aria-labelledby="problema-title">
+  <div class="container stack stack--lg">
+    <header class="stack stack--tight">
+      <p class="section-kicker">Síntese</p>
+      <h2 id="problema-title">{heading}</h2>
+      <p class="section-lede">{intro}</p>
+    </header>
+
+    <ol class="problem-rail">
+      {
+        points.map((point, index) => (
+          <li class="problem-rail__item">
+            <span class="problem-rail__index" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <div class="stack stack--tight">
+              <h3>{point.title}</h3>
+              <p>{point.body}</p>
+              <p class="problem-rail__meta">Alegação {point.claimId}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .section-kicker {
+    font-size: var(--annotation);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--teal-700);
+    max-width: none;
+  }
+
+  .section-lede {
+    color: var(--ink-600);
+    max-width: 48ch;
+  }
+
+  .problem-rail {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  @media (min-width: 64rem) {
+    .problem-rail {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-6);
+      align-items: start;
+    }
+  }
+
+  .problem-rail__item {
+    display: grid;
+    gap: var(--space-3);
+    padding-block: var(--space-4);
+    border-top: var(--border-strong) solid var(--teal-500);
+  }
+
+  .problem-rail__index {
+    font-family: var(--font-display);
+    font-size: var(--heading-2);
+    color: var(--teal-700);
+    line-height: 1;
+  }
+
+  .problem-rail__item h3 {
+    font-size: var(--heading-3);
+  }
+
+  .problem-rail__item p {
+    color: var(--ink-600);
+    max-width: none;
+  }
+
+  .problem-rail__meta {
+    font-size: var(--annotation);
+    color: var(--ink-600);
+  }
+
+  @media (min-width: 64rem) {
+    .problem-rail__item:nth-child(2) {
+      margin-top: var(--space-6);
+    }
+
+    .problem-rail__item:nth-child(3) {
+      margin-top: var(--space-11);
+    }
+  }
+</style>

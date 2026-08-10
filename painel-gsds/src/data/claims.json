@@ -1,0 +1,192 @@
+[
+  {
+    "id": "clm-clinical-001",
+    "statement": "As glicogenoses constituem um grupo heterogêneo de doenças metabólicas hereditárias; mais de 20 tipos e subtipos são reconhecidos, e o tipo molecular determina manifestação, prognóstico, vigilância e tratamento.",
+    "shortStatement": "GSD não é um diagnóstico único: há mais de 20 tipos e subtipos reconhecidos.",
+    "domain": "clinical",
+    "scope": {
+      "population": "Família das glicogenoses (tipos e subtipos reconhecidos na literatura consolidada)",
+      "geography": ["global"]
+    },
+    "evidenceState": "observed",
+    "sourceRefs": [
+      {
+        "sourceId": "src-sot-medical-exec-2026",
+        "locator": "Visão geral",
+        "supports": "direct"
+      }
+    ],
+    "sotRefs": [
+      {
+        "file": "docs/source-of-truth/Glicogenose Resumo Médico Executivo.md",
+        "heading": "Visão geral"
+      }
+    ],
+    "limitations": [
+      "A nomenclatura histórica não é uniforme; “mais de 20” descreve diversidade reconhecida, não um censo fechado de todos os fenótipos."
+    ],
+    "approvedForPublication": true,
+    "lastReviewedAt": "2026-08-10"
+  },
+  {
+    "id": "clm-clinical-002",
+    "statement": "As GSDs podem ser agrupadas clinicamente em formas predominantemente hepáticas, musculares ou multissistêmicas; o tecido e a etapa metabólica afetados moldam apresentações e necessidades distintas.",
+    "shortStatement": "Tecido e etapa metabólica afetados diferenciam as jornadas clínicas.",
+    "domain": "clinical",
+    "scope": {
+      "population": "Formas hepáticas, musculares e multissistêmicas de GSD",
+      "geography": ["global"]
+    },
+    "evidenceState": "observed",
+    "sourceRefs": [
+      {
+        "sourceId": "src-sot-medical-exec-2026",
+        "locator": "Lógica fisiopatológica e apresentação clínica",
+        "supports": "direct"
+      }
+    ],
+    "sotRefs": [
+      {
+        "file": "docs/source-of-truth/Glicogenose Resumo Médico Executivo.md",
+        "heading": "Lógica fisiopatológica e apresentação clínica"
+      }
+    ],
+    "limitations": [
+      "Agrupamentos clínicos são pedagógicos; fenótipos formam contínuos e variam entre pacientes do mesmo tipo molecular."
+    ],
+    "approvedForPublication": true,
+    "lastReviewedAt": "2026-08-10"
+  },
+  {
+    "id": "clm-socio-001",
+    "statement": "A carga das glicogenoses ultrapassa sintomas clínicos e incorpora manejo cotidiano, cuidado informal, restrição funcional e barreiras de acesso; a mensuração dessa carga é desigual entre tipos.",
+    "shortStatement": "A carga inclui manejo diário, cuidado e acesso — não só sintomas.",
+    "domain": "socioeconomic",
+    "scope": {
+      "population": "Pacientes, cuidadores e sistemas de saúde no conjunto das GSDs",
+      "geography": ["global"]
+    },
+    "evidenceState": "limited",
+    "sourceRefs": [
+      {
+        "sourceId": "src-sot-socioeconomic-2026",
+        "locator": "1.1 A carga socioeconômica é distribuída de forma desigual",
+        "supports": "direct"
+      }
+    ],
+    "sotRefs": [
+      {
+        "file": "docs/source-of-truth/Glicogenose Estudo Socioeconômico Mercadológico.md",
+        "heading": "1.1 A carga socioeconômica é distribuída de forma desigual"
+      }
+    ],
+    "limitations": [
+      "Estimativas quantitativas de cuidado informal estão melhor documentadas em Pompe; ausência de mensuração em outros tipos não significa ausência de impacto."
+    ],
+    "approvedForPublication": true,
+    "lastReviewedAt": "2026-08-10"
+  },
+  {
+    "id": "clm-market-001",
+    "statement": "O mercado farmacêutico específico e publicamente observável das GSDs em 2024 concentra-se na doença de Pompe, com receita observada de aproximadamente €1,4 bilhão; isso não equivale a TAM, SAM ou SOM nem à necessidade total das glicogenoses.",
+    "shortStatement": "Receita observada em Pompe (≈ €1,4 bi em 2024) não é necessidade total nem TAM.",
+    "domain": "market",
+    "scope": {
+      "gsdIds": ["gsd-ii-pompe"],
+      "population": "Receita farmacêutica observada Sanofi + Amicus (Pompe)",
+      "geography": ["global"],
+      "period": "2024"
+    },
+    "evidenceState": "observed",
+    "sourceRefs": [
+      {
+        "sourceId": "src-sot-socioeconomic-2026",
+        "locator": "1.2 O mercado farmacêutico realizado está concentrado em Pompe",
+        "supports": "direct"
+      }
+    ],
+    "sotRefs": [
+      {
+        "file": "docs/source-of-truth/Glicogenose Estudo Socioeconômico Mercadológico.md",
+        "heading": "1.2 O mercado farmacêutico realizado está concentrado em Pompe"
+      },
+      {
+        "file": "docs/source-of-truth/Glicogenose Estudo Socioeconômico Mercadológico.md",
+        "heading": "1.4 TAM, SAM e SOM monetários não são calculáveis com confiança"
+      }
+    ],
+    "limitations": [
+      "Valor consolidado depende da conversão USD/EUR da receita Amicus pela taxa média anual de 2024 reportada na SoT.",
+      "Concentração em Pompe não implica ausência de necessidade em outras GSDs (diagnóstico, nutrição, monitoramento, reabilitação e suporte)."
+    ],
+    "approvedForPublication": true,
+    "lastReviewedAt": "2026-08-10"
+  },
+  {
+    "id": "clm-brasil-001",
+    "statement": "Não foi localizada estimativa de prevalência nacional com denominador populacional para qualquer GSD; nos microdados do SIH/SUS há 997 AIHs com diagnóstico principal E74.0 entre janeiro de 2020 e maio de 2026, o que demonstra utilização hospitalar limitada e não conta pacientes únicos.",
+    "shortStatement": "Brasil: sem denominador nacional confiável; 997 AIHs E74.0 são proxy hospitalar, não pacientes.",
+    "domain": "brazil",
+    "scope": {
+      "population": "AIHs SIH/SUS com CID principal E74.0",
+      "geography": ["Brasil"],
+      "period": "janeiro de 2020 a maio de 2026"
+    },
+    "evidenceState": "proxy",
+    "sourceRefs": [
+      {
+        "sourceId": "src-sot-socioeconomic-2026",
+        "locator": "Brasil / SIH/SUS — 997 AIHs E74.0",
+        "supports": "direct"
+      }
+    ],
+    "sotRefs": [
+      {
+        "file": "docs/source-of-truth/Glicogenose Estudo Socioeconômico Mercadológico.md",
+        "heading": "8.1 O principal problema é a ausência de um denominador"
+      },
+      {
+        "file": "docs/source-of-truth/Glicogenose Estudo Socioeconômico Mercadológico.md",
+        "heading": "5.9 DATASUS: utilização hospitalar brasileira"
+      }
+    ],
+    "limitations": [
+      "AIHs não correspondem a pacientes únicos.",
+      "O CID E74.0 não distingue tipos de GSD.",
+      "Ausência de registros administrativos não equivale à ausência de pacientes."
+    ],
+    "approvedForPublication": true,
+    "lastReviewedAt": "2026-08-10"
+  },
+  {
+    "id": "clm-socio-002",
+    "statement": "Na doença de McArdle, foi relatado atraso diagnóstico mediano de 29 anos, com elevada frequência de diagnóstico incorreto prévio; o achado é específico do estudo e do subtipo, não uma mediana universal das GSDs.",
+    "shortStatement": "McArdle: atraso diagnóstico mediano de 29 anos no estudo documentado.",
+    "domain": "socioeconomic",
+    "scope": {
+      "gsdIds": ["gsd-v-mcardle"],
+      "population": "Pacientes com doença de McArdle no estudo citado pela SoT",
+      "geography": ["estudo específico — não nacional brasileiro"]
+    },
+    "evidenceState": "observed",
+    "sourceRefs": [
+      {
+        "sourceId": "src-sot-socioeconomic-2026",
+        "locator": "1.1 / McArdle — atraso mediano de 29 anos [CAR-010 a CAR-013]",
+        "supports": "direct"
+      }
+    ],
+    "sotRefs": [
+      {
+        "file": "docs/source-of-truth/Glicogenose Estudo Socioeconômico Mercadológico.md",
+        "heading": "1.1 A carga socioeconômica é distribuída de forma desigual"
+      }
+    ],
+    "limitations": [
+      "Não generalizar o atraso de 29 anos a todas as glicogenoses.",
+      "O desenho e a população do estudo original condicionam a interpretação."
+    ],
+    "approvedForPublication": true,
+    "lastReviewedAt": "2026-08-10"
+  }
+]

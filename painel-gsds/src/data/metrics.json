@@ -1,0 +1,84 @@
+[
+  {
+    "id": "met-clinical-001",
+    "label": "Diversidade clínica reconhecida",
+    "value": 20,
+    "displayValue": "mais de 20",
+    "unit": "tipos e subtipos",
+    "geography": ["global"],
+    "period": "síntese da SoT médica (corte 2026-08-10)",
+    "population": "Tipos e subtipos de GSD reconhecidos na literatura consolidada",
+    "evidenceState": "observed",
+    "sourceIds": ["src-sot-medical-exec-2026"],
+    "claimId": "clm-clinical-001",
+    "method": "Leitura direta da formulação da SoT médica: “Mais de 20 tipos e subtipos são reconhecidos.”",
+    "limitations": [
+      "Não é um inventário fechado; a nomenclatura histórica permanece heterogênea.",
+      "Não implica homogeneidade de gravidade, prevalência ou opções terapêuticas."
+    ],
+    "lastReviewedAt": "2026-08-10"
+  },
+  {
+    "id": "met-market-001",
+    "label": "Receita farmacêutica observada (Pompe)",
+    "value": 1.403,
+    "displayValue": "≈ €1,4 bi",
+    "unit": "bilhões de EUR",
+    "currency": "EUR",
+    "priceYear": 2024,
+    "geography": ["global"],
+    "period": "2024",
+    "gsdIds": ["gsd-ii-pompe"],
+    "population": "Receita reportada Sanofi (Myozyme/Lumizyme + Nexviazyme/Nexviadyme) e Amicus (Pombiliti+Opfolda), consolidada na SoT",
+    "evidenceState": "observed",
+    "sourceIds": ["src-sot-socioeconomic-2026"],
+    "claimId": "clm-market-001",
+    "method": "Soma documentada na SoT: Sanofi €1,338 bi + Amicus US$70,2 mi convertidos pela taxa média anual USD/EUR de 2024 ≈ €1,403 bi.",
+    "marketClassification": "observed-revenue",
+    "limitations": [
+      "Trata-se de mercado/receita observada, não de TAM, SAM ou SOM.",
+      "A concentração em Pompe não dimensiona necessidades de outras GSDs."
+    ],
+    "lastReviewedAt": "2026-08-10"
+  },
+  {
+    "id": "met-datasus-001",
+    "label": "AIHs com diagnóstico principal E74.0",
+    "value": 997,
+    "displayValue": "997",
+    "unit": "AIHs",
+    "geography": ["Brasil"],
+    "period": "janeiro de 2020 a maio de 2026",
+    "population": "Autorizações de Internação Hospitalar (SIH/SUS) com CID principal E74.0",
+    "evidenceState": "proxy",
+    "sourceIds": ["src-sot-socioeconomic-2026"],
+    "claimId": "clm-brasil-001",
+    "method": "Contagem de AIHs processadas com diagnóstico principal E74.0 nos microdados do SIH/SUS, conforme SoT socioeconômica.",
+    "limitations": [
+      "AIHs não equivalem a pacientes, indivíduos ou internações únicas deduplicadas.",
+      "E74.0 não distingue tipos de GSD.",
+      "Observa utilização hospitalar, não prevalência nacional."
+    ],
+    "lastReviewedAt": "2026-08-10"
+  },
+  {
+    "id": "met-mcardle-001",
+    "label": "Atraso diagnóstico mediano (McArdle)",
+    "value": 29,
+    "displayValue": "29",
+    "unit": "anos (mediana)",
+    "geography": ["estudo específico"],
+    "period": "estudo documentado na SoT socioeconômica",
+    "gsdIds": ["gsd-v-mcardle"],
+    "population": "Pacientes com doença de McArdle no estudo citado (CAR-010 a CAR-013)",
+    "evidenceState": "observed",
+    "sourceIds": ["src-sot-socioeconomic-2026"],
+    "claimId": "clm-socio-002",
+    "method": "Mediana de atraso diagnóstico reportada na SoT para McArdle; subtipo e desenho do estudo condicionam o escopo.",
+    "limitations": [
+      "Evidência específica de McArdle — não é mediana universal das GSDs.",
+      "População e desenho do estudo original devem acompanhar a leitura."
+    ],
+    "lastReviewedAt": "2026-08-10"
+  }
+]

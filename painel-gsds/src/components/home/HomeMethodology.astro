@@ -1,0 +1,176 @@
+---
+import EvidenceBadge from '../evidence/EvidenceBadge.astro';
+import { EVIDENCE_STATES, EVIDENCE_DESCRIPTIONS } from '../../lib/evidence/states';
+import type { Claim } from '../../schemas/claim';
+import type { Source } from '../../schemas/source';
+
+export interface Props {
+  heading?: string;
+  updatedAt: string;
+  sotCutoff: string;
+  limitations: string[];
+  claims: Claim[];
+  sources: Source[];
+}
+
+const {
+  heading = 'Como ler este painel',
+  updatedAt,
+  sotCutoff,
+  limitations,
+  claims,
+  sources,
+} = Astro.props;
+
+const homeStates = EVIDENCE_STATES.filter((state) => state !== 'not-calculable');
+---
+
+<section id="metodologia" class="section-space" aria-labelledby="metodologia-title">
+  <div class="container stack stack--lg">
+    <header class="stack stack--tight">
+      <p class="section-kicker">Leitura e limites</p>
+      <h2 id="metodologia-title">{heading}</h2>
+      <p class="section-lede">
+        Bloco compacto de metodologia da Home. Não substitui a futura página completa de metodologia
+        e fontes.
+      </p>
+    </header>
+
+    <div class="method-grid">
+      <article class="method-block">
+        <h3>Estados de evidência</h3>
+        <ul class="method-states">
+          {
+            homeStates.map((state) => (
+              <li>
+                <EvidenceBadge state={state} />
+                <span>{EVIDENCE_DESCRIPTIONS[state]}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </article>
+
+      <article class="method-block">
+        <h3>Atualização</h3>
+        <p>
+          Última revisão editorial da Home: <time datetime={updatedAt}>{updatedAt}</time>.
+        </p>
+        <p>
+          Corte das SoTs utilizadas: <time datetime={sotCutoff}>{sotCutoff}</time>.
+        </p>
+        <p>Conteúdo informativo. Não substitui avaliação médica individual.</p>
+      </article>
+    </div>
+
+    <article class="method-block">
+      <h3>Limitações gerais desta Home</h3>
+      <ul>
+        {limitations.map((item) => <li>{item}</li>)}
+      </ul>
+    </article>
+
+    <article class="method-block">
+      <h3>Fontes utilizadas pela Home</h3>
+      <ul class="method-sources">
+        {
+          sources.map((source) => (
+            <li>
+              <strong>{source.title}</strong>
+              <span>
+                {source.authorsOrInstitution.join(', ')}
+                {source.publicationYear ? ` (${source.publicationYear})` : ''}
+              </span>
+              {source.localSotFile && <code>{source.localSotFile}</code>}
+            </li>
+          ))
+        }
+      </ul>
+      <p class="method-claims">
+        Alegações aprovadas nesta página:{' '}
+        {claims.map((claim) => claim.id).join(', ')}.
+      </p>
+    </article>
+  </div>
+</section>
+
+<style>
+  .section-kicker {
+    font-size: var(--annotation);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--teal-700);
+    max-width: none;
+  }
+
+  .section-lede {
+    color: var(--ink-600);
+    max-width: 60ch;
+  }
+
+  .method-grid {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  @media (min-width: 64rem) {
+    .method-grid {
+      grid-template-columns: 1.4fr 1fr;
+    }
+  }
+
+  .method-block {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    background: var(--paper-100);
+  }
+
+  .method-block h3 {
+    font-size: var(--heading-3);
+  }
+
+  .method-block p,
+  .method-block li {
+    color: var(--ink-600);
+    max-width: none;
+  }
+
+  .method-block ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .method-states {
+    list-style: none;
+    padding-left: 0 !important;
+  }
+
+  .method-states li {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .method-sources {
+    list-style: none;
+    padding-left: 0 !important;
+  }
+
+  .method-sources li {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .method-sources code {
+    font-size: var(--annotation);
+    color: var(--ink-800);
+  }
+
+  .method-claims {
+    font-size: var(--annotation);
+  }
+</style>

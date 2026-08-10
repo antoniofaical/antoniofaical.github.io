@@ -1,0 +1,154 @@
+---
+export type NeedLayer = {
+  title: string;
+  body: string;
+};
+
+export interface Props {
+  heading?: string;
+  insight: string;
+  layers: NeedLayer[];
+  observedNote: string;
+}
+
+const {
+  heading = 'Mercado observado não é necessidade total',
+  insight,
+  layers,
+  observedNote,
+} = Astro.props;
+---
+
+<section id="mercado-necessidade" class="section-space" aria-labelledby="mercado-title">
+  <div class="container stack stack--lg">
+    <header class="stack stack--tight">
+      <p class="section-kicker">Enquadramento</p>
+      <h2 id="mercado-title">{heading}</h2>
+      <p class="section-lede">{insight}</p>
+      <p class="badge-conceptual">
+        <span class="badge-conceptual__label">Conceitual</span>
+        Sem áreas proporcionais nem funil monetário falso.
+      </p>
+    </header>
+
+    <ul class="need-layers">
+      {
+        layers.map((layer) => (
+          <li class="need-layers__item">
+            <h3>{layer.title}</h3>
+            <p>{layer.body}</p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <aside class="need-alt" aria-label="Alternativa textual da visualização">
+      <h3>Alternativa textual</h3>
+      <p>{observedNote}</p>
+      <ul>
+        {
+          layers.map((layer) => (
+            <li>
+              <strong>{layer.title}:</strong> {layer.body}
+            </li>
+          ))
+        }
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .section-kicker {
+    font-size: var(--annotation);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--teal-700);
+    max-width: none;
+  }
+
+  .section-lede {
+    color: var(--ink-600);
+    max-width: 62ch;
+  }
+
+  .badge-conceptual {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    align-items: center;
+    max-width: none;
+    color: var(--ink-600);
+    font-size: var(--annotation);
+  }
+
+  .badge-conceptual__label {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding-inline: 0.65rem;
+    border-radius: var(--radius-md);
+    border: var(--border-thin) solid var(--amber-500);
+    color: var(--ink-950);
+    font-weight: 700;
+  }
+
+  .need-layers {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 48rem) {
+    .need-layers {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .need-layers__item {
+    padding: var(--space-5);
+    border: var(--border-thin) dashed var(--line-200);
+    border-radius: var(--radius-lg);
+    background: var(--paper-50);
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .need-layers__item h3 {
+    font-size: var(--heading-3);
+  }
+
+  .need-layers__item p {
+    margin: 0;
+    color: var(--ink-600);
+    max-width: none;
+  }
+
+  .need-alt {
+    padding: var(--space-5);
+    background: var(--paper-100);
+    border-radius: var(--radius-lg);
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .need-alt h3 {
+    font-size: var(--heading-3);
+  }
+
+  .need-alt p,
+  .need-alt li {
+    color: var(--ink-600);
+    max-width: none;
+  }
+
+  .need-alt ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: var(--space-2);
+  }
+</style>

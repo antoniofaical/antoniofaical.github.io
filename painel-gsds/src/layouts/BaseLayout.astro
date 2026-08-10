@@ -14,6 +14,8 @@ export interface Props {
   showFixtureBanner?: boolean;
   currentPath?: string;
   surface?: 'editorial' | 'executive';
+  lastReviewedAt?: string;
+  ogImage?: string;
 }
 
 const {
@@ -23,6 +25,8 @@ const {
   showFixtureBanner = false,
   currentPath = Astro.url.pathname,
   surface = 'editorial',
+  lastReviewedAt,
+  ogImage = withBase('favicon.svg'),
 } = Astro.props;
 
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
@@ -37,6 +41,14 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefin
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta
+      property="og:image"
+      content={new URL(ogImage, Astro.site ?? 'https://antoniofaical.github.io').toString()}
+    />
     <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
     <LocalFonts />
     <title>{title}</title>
@@ -54,7 +66,7 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefin
       <MobileNavigation client:load slot="mobile" />
     </GlobalHeader>
     <slot />
-    <GlobalFooter />
+    <GlobalFooter lastReviewedAt={lastReviewedAt} />
   </body>
 </html>
 

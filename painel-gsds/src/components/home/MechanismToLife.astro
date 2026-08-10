@@ -1,0 +1,100 @@
+---
+export type MechanismStep = {
+  label: string;
+  detail: string;
+};
+
+export interface Props {
+  heading?: string;
+  caveat: string;
+  steps: MechanismStep[];
+}
+
+const { heading = 'Do mecanismo à vida cotidiana', caveat, steps } = Astro.props;
+---
+
+<section id="mecanismo" class="section-space" aria-labelledby="mecanismo-title">
+  <div class="container stack stack--lg">
+    <header class="stack stack--tight">
+      <p class="section-kicker">Ponte conceitual</p>
+      <h2 id="mecanismo-title">{heading}</h2>
+      <p class="section-lede">{caveat}</p>
+    </header>
+
+    <ol class="mechanism-flow">
+      {
+        steps.map((step) => (
+          <li class="mechanism-flow__step">
+            <h3>{step.label}</h3>
+            <p>{step.detail}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .section-kicker {
+    font-size: var(--annotation);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--teal-700);
+    max-width: none;
+  }
+
+  .section-lede {
+    color: var(--ink-600);
+    max-width: 60ch;
+  }
+
+  .mechanism-flow {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 64rem) {
+    .mechanism-flow {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+  }
+
+  .mechanism-flow__step {
+    position: relative;
+    padding: var(--space-5);
+    background: var(--paper-100);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--teal-700);
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .mechanism-flow__step h3 {
+    font-size: var(--heading-3);
+  }
+
+  .mechanism-flow__step p {
+    color: var(--ink-600);
+    max-width: none;
+    margin: 0;
+  }
+
+  @media (min-width: 64rem) {
+    .mechanism-flow__step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 1.75rem;
+      right: -0.85rem;
+      width: 0.7rem;
+      height: 0.7rem;
+      border-top: 2px solid var(--teal-500);
+      border-right: 2px solid var(--teal-500);
+      transform: rotate(45deg);
+    }
+  }
+</style>

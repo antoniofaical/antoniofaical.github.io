@@ -1,0 +1,86 @@
+---
+import KeyMetric from '../executive/KeyMetric.astro';
+import type { ResolvedHomeMetric } from '../../lib/data/loadHomeEvidence';
+import type { EvidenceState } from '../../lib/evidence/states';
+
+export interface Props {
+  heading?: string;
+  framing: string;
+  items: ResolvedHomeMetric[];
+}
+
+const { heading = 'Números que enquadram o problema', framing, items } = Astro.props;
+---
+
+<section id="metricas" class="section-space surface-editorial" aria-labelledby="metricas-title">
+  <div class="container stack stack--lg">
+    <header class="stack stack--tight">
+      <p class="section-kicker">Evidência essencial</p>
+      <h2 id="metricas-title">{heading}</h2>
+      <p class="section-lede">{framing}</p>
+    </header>
+
+    <div class="metrics-board">
+      {
+        items.map(({ metric, claim, sources }) => {
+          const primary = sources[0];
+          const locator = claim.sourceRefs.find((ref) => ref.sourceId === primary?.id)?.locator;
+          return (
+            <div class="metrics-board__item">
+              <KeyMetric
+                label={metric.label}
+                value={metric.displayValue ?? (metric.value === null ? null : String(metric.value))}
+                unit={metric.unit}
+                context={claim.shortStatement ?? claim.statement}
+                evidenceState={metric.evidenceState as EvidenceState}
+                evidenceReason={metric.limitations[0]}
+                period={metric.period}
+                geography={metric.geography.join(', ')}
+                limitation={metric.limitations[0]}
+                source={{
+                  authorsOrInstitution: primary.authorsOrInstitution.join(', '),
+                  publicationYear: primary.publicationYear,
+                  sourceType: primary.sourceType,
+                  identifier: primary.localSotFile ?? primary.id,
+                  locator,
+                  verifiedAt: metric.lastReviewedAt,
+                }}
+              />
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-kicker {
+    font-size: var(--annotation);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--teal-700);
+    max-width: none;
+  }
+
+  .section-lede {
+    color: var(--ink-600);
+    max-width: 62ch;
+  }
+
+  .metrics-board {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  @media (min-width: 48rem) {
+    .metrics-board {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .metrics-board__item {
+    min-width: 0;
+  }
+</style>

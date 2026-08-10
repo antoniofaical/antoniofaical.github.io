@@ -2,11 +2,13 @@
 export interface Props {
   note?: string;
   year?: number;
+  lastReviewedAt?: string;
 }
 
 const {
   note = 'Conteúdo informativo. Não substitui avaliação médica.',
   year = new Date().getFullYear(),
+  lastReviewedAt,
 } = Astro.props;
 ---
 
@@ -14,7 +16,17 @@ const {
   <div class="container footer-inner">
     <p class="footer-brand">Painel Global de Inovação em Glicogenoses</p>
     <p class="footer-note">{note}</p>
-    <p class="footer-meta">© {year} · Fundação técnica em desenvolvimento</p>
+    <p class="footer-meta">
+      © {year}
+      {
+        lastReviewedAt && (
+          <>
+            {' '}
+            · Última revisão: <time datetime={lastReviewedAt}>{lastReviewedAt}</time>
+          </>
+        )
+      }
+    </p>
   </div>
 </footer>
 

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "src-sot-medical-exec-2026",
+    "title": "Glicogenose: Resumo Médico Executivo",
+    "authorsOrInstitution": ["Projeto Painel GSDs"],
+    "publicationYear": 2026,
+    "sourceType": "project-report",
+    "localSotFile": "docs/source-of-truth/Glicogenose Resumo Médico Executivo.md",
+    "language": "pt-BR",
+    "accessedAt": "2026-08-10",
+    "dataCutoff": "2026-08-10",
+    "notes": "Fonte de verdade médica imutável do painel. Síntese executiva baseada em revisões citadas no próprio documento."
+  },
+  {
+    "id": "src-sot-socioeconomic-2026",
+    "title": "Glicogenose: Estudo Socioeconômico Mercadológico",
+    "authorsOrInstitution": ["Projeto Painel GSDs"],
+    "publicationYear": 2026,
+    "sourceType": "project-report",
+    "localSotFile": "docs/source-of-truth/Glicogenose Estudo Socioeconômico Mercadológico.md",
+    "language": "pt-BR",
+    "accessedAt": "2026-08-10",
+    "dataCutoff": "2026-05-31",
+    "notes": "Fonte de verdade socioeconômica e mercadológica. Inclui consolidação de receitas Pompe 2024, SIH/SUS E74.0 e evidências de atraso diagnóstico."
+  }
+]

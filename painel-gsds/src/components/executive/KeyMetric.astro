@@ -12,6 +12,7 @@ export interface Props {
   evidenceReason?: string;
   period?: string;
   geography?: string;
+  limitation?: string;
   source: {
     authorsOrInstitution: string;
     publicationYear?: number;
@@ -33,6 +34,7 @@ const {
   evidenceReason,
   period,
   geography,
+  limitation,
   source,
   fixtureLabel = false,
 } = Astro.props;
@@ -65,6 +67,14 @@ const isAbsent = evidenceState === 'not-calculable' || value === null;
     {period && <li>Período: {period}</li>}
     {geography && <li>Universo: {geography}</li>}
   </ul>
+
+  {
+    limitation && (
+      <p class="key-metric__limitation">
+        <span class="key-metric__limitation-label">Limitação essencial:</span> {limitation}
+      </p>
+    )
+  }
 
   <SourceAnchor {...source} fixtureLabel={false} />
 </article>
@@ -139,6 +149,20 @@ const isAbsent = evidenceState === 'not-calculable' || value === null;
   .key-metric__context {
     color: var(--ink-600);
     max-width: none;
+  }
+
+  .key-metric__limitation {
+    margin: 0;
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    background: var(--paper-100);
+    color: var(--ink-800);
+    font-size: var(--annotation);
+    max-width: none;
+  }
+
+  .key-metric__limitation-label {
+    font-weight: 700;
   }
 
   .key-metric__meta {
