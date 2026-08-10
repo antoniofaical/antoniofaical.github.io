@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Página inicial de antoniofaical.github.io — índice de projetos publicados."
+    />
+    <title>Antonio Faical — projetos</title>
+    <style>
+      :root {
+        --ink: #16313b;
+        --paper: #f6f8f7;
+        --teal: #0d6870;
+        --line: #d7e0dd;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 1.5rem;
+        font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgb(22 149 160 / 12%), transparent 42%),
+          linear-gradient(160deg, #edf2f0 0%, var(--paper) 48%, #e7efec 100%);
+      }
+
+      main {
+        width: min(100%, 36rem);
+      }
+
+      h1 {
+        margin: 0 0 0.5rem;
+        font-size: clamp(1.75rem, 4vw, 2.25rem);
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+      }
+
+      p {
+        margin: 0 0 1.5rem;
+        max-width: 42ch;
+        line-height: 1.55;
+      }
+
+      a.project {
+        display: inline-flex;
+        align-items: center;
+        min-height: 2.75rem;
+        padding: 0.65rem 1rem;
+        border: 2px solid var(--teal);
+        border-radius: 12px;
+        color: var(--teal);
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      a.project:hover,
+      a.project:focus-visible {
+        background: var(--teal);
+        color: var(--paper);
+        outline: none;
+      }
+
+      a.project:focus-visible {
+        outline: 2px solid #1695a0;
+        outline-offset: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>antoniofaical.github.io</h1>
+      <p>
+        Índice mínimo da raiz do GitHub Pages. Espaço reservado para outros projetos; o painel
+        publicado fica em subcaminho.
+      </p>
+      <a class="project" href="/painel-gsds/">Abrir Painel GSDs (/painel-gsds/)</a>
+    </main>
+  </body>
+</html>
