@@ -1,0 +1,47 @@
+---
+export interface Props {
+  note?: string;
+  year?: number;
+}
+
+const {
+  note = 'Conteúdo informativo. Não substitui avaliação médica.',
+  year = new Date().getFullYear(),
+} = Astro.props;
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p class="footer-brand">Painel Global de Inovação em Glicogenoses</p>
+    <p class="footer-note">{note}</p>
+    <p class="footer-meta">© {year} · Fundação técnica em desenvolvimento</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: auto;
+    border-top: var(--border-thin) solid var(--line-200);
+    background: var(--paper-100);
+    padding-block: var(--space-6);
+  }
+
+  .footer-inner {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .footer-brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--ink-950);
+    max-width: none;
+  }
+
+  .footer-note,
+  .footer-meta {
+    color: var(--ink-600);
+    font-size: var(--annotation);
+    max-width: none;
+  }
+</style>

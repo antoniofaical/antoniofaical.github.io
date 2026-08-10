@@ -1,0 +1,20 @@
+---
+export interface Props {
+  width?: 'global' | 'wide' | 'editorial';
+  as?: 'div' | 'section' | 'article' | 'main';
+  id?: string;
+  class?: string;
+}
+
+const { width = 'global', as: Tag = 'div', id, class: className = '' } = Astro.props;
+const widthClass =
+  width === 'wide'
+    ? 'container container--wide'
+    : width === 'editorial'
+      ? 'container container--editorial'
+      : 'container';
+---
+
+<Tag id={id} class:list={[widthClass, className]}>
+  <slot />
+</Tag>

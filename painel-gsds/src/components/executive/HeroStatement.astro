@@ -1,0 +1,82 @@
+---
+export interface ActionLink {
+  label: string;
+  href: string;
+  variant?: 'primary' | 'secondary' | 'on-dark' | 'on-dark-ghost';
+}
+
+export interface Props {
+  title: string;
+  subtitle: string;
+  temporalContext?: string;
+  actions?: ActionLink[];
+  tone?: 'executive' | 'editorial';
+}
+
+const { title, subtitle, temporalContext, actions = [], tone = 'executive' } = Astro.props;
+---
+
+<section class:list={['hero-statement', `hero-statement--${tone}`, 'section-space--executive']}>
+  <div class="container stack stack--lg">
+    {temporalContext && <p class="hero-statement__context">{temporalContext}</p>}
+    <h1 class="hero-statement__title display">{title}</h1>
+    <p class="hero-statement__subtitle">{subtitle}</p>
+    {
+      actions.length > 0 && (
+        <div class="cluster">
+          {actions.slice(0, 2).map((action) => (
+            <a
+              class:list={[
+                'btn',
+                action.variant === 'secondary' && 'btn--secondary',
+                action.variant === 'on-dark' && 'btn--on-dark',
+                action.variant === 'on-dark-ghost' && 'btn--on-dark-ghost',
+                (!action.variant || action.variant === 'primary') &&
+                  (tone === 'executive' ? 'btn--on-dark' : 'btn--primary'),
+              ]}
+              href={action.href}
+            >
+              {action.label}
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .hero-statement--executive {
+    background: var(--surface-executive-bg);
+    color: var(--surface-executive-fg);
+  }
+
+  .hero-statement--editorial {
+    background: var(--surface-editorial-bg);
+    color: var(--surface-editorial-fg);
+  }
+
+  .hero-statement__context {
+    font-size: var(--annotation);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.85;
+    max-width: none;
+  }
+
+  .hero-statement__title {
+    font-size: var(--display-lg);
+    max-width: 16ch;
+  }
+
+  .hero-statement--executive .hero-statement__title {
+    color: var(--paper-50);
+  }
+
+  .hero-statement__subtitle {
+    font-size: var(--editorial);
+    max-width: 42rem;
+    opacity: 0.92;
+  }
+</style>

@@ -1,0 +1,65 @@
+---
+import '../styles/global.css';
+import SkipLink from '../components/layout/SkipLink.astro';
+import GlobalHeader from '../components/layout/GlobalHeader.astro';
+import GlobalFooter from '../components/layout/GlobalFooter.astro';
+import MobileNavigation from '../components/layout/MobileNavigation';
+import { withBase } from '../lib/paths/withBase';
+
+export interface Props {
+  title: string;
+  description?: string;
+  noindex?: boolean;
+  showFixtureBanner?: boolean;
+  currentPath?: string;
+  surface?: 'editorial' | 'executive';
+}
+
+const {
+  title,
+  description = 'Painel Global de Inovação em Glicogenoses',
+  noindex = false,
+  showFixtureBanner = false,
+  currentPath = Astro.url.pathname,
+  surface = 'editorial',
+} = Astro.props;
+
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
+    <title>{title}</title>
+  </head>
+  <body
+    class:list={['app-shell', surface === 'executive' ? 'surface-executive' : 'surface-editorial']}
+  >
+    {
+      showFixtureBanner && (
+        <p class="fixture-banner">Fixture de interface — não é dado científico</p>
+      )
+    }
+    <SkipLink />
+    <GlobalHeader currentPath={currentPath}>
+      <MobileNavigation client:load slot="mobile" />
+    </GlobalHeader>
+    <slot />
+    <GlobalFooter />
+  </body>
+</html>
+
+<style is:global>
+  .app-shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+</style>

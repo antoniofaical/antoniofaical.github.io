@@ -1,0 +1,426 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageContainer from '../../components/layout/PageContainer.astro';
+import HeroStatement from '../../components/executive/HeroStatement.astro';
+import KeyMetric from '../../components/executive/KeyMetric.astro';
+import SectionPortal from '../../components/executive/SectionPortal.astro';
+import EvidenceBadge from '../../components/evidence/EvidenceBadge.astro';
+import EvidenceCallout from '../../components/evidence/EvidenceCallout.astro';
+import SourceAnchor from '../../components/evidence/SourceAnchor.astro';
+import DataAbsentState from '../../components/evidence/DataAbsentState.astro';
+import { EVIDENCE_STATES } from '../../lib/evidence/states';
+import { withBase } from '../../lib/paths/withBase';
+import {
+  FIXTURE_NOTICE,
+  fixtureMetrics,
+  paletteSwatches,
+} from '../../../tests/fixtures/design-system/demo';
+
+const typeScale = [
+  { name: 'display-xl', sample: 'Display XL' },
+  { name: 'display-lg', sample: 'Display LG' },
+  { name: 'heading-1', sample: 'Heading 1' },
+  { name: 'heading-2', sample: 'Heading 2' },
+  { name: 'heading-3', sample: 'Heading 3' },
+  { name: 'body', sample: 'Corpo de texto para leitura de interface.' },
+  { name: 'editorial', sample: 'Texto editorial para evidência prolongada.' },
+  { name: 'annotation', sample: 'Anotação / metadado' },
+];
+---
+
+<BaseLayout
+  title="Design System — demonstração interna"
+  description="Página interna de QA do Design System. Fixtures apenas."
+  noindex={true}
+  showFixtureBanner={true}
+  currentPath={withBase('design-system/')}
+>
+  <main id="conteudo-principal">
+    <HeroStatement
+      tone="executive"
+      temporalContext="Página interna · noindex"
+      title="Design System em demonstração"
+      subtitle={`${FIXTURE_NOTICE}. Esta rota documenta tokens, contraste, componentes e estados de evidência sem publicar conteúdo científico.`}
+      actions={[
+        { label: 'Ir aos tokens', href: '#paleta', variant: 'on-dark' },
+        { label: 'Ir aos componentes', href: '#componentes', variant: 'on-dark-ghost' },
+      ]}
+    />
+
+    <section id="paleta" class="section-space surface-editorial" aria-labelledby="paleta-title">
+      <PageContainer class="stack stack--lg">
+        <h2 id="paleta-title">1. Paleta e contraste</h2>
+        <p>{FIXTURE_NOTICE}</p>
+        <div class="swatch-grid">
+          {
+            paletteSwatches.map((swatch) => (
+              <article
+                class:list={[
+                  'swatch',
+                  swatch.on === 'light' ? 'swatch--on-light' : 'swatch--on-dark',
+                ]}
+                style={`background:${swatch.value}`}
+              >
+                <h3>{swatch.token}</h3>
+                <p>{swatch.value}</p>
+                <p class="swatch__sample">Aa 123</p>
+              </article>
+            ))
+          }
+        </div>
+        <div class="contrast-pairs">
+          <p class="contrast-pair contrast-pair--dark">Texto paper-50 sobre ink-950</p>
+          <p class="contrast-pair contrast-pair--light">Texto ink-800 sobre paper-50</p>
+          <p class="contrast-pair contrast-pair--teal">Texto branco sobre teal-700</p>
+        </div>
+      </PageContainer>
+    </section>
+
+    <section id="tipografia" class="section-space" aria-labelledby="tipo-title">
+      <PageContainer class="stack stack--lg">
+        <h2 id="tipo-title">2. Escala tipográfica</h2>
+        <p>
+          Manrope/Inter locais pendentes — fallbacks ativos. {FIXTURE_NOTICE}
+        </p>
+        <div class="stack">
+          {
+            typeScale.map((item) => (
+              <p class={`type-sample type-sample--${item.name}`}>
+                <span class="type-sample__meta">{item.name}</span>
+                {item.sample}
+              </p>
+            ))
+          }
+        </div>
+      </PageContainer>
+    </section>
+
+    <section id="grid" class="section-space surface-editorial" aria-labelledby="grid-title">
+      <PageContainer class="stack stack--lg">
+        <h2 id="grid-title">3. Grid e espaçamento</h2>
+        <div class="grid demo-grid" aria-hidden="true">
+          {
+            Array.from({ length: 12 }).map((_, index) => (
+              <div class="demo-grid__cell">{index + 1}</div>
+            ))
+          }
+        </div>
+        <div class="space-scale cluster">
+          {
+            [4, 8, 12, 16, 24, 32, 48, 64].map((size) => (
+              <div class="space-scale__item">
+                <span style={`width:${size}px;height:${size}px`} />
+                <small>{size}px</small>
+              </div>
+            ))
+          }
+        </div>
+      </PageContainer>
+    </section>
+
+    <section id="interacao" class="section-space" aria-labelledby="interacao-title">
+      <PageContainer class="stack stack--lg">
+        <h2 id="interacao-title">4. Botões, links e foco</h2>
+        <p>Use Tab para verificar o anel de foco. Alvos ≥ 44×44px.</p>
+        <div class="cluster">
+          <a class="btn btn--primary" href="#componentes">Primário</a>
+          <a class="btn btn--secondary" href="#evidencia">Secundário</a>
+          <a href="#movimento">Link textual</a>
+        </div>
+      </PageContainer>
+    </section>
+
+    <section id="componentes" class="section-space surface-editorial" aria-labelledby="comp-title">
+      <PageContainer class="stack stack--lg">
+        <h2 id="comp-title">5. Componentes mínimos</h2>
+        <div class="grid metrics-grid">
+          {
+            fixtureMetrics.map((metric) => (
+              <div class="metrics-grid__item">
+                <KeyMetric {...metric} fixtureLabel={true} />
+              </div>
+            ))
+          }
+        </div>
+        <div class="grid portals-grid">
+          <SectionPortal
+            question="Como validar o portal de seção?"
+            summary="Síntese ilustrativa apontando para âncora interna."
+            href="#evidencia"
+            ctaLabel="Ver estados de evidência"
+          />
+          <SectionPortal
+            question="Conteúdo futuro?"
+            summary="Portal indisponível permanece explícito."
+            href="#"
+            available={false}
+          />
+        </div>
+        <SourceAnchor
+          authorsOrInstitution="Fixture Lab"
+          publicationYear={2026}
+          sourceType="project-report"
+          href="#fixture-source"
+          identifier="fixture-source"
+          locator="Demonstração"
+          verifiedAt="2026-08-10"
+          fixtureLabel={true}
+        />
+      </PageContainer>
+    </section>
+
+    <section id="evidencia" class="section-space" aria-labelledby="evidencia-title">
+      <PageContainer class="stack stack--lg">
+        <h2 id="evidencia-title">6. Estados de evidência</h2>
+        <p>Cada estado possui rótulo textual e explicação acionável (não só hover/cor).</p>
+        <div class="cluster">
+          {EVIDENCE_STATES.map((state) => <EvidenceBadge state={state} />)}
+        </div>
+        <div class="grid portals-grid">
+          <EvidenceCallout tone="consensus" title="Consenso ilustrativo" body={FIXTURE_NOTICE} />
+          <EvidenceCallout
+            tone="limitation"
+            title="Limitação ilustrativa"
+            body="Âmbar exige rótulo que diferencie incerteza de oportunidade."
+          />
+          <EvidenceCallout
+            tone="implication"
+            title="Implicação ilustrativa"
+            body="Leitura executiva conectada à evidência."
+          />
+          <EvidenceCallout
+            tone="method"
+            title="Atenção metodológica"
+            body="Coral sinaliza risco metodológico, não decoração."
+          />
+        </div>
+      </PageContainer>
+    </section>
+
+    <section id="ausencia" class="section-space surface-editorial" aria-labelledby="ausencia-title">
+      <PageContainer class="stack stack--lg">
+        <h2 id="ausencia-title">7. Dado não calculável</h2>
+        <DataAbsentState
+          title="TAM monetário deste segmento (fixture)"
+          explanation="Sem método confiável no exemplo de interface; valor permanece nulo e explicado."
+          relatedScope="Demonstração do Design System"
+        />
+      </PageContainer>
+    </section>
+
+    <section
+      id="superficie-escura"
+      class="section-space surface-executive"
+      aria-labelledby="escura-title"
+    >
+      <PageContainer class="stack stack--lg">
+        <h2 id="escura-title">8. Superfície executiva escura</h2>
+        <p>
+          Alto contraste para aberturas e fechamentos. Cyan-300 como realce. {FIXTURE_NOTICE}
+        </p>
+        <div class="cluster">
+          <a class="btn btn--on-dark" href="#superficie-clara">Primário sobre escuro</a>
+          <a class="btn btn--on-dark-ghost" href="#movimento">Ghost sobre escuro</a>
+        </div>
+      </PageContainer>
+    </section>
+
+    <section id="superficie-clara" class="section-space" aria-labelledby="clara-title">
+      <PageContainer width="editorial" class="stack stack--lg">
+        <h2 id="clara-title">9. Superfície editorial clara</h2>
+        <p>
+          Coluna editorial (~65–75 caracteres) para leitura prolongada. O painel combina camada
+          executiva e evidencial sem transformar ausência em certeza. {FIXTURE_NOTICE}
+        </p>
+      </PageContainer>
+    </section>
+
+    <section
+      id="movimento"
+      class="section-space surface-editorial"
+      aria-labelledby="movimento-title"
+    >
+      <PageContainer class="stack stack--lg">
+        <h2 id="movimento-title">10. Movimento e redução</h2>
+        <p>
+          Abaixo, uma entrada curta por opacidade/deslocamento. Com
+          <code>prefers-reduced-motion: reduce</code>, a animação é desativada.
+        </p>
+        <div class="motion-demo">Entrada funcional (180–260ms)</div>
+      </PageContainer>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .swatch-grid {
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  }
+
+  .swatch {
+    min-height: 8rem;
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    border: var(--border-thin) solid var(--line-200);
+    display: grid;
+    align-content: end;
+    gap: var(--space-1);
+  }
+
+  .swatch h3,
+  .swatch p {
+    margin: 0;
+    max-width: none;
+    font-size: var(--annotation);
+  }
+
+  .swatch--on-light,
+  .swatch--on-light h3,
+  .swatch--on-light p {
+    color: var(--paper-50);
+  }
+
+  .swatch--on-dark,
+  .swatch--on-dark h3,
+  .swatch--on-dark p {
+    color: var(--ink-950);
+  }
+
+  .swatch__sample {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .contrast-pairs {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .contrast-pair {
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    max-width: none;
+  }
+
+  .contrast-pair--dark {
+    background: var(--ink-950);
+    color: var(--paper-50);
+  }
+
+  .contrast-pair--light {
+    background: var(--paper-50);
+    color: var(--ink-800);
+    border: var(--border-thin) solid var(--line-200);
+  }
+
+  .contrast-pair--teal {
+    background: var(--teal-700);
+    color: var(--white);
+  }
+
+  .type-sample {
+    display: grid;
+    gap: var(--space-1);
+    max-width: none;
+  }
+
+  .type-sample__meta {
+    font-size: var(--annotation);
+    color: var(--ink-600);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .type-sample--display-xl {
+    font-family: var(--font-display);
+    font-size: var(--display-xl);
+    font-weight: 700;
+  }
+
+  .type-sample--display-lg {
+    font-family: var(--font-display);
+    font-size: var(--display-lg);
+    font-weight: 700;
+  }
+
+  .type-sample--heading-1 {
+    font-size: var(--heading-1);
+    font-weight: 700;
+  }
+
+  .type-sample--heading-2 {
+    font-size: var(--heading-2);
+    font-weight: 700;
+  }
+
+  .type-sample--heading-3 {
+    font-size: var(--heading-3);
+    font-weight: 700;
+  }
+
+  .type-sample--body {
+    font-size: var(--body);
+  }
+
+  .type-sample--editorial {
+    font-size: var(--editorial);
+  }
+
+  .type-sample--annotation {
+    font-size: var(--annotation);
+  }
+
+  .demo-grid__cell {
+    min-height: 2.75rem;
+    display: grid;
+    place-items: center;
+    background: var(--paper-100);
+    border: var(--border-thin) solid var(--line-200);
+    border-radius: var(--radius-md);
+    color: var(--ink-600);
+    font-size: var(--annotation);
+  }
+
+  .space-scale__item {
+    display: grid;
+    gap: var(--space-2);
+    justify-items: center;
+    font-size: var(--annotation);
+    color: var(--ink-600);
+  }
+
+  .space-scale__item span {
+    display: block;
+    background: var(--teal-500);
+    border-radius: 4px;
+  }
+
+  .metrics-grid__item {
+    grid-column: span 4;
+  }
+
+  @media (min-width: 48rem) {
+    .metrics-grid__item {
+      grid-column: span 4;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .metrics-grid__item {
+      grid-column: span 4;
+    }
+  }
+
+  .portals-grid > :global(*) {
+    grid-column: span 4;
+  }
+
+  @media (min-width: 64rem) {
+    .portals-grid > :global(*) {
+      grid-column: span 6;
+    }
+  }
+</style>

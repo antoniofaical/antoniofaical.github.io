@@ -1,0 +1,59 @@
+---
+export interface Props {
+  title: string;
+  explanation: string;
+  relatedScope?: string;
+}
+
+const { title, explanation, relatedScope } = Astro.props;
+---
+
+<div class="data-absent" role="status">
+  <p class="data-absent__eyebrow">Dado não calculável</p>
+  <h3 class="data-absent__title">{title}</h3>
+  <p class="data-absent__body">{explanation}</p>
+  {relatedScope && <p class="data-absent__scope">Escopo: {relatedScope}</p>}
+  <p class="data-absent__rule">Ausência não é representada como zero.</p>
+</div>
+
+<style>
+  .data-absent {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    border: var(--border-strong) dashed var(--line-200);
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--paper-50),
+      var(--paper-50) 12px,
+      var(--paper-100) 12px,
+      var(--paper-100) 24px
+    );
+  }
+
+  .data-absent__eyebrow {
+    font-size: var(--annotation);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-600);
+    max-width: none;
+  }
+
+  .data-absent__title {
+    font-size: var(--heading-3);
+  }
+
+  .data-absent__body,
+  .data-absent__scope,
+  .data-absent__rule {
+    color: var(--ink-600);
+    max-width: none;
+  }
+
+  .data-absent__rule {
+    font-weight: 600;
+    color: var(--ink-800);
+  }
+</style>

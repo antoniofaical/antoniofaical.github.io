@@ -1,0 +1,151 @@
+---
+import EvidenceBadge from '../evidence/EvidenceBadge.astro';
+import SourceAnchor from '../evidence/SourceAnchor.astro';
+import type { EvidenceState } from '../../lib/evidence/states';
+
+export interface Props {
+  label: string;
+  value: string | null;
+  unit?: string;
+  context: string;
+  evidenceState: EvidenceState;
+  evidenceReason?: string;
+  period?: string;
+  geography?: string;
+  source: {
+    authorsOrInstitution: string;
+    publicationYear?: number;
+    sourceType: string;
+    href?: string;
+    identifier?: string;
+    locator?: string;
+    verifiedAt?: string;
+  };
+  fixtureLabel?: boolean;
+}
+
+const {
+  label,
+  value,
+  unit,
+  context,
+  evidenceState,
+  evidenceReason,
+  period,
+  geography,
+  source,
+  fixtureLabel = false,
+} = Astro.props;
+
+const isAbsent = evidenceState === 'not-calculable' || value === null;
+---
+
+<article class:list={['key-metric', `key-metric--${evidenceState}`]}>
+  {fixtureLabel && <p class="key-metric__fixture">Fixture de interface — não é dado científico</p>}
+  <header class="key-metric__header">
+    <h3 class="key-metric__label">{label}</h3>
+    <EvidenceBadge state={evidenceState} reason={evidenceReason} />
+  </header>
+
+  {
+    isAbsent ? (
+      <p class="key-metric__absent" aria-label="Valor não calculável">
+        —
+      </p>
+    ) : (
+      <p class="key-metric__value">
+        <span class="key-metric__number">{value}</span>
+        {unit && <span class="key-metric__unit">{unit}</span>}
+      </p>
+    )
+  }
+
+  <p class="key-metric__context">{context}</p>
+  <ul class="key-metric__meta">
+    {period && <li>Período: {period}</li>}
+    {geography && <li>Universo: {geography}</li>}
+  </ul>
+
+  <SourceAnchor {...source} fixtureLabel={false} />
+</article>
+
+<style>
+  .key-metric {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    border-radius: var(--radius-xl);
+    border: var(--border-thin) solid var(--line-200);
+    background: var(--white);
+  }
+
+  .key-metric--proxy {
+    border-style: dashed;
+  }
+
+  .key-metric--not-calculable {
+    background: var(--paper-100);
+  }
+
+  .key-metric__fixture {
+    font-size: var(--annotation);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--ink-950);
+    max-width: none;
+  }
+
+  .key-metric__header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .key-metric__label {
+    font-size: var(--heading-3);
+  }
+
+  .key-metric__value {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2);
+    max-width: none;
+  }
+
+  .key-metric__number {
+    font-family: var(--font-display);
+    font-size: var(--heading-1);
+    font-weight: 700;
+    color: var(--ink-950);
+    line-height: 1;
+  }
+
+  .key-metric__unit {
+    color: var(--ink-600);
+    font-weight: 600;
+  }
+
+  .key-metric__absent {
+    font-family: var(--font-display);
+    font-size: var(--heading-1);
+    color: var(--ink-600);
+    max-width: none;
+  }
+
+  .key-metric__context {
+    color: var(--ink-600);
+    max-width: none;
+  }
+
+  .key-metric__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    font-size: var(--annotation);
+    color: var(--ink-600);
+  }
+</style>

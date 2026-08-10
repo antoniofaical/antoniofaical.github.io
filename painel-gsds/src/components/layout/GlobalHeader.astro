@@ -1,0 +1,162 @@
+---
+import { withBase } from '../../lib/paths/withBase';
+
+export interface NavItem {
+  label: string;
+  href: string;
+  available?: boolean;
+}
+
+export interface Props {
+  currentPath?: string;
+  title?: string;
+  items?: NavItem[];
+}
+
+const {
+  currentPath = Astro.url.pathname,
+  title = 'Painel GSDs',
+  items = [
+    { label: 'Visão geral', href: '/', available: true },
+    { label: 'Bases clínicas', href: '/analises/bases-clinicas/', available: false },
+    {
+      label: 'Impacto socioeconômico',
+      href: '/analises/impacto-socioeconomico/',
+      available: false,
+    },
+    { label: 'Metodologia', href: '/metodologia/', available: false },
+  ],
+} = Astro.props;
+
+const homeHref = withBase('/');
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href={homeHref}>
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__text">{title}</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Principal">
+      <ul class="desktop-nav__list">
+        {
+          items.map((item) => {
+            const href = withBase(item.href);
+            const isCurrent =
+              item.available !== false && (currentPath === href || currentPath.endsWith(item.href));
+            return (
+              <li>
+                {item.available === false ? (
+                  <span class="nav-item nav-item--soon" aria-disabled="true">
+                    {item.label}
+                    <span class="nav-item__hint">Em breve</span>
+                  </span>
+                ) : (
+                  <a
+                    class:list={['nav-item', isCurrent && 'nav-item--current']}
+                    href={href}
+                    aria-current={isCurrent ? 'page' : undefined}
+                  >
+                    {item.label}
+                  </a>
+                )}
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+
+    <slot name="mobile" />
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-header);
+    background: rgb(246 248 247 / 92%);
+    backdrop-filter: blur(10px);
+    border-bottom: var(--border-thin) solid var(--line-200);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    min-height: 4rem;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: var(--touch-min);
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--ink-950);
+  }
+
+  .brand__mark {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 999px;
+    background: var(--teal-500);
+    box-shadow: 0 0 0 4px rgb(22 149 160 / 18%);
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  @media (min-width: 64rem) {
+    .desktop-nav {
+      display: block;
+    }
+  }
+
+  .desktop-nav__list {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+  }
+
+  .nav-item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: var(--touch-min);
+    padding: 0.5rem 0.85rem;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: var(--ink-800);
+    font-weight: 500;
+  }
+
+  .nav-item:hover,
+  .nav-item:focus-visible {
+    background: var(--paper-100);
+    color: var(--teal-700);
+  }
+
+  .nav-item--current {
+    color: var(--teal-700);
+    box-shadow: inset 0 -2px 0 var(--teal-500);
+  }
+
+  .nav-item--soon {
+    color: var(--ink-600);
+    cursor: default;
+  }
+
+  .nav-item__hint {
+    font-size: var(--annotation);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    opacity: 0.8;
+  }
+</style>

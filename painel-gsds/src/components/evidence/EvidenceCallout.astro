@@ -1,0 +1,69 @@
+---
+export type CalloutTone = 'consensus' | 'limitation' | 'implication' | 'method';
+
+export interface Props {
+  tone: CalloutTone;
+  title: string;
+  body: string;
+}
+
+const labels: Record<CalloutTone, string> = {
+  consensus: 'Consenso',
+  limitation: 'Limitação',
+  implication: 'Implicação',
+  method: 'Atenção metodológica',
+};
+
+const { tone, title, body } = Astro.props;
+---
+
+<aside class:list={['evidence-callout', `evidence-callout--${tone}`]} aria-label={labels[tone]}>
+  <p class="evidence-callout__eyebrow">{labels[tone]}</p>
+  <h3 class="evidence-callout__title">{title}</h3>
+  <p class="evidence-callout__body">{body}</p>
+</aside>
+
+<style>
+  .evidence-callout {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    border: var(--border-thin) solid var(--line-200);
+    background: var(--white);
+  }
+
+  .evidence-callout--consensus {
+    border-color: var(--green-500);
+  }
+
+  .evidence-callout--limitation {
+    border-color: var(--amber-500);
+  }
+
+  .evidence-callout--implication {
+    border-color: var(--teal-500);
+  }
+
+  .evidence-callout--method {
+    border-color: var(--coral-500);
+  }
+
+  .evidence-callout__eyebrow {
+    font-size: var(--annotation);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-600);
+    max-width: none;
+  }
+
+  .evidence-callout__title {
+    font-size: var(--heading-3);
+  }
+
+  .evidence-callout__body {
+    color: var(--ink-600);
+    max-width: none;
+  }
+</style>

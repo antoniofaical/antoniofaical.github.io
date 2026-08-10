@@ -1,0 +1,121 @@
+---
+export interface Props {
+  authorsOrInstitution: string;
+  publicationYear?: number;
+  sourceType: string;
+  href?: string;
+  identifier?: string;
+  locator?: string;
+  verifiedAt?: string;
+  fixtureLabel?: boolean;
+}
+
+const {
+  authorsOrInstitution,
+  publicationYear,
+  sourceType,
+  href,
+  identifier,
+  locator,
+  verifiedAt,
+  fixtureLabel = false,
+} = Astro.props;
+---
+
+<figure class="source-anchor">
+  {
+    fixtureLabel && (
+      <figcaption class="source-anchor__fixture">
+        Fixture de interface — não é dado científico
+      </figcaption>
+    )
+  }
+  <dl class="source-anchor__list">
+    <div>
+      <dt>Fonte</dt>
+      <dd>
+        {authorsOrInstitution}
+        {publicationYear ? ` (${publicationYear})` : ''}
+      </dd>
+    </div>
+    <div>
+      <dt>Tipo</dt>
+      <dd>{sourceType}</dd>
+    </div>
+    {
+      locator && (
+        <div>
+          <dt>Localizador</dt>
+          <dd>{locator}</dd>
+        </div>
+      )
+    }
+    {
+      verifiedAt && (
+        <div>
+          <dt>Verificado em</dt>
+          <dd>
+            <time datetime={verifiedAt}>{verifiedAt}</time>
+          </dd>
+        </div>
+      )
+    }
+    {
+      (href || identifier) && (
+        <div>
+          <dt>Acesso</dt>
+          <dd>
+            {href ? (
+              <a href={href} rel="noopener noreferrer">
+                {identifier ?? href}
+              </a>
+            ) : (
+              identifier
+            )}
+          </dd>
+        </div>
+      )
+    }
+  </dl>
+</figure>
+
+<style>
+  .source-anchor {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    border-left: 3px solid var(--teal-500);
+    background: var(--paper-100);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  }
+
+  .source-anchor__fixture {
+    font-size: var(--annotation);
+    font-weight: 700;
+    color: var(--ink-950);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .source-anchor__list {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .source-anchor__list div {
+    display: grid;
+    gap: 0.15rem;
+  }
+
+  dt {
+    font-size: var(--annotation);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--ink-600);
+  }
+
+  dd {
+    color: var(--ink-800);
+    max-width: none;
+  }
+</style>

@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageContainer from '../components/layout/PageContainer.astro';
+import { withBase } from '../lib/paths/withBase';
+---
+
+<BaseLayout
+  title="Painel GSDs — fundação"
+  description="Fundação técnica do Painel Global de Inovação em Glicogenoses. Home final ainda não implementada."
+>
+  <main id="conteudo-principal" class="section-space">
+    <PageContainer class="stack stack--lg">
+      <p class="eyebrow">Iteração 1</p>
+      <h1>Fundação técnica pronta</h1>
+      <p>
+        Esta rota é um marcador temporário. A Home final e o conteúdo científico serão implementados
+        em iterações posteriores, após validação.
+      </p>
+      <p>
+        Consulte a demonstração interna do Design System:
+        <a href={withBase('design-system/')}>/design-system/</a>
+      </p>
+    </PageContainer>
+  </main>
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    font-size: var(--annotation);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--teal-700);
+    max-width: none;
+  }
+</style>

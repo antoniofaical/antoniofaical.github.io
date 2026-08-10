@@ -1,0 +1,66 @@
+---
+export interface Props {
+  question: string;
+  summary: string;
+  href: string;
+  ctaLabel?: string;
+  available?: boolean;
+}
+
+const { question, summary, href, ctaLabel = 'Abrir seção', available = true } = Astro.props;
+---
+
+<article class="section-portal">
+  <p class="section-portal__eyebrow">Pergunta respondida</p>
+  <h3 class="section-portal__question">{question}</h3>
+  <p class="section-portal__summary">{summary}</p>
+  {
+    available ? (
+      <a class="btn btn--secondary" href={href}>
+        {ctaLabel}
+      </a>
+    ) : (
+      <span class="section-portal__soon" aria-disabled="true">
+        Conteúdo em breve
+      </span>
+    )
+  }
+</article>
+
+<style>
+  .section-portal {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    border-top: 3px solid var(--teal-500);
+    background: var(--white);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    box-shadow: var(--elevation-1);
+  }
+
+  .section-portal__eyebrow {
+    font-size: var(--annotation);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-600);
+    max-width: none;
+  }
+
+  .section-portal__question {
+    font-size: var(--heading-3);
+  }
+
+  .section-portal__summary {
+    color: var(--ink-600);
+    max-width: none;
+  }
+
+  .section-portal__soon {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--touch-min);
+    color: var(--ink-600);
+    font-weight: 600;
+  }
+</style>

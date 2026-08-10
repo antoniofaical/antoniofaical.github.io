@@ -1,0 +1,13 @@
+dist
+.astro
+node_modules
+.DS_Store
+playwright-report
+test-results
+coverage
+.env
+.env.*
+!.env.example
+*.log
+tests/visual/*.png
+!tests/visual/.gitkeep

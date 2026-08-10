@@ -1,0 +1,9 @@
+dist
+node_modules
+.astro
+coverage
+package-lock.json
+*.log
+tests/visual/*.png
+docs/source-of-truth/**
+!docs/source-of-truth/INVENTORY.md

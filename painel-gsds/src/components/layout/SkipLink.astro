@@ -1,0 +1,33 @@
+---
+export interface Props {
+  targetId?: string;
+  label?: string;
+}
+
+const { targetId = 'conteudo-principal', label = 'Ir para o conteúdo' } = Astro.props;
+---
+
+<a class="skip-link" href={`#${targetId}`}>{label}</a>
+
+<style>
+  .skip-link {
+    position: absolute;
+    left: var(--space-4);
+    top: 0;
+    z-index: var(--z-skip);
+    transform: translateY(-120%);
+    padding: 0.75rem 1rem;
+    min-height: var(--touch-min);
+    background: var(--ink-950);
+    color: var(--paper-50);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform var(--duration-fast) var(--ease-standard);
+  }
+
+  .skip-link:focus,
+  .skip-link:focus-visible {
+    transform: translateY(0);
+  }
+</style>

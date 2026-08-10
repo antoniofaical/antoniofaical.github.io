@@ -1,0 +1,128 @@
+---
+import {
+  EVIDENCE_DESCRIPTIONS,
+  EVIDENCE_LABELS,
+  type EvidenceState,
+} from '../../lib/evidence/states';
+
+export interface Props {
+  state: EvidenceState;
+  reason?: string;
+}
+
+const { state, reason } = Astro.props;
+const label = EVIDENCE_LABELS[state];
+const description = reason ?? EVIDENCE_DESCRIPTIONS[state];
+const detailsId = `evidence-${state}-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<span class:list={['evidence-badge', `evidence-badge--${state}`]}>
+  <button
+    type="button"
+    class="evidence-badge__trigger"
+    aria-expanded="false"
+    aria-controls={detailsId}
+    data-evidence-trigger
+  >
+    <span class="evidence-badge__mark" aria-hidden="true"></span>
+    <span>{label}</span>
+  </button>
+  <span id={detailsId} class="evidence-badge__details" hidden role="note">
+    {description}
+  </span>
+</span>
+
+<script>
+  function bindEvidenceBadges() {
+    document.querySelectorAll('[data-evidence-trigger]').forEach((node) => {
+      const button = node as HTMLButtonElement;
+      if (button.dataset.bound === 'true') return;
+      button.dataset.bound = 'true';
+      const detailsId = button.getAttribute('aria-controls');
+      const details = detailsId ? document.getElementById(detailsId) : null;
+      button.addEventListener('click', () => {
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', String(!expanded));
+        if (details) details.hidden = expanded;
+      });
+    });
+  }
+
+  bindEvidenceBadges();
+  document.addEventListener('astro:page-load', bindEvidenceBadges);
+</script>
+
+<style>
+  .evidence-badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .evidence-badge__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: var(--touch-min);
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    border: var(--border-thin) solid var(--line-200);
+    background: var(--white);
+    color: var(--ink-800);
+    font-size: var(--annotation);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .evidence-badge__mark {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    background: var(--teal-500);
+  }
+
+  .evidence-badge--estimated .evidence-badge__mark {
+    background: var(--amber-500);
+  }
+
+  .evidence-badge--proxy .evidence-badge__trigger {
+    border-style: dashed;
+  }
+
+  .evidence-badge--proxy .evidence-badge__mark {
+    background: transparent;
+    border: 2px dotted var(--teal-700);
+  }
+
+  .evidence-badge--conceptual .evidence-badge__mark {
+    background: var(--ink-600);
+  }
+
+  .evidence-badge--not-calculable .evidence-badge__mark {
+    background: var(--line-200);
+    box-shadow: inset 0 0 0 2px var(--ink-600);
+  }
+
+  .evidence-badge--limited .evidence-badge__mark {
+    background: var(--amber-500);
+  }
+
+  .evidence-badge--limited .evidence-badge__trigger {
+    border-color: var(--amber-500);
+  }
+
+  .evidence-badge__details {
+    max-width: 28rem;
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    background: var(--paper-100);
+    border: var(--border-thin) solid var(--line-200);
+    color: var(--ink-600);
+    font-size: var(--annotation);
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 400;
+  }
+</style>

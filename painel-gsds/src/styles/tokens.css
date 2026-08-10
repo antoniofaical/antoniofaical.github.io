@@ -1,0 +1,87 @@
+/* Design System tokens — Painel GSDs v0.2
+   Fontes Manrope/Inter: pendência — arquivos locais ainda não disponíveis.
+   Fallbacks tipográficos ativos abaixo. */
+
+:root {
+  /* Cores — Design System v0.2 */
+  --ink-950: #071b25;
+  --ink-800: #16313b;
+  --ink-600: #45616a;
+  --paper-50: #f6f8f7;
+  --paper-100: #edf2f0;
+  --teal-700: #0d6870;
+  --teal-500: #1695a0;
+  --cyan-300: #78d9d6;
+  --amber-500: #e9a63a;
+  --coral-500: #d8675a;
+  --green-500: #439b72;
+  --line-200: #d7e0dd;
+  --white: #ffffff;
+
+  /* Tipografia — Manrope/Inter pendentes; fallbacks robustos */
+  --font-display: 'Manrope', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+
+  --display-xl: clamp(2.75rem, 7vw, 6.5rem);
+  --display-lg: clamp(2.25rem, 5vw, 4.5rem);
+  --heading-1: clamp(2rem, 4vw, 3.5rem);
+  --heading-2: clamp(1.5rem, 3vw, 2.5rem);
+  --heading-3: clamp(1.25rem, 2vw, 1.5rem);
+  --body: clamp(1rem, 0.4vw + 0.92rem, 1.125rem);
+  --editorial: clamp(1.0625rem, 0.45vw + 0.95rem, 1.1875rem);
+  --annotation: 0.75rem;
+
+  /* Espaçamento */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 5rem;
+  --space-10: 6rem;
+  --space-11: 8rem;
+
+  /* Larguras */
+  --width-global: 80rem;
+  --width-wide: 73.75rem;
+  --width-editorial: 48rem;
+  --margin-mobile: 1.25rem;
+
+  /* Raios e bordas (largura) */
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 18px;
+  --border-thin: 1px;
+  --border-strong: 2px;
+
+  /* Movimento */
+  --duration-fast: 180ms;
+  --duration-base: 220ms;
+  --duration-slow: 260ms;
+  --ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --easing-standard: var(--ease-standard);
+
+  /* Elevação funcional */
+  --elevation-1: 0 1px 2px rgb(7 27 37 / 8%), 0 4px 12px rgb(7 27 37 / 6%);
+  --elevation-2: 0 2px 4px rgb(7 27 37 / 10%), 0 12px 24px rgb(7 27 37 / 8%);
+
+  /* Z-index documentado */
+  --z-base: 0;
+  --z-sticky: 100;
+  --z-header: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+  --z-skip: 1000;
+
+  /* Semântica de superfície */
+  --surface-executive-bg: var(--ink-950);
+  --surface-executive-fg: var(--paper-50);
+  --surface-editorial-bg: var(--paper-50);
+  --surface-editorial-fg: var(--ink-800);
+  --focus-ring: var(--teal-500);
+  --touch-min: 2.75rem;
+}
