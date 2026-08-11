@@ -1,0 +1,79 @@
+---
+/**
+ * Ramificação abstrata do glicogênio — SVG autoral leve para o hero.
+ * Não representa DNA, neurônio ou rede genérica.
+ */
+export interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<svg
+  class:list={['glycogen-branch', className]}
+  viewBox="0 0 480 420"
+  role="img"
+  aria-labelledby="glycogen-branch-title glycogen-branch-desc"
+  width="480"
+  height="420"
+>
+  <title id="glycogen-branch-title">Ramificação abstrata do glicogênio</title>
+  <desc id="glycogen-branch-desc">
+    Diagrama decorativo de cadeias ramificadas, sugerindo heterogeneidade estrutural das
+    glicogenoses sem representar um tipo clínico específico.
+  </desc>
+  <defs>
+    <linearGradient id="glycogen-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--cyan-300)" stop-opacity="0.95"></stop>
+      <stop offset="100%" stop-color="var(--teal-500)" stop-opacity="0.75"></stop>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#glycogen-stroke)" stroke-width="3" stroke-linecap="round">
+    <path d="M72 340 C120 280, 150 220, 190 160"></path>
+    <path d="M190 160 C230 110, 270 80, 320 58"></path>
+    <path d="M190 160 C210 200, 250 230, 300 250"></path>
+    <path d="M190 160 C150 140, 120 100, 96 64"></path>
+    <path d="M300 250 C340 270, 380 275, 420 268"></path>
+    <path d="M300 250 C320 210, 350 180, 390 150"></path>
+    <path d="M96 64 C80 48, 70 36, 58 24"></path>
+    <path d="M320 58 C350 40, 380 34, 412 30"></path>
+  </g>
+  <g fill="var(--cyan-300)">
+    <circle cx="190" cy="160" r="7"></circle>
+    <circle cx="300" cy="250" r="6"></circle>
+    <circle cx="320" cy="58" r="6"></circle>
+    <circle cx="96" cy="64" r="5"></circle>
+    <circle cx="390" cy="150" r="5"></circle>
+    <circle cx="420" cy="268" r="5"></circle>
+    <circle cx="412" cy="30" r="4"></circle>
+    <circle cx="58" cy="24" r="4"></circle>
+    <circle cx="72" cy="340" r="5"></circle>
+  </g>
+</svg>
+
+<style>
+  .glycogen-branch {
+    width: min(100%, 28rem);
+    height: auto;
+    display: block;
+    opacity: 0.92;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .glycogen-branch {
+      animation: glycogen-fade 700ms var(--ease-standard) both;
+    }
+  }
+
+  @keyframes glycogen-fade {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 0.75rem, 0);
+    }
+    to {
+      opacity: 0.92;
+      transform: none;
+    }
+  }
+</style>

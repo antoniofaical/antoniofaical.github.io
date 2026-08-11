@@ -125,7 +125,7 @@ test.describe('design-system', () => {
   });
 });
 
-test('base path build smoke via root placeholder', async ({ page }) => {
+test('home route smoke', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByRole('heading', { name: /fundação técnica/i })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /família de doenças/i })).toBeVisible();
 });

@@ -1,0 +1,86 @@
+---
+import type { ResolvedHomeMetric } from '../../lib/data/loadHomeEvidence';
+
+export interface Props {
+  heading?: string;
+  summary: string[];
+  datasusMetric: ResolvedHomeMetric;
+}
+
+const { heading = 'Brasil: o que os dados mostram e omitem', summary, datasusMetric } = Astro.props;
+
+const { metric, claim } = datasusMetric;
+---
+
+<section id="brasil" class="section-space surface-editorial" aria-labelledby="brasil-title">
+  <div class="container stack stack--lg">
+    <header class="stack stack--tight">
+      <p class="section-kicker">Recorte nacional</p>
+      <h2 id="brasil-title">{heading}</h2>
+    </header>
+
+    <ul class="brazil-points">
+      {summary.map((item) => <li>{item}</li>)}
+    </ul>
+
+    <aside class="brazil-ref" aria-labelledby="brasil-ref-title">
+      <h3 id="brasil-ref-title">Referência à métrica DATASUS (mesmo registro)</h3>
+      <p>
+        <strong>{metric.displayValue ?? metric.value}</strong>
+        {metric.unit}
+        · {metric.period}
+      </p>
+      <p>{claim.shortStatement ?? claim.statement}</p>
+      <p class="brazil-ref__limit">{metric.limitations[0]}</p>
+      <p class="brazil-ref__meta">Registro: {metric.id}</p>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .section-kicker {
+    font-size: var(--annotation);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--teal-700);
+    max-width: none;
+  }
+
+  .brazil-points {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: var(--space-3);
+    color: var(--ink-600);
+    max-width: 70ch;
+  }
+
+  .brazil-ref {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    border: var(--border-thin) solid var(--line-200);
+    background: var(--white);
+  }
+
+  .brazil-ref h3 {
+    font-size: var(--heading-3);
+  }
+
+  .brazil-ref p {
+    margin: 0;
+    max-width: none;
+    color: var(--ink-600);
+  }
+
+  .brazil-ref__limit {
+    color: var(--ink-800) !important;
+    font-weight: 600;
+  }
+
+  .brazil-ref__meta {
+    font-size: var(--annotation);
+  }
+</style>

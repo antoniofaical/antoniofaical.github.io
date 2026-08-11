@@ -5,9 +5,17 @@ export interface Props {
   href: string;
   ctaLabel?: string;
   available?: boolean;
+  unavailableLabel?: string;
 }
 
-const { question, summary, href, ctaLabel = 'Abrir seção', available = true } = Astro.props;
+const {
+  question,
+  summary,
+  href,
+  ctaLabel = 'Abrir seção',
+  available = true,
+  unavailableLabel = 'Em desenvolvimento',
+} = Astro.props;
 ---
 
 <article class="section-portal">
@@ -20,8 +28,8 @@ const { question, summary, href, ctaLabel = 'Abrir seção', available = true } 
         {ctaLabel}
       </a>
     ) : (
-      <span class="section-portal__soon" aria-disabled="true">
-        Conteúdo em breve
+      <span class="section-portal__soon" role="status">
+        {unavailableLabel}
       </span>
     )
   }
