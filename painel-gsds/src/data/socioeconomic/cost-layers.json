@@ -20,9 +20,7 @@
         }
       ],
       "claimIds": ["clm-market-001", "clm-socio-005"],
-      "limitations": [
-        "Camadas farmacêutica e hospitalar são incomparáveis entre si."
-      ]
+      "limitations": ["Camadas farmacêutica e hospitalar são incomparáveis entre si."]
     },
     {
       "id": "cost-hospital-datasus",
@@ -37,9 +35,7 @@
         }
       ],
       "claimIds": ["clm-brasil-001", "clm-socio-005"],
-      "limitations": [
-        "Valor médio por AIH e totais anuais não representam custo por paciente."
-      ]
+      "limitations": ["Valor médio por AIH e totais anuais não representam custo por paciente."]
     },
     {
       "id": "cost-pompe-qaly",

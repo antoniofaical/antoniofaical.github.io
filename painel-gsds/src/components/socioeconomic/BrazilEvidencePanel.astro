@@ -1,0 +1,161 @@
+---
+import type { Metric } from '../../schemas/metric';
+
+type Point = {
+  id: string;
+  label: string;
+  detail: string;
+  claimIds: string[];
+  metricIds?: string[];
+};
+
+export interface Props {
+  title: string;
+  summary: string;
+  points: Point[];
+  datasusMetric?: Metric;
+}
+
+const { title, summary, points, datasusMetric } = Astro.props;
+---
+
+<section id="brasil" class="section-space" aria-labelledby="brasil-title">
+  <div class="container stack stack--lg">
+    <header class="stack stack--tight">
+      <h2 id="brasil-title">{title}</h2>
+      <p>{summary}</p>
+    </header>
+
+    {
+      datasusMetric && (
+        <aside class="datasus-callout" aria-labelledby="datasus-title">
+          <h3 id="datasus-title">SIH/SUS — leitura obrigatória do proxy hospitalar</h3>
+          <p class="limit" role="note">
+            AIHs com diagnóstico principal E74.0 (formato E740 nos microdados); AIHs não equivalem a
+            pacientes.
+          </p>
+          <dl>
+            <div>
+              <dt>Contagem</dt>
+              <dd>
+                {datasusMetric.displayValue} {datasusMetric.unit}
+              </dd>
+            </div>
+            <div>
+              <dt>Período</dt>
+              <dd>{datasusMetric.period}</dd>
+            </div>
+            <div>
+              <dt>População observada</dt>
+              <dd>{datasusMetric.population}</dd>
+            </div>
+            <div>
+              <dt>Local</dt>
+              <dd>
+                Local da internação/estabelecimento nos microdados SIH, não residência do paciente.
+              </dd>
+            </div>
+            <div>
+              <dt>VAL_TOT</dt>
+              <dd>
+                Soma aprovada associada às AIHs E74.0 na camada de custo hospitalar (ver seção de
+                custos); não é custo total das GSDs.
+              </dd>
+            </div>
+          </dl>
+          <ul>
+            <li>Longa permanência pode gerar múltiplas AIHs para a mesma pessoa.</li>
+            <li>Não há deduplicação de pacientes nesta contagem.</li>
+            <li>Cobertura e codificação limitam extrapolação epidemiológica.</li>
+            {datasusMetric.limitations.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </aside>
+      )
+    }
+
+    <ul class="point-list">
+      {
+        points.map((point) => (
+          <li>
+            <h3>{point.label}</h3>
+            <p>{point.detail}</p>
+            <p class="meta">
+              Alegações: {point.claimIds.join(', ')}
+              {point.metricIds?.length ? ` · Métricas: ${point.metricIds.join(', ')}` : ''}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .datasus-callout {
+    padding: var(--space-5);
+    border-left: 4px solid var(--amber-500);
+    background: var(--paper-100);
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .datasus-callout dl {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+  }
+
+  @media (min-width: 48rem) {
+    .datasus-callout dl {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .datasus-callout dt {
+    font-size: var(--annotation);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--ink-600);
+  }
+
+  .datasus-callout dd {
+    margin: var(--space-1) 0 0;
+  }
+
+  .datasus-callout ul,
+  .point-list {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: var(--space-2);
+    color: var(--ink-600);
+  }
+
+  .point-list {
+    list-style: none;
+    padding-left: 0;
+    gap: var(--space-4);
+  }
+
+  .point-list li {
+    padding: var(--space-5);
+    border: var(--border-thin) solid var(--line-200);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+  }
+
+  .meta,
+  .limit {
+    color: var(--ink-600);
+    font-size: var(--annotation);
+    max-width: 70ch;
+  }
+
+  .limit {
+    font-weight: 600;
+  }
+</style>

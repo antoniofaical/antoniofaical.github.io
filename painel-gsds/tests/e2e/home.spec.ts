@@ -39,10 +39,17 @@ test.describe('home executive', () => {
     ).toBeVisible();
   });
 
-  test('future portals stay unavailable without broken navigations', async ({ page }) => {
+  test('analysis portals navigate to clinical and socioeconomic pages', async ({ page }) => {
+    await expect(page.getByRole('link', { name: /abrir bases clínicas/i })).toBeVisible();
+    await expect(page.getByRole('link', { name: /abrir impacto socioeconômico/i })).toBeVisible();
+    await page.getByRole('link', { name: /abrir bases clínicas/i }).click();
+    await expect(page).toHaveURL(/\/analises\/bases-clinicas\/?$/);
+    await page.goto('/');
+    await page.getByRole('link', { name: /abrir impacto socioeconômico/i }).click();
+    await expect(page).toHaveURL(/\/analises\/impacto-socioeconomico\/?$/);
+    await page.goto('/');
     const developing = page.getByRole('status').filter({ hasText: /em desenvolvimento/i });
     await expect(developing.first()).toBeVisible();
-    await expect(page.locator('a[href="/analises/bases-clinicas/"]')).toHaveCount(0);
   });
 
   test('has no serious accessibility violations', async ({ page }) => {

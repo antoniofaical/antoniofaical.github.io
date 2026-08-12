@@ -38,9 +38,7 @@
       "observability": "conceptual-only",
       "summary": "Amidos, alimentos para fins especiais e manejo dietético doméstico são centrais em várias GSDs hepáticas; a atividade econômica é fragmentada e grande parcela do custo pode ser transferida às famílias.",
       "claimIds": ["clm-socio-004"],
-      "limitations": [
-        "Receitas não desagregadas para GSD nos dados públicos da SoT."
-      ]
+      "limitations": ["Receitas não desagregadas para GSD nos dados públicos da SoT."]
     },
     {
       "id": "seg-monitoring",
@@ -51,9 +49,7 @@
       "observability": "conceptual-only",
       "summary": "Monitorização contínua de glicose, bombas de alimentação e telemonitoramento existem como mercados adjacentes ou emergentes sem receita GSD-atribuível nos dados públicos disponíveis.",
       "claimIds": ["clm-socio-004"],
-      "limitations": [
-        "Sem sizing monetário GSD-específico na SoT."
-      ]
+      "limitations": ["Sem sizing monetário GSD-específico na SoT."]
     },
     {
       "id": "seg-rehab-support",

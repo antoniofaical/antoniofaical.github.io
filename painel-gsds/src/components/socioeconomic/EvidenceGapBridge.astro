@@ -1,0 +1,64 @@
+---
+type GapItem = {
+  id: string;
+  label: string;
+  detail: string;
+  claimIds?: string[];
+};
+
+export interface Props {
+  items: GapItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<section
+  id="lacunas-evidencia"
+  class="section-space surface-editorial"
+  aria-labelledby="gaps-title"
+>
+  <div class="container stack stack--lg">
+    <header class="stack stack--tight">
+      <h2 id="gaps-title">Lacunas de evidência que limitam decisões</h2>
+      <p>
+        Lacunas permanecem visíveis e acionáveis a partir da síntese socioeconômica. Sem startups,
+        rankings ou oportunidades comerciais nesta seção.
+      </p>
+    </header>
+    <ol class="gap-list">
+      {
+        items.map((gap) => (
+          <li>
+            <h3>{gap.label}</h3>
+            <p>{gap.detail}</p>
+            {gap.claimIds?.length ? <p class="meta">Alegações: {gap.claimIds.join(', ')}</p> : null}
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .gap-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .gap-list li {
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    border: var(--border-thin) solid var(--line-200);
+  }
+
+  .meta {
+    color: var(--ink-600);
+    font-size: var(--annotation);
+    max-width: 70ch;
+  }
+</style>

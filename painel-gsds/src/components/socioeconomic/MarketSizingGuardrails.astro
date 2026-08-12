@@ -1,0 +1,125 @@
+---
+import type { MarketSegment } from '../../schemas/socioeconomic/domain';
+import type { Metric } from '../../schemas/metric';
+
+export interface Props {
+  segments: MarketSegment[];
+  observedRevenue?: Metric;
+}
+
+const { segments, observedRevenue } = Astro.props;
+
+const monetary = segments.filter((s) => s.observability === 'monetary');
+const population = segments.filter(
+  (s) => s.observability === 'population-only' || s.observability === 'conceptual-only',
+);
+const absent = segments.filter((s) => s.observability === 'absent');
+---
+
+<section id="sizing" class="section-space surface-editorial" aria-labelledby="sizing-title">
+  <div class="container stack stack--lg">
+    <header class="stack stack--tight">
+      <h2 id="sizing-title">O que é calculável — e o que não é</h2>
+      <p>
+        Receita observada, proxy hospitalar, população potencial e mercado conceitual não são
+        intercambiáveis. Total Addressable Market (TAM), Serviceable Available Market (SAM) e
+        Serviceable Obtainable Market (SOM) só aparecem quando a fonte de verdade os autoriza com
+        classificação metodológica.
+      </p>
+    </header>
+
+    <div class="guard-grid">
+      <article>
+        <h3>Receita / mercado observado</h3>
+        {
+          observedRevenue ? (
+            <>
+              <p>
+                <strong>{observedRevenue.displayValue}</strong> {observedRevenue.unit} —{' '}
+                {observedRevenue.label}
+              </p>
+              <p class="limit">{observedRevenue.limitations[0]}</p>
+              <p class="meta">
+                Classificação: {observedRevenue.marketClassification ?? 'observed-revenue'} ·{' '}
+                {observedRevenue.claimId}
+              </p>
+            </>
+          ) : (
+            <p class="limit">Nenhuma métrica de receita observada disponível nesta página.</p>
+          )
+        }
+        <ul>
+          {monetary.map((s) => <li>{s.label}</li>)}
+        </ul>
+      </article>
+
+      <article>
+        <h3>População potencial / conceitual</h3>
+        <p>
+          Segmentos com observabilidade populacional ou conceitual não recebem rótulo financeiro de
+          TAM/SAM/SOM nesta síntese.
+        </p>
+        <ul>
+          {
+            population.length > 0 ? (
+              population.map((s) => <li>{s.label}</li>)
+            ) : (
+              <li>Nenhum segmento exclusivamente populacional listado.</li>
+            )
+          }
+        </ul>
+      </article>
+
+      <article>
+        <h3>Lacuna de mensuração</h3>
+        <p>Ausência de dado monetário não significa mercado igual a zero.</p>
+        <ul>
+          {
+            absent.length > 0 ? (
+              absent.map((s) => <li>{s.label}</li>)
+            ) : (
+              <li>Nenhum segmento marcado como ausente nesta síntese.</li>
+            )
+          }
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .guard-grid {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 64rem) {
+    .guard-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .guard-grid article {
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    border: var(--border-thin) solid var(--line-200);
+  }
+
+  .guard-grid ul {
+    margin: var(--space-3) 0 0;
+    padding-left: 1.2rem;
+    color: var(--ink-600);
+  }
+
+  .meta,
+  .limit {
+    color: var(--ink-600);
+    font-size: var(--annotation);
+    max-width: none;
+  }
+
+  .limit {
+    font-weight: 600;
+  }
+</style>

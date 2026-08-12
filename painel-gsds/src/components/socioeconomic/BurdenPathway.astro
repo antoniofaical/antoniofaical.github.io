@@ -1,0 +1,58 @@
+---
+import type { BurdenFinding } from '../../schemas/socioeconomic/domain';
+
+export interface Props {
+  findings: BurdenFinding[];
+}
+
+const { findings } = Astro.props;
+const pathway = findings.filter((f) => f.actor === 'patient' || f.actor === 'family');
+---
+
+<section id="jornada" class="section-space surface-editorial" aria-labelledby="jornada-title">
+  <div class="container stack stack--lg">
+    <header class="stack stack--tight">
+      <h2 id="jornada-title">Como a carga reorganiza a vida cotidiana</h2>
+      <p>
+        A jornada socioeconômica começa no manejo clínico e se estende para rotinas domiciliares,
+        vigilância noturna, restrição funcional e barreiras de acesso — sempre no escopo do subtipo
+        ou população citada.
+      </p>
+    </header>
+    <ol class="pathway">
+      {
+        pathway.map((finding) => (
+          <li>
+            <h3>{finding.gsdScope}</h3>
+            <p>{finding.summary}</p>
+            <p class="limit">{finding.limitations[0]}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .pathway {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .pathway li {
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    border: var(--border-thin) solid var(--line-200);
+  }
+
+  .limit {
+    color: var(--ink-600);
+    font-size: var(--annotation);
+    font-weight: 600;
+    max-width: 70ch;
+  }
+</style>

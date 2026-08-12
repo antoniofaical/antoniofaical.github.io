@@ -117,5 +117,14 @@ export function loadHomeEvidence(): HomeEvidence {
 }
 
 export function getApprovedHomeClaims(evidence: HomeEvidence = loadHomeEvidence()): Claim[] {
-  return evidence.claims.filter((claim) => claim.approvedForPublication);
+  const homeClaimIds = new Set<string>([
+    ...evidence.homeMetrics.map((item) => item.metric.claimId),
+    // Narrative claims used on the executive Home (problem rail).
+    'clm-clinical-001',
+    'clm-clinical-002',
+    'clm-socio-001',
+  ]);
+  return evidence.claims.filter(
+    (claim) => claim.approvedForPublication && homeClaimIds.has(claim.id),
+  );
 }

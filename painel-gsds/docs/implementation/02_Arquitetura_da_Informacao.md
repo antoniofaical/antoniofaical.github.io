@@ -1,149 +1,176 @@
 # Arquitetura da informação
 
-**Versão:** 0.1  
-**Produto:** Painel Global de Inovação em Glicogenoses
+**Versão:** 0.3  
+**Estado:** baseline das Iterações 3–5
 
-## 1. Públicos e necessidades
+## 1. Objetivos de leitura
 
-| Público                   | Necessidade principal                                        | Profundidade padrão      |
-| ------------------------- | ------------------------------------------------------------ | ------------------------ |
-| ADMs e gestores           | entender problema, escala, lacunas e caminhos de exploração  | executiva                |
-| Equipe de inovação        | relacionar necessidades a segmentos e, futuramente, soluções | executiva + analítica    |
-| Pesquisadores e clínicos  | verificar escopo, fontes, definições e limitações            | evidencial               |
-| Pacientes e rede de apoio | compreender o panorama sem receber orientação individual     | introdutória e acessível |
-
-O painel não é prontuário, ferramenta diagnóstica, aconselhamento médico, catálogo comercial nem ranking automático de empresas.
+| Público             | Pergunta principal                                         | Entrada preferencial    |
+| ------------------- | ---------------------------------------------------------- | ----------------------- |
+| ADM/gestor          | Qual é o problema, sua escala e as lacunas?                | Home                    |
+| Equipe de inovação  | Onde necessidades e soluções se conectam?                  | análises → observatório |
+| Clínico/pesquisador | Como verificar mecanismo, escopo e fontes?                 | bases clínicas          |
+| Mercado/ATS         | O que é observado, calculável ou ausente?                  | impacto socioeconômico  |
+| Paciente/rede       | Como compreender o panorama sem aconselhamento individual? | Home e sínteses         |
 
 ## 2. Navegação global
 
 ```text
-Visão geral
+Início
 Análises
   Bases clínicas
   Impacto socioeconômico
 Inovação
-  Ecossistema global          [futuro]
-  Startups GSD                [futuro]
-  Tecnologias adjacentes      [futuro]
-Oportunidades                 [futuro]
-Metodologia
+  Observatório de startups
+    Visão consolidada
+    Diretas
+    Tecnologias adjacentes
+Metodologia e fontes
 ```
 
-No mobile, `Análises` e `Inovação` são grupos expansíveis. `Metodologia e fontes` permanece acessível diretamente.
+Brasil/global são filtros e vistas do mesmo observatório, não bases duplicadas. Se um recorte precisar de narrativa própria no futuro, poderá ganhar rota sem duplicar entidades.
 
-## 3. Mapa de rotas
+## 3. Rotas
 
-| Rota                                | Estado inicial | Função                                           |
-| ----------------------------------- | -------------- | ------------------------------------------------ |
-| `/`                                 | Iteração 2     | visão executiva e portais                        |
-| `/analises/bases-clinicas/`         | Iteração 3     | mecanismo, tipos, diagnóstico, manejo e lacunas  |
-| `/analises/impacto-socioeconomico/` | Iteração 4     | carga, custos, mercado, dimensionamento e Brasil |
-| `/metodologia/`                     | Iteração 2–4   | métodos, definições, fontes e limitações         |
-| `/glossario/`                       | Iteração 3     | termos clínicos, econômicos e metodológicos      |
-| `/inovacao/`                        | Reservada      | síntese futura do ecossistema                    |
-| `/inovacao/startups-gsd/`           | Reservada      | soluções diretamente ligadas às GSDs             |
-| `/inovacao/tecnologias-adjacentes/` | Reservada      | soluções aplicáveis às necessidades mapeadas     |
-| `/oportunidades/`                   | Reservada      | síntese estratégica posterior ao scouting        |
-| `/design-system/`                   | Interna        | demonstração e QA de componentes                 |
+| Rota                                | Iteração | Estado                          |
+| ----------------------------------- | -------: | ------------------------------- |
+| `/`                                 |        2 | implementada                    |
+| `/design-system/`                   |        1 | interna                         |
+| `/analises/bases-clinicas/`         |        3 | próxima                         |
+| `/analises/impacto-socioeconomico/` |        4 | especificada                    |
+| `/inovacao/startups/`               |        5 | especificada                    |
+| `/inovacao/startups/diretas/`       |       5+ | vista filtrada ou rota opcional |
+| `/inovacao/startups/adjacentes/`    |       5+ | vista filtrada ou rota opcional |
+| `/inovacao/startups/{slug}/`        |        5 | ficha individual                |
+| `/metodologia/`                     |       5+ | consolidada progressivamente    |
+| `/fontes/`                          |       5+ | catálogo público filtrável      |
 
-Rotas reservadas não entram na navegação principal como destinos ativos até terem conteúdo validado. Se forem publicadas, usam `noindex` e `PageStatus`.
+Todas respeitam `BASE_PATH=/painel-gsds/`.
 
-## 4. Hierarquia da Home
-
-| Ordem | Bloco                 | Pergunta respondida                              | Destino               |
-| ----: | --------------------- | ------------------------------------------------ | --------------------- |
-|     1 | Hero                  | O que é este painel?                             | análises              |
-|     2 | Problema em um minuto | Por que GSD não é uma única doença?              | bases clínicas        |
-|     3 | Mecanismo → cotidiano | Como a biologia se transforma em carga humana?   | duas análises         |
-|     4 | Métricas essenciais   | Quais números enquadram o problema?              | fontes específicas    |
-|     5 | Mercado observado     | O que conseguimos e não conseguimos dimensionar? | socioeconômico        |
-|     6 | Brasil                | O que os dados nacionais mostram e omitem?       | socioeconômico/Brasil |
-|     7 | Portais               | Onde aprofundar?                                 | páginas analíticas    |
-|     8 | Inovação              | Em que etapa está o mapeamento?                  | futura inovação       |
-|     9 | Metodologia           | Como verificar?                                  | metodologia           |
-
-## 5. Hierarquia das páginas analíticas
+## 4. Progressão narrativa do produto
 
 ```text
-Breadcrumbs
-ResearchHeader
-Síntese executiva
-Índice da análise
-Seções de evidência
-Limitações
-Referências
-Próxima análise relacionada
+O que são GSDs
+→ como afetam organismos
+→ como reorganizam vidas e recursos
+→ onde a resposta atual falha
+→ quais organizações e soluções foram identificadas
+→ quão sólida e atual é a evidência
 ```
 
-Cada seção possui âncora estável. Filtros ou comparações relevantes podem ser serializados na query string, mas o conteúdo essencial nunca depende dela.
+Uma página não deve repetir integralmente a anterior. Use síntese + link contextual.
 
-## 6. Convenções de URL
+## 5. Home
 
-- português sem acentos na rota;
-- `kebab-case`;
-- barra final consistente;
-- âncoras sem números de ordem: `#diagnostico`, não `#secao-7`;
-- filtros: `?gsd=ia&comparar=ib`, apenas quando compartilháveis;
-- a mudança de título editorial não deve quebrar âncoras publicadas.
+Manter a narrativa implementada. Alterações permitidas nas próximas iterações:
 
-## 7. Busca e descoberta
+- habilitar portais quando a rota estiver pronta;
+- atualizar status e última revisão;
+- incluir acesso ao observatório quando houver dados validados;
+- não redesenhar nem aumentar densidade sem ADR.
 
-O MVP não precisa de busca global. A primeira busca funcional pertence ao futuro catálogo de startups. Até lá:
+## 6. Bases clínicas
 
-- índice interno em análises;
-- filtros locais no explorador de GSDs;
-- glossário navegável;
-- metadados SEO e sociais por página.
-
-## 8. Estados do conteúdo
-
-| Estado      | Uso                                          |
-| ----------- | -------------------------------------------- |
-| `draft`     | disponível apenas localmente                 |
-| `review`    | implementado, aguardando revisão de conteúdo |
-| `published` | aprovado e visível                           |
-| `stale`     | requer nova verificação temporal             |
-| `reserved`  | rota futura sem conteúdo                     |
-
-Datas separadas:
-
-- `publishedAt`: primeira publicação;
-- `lastReviewedAt`: última revisão editorial/científica;
-- `dataCutoff`: limite temporal das evidências.
-
-## 9. Breadcrumbs
-
-Exemplos:
+Ordem:
 
 ```text
-Visão geral / Análises / Bases clínicas
-Visão geral / Análises / Impacto socioeconômico
-Visão geral / Metodologia
+Visão geral → metabolismo → padrões clínicos → tipos/subtipos
+→ nomenclatura → órgãos → epidemiologia → diagnóstico
+→ manejo → terapias emergentes → lacunas → fontes
 ```
 
-Na Home não há breadcrumbs.
+O índice interno usa âncoras estáveis. A classificação vem depois do mecanismo para não iniciar por uma tabela opaca.
 
-## 10. Rodapé e conteúdo institucional
+## 7. Impacto socioeconômico
 
-Inclui:
+Ordem:
 
-- propósito do painel;
-- autoria/equipe, após definição institucional;
-- última atualização;
+```text
+Carga desigual → jornada e cuidado → custos
+→ estrutura mercadológica → dimensionamento responsável
+→ Brasil/DATASUS → lacunas → fontes
+```
+
+Receita realizada, TAM, SAM, SOM, população potencial e mercado alcançável nunca são sinônimos.
+
+## 8. Observatório de startups
+
+### 8.1 Entrada
+
+A página abre com cobertura e atualização, não com um número absoluto de “startups globais”. Deve mostrar:
+
+- escopo da busca;
+- data do snapshot;
+- fontes monitoradas;
+- registros descobertos;
+- organizações únicas;
+- validadas, pendentes e excluídas;
+- diretas, adjacentes, ecossistema e relevância não confirmada.
+
+### 8.2 Exploração
+
+Filtros combináveis:
+
+- relação com GSD;
+- recorte geográfico;
+- modalidade;
+- necessidade atendida;
+- GSD/grupo clínico;
+- maturidade do produto;
+- status operacional;
+- validação/confiança;
+- ciclo de atualização.
+
+Filtros sem variância ficam ocultos ou desabilitados com explicação.
+
+### 8.3 Ficha
+
+```text
+Identidade → relevância para GSD → produtos/programas
+→ evidências → observações históricas → fontes → revisão
+```
+
+### 8.4 Escopo CB Insights inicial
+
+Os quatro resultados são exibidos como “organizações recuperadas no Advanced Company Search do CB Insights, agosto de 2026”. O painel não os denomina universo global.
+
+## 9. Estados de conteúdo
+
+| Estado             | Uso                                            |
+| ------------------ | ---------------------------------------------- |
+| `published`        | conteúdo validado e público                    |
+| `in-development`   | rota planejada sem conteúdo final              |
+| `limited-coverage` | resultado válido, cobertura incompleta         |
+| `pending-review`   | registro não publicado nas métricas principais |
+| `stale`            | revisão vencida                                |
+| `archived`         | histórico, não vigente                         |
+
+## 10. Busca, filtros e compartilhamento
+
+- Busca global só após justificar indexação e escopo.
+- Filtros do observatório devem refletir URL.
+- Links compartilhados preservam filtros reconhecidos e ignoram parâmetros inválidos.
+- Conteúdo essencial funciona sem JavaScript; filtros podem ter fallback server-rendered/estático.
+- Comparações: até 3 itens desktop e 2 mobile.
+
+## 11. Breadcrumbs e rodapé
+
+Breadcrumbs obrigatórios nas páginas internas. Rodapé inclui:
+
+- propósito e não aconselhamento médico;
 - metodologia e fontes;
-- aviso médico;
-- declaração de escopo;
-- identidade institucional somente após autorização de marca.
+- última atualização;
+- limitações de cobertura;
+- contato institucional apenas quando aprovado.
 
-## 11. Conteúdo deliberadamente fora do MVP
+## 12. Limites
 
-- login;
-- banco de dados remoto;
-- CMS;
-- comentários;
-- personalização clínica;
-- recomendações automáticas;
-- ranking público de startups;
-- formulário de submissão de empresas;
-- traduções;
-- exportação dinâmica de relatórios.
+O painel não é:
+
+- ferramenta diagnóstica;
+- recomendação terapêutica;
+- catálogo exaustivo;
+- ranking automático;
+- due diligence;
+- recomendação de investimento;
+- evidência de que ausência na base equivale a inexistência.

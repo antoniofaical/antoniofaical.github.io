@@ -1,0 +1,60 @@
+---
+export type SectionLink = { id: string; label: string };
+
+export interface Props {
+  heading?: string;
+  sections: SectionLink[];
+}
+
+const { heading = 'Nesta página', sections } = Astro.props;
+---
+
+<nav class="section-nav" aria-label={heading}>
+  <p class="section-nav__heading">{heading}</p>
+  <ol>
+    {
+      sections.map((section) => (
+        <li>
+          <a href={`#${section.id}`}>{section.label}</a>
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<style>
+  .section-nav {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    border: var(--border-thin) solid var(--line-200);
+    border-radius: var(--radius-lg);
+    background: var(--paper-100);
+  }
+
+  .section-nav__heading {
+    margin: 0;
+    font-size: var(--annotation);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-600);
+    max-width: none;
+  }
+
+  .section-nav ol {
+    margin: 0;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .section-nav a {
+    color: var(--teal-700);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
+    min-height: var(--touch-min);
+    display: inline-flex;
+    align-items: center;
+  }
+</style>

@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageContainer from '../../../components/layout/PageContainer.astro';
+import Breadcrumbs from '../../../components/research/Breadcrumbs.astro';
+import ResearchHeader from '../../../components/research/ResearchHeader.astro';
+import ResearchSectionNav from '../../../components/research/ResearchSectionNav.astro';
+import EvidenceFooter from '../../../components/research/EvidenceFooter.astro';
+import BurdenOverview from '../../../components/socioeconomic/BurdenOverview.astro';
+import BurdenPathway from '../../../components/socioeconomic/BurdenPathway.astro';
+import CaregiverBurden from '../../../components/socioeconomic/CaregiverBurden.astro';
+import CostLayers from '../../../components/socioeconomic/CostLayers.astro';
+import MarketSegmentMap from '../../../components/socioeconomic/MarketSegmentMap.astro';
+import MarketSizingGuardrails from '../../../components/socioeconomic/MarketSizingGuardrails.astro';
+import BrazilEvidencePanel from '../../../components/socioeconomic/BrazilEvidencePanel.astro';
+import EvidenceGapBridge from '../../../components/socioeconomic/EvidenceGapBridge.astro';
+import { loadAnalysisEvidence } from '../../../lib/data/loadAnalysisEvidence';
+import { withBase } from '../../../lib/paths/withBase';
+import burdenDoc from '../../../data/socioeconomic/burden.json';
+import segmentsDoc from '../../../data/socioeconomic/market-segments.json';
+
+const evidence = loadAnalysisEvidence();
+const updatedAt = '2026-08-12';
+const cutoff = '2026-08-10';
+
+const sections = [
+  { id: 'visao-geral', label: 'Visão geral' },
+  { id: 'carga', label: 'Carga' },
+  { id: 'jornada', label: 'Jornada' },
+  { id: 'cuidador', label: 'Cuidador' },
+  { id: 'custos', label: 'Camadas de custo' },
+  { id: 'segmentos', label: 'Segmentos' },
+  { id: 'sizing', label: 'Dimensionamento' },
+  { id: 'brasil', label: 'Brasil' },
+  { id: 'lacunas-evidencia', label: 'Lacunas' },
+  { id: 'limitacoes-e-fontes', label: 'Limitações e fontes' },
+];
+
+const costDoc = evidence.costLayers;
+const brazilDoc = evidence.brazilEvidence;
+const observedRevenue = evidence.metrics.find((m) => m.id === 'met-market-001');
+const datasusMetric = evidence.metrics.find((m) => m.id === 'met-datasus-001');
+
+const gapItems = [
+  ...brazilDoc.points.map((point) => ({
+    id: point.id,
+    label: point.label,
+    detail: point.detail,
+    claimIds: point.claimIds,
+  })),
+  ...evidence.marketSegments
+    .filter((s) => s.observability === 'absent' || s.observability === 'conceptual-only')
+    .map((s) => ({
+      id: `gap-${s.id}`,
+      label: `Segmento com mensuração limitada: ${s.label}`,
+      detail: `${s.summary} Limitação: ${s.limitations[0]}`,
+      claimIds: s.claimIds,
+    })),
+];
+
+const pageClaimIds = [
+  ...new Set(
+    [
+      ...evidence.burdenFindings.flatMap((f) => f.claimIds),
+      ...evidence.marketSegments.flatMap((s) => s.claimIds),
+      ...(brazilDoc.claimIds ?? []),
+      ...(costDoc.claimIds ?? []),
+      'clm-market-001',
+      'clm-brasil-001',
+    ].filter(Boolean),
+  ),
+];
+---
+
+<BaseLayout
+  title="Impacto socioeconômico das glicogenoses"
+  description="Carga sobre pacientes e cuidadores, camadas de custo, estrutura de mercado observada e limites da evidência brasileira."
+  currentPath={withBase('analises/impacto-socioeconomico/')}
+  lastReviewedAt={updatedAt}
+>
+  <main id="conteudo-principal">
+    <div class="container section-space stack stack--lg">
+      <Breadcrumbs
+        items={[
+          { label: 'Início', href: '/' },
+          { label: 'Análises' },
+          { label: 'Impacto socioeconômico' },
+        ]}
+      />
+    </div>
+
+    <ResearchHeader
+      eyebrow="Análise socioeconômica"
+      title="Impacto socioeconômico das glicogenoses"
+      summary="Carga clínica vira impacto econômico e social de forma desigual: o que se observa no mercado farmacêutico não mede a necessidade total, e os proxies brasileiros não contam pacientes."
+      updatedAt={updatedAt}
+      cutoff={cutoff}
+    />
+
+    <section class="section-space" aria-label="Sumário da página">
+      <PageContainer>
+        <ResearchSectionNav sections={sections} />
+      </PageContainer>
+    </section>
+
+    <section id="visao-geral" class="section-space surface-editorial" aria-labelledby="visao-title">
+      <PageContainer class="stack stack--lg">
+        <h2 id="visao-title">Mercado observado não é necessidade total</h2>
+        <ul class="message-list">
+          <li>
+            A carga das GSDs combina manejo clínico, cuidado informal, restrição funcional e
+            barreiras de acesso — com evidência desigual entre tipos.
+          </li>
+          <li>
+            Receita farmacêutica observada (concentrada em doença de Pompe) não é Total Addressable
+            Market (TAM), Serviceable Available Market (SAM) nem Serviceable Obtainable Market
+            (SOM).
+          </li>
+          <li>
+            Autorizações de Internação Hospitalar (AIHs) com CID principal E74.0 medem utilização
+            hospitalar codificada, não pacientes únicos nem prevalência.
+          </li>
+        </ul>
+        <p class="meta">Alegações: clm-socio-001 · clm-market-001 · clm-brasil-001</p>
+      </PageContainer>
+    </section>
+
+    <BurdenOverview
+      title={burdenDoc.title}
+      summary={burdenDoc.summary}
+      findings={evidence.burdenFindings}
+    />
+
+    <BurdenPathway findings={evidence.burdenFindings} />
+    <CaregiverBurden findings={evidence.burdenFindings} />
+
+    <CostLayers title={costDoc.title} summary={costDoc.summary} layers={costDoc.layers} />
+
+    <MarketSegmentMap
+      title={segmentsDoc.title}
+      summary={segmentsDoc.summary}
+      segments={evidence.marketSegments}
+    />
+
+    <MarketSizingGuardrails segments={evidence.marketSegments} observedRevenue={observedRevenue} />
+
+    <BrazilEvidencePanel
+      title={brazilDoc.title}
+      summary={brazilDoc.summary}
+      points={brazilDoc.points}
+      datasusMetric={datasusMetric}
+    />
+
+    <EvidenceGapBridge items={gapItems} />
+
+    <div id="limitacoes-e-fontes">
+      <EvidenceFooter
+        limitations={[
+          'Receita observada não é TAM/SAM/SOM.',
+          'AIH não é paciente, internação única deduplicada nem prevalência.',
+          'Contratação, preço de lista, gasto público e receita empresarial não são intercambiáveis.',
+          'Ausência de dado monetário não significa mercado igual a zero.',
+          'Achados de Pompe, McArdle ou GSD hepática não se generalizam a toda a família sem suporte explícito.',
+          'Camadas de custo em moedas, anos e perspectivas distintas não devem ser somadas sem normalização autorizada.',
+        ]}
+        sources={[
+          {
+            title: 'Estudo Socioeconômico-Mercadológico das Glicogenoses',
+            path: 'docs/source-of-truth/Glicogenose Estudo Socioeconômico Mercadológico.md',
+          },
+        ]}
+        claimIds={pageClaimIds}
+      />
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .message-list {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: var(--space-3);
+    color: var(--ink-600);
+    max-width: 70ch;
+  }
+
+  .meta {
+    color: var(--ink-600);
+    font-size: var(--annotation);
+    max-width: 70ch;
+  }
+</style>

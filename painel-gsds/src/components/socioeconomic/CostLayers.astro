@@ -1,0 +1,94 @@
+---
+type Amount = {
+  displayValue: string;
+  scope: string;
+  caveat: string;
+};
+
+type Layer = {
+  id: string;
+  label: string;
+  perspective: string;
+  summary: string;
+  amounts: Amount[];
+  claimIds: string[];
+  limitations: string[];
+};
+
+export interface Props {
+  title: string;
+  summary: string;
+  layers: Layer[];
+}
+
+const { title, summary, layers } = Astro.props;
+---
+
+<section id="custos" class="section-space surface-editorial" aria-labelledby="custos-title">
+  <div class="container stack stack--lg">
+    <header class="stack stack--tight">
+      <h2 id="custos-title">{title}</h2>
+      <p>{summary}</p>
+      <p class="limit" role="note">
+        Camadas monetárias não devem ser somadas entre moedas, anos ou perspectivas sem normalização
+        autorizada pela fonte de verdade.
+      </p>
+    </header>
+    <div class="layer-grid">
+      {
+        layers.map((layer) => (
+          <article>
+            <h3>{layer.label}</h3>
+            <p class="meta">Perspectiva: {layer.perspective}</p>
+            <p>{layer.summary}</p>
+            <ul>
+              {layer.amounts.map((amount) => (
+                <li>
+                  <p>
+                    <strong>{amount.displayValue}</strong>
+                    <span> — {amount.scope}</span>
+                  </p>
+                  <p class="limit">{amount.caveat}</p>
+                </li>
+              ))}
+            </ul>
+            <p class="limit">{layer.limitations.join(' ')}</p>
+            <p class="meta">Alegações: {layer.claimIds.join(', ')}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .layer-grid {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .layer-grid article {
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    border: var(--border-thin) solid var(--line-200);
+  }
+
+  .layer-grid ul {
+    margin: var(--space-3) 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .meta,
+  .limit {
+    color: var(--ink-600);
+    font-size: var(--annotation);
+    max-width: 70ch;
+  }
+
+  .limit {
+    font-weight: 600;
+  }
+</style>

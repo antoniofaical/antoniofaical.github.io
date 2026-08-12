@@ -6,9 +6,7 @@
     "domain": "clinical",
     "scope": {
       "population": "Família das glicogenoses (tipos e subtipos reconhecidos na literatura consolidada)",
-      "geography": [
-        "global"
-      ]
+      "geography": ["global"]
     },
     "evidenceState": "observed",
     "sourceRefs": [
@@ -37,9 +35,7 @@
     "domain": "clinical",
     "scope": {
       "population": "Formas hepáticas, musculares e multissistêmicas de GSD",
-      "geography": [
-        "global"
-      ]
+      "geography": ["global"]
     },
     "evidenceState": "observed",
     "sourceRefs": [
@@ -68,9 +64,7 @@
     "domain": "socioeconomic",
     "scope": {
       "population": "Pacientes, cuidadores e sistemas de saúde no conjunto das GSDs",
-      "geography": [
-        "global"
-      ]
+      "geography": ["global"]
     },
     "evidenceState": "limited",
     "sourceRefs": [
@@ -98,13 +92,9 @@
     "shortStatement": "Receita observada em Pompe (≈ €1,4 bi em 2024) não é necessidade total nem TAM.",
     "domain": "market",
     "scope": {
-      "gsdIds": [
-        "gsd-ii-pompe"
-      ],
+      "gsdIds": ["gsd-ii-pompe"],
       "population": "Receita farmacêutica observada Sanofi + Amicus (Pompe)",
-      "geography": [
-        "global"
-      ],
+      "geography": ["global"],
       "period": "2024"
     },
     "evidenceState": "observed",
@@ -139,9 +129,7 @@
     "domain": "brazil",
     "scope": {
       "population": "AIHs SIH/SUS com CID principal E74.0",
-      "geography": [
-        "Brasil"
-      ],
+      "geography": ["Brasil"],
       "period": "janeiro de 2020 a maio de 2026"
     },
     "evidenceState": "proxy",
@@ -176,13 +164,9 @@
     "shortStatement": "McArdle: atraso diagnóstico mediano de 29 anos no estudo documentado.",
     "domain": "socioeconomic",
     "scope": {
-      "gsdIds": [
-        "gsd-v-mcardle"
-      ],
+      "gsdIds": ["gsd-v-mcardle"],
       "population": "Pacientes com doença de McArdle no estudo citado pela SoT",
-      "geography": [
-        "estudo específico — não nacional brasileiro"
-      ]
+      "geography": ["estudo específico — não nacional brasileiro"]
     },
     "evidenceState": "observed",
     "sourceRefs": [
@@ -212,9 +196,7 @@
     "domain": "clinical",
     "scope": {
       "population": "Família das glicogenoses — lógica fisiopatológica",
-      "geography": [
-        "global"
-      ]
+      "geography": ["global"]
     },
     "evidenceState": "observed",
     "sourceRefs": [
@@ -247,9 +229,7 @@
     "domain": "clinical",
     "scope": {
       "population": "Condições da tabela de classificação essencial da SoT médica",
-      "geography": [
-        "global"
-      ]
+      "geography": ["global"]
     },
     "evidenceState": "observed",
     "sourceRefs": [
@@ -279,9 +259,7 @@
     "domain": "clinical",
     "scope": {
       "population": "Evolução nomenclatural das GSDs",
-      "geography": [
-        "global"
-      ]
+      "geography": ["global"]
     },
     "evidenceState": "observed",
     "sourceRefs": [
@@ -311,9 +289,7 @@
     "domain": "epidemiology",
     "scope": {
       "population": "Estimativas epidemiológicas ilustrativas por tipo na SoT médica",
-      "geography": [
-        "global"
-      ]
+      "geography": ["global"]
     },
     "evidenceState": "estimated",
     "sourceRefs": [
@@ -343,9 +319,7 @@
     "domain": "clinical",
     "scope": {
       "population": "Jornada diagnóstica das GSDs conforme SoT médica",
-      "geography": [
-        "global"
-      ]
+      "geography": ["global"]
     },
     "evidenceState": "observed",
     "sourceRefs": [
@@ -375,9 +349,7 @@
     "domain": "clinical",
     "scope": {
       "population": "Trilhas de manejo hepática, Pompe e muscular",
-      "geography": [
-        "global"
-      ]
+      "geography": ["global"]
     },
     "evidenceState": "observed",
     "sourceRefs": [
@@ -419,9 +391,7 @@
     "domain": "clinical",
     "scope": {
       "population": "Terapia gênica/edição em GSDs — panorama Koeberl 2024",
-      "geography": [
-        "global"
-      ],
+      "geography": ["global"],
       "period": "status reportado em Koeberl et al. (2024)"
     },
     "evidenceState": "observed",
@@ -452,9 +422,7 @@
     "domain": "clinical",
     "scope": {
       "population": "Lacunas e prioridades do campo das GSDs",
-      "geography": [
-        "global"
-      ]
+      "geography": ["global"]
     },
     "evidenceState": "conceptual",
     "sourceRefs": [
@@ -470,9 +438,7 @@
         "heading": "Lacunas e prioridades"
       }
     ],
-    "limitations": [
-      "Prioridades do campo, não roadmap comercial ou inventário de empresas."
-    ],
+    "limitations": ["Prioridades do campo, não roadmap comercial ou inventário de empresas."],
     "approvedForPublication": true,
     "lastReviewedAt": "2026-08-12"
   },
@@ -483,9 +449,7 @@
     "domain": "socioeconomic",
     "scope": {
       "population": "Pacientes e cuidadores — evidências por subtipo na SoT socioeconômica §1.1",
-      "geography": [
-        "global — estudos específicos citados"
-      ]
+      "geography": ["global — estudos específicos citados"]
     },
     "evidenceState": "limited",
     "sourceRefs": [
@@ -515,9 +479,7 @@
     "domain": "market",
     "scope": {
       "population": "Estrutura mercadológica das GSDs — segmentos farmacêutico e adjacentes",
-      "geography": [
-        "global"
-      ]
+      "geography": ["global"]
     },
     "evidenceState": "conceptual",
     "sourceRefs": [
@@ -551,10 +513,7 @@
     "domain": "socioeconomic",
     "scope": {
       "population": "Perspectivas de custo e evidência brasileira de acesso/utilização",
-      "geography": [
-        "global",
-        "Brasil"
-      ]
+      "geography": ["global", "Brasil"]
     },
     "evidenceState": "limited",
     "sourceRefs": [

@@ -37,9 +37,7 @@
       "label": "GSD IV",
       "displayValue": "≈ 1 em 600.000–800.000",
       "scope": "Estimativa aproximada reportada na SoT médica",
-      "limitations": [
-        "Faixa ampla; elevada incerteza epidemiológica do campo."
-      ],
+      "limitations": ["Faixa ampla; elevada incerteza epidemiológica do campo."],
       "claimIds": ["clm-clinical-006"]
     },
     {
@@ -47,9 +45,7 @@
       "label": "GSD VI e deficiência hepática de fosforilase-quinase",
       "displayValue": "Melhores estimativas próximas de 1 em 100.000",
       "scope": "Estimativas aproximadas com elevada incerteza",
-      "limitations": [
-        "A SoT assinala elevada incerteza para essas estimativas."
-      ],
+      "limitations": ["A SoT assinala elevada incerteza para essas estimativas."],
       "claimIds": ["clm-clinical-006"]
     }
   ],
