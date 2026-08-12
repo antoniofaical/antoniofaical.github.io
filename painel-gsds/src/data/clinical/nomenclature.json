@@ -1,0 +1,27 @@
+{
+  "title": "Evolução da nomenclatura",
+  "summary": "A classificação histórica por algarismos romanos tornou-se insuficiente à medida que genes e mecanismos foram identificados; a prática contemporânea privilegia gene e tecido.",
+  "events": [
+    {
+      "id": "nom-ic-id-to-ib",
+      "label": "GSD Ic e Id → GSD Ib",
+      "detail": "No sistema antigo, GSD Ic e Id foram propostas como defeitos separados de transporte de fosfato e glicose no retículo endoplasmático; estudos moleculares mostraram que a maioria desses casos correspondia à GSD Ib. Na prática contemporânea, GSD I é dividida principalmente em Ia (G6PC1) e Ib (SLC37A4).",
+      "claimIds": ["clm-clinical-005"]
+    },
+    {
+      "id": "nom-phk-reorg",
+      "label": "Reorganização da fosforilase-quinase",
+      "detail": "Houve reorganização das antigas GSD VIa, VIII, IX e X associadas à fosforilase-quinase. Atualmente, é mais informativo identificar a subunidade e o gene — por exemplo, GSD IX α2 por PHKA2 — do que depender somente da numeração histórica.",
+      "claimIds": ["clm-clinical-005"]
+    },
+    {
+      "id": "nom-gsd-xi-ambiguity",
+      "label": "Ambiguidade de “GSD XI”",
+      "detail": "A literatura já utilizou “GSD XI” tanto para deficiência de LDHA quanto para síndrome de Fanconi–Bickel; Hannah et al. (2023) reservam GSD XI para deficiência de LDHA e tratam Fanconi–Bickel separadamente.",
+      "claimIds": ["clm-clinical-005"]
+    }
+  ],
+  "claimIds": ["clm-clinical-005"],
+  "sourceIds": ["src-sot-medical-exec-2026"],
+  "lastReviewedAt": "2026-08-12"
+}

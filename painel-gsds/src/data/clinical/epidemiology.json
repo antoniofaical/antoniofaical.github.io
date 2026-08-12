@@ -1,0 +1,59 @@
+{
+  "title": "Epidemiologia: o que os números permitem concluir",
+  "guardrail": "Incidência, prevalência clínica e prevalência genética predita não devem ser tratadas como medidas equivalentes. A raridade, o subdiagnóstico, os fenótipos atenuados, a mudança de critérios diagnósticos e a ausência de registros sustentáveis limitam estimativas confiáveis.",
+  "estimates": [
+    {
+      "id": "epi-gsd-i",
+      "label": "GSD I",
+      "displayValue": "≈ 1 em 100.000 (incidência); cerca de 80% Ia e 20% Ib",
+      "scope": "Incidência aproximada; proporção Ia/Ib conforme SoT médica",
+      "limitations": [
+        "Estimativa ilustrativa da heterogeneidade; não é prevalência clínica nem genética predita."
+      ],
+      "claimIds": ["clm-clinical-006"]
+    },
+    {
+      "id": "epi-pompe",
+      "label": "Pompe (GSD II)",
+      "displayValue": "Histórica ≈ 1 em 40.000; genética populacional ≈ 1 em 23.232",
+      "scope": "Estimativa histórica de incidência/frequência versus prevalência genética predita",
+      "limitations": [
+        "Estimativa histórica e análise de genética populacional medem coisas diferentes e não devem ser fundidas."
+      ],
+      "claimIds": ["clm-clinical-006"]
+    },
+    {
+      "id": "epi-gsd-iii",
+      "label": "GSD III",
+      "displayValue": "≈ 1 em 100.000 (prevalência); cerca de 85% IIIa e 15% IIIb",
+      "scope": "Prevalência aproximada e proporção de subtipos",
+      "limitations": [
+        "Prevalências muito superiores em populações específicas (ex.: Inuit de Nunavik, Ilhas Faroé, judeus norte-africanos) não generalizam a média global."
+      ],
+      "claimIds": ["clm-clinical-006"]
+    },
+    {
+      "id": "epi-gsd-iv",
+      "label": "GSD IV",
+      "displayValue": "≈ 1 em 600.000–800.000",
+      "scope": "Estimativa aproximada reportada na SoT médica",
+      "limitations": [
+        "Faixa ampla; elevada incerteza epidemiológica do campo."
+      ],
+      "claimIds": ["clm-clinical-006"]
+    },
+    {
+      "id": "epi-gsd-vi-ix",
+      "label": "GSD VI e deficiência hepática de fosforilase-quinase",
+      "displayValue": "Melhores estimativas próximas de 1 em 100.000",
+      "scope": "Estimativas aproximadas com elevada incerteza",
+      "limitations": [
+        "A SoT assinala elevada incerteza para essas estimativas."
+      ],
+      "claimIds": ["clm-clinical-006"]
+    }
+  ],
+  "claimIds": ["clm-clinical-006"],
+  "sourceIds": ["src-sot-medical-exec-2026"],
+  "lastReviewedAt": "2026-08-12"
+}
