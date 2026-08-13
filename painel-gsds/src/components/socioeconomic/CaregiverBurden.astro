@@ -1,0 +1,75 @@
+---
+import type { BurdenFinding } from '../../schemas/socioeconomic/domain';
+
+export interface Props {
+  findings: BurdenFinding[];
+}
+
+const { findings } = Astro.props;
+const caregiver = findings.filter((f) => f.actor === 'caregiver');
+---
+
+<section id="cuidador" class="section-space" aria-labelledby="cuidador-title">
+  <div class="container stack stack--lg">
+    <header class="stack stack--tight">
+      <h2 id="cuidador-title">Carga do cuidador e da rede informal</h2>
+      <p>
+        Quando a evidência descreve horas de cuidado ou impacto mental, o recorte de doença e
+        instrumento permanece explícito — sem extrapolar para toda a família das glicogenoses
+        (GSDs).
+      </p>
+    </header>
+    {
+      caregiver.length === 0 ? (
+        <p class="limit" role="status">
+          Nenhum achado específico de cuidador foi estruturado nesta síntese.
+        </p>
+      ) : (
+        <ul class="care-list">
+          {caregiver.map((finding) => (
+            <li>
+              <h3>{finding.gsdScope}</h3>
+              <p>{finding.summary}</p>
+              <p class="meta">Estado evidencial: {finding.evidenceState}</p>
+              <p class="limit">{finding.limitations.join(' ')}</p>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .care-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 48rem) {
+    .care-list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .care-list li {
+    padding: var(--space-5);
+    border: var(--border-thin) solid var(--line-200);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+  }
+
+  .meta,
+  .limit {
+    color: var(--ink-600);
+    font-size: var(--annotation);
+    max-width: none;
+  }
+
+  .limit {
+    font-weight: 600;
+  }
+</style>

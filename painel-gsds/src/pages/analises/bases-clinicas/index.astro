@@ -1,0 +1,453 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageContainer from '../../../components/layout/PageContainer.astro';
+import Breadcrumbs from '../../../components/research/Breadcrumbs.astro';
+import ResearchHeader from '../../../components/research/ResearchHeader.astro';
+import ResearchSectionNav from '../../../components/research/ResearchSectionNav.astro';
+import EvidenceFooter from '../../../components/research/EvidenceFooter.astro';
+import GSDExplorer from '../../../components/clinical/GSDExplorer';
+import { loadAnalysisEvidence } from '../../../lib/data/loadAnalysisEvidence';
+import { withBase } from '../../../lib/paths/withBase';
+
+const evidence = loadAnalysisEvidence();
+const updatedAt = '2026-08-12';
+const cutoff = '2026-08-10';
+
+const sections = [
+  { id: 'visao-geral', label: 'Visão geral' },
+  { id: 'metabolismo', label: 'Papel do glicogênio' },
+  { id: 'padroes-clinicos', label: 'Padrões clínicos' },
+  { id: 'tipos-e-subtipos', label: 'Tipos e subtipos' },
+  { id: 'nomenclatura', label: 'Nomenclatura' },
+  { id: 'orgaos', label: 'Órgãos descritos' },
+  { id: 'epidemiologia', label: 'Epidemiologia' },
+  { id: 'diagnostico', label: 'Diagnóstico' },
+  { id: 'manejo', label: 'Manejo' },
+  { id: 'terapias-emergentes', label: 'Terapias emergentes' },
+  { id: 'lacunas', label: 'Lacunas' },
+  { id: 'limitacoes-e-fontes', label: 'Limitações e fontes' },
+];
+
+const explorerItems = evidence.gsdTypes.map((gsd) => ({
+  id: gsd.id,
+  preferredName: gsd.preferredName,
+  gene: gsd.gene,
+  proteinOrEnzyme: gsd.proteinOrEnzyme,
+  clinicalPattern: gsd.clinicalPattern,
+  distinctiveFeatures: gsd.distinctiveFeatures,
+  organsExplicitlyDescribed: gsd.organsExplicitlyDescribed,
+}));
+
+const pageClaimIds = [
+  ...new Set(
+    [
+      'clm-clinical-001',
+      'clm-clinical-002',
+      ...evidence.gsdTypes.flatMap((g) => g.claimIds),
+      ...(evidence.pathway.claimIds ?? []),
+      ...(evidence.patterns as Array<{ claimIds?: string[] }>).flatMap((p) => p.claimIds ?? []),
+    ].filter(Boolean),
+  ),
+];
+---
+
+<BaseLayout
+  title="Bases clínicas das glicogenoses"
+  description="Mecanismos, classificação, manifestações, diagnóstico, manejo e terapias emergentes nas doenças de armazenamento do glicogênio."
+  currentPath={withBase('analises/bases-clinicas/')}
+  lastReviewedAt={updatedAt}
+>
+  <main id="conteudo-principal">
+    <div class="container section-space stack stack--lg">
+      <Breadcrumbs
+        items={[{ label: 'Início', href: '/' }, { label: 'Análises' }, { label: 'Bases clínicas' }]}
+      />
+    </div>
+
+    <ResearchHeader
+      eyebrow="Análise clínica"
+      title="Bases clínicas das glicogenoses"
+      summary="Uma família de doenças metabólicas hereditárias: o tipo molecular, o tecido afetado e o momento do diagnóstico moldam jornadas muito diferentes."
+      updatedAt={updatedAt}
+      cutoff={cutoff}
+    />
+
+    <section class="section-space" aria-label="Sumário da página">
+      <PageContainer>
+        <ResearchSectionNav sections={sections} />
+      </PageContainer>
+    </section>
+
+    <section id="visao-geral" class="section-space surface-editorial" aria-labelledby="visao-title">
+      <PageContainer class="stack stack--lg">
+        <h2 id="visao-title">Uma família de doenças, não um diagnóstico final</h2>
+        <p>
+          As glicogenoses (GSDs) são um grupo heterogêneo de doenças metabólicas hereditárias
+          causadas por defeitos em enzimas ou transportadores da síntese, degradação ou utilização
+          do glicogênio. Mais de 20 tipos e subtipos são reconhecidos.
+        </p>
+        <ul class="message-list">
+          <li>
+            Glicogenose não é um diagnóstico final: o tipo molecular orienta prognóstico e manejo.
+          </li>
+          <li>O fenótipo forma um contínuo — da vida fetal à adulta, com gravidade variável.</li>
+          <li>Diagnóstico e tratamento precoces alteram a história natural.</li>
+        </ul>
+        <p class="meta">Alegação: clm-clinical-001 · SoT médica · Visão geral</p>
+      </PageContainer>
+    </section>
+
+    <section id="metabolismo" class="section-space" aria-labelledby="metab-title">
+      <PageContainer class="stack stack--lg">
+        <h2 id="metab-title">Papel do glicogênio e onde a via falha</h2>
+        <p>{evidence.pathway.summary}</p>
+        <ol class="pathway">
+          {
+            (evidence.pathway.steps ?? []).map(
+              (step: { id: string; label: string; detail: string }) => (
+                <li>
+                  <h3>{step.label}</h3>
+                  <p>{step.detail}</p>
+                </li>
+              ),
+            )
+          }
+        </ol>
+        <p class="limit">{evidence.pathway.caveat}</p>
+        <p class="meta">Fonte: SoT médica · Lógica fisiopatológica e apresentação clínica</p>
+      </PageContainer>
+    </section>
+
+    <section
+      id="padroes-clinicos"
+      class="section-space surface-editorial"
+      aria-labelledby="padroes-title"
+    >
+      <PageContainer class="stack stack--lg">
+        <h2 id="padroes-title">Padrões hepático, muscular e multissistêmico</h2>
+        <div class="pattern-grid">
+          {
+            (Array.isArray(evidence.patterns) ? evidence.patterns : []).map(
+              (pattern: {
+                id?: string;
+                title: string;
+                summary: string;
+                examples?: string[];
+                limitations?: string[];
+              }) => (
+                <article>
+                  <h3>{pattern.title}</h3>
+                  <p>{pattern.summary}</p>
+                  {pattern.examples && (
+                    <p>
+                      <strong>Exemplos na síntese:</strong> {pattern.examples.join(', ')}
+                    </p>
+                  )}
+                  {pattern.limitations?.[0] && <p class="limit">{pattern.limitations[0]}</p>}
+                </article>
+              ),
+            )
+          }
+        </div>
+        <p class="meta">Alegação: clm-clinical-002</p>
+      </PageContainer>
+    </section>
+
+    <section id="tipos-e-subtipos" class="section-space" aria-labelledby="tipos-title">
+      <PageContainer class="stack stack--lg">
+        <h2 id="tipos-title">Classificação essencial: tipos e subtipos</h2>
+        <p>
+          Recorte da classificação essencial da SoT médica. Não é inventário exaustivo de todas as
+          GSDs existentes; a nomenclatura histórica não é uniforme.
+        </p>
+        <GSDExplorer client:load items={explorerItems} />
+      </PageContainer>
+    </section>
+
+    <section id="nomenclatura" class="section-space surface-editorial" aria-labelledby="nome-title">
+      <PageContainer class="stack stack--lg">
+        <h2 id="nome-title">Por que os nomes mudam</h2>
+        <p>{evidence.nomenclature.summary}</p>
+        <ol class="timeline">
+          {
+            (evidence.nomenclature.events ?? []).map(
+              (event: { id?: string; label: string; detail: string }) => (
+                <li>
+                  <h3>{event.label}</h3>
+                  <p>{event.detail}</p>
+                </li>
+              ),
+            )
+          }
+        </ol>
+        <p class="limit">
+          Sem datas inventadas: a linha do tempo é editorial e segue a narrativa da SoT, não um
+          calendário externo.
+        </p>
+      </PageContainer>
+    </section>
+
+    <section id="orgaos" class="section-space" aria-labelledby="orgaos-title">
+      <PageContainer class="stack stack--lg">
+        <h2 id="orgaos-title">Envolvimentos de órgãos explicitamente descritos</h2>
+        <p>
+          Matriz representativa — apenas órgãos mencionados na síntese médica. Células vazias não
+          significam ausência clínica.
+        </p>
+        <div class="table-wrap" role="region" aria-label="Matriz de órgãos">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Condição</th>
+                <th scope="col">Órgãos descritos</th>
+                <th scope="col">Estado na síntese</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                evidence.gsdTypes.map((gsd) => (
+                  <tr>
+                    <th scope="row">{gsd.preferredName}</th>
+                    <td>
+                      {gsd.organsExplicitlyDescribed.length > 0
+                        ? gsd.organsExplicitlyDescribed.map((o) => o.organ).join(', ')
+                        : 'Não detalhado além do padrão clínico na síntese'}
+                    </td>
+                    <td>
+                      {gsd.organsExplicitlyDescribed.map((o) => o.state).join(', ') ||
+                        'not-described-in-sot'}
+                    </td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </PageContainer>
+    </section>
+
+    <section id="epidemiologia" class="section-space surface-editorial" aria-labelledby="epi-title">
+      <PageContainer class="stack stack--lg">
+        <h2 id="epi-title">O que os números permitem — e o que não permitem</h2>
+        <p class="limit">
+          {
+            evidence.epidemiology.guardrail ??
+              'Incidência, prevalência clínica e prevalência genética predita não são equivalentes.'
+          }
+        </p>
+        <ul class="estimate-list">
+          {
+            (evidence.epidemiology.estimates ?? []).map(
+              (est: {
+                label: string;
+                displayValue: string;
+                scope?: string;
+                limitations?: string[];
+              }) => (
+                <li>
+                  <strong>{est.label}:</strong> {est.displayValue}
+                  {est.scope ? ` · ${est.scope}` : ''}
+                  {est.limitations?.[0] && <span class="limit"> — {est.limitations[0]}</span>}
+                </li>
+              ),
+            )
+          }
+        </ul>
+      </PageContainer>
+    </section>
+
+    <section id="diagnostico" class="section-space" aria-labelledby="dx-title">
+      <PageContainer class="stack stack--lg">
+        <h2 id="dx-title">Jornada diagnóstica (não é algoritmo clínico)</h2>
+        <p>{evidence.diagnosis.summary}</p>
+        <p class="limit" role="note">{evidence.diagnosis.disclaimer}</p>
+        <ol class="flow">
+          {
+            (evidence.diagnosis.stages ?? []).map((stage: { label: string; detail: string }) => (
+              <li>
+                <h3>{stage.label}</h3>
+                <p>{stage.detail}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </PageContainer>
+    </section>
+
+    <section id="manejo" class="section-space surface-editorial" aria-labelledby="manejo-title">
+      <PageContainer class="stack stack--lg">
+        <h2 id="manejo-title">Eixos de manejo atual</h2>
+        <p>{evidence.management.summary}</p>
+        <p class="limit" role="note">{evidence.management.disclaimer}</p>
+        <div class="pattern-grid">
+          {
+            (evidence.management.tracks ?? []).map(
+              (track: { label: string; summary: string; limitations?: string[] }) => (
+                <article>
+                  <h3>{track.label}</h3>
+                  <p>{track.summary}</p>
+                  {track.limitations?.[0] && <p class="limit">{track.limitations[0]}</p>}
+                </article>
+              ),
+            )
+          }
+        </div>
+        <p class="limit">
+          Tratamento não é sinônimo de cura. A reposição enzimática em Pompe, por exemplo, não é
+          curativa segundo a SoT.
+        </p>
+      </PageContainer>
+    </section>
+
+    <section id="terapias-emergentes" class="section-space" aria-labelledby="tx-title">
+      <PageContainer class="stack stack--lg">
+        <h2 id="tx-title">Horizonte terapêutico</h2>
+        <p>{evidence.therapyHorizon.summary}</p>
+        <p class="limit">
+          {
+            evidence.therapyHorizon.datedQualifier ??
+              'Status conforme panorama reportado na SoT (Koeberl et al., 2024); não é status regulatório atual.'
+          }
+        </p>
+        <ul>
+          {
+            (evidence.therapyHorizon.items ?? []).map((item: { label: string; detail: string }) => (
+              <li>
+                <strong>{item.label}:</strong> {item.detail}
+              </li>
+            ))
+          }
+        </ul>
+        <h3>Obstáculos reportados</h3>
+        <ul>
+          {
+            (evidence.therapyHorizon.obstacles ?? []).map(
+              (item: { id?: string; detail: string } | string) => (
+                <li>{typeof item === 'string' ? item : item.detail}</li>
+              ),
+            )
+          }
+        </ul>
+      </PageContainer>
+    </section>
+
+    <section id="lacunas" class="section-space surface-editorial" aria-labelledby="lacunas-title">
+      <PageContainer class="stack stack--lg">
+        <h2 id="lacunas-title">Lacunas clínicas e prioridades</h2>
+        <p>{evidence.clinicalGaps.summary}</p>
+        <ol>
+          {
+            (evidence.clinicalGaps.gaps ?? []).map(
+              (gap: { label: string; detail?: string; priority?: number }) => (
+                <li>
+                  <strong>
+                    {gap.priority ? `${gap.priority}. ` : ''}
+                    {gap.label}
+                  </strong>
+                  {gap.detail ? ` — ${gap.detail}` : ''}
+                </li>
+              ),
+            )
+          }
+        </ol>
+        <p class="limit">Sem empresas, rankings ou oportunidades comerciais nesta seção.</p>
+      </PageContainer>
+    </section>
+
+    <div id="limitacoes-e-fontes">
+      <EvidenceFooter
+        limitations={[
+          'Esta página é síntese editorial da SoT médica; não é protocolo clínico.',
+          'Achados de um subtipo não se generalizam a todas as GSDs.',
+          'Ausência de órgão ou prevalência na matriz não significa ausência clínica.',
+          'Status de terapia emergente reflete o panorama datado da SoT, não atualização regulatória.',
+        ]}
+        sources={[
+          {
+            title: 'Glicogenose: Resumo Médico Executivo',
+            path: 'docs/source-of-truth/Glicogenose Resumo Médico Executivo.md',
+          },
+        ]}
+        claimIds={pageClaimIds}
+      />
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .message-list,
+  .estimate-list,
+  .flow,
+  .pathway,
+  .timeline {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: var(--space-3);
+    color: var(--ink-600);
+    max-width: 70ch;
+  }
+
+  .pattern-grid {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 64rem) {
+    .pattern-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .pattern-grid article,
+  .pathway li,
+  .timeline li,
+  .flow li {
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    border: var(--border-thin) solid var(--line-200);
+  }
+
+  .pathway,
+  .timeline,
+  .flow {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .meta,
+  .limit {
+    color: var(--ink-600);
+    font-size: var(--annotation);
+    max-width: 70ch;
+  }
+
+  .limit {
+    font-weight: 600;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    border: var(--border-thin) solid var(--line-200);
+    border-radius: var(--radius-lg);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  th,
+  td {
+    padding: var(--space-3);
+    text-align: left;
+    border-bottom: var(--border-thin) solid var(--line-200);
+    vertical-align: top;
+  }
+
+  th {
+    background: var(--paper-100);
+  }
+</style>

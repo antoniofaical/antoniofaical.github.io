@@ -1,0 +1,65 @@
+{
+  "title": "Terapias emergentes",
+  "summary": "Terapia gênica e edição genômica procuram corrigir a deficiência de maneira mais duradoura e reduzir a dependência de dieta ou reposição enzimática. Vetores adeno-associados (AAV) são a plataforma mais avançada, com estudos pré-clínicos em GSD I, Pompe, III, IV e V.",
+  "datedQualifier": "Estágios refletem a situação reportada por Koeberl et al. (2024) e não devem ser interpretados como status regulatório atual.",
+  "items": [
+    {
+      "id": "tx-gene-gsd-ia",
+      "label": "Terapia gênica — GSD Ia",
+      "detail": "Segundo Koeberl et al. (2024), a terapia gênica para GSD Ia havia avançado de um estudo de fase I/II com reposição de G6PC1 por AAV8 para um ensaio de fase III.",
+      "claimIds": ["clm-clinical-009"]
+    },
+    {
+      "id": "tx-gene-pompe",
+      "label": "Terapia gênica — Pompe",
+      "detail": "Em Pompe, estudos iniciais avaliavam estratégias hepáticas capazes de secretar GAA e abordagens direcionadas ao músculo (status conforme Koeberl et al., 2024).",
+      "claimIds": ["clm-clinical-009"]
+    },
+    {
+      "id": "tx-genome-editing",
+      "label": "Edição genômica",
+      "detail": "Pode oferecer expressão mais estável por integrar ou corrigir a sequência no DNA cromossômico, mas introduz riscos próprios, incluindo alterações fora do alvo e efeitos de quebras de dupla fita. Abordagens promissoras, porém dependentes de comprovação de durabilidade e segurança em longo prazo.",
+      "claimIds": ["clm-clinical-009"]
+    }
+  ],
+  "obstacles": [
+    {
+      "id": "obs-transgene-loss",
+      "detail": "Perda de expressão do transgene, especialmente quando o fígado cresce após tratamento precoce.",
+      "claimIds": ["clm-clinical-009"]
+    },
+    {
+      "id": "obs-immune",
+      "detail": "Respostas imunes ao capsídeo viral ou ao produto do transgene.",
+      "claimIds": ["clm-clinical-009"]
+    },
+    {
+      "id": "obs-high-dose",
+      "detail": "Necessidade de doses elevadas para alcançar músculo esquelético e coração.",
+      "claimIds": ["clm-clinical-009"]
+    },
+    {
+      "id": "obs-preexisting-abs",
+      "detail": "Anticorpos preexistentes que podem impedir o tratamento ou a redosagem.",
+      "claimIds": ["clm-clinical-009"]
+    },
+    {
+      "id": "obs-hepatotoxicity",
+      "detail": "Hepatotoxicidade e outras toxicidades relacionadas ao vetor.",
+      "claimIds": ["clm-clinical-009"]
+    },
+    {
+      "id": "obs-integration",
+      "detail": "Risco teórico de integração genômica e tumorigenicidade.",
+      "claimIds": ["clm-clinical-009"]
+    },
+    {
+      "id": "obs-multi-organ",
+      "detail": "Dificuldade de corrigir simultaneamente múltiplos órgãos.",
+      "claimIds": ["clm-clinical-009"]
+    }
+  ],
+  "claimIds": ["clm-clinical-009"],
+  "sourceIds": ["src-sot-medical-exec-2026"],
+  "lastReviewedAt": "2026-08-12"
+}

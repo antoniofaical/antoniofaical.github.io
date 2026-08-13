@@ -1,23 +1,21 @@
 # Regras permanentes do Cursor — Painel GSDs
 
-Este arquivo combina as regras permanentes do produto com as orientações do scaffold Astro.
+Este arquivo combina as regras permanentes do produto (v0.3) com as orientações do scaffold Astro e fatos específicos deste repositório.
 
 ## 1. Missão
 
-Construir um painel estático, mobile-first, acessível e rastreável sobre glicogenoses, combinando leitura executiva e evidência aprofundada. O produto é informativo e não substitui avaliação médica.
+Implementar um painel público rigoroso, acessível e sustentável sobre glicogenoses, preservando a distinção entre evidência, inferência, cobertura e ausência de dados. O produto é informativo e não substitui avaliação médica.
 
-## 2. Autoridade dos documentos
-
-Ordem de precedência:
+## 2. Autoridade
 
 1. solicitação atual e explícita do usuário;
-2. instruções da iteração em `docs/implementation/`;
-3. critérios de aceite;
-4. Design System e arquitetura técnica;
-5. fontes de verdade em `docs/source-of-truth/`;
-6. convenções existentes no código.
+2. SoT do domínio em `docs/source-of-truth/`;
+3. pacote de implementação vigente em `docs/implementation/`;
+4. ADRs em `docs/decisions/`;
+5. código e testes;
+6. instrução específica da iteração.
 
-Se houver conflito científico entre fontes ou instruções, pare e reporte. Não escolha silenciosamente.
+Conflitos são reportados; não resolvidos silenciosamente.
 
 ## 3. Fontes de verdade
 
@@ -30,13 +28,16 @@ Se houver conflito científico entre fontes ou instruções, pare e reporte. Nã
 - Não chamar AIH do SIH/SUS de paciente ou indivíduo único.
 - Não usar dados fictícios fora de fixtures isoladas e claramente rotuladas.
 
-## 4. Escopo
+## 4. Escopo e autorização
 
 - Implemente apenas a iteração autorizada.
 - Não avance para a próxima página ou etapa sem validação do usuário.
 - Não adicione backend, CMS, autenticação, analytics, cookies ou formulários sem solicitação.
 - Não altere branding institucional ou use logotipos sem autorização.
 - Preserve mudanças existentes que não pertençam à tarefa.
+- Observatório de startups: arquitetura futura (ADR-0003); não implementar entidades Startup, CSV, DB ou pipeline sem autorização.
+
+Não executar sem autorização explícita: pesquisa externa; alteração de SoT; mudança de stack; commit, push, PR, merge ou deploy; publicação automática de candidatos.
 
 ## 5. Checkpoints diretos obrigatórios
 
@@ -46,96 +47,47 @@ Formato:
 
 > **Checkpoint:** concluí X; encontrei Y; agora vou fazer Z.
 
-Frequência:
+Frequência: inventário; cada marco; no máximo a cada 15 minutos; antes de decisão de arquitetura/escopo; ao encontrar bloqueio.
 
-- após inventário inicial;
-- após cada marco das instruções;
-- antes de qualquer decisão que mude arquitetura ou escopo;
-- a cada 15 minutos se nenhum marco tiver sido concluído;
-- no encerramento.
+## 6. Evidência
 
-Um checkpoint deve ser curto, factual e mencionar bloqueios. Não salve checkpoints periódicos em `.md`. Documentos técnicos permanentes, ADRs e relatórios finais continuam permitidos.
-
-## 6. Bloqueios e decisões
-
-Pare e peça validação quando:
-
-- faltar uma escolha que altere arquitetura, conteúdo ou identidade;
-- uma SoT não estiver disponível ou seu hash mudar inesperadamente;
-- a implementação exigir interpretação científica;
-- um requisito não puder ser atendido sem expandir escopo;
-- uma operação puder apagar ou sobrescrever trabalho relevante;
-- testes críticos falharem sem causa segura e localizada.
-
-Não pare por decisões reversíveis pequenas: adote a opção mais simples, registre-a e reporte no checkpoint seguinte.
+- Toda métrica tem fonte, escopo, período e qualificador.
+- Toda claim estruturada aponta para evidência.
+- Ausência de dado não é zero; ausência na base não é inexistência.
+- Receita não é TAM; AIH não é paciente.
+- Estender `source → claim → metric` de forma retrocompatível com a Home.
 
 ## 7. Engenharia
 
-- TypeScript estrito; evite `any`.
-- Astro como padrão; React apenas para interatividade real.
-- Conteúdo e dados fora dos componentes.
-- Componentes pequenos, sem abstração prematura.
-- Dependências novas exigem justificativa no report.
-- Use caminhos compatíveis com `base` do GitHub Pages.
-- Não use caminhos absolutos de máquina.
-- Não desative lint, typecheck ou testes para obter build verde.
-- Não edite arquivos gerados ou `dist/` manualmente.
-- Não faça commits, push ou deploy sem autorização explícita.
+- TypeScript estrito; Zod na fronteira de dados.
+- Astro estático por padrão; React apenas se necessário.
+- `withBase` em URLs internas/assets.
+- LF e `.gitattributes` preservados.
+- Não editar arquivos gerados; não desativar lint/typecheck/testes.
+- Dependência nova exige justificativa.
+- App em `painel-gsds/`; hub na raiz; Pages em `/painel-gsds/`.
 
 ## 8. Design
 
-- Use os tokens do Design System; não invente uma segunda identidade.
-- Evite `card soup`, gradientes genéricos, glassmorphism excessivo e animações decorativas.
-- Não comprima tabelas desktop no mobile; transforme a interação.
-- Não dependa somente de cor, hover ou movimento.
-- Componentes executivos podem ser expressivos; conteúdo científico deve permanecer sóbrio.
-- Nenhum elemento decorativo pode parecer dado ou controle.
+- Usar tokens do Design System vigente; não inventar segunda identidade.
+- Home pode ser mais expressiva; páginas analíticas mais sóbrias.
+- Evitar card soup; Inter corpo/interface; Manrope display.
+- Nenhuma informação depende só de cor, hover ou animação.
 
-## 9. Evidência e dados
+## 9. Acessibilidade e responsividade
 
-- Cada métrica deve ter fonte, período, geografia/universo e estado de evidência.
-- Componentes recebem dados tipados; não incorporar números científicos diretamente no JSX.
-- Registros temporais possuem `lastReviewedAt`/data de verificação.
-- `not-calculable` usa valor nulo e explicação.
-- Proxies e estimativas são rotulados na interface.
-- Toda visualização possui insight, fonte, método e alternativa acessível.
+- Meta WCAG 2.2 AA; teclado; foco; landmarks; alvos ≥ 44×44 px.
+- `prefers-reduced-motion`; overflow a 320 px; axe-core nas páginas novas.
 
-## 10. Acessibilidade e responsividade
+## 10. Verificação
 
-- Meta WCAG 2.2 AA.
-- Semântica HTML primeiro; ARIA apenas quando necessário.
-- Navegação por teclado e foco.
-- `SkipLink` e landmarks.
-- Alvos de toque de pelo menos 44 × 44px.
-- Suporte a `prefers-reduced-motion`.
-- Testar 320px, 375px, 768px, 1024px e 1440px quando a alteração afetar layout.
+Antes de encerrar uma iteração: format, lint, typecheck, testes, builds com `BASE_PATH=/` e `/painel-gsds/`, e2e, hashes das SoTs, screenshots.
 
-## 11. Verificação
+## 11. Report final
 
-Antes de encerrar uma iteração:
+Status; arquivos; dados; limitações; a11y; testes; hashes; Git; pendências; confirmação de ações externas não executadas; próximo passo sem iniciá-lo.
 
-1. revisar diff;
-2. executar format check, lint, typecheck, testes e build;
-3. testar rotas relevantes com o base path;
-4. inspecionar desktop e mobile;
-5. testar teclado e redução de movimento;
-6. confirmar que SoTs não foram alteradas;
-7. reportar limitações e pendências.
-
-## 12. Report final
-
-Entregar no chat:
-
-1. status geral;
-2. o que foi criado/alterado;
-3. testes e resultados;
-4. screenshots ou caminhos para revisão;
-5. decisões e divergências;
-6. pendências;
-7. confirmação de preservação de escopo e SoTs;
-8. próximo passo sugerido, sem executá-lo.
-
-## 13. Desenvolvimento Astro (scaffold preservado)
+## 12. Desenvolvimento Astro (scaffold preservado)
 
 When starting the dev server, use background mode:
 
@@ -146,12 +98,3 @@ astro dev --background
 Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 
 Full documentation: https://docs.astro.build
-
-Consult these guides before working on related tasks:
-
-- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
-- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
-- [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/)
-- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
-- [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
-- [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)

@@ -1,140 +1,143 @@
 # Critérios de aceite
 
-**Versão:** 0.1  
-**Uso:** checklist de revisão humana e validação automatizada.
+**Versão:** 0.3
 
-## 1. Critérios globais do produto
+## 1. Gates globais
 
-### Conteúdo e evidência
+Uma alteração só é concluída quando:
 
-- [ ] Nenhuma métrica aparece sem fonte, período, geografia/universo e estado de evidência.
-- [ ] Ausência de dado não é representada como zero.
-- [ ] Receita realizada não é chamada de TAM, SAM ou SOM.
-- [ ] Estimativas e proxies são visualmente e textualmente identificados.
-- [ ] Afirmações preservam o subtipo, população e contexto da evidência original.
-- [ ] Conteúdo temporal exibe data de corte ou verificação.
-- [ ] Limitações aparecem próximas de interpretações sensíveis.
-- [ ] SoTs permanecem inalteradas.
-- [ ] Toda página publicada passa por revisão humana do conteúdo.
+- escopo e SoTs foram respeitados;
+- fontes, claims e métricas resolvem;
+- ausência/limitação estão explícitas;
+- funciona em 320, 375, 768 e 1440 px;
+- teclado, foco, reduced motion e alternativas foram validados;
+- não há overflow horizontal;
+- URLs funcionam com `/` e `/painel-gsds/`;
+- `format:check`, lint, typecheck, unit, build e e2e passam;
+- screenshots foram revisados;
+- não houve regressão material de performance;
+- report final e hashes foram entregues.
 
-### Experiência
+## 2. Definition of Done por dado
 
-- [ ] Um ADM identifica a mensagem central de cada página em até dois minutos.
-- [ ] Um leitor técnico consegue chegar da afirmação à fonte.
-- [ ] O texto profundo permanece legível e não é fragmentado em excesso.
-- [ ] A navegação diferencia conteúdo disponível de conteúdo futuro.
-- [ ] Não há elementos decorativos que pareçam métricas ou controles.
+Um registro publicável possui:
 
-### Responsividade
+- ID estável;
+- schema válido;
+- fonte e localizador;
+- escopo e data;
+- estado de evidência;
+- limitações;
+- revisão humana quando aplicável;
+- nenhuma informação privada/proprietária indevida.
 
-- [ ] Funciona entre 320px e desktop amplo.
-- [ ] Não existe rolagem horizontal da página.
-- [ ] Tabelas e matrizes possuem transformação mobile.
-- [ ] Alvos de toque têm pelo menos 44 × 44px.
-- [ ] Elementos fixos não ocultam título ou conteúdo.
+## 3. Iteração 3 — Bases clínicas
 
-### Acessibilidade
+- rota e portal da Home funcionam;
+- narrativa começa por mecanismo, não taxonomia;
+- padrões clínicos são contínuos;
+- classificação mínima está presente;
+- nomenclatura histórica é explicada;
+- matriz de órgãos distingue não descrito de ausência;
+- epidemiologia não mistura medidas;
+- fluxo diagnóstico é educativo;
+- manejo não extrapola entre GSDs;
+- terapia emergente é datada e qualificada;
+- aviso médico e fontes estão visíveis;
+- nenhuma empresa aparece.
 
-- [ ] Meta WCAG 2.2 AA.
-- [ ] Navegação integral por teclado.
-- [ ] Ordem de foco corresponde à ordem visual e semântica.
-- [ ] Foco é visível.
-- [ ] Hierarquia de títulos é válida.
-- [ ] Landmarks e `SkipLink` existem.
-- [ ] Cor, hover e animação não são canais únicos.
-- [ ] Gráficos possuem alternativa textual ou tabular.
-- [ ] `prefers-reduced-motion` é respeitado.
-- [ ] Contrastes são verificados automaticamente e por inspeção.
+## 4. Iteração 4 — Impacto socioeconômico
 
-### Performance e robustez
+- carga conserva subtipo, população e denominador;
+- paciente, cuidador, sistema e pagador são distinguíveis;
+- custos exibem país, perspectiva, moeda, ano e período;
+- receita observada não é TAM;
+- dimensionamento monetário, populacional e conceitual são separados;
+- `não calculável` não aparece como zero;
+- DATASUS explicita AIH ≠ paciente e local da internação;
+- Brasil não recebe denominador inventado;
+- lacuna não é automaticamente oportunidade comercial;
+- nenhuma empresa aparece.
 
-- [ ] Build estático funciona com o base path do GitHub Pages.
-- [ ] Conteúdo principal existe sem hidratação JavaScript.
-- [ ] Visualizações pesadas são carregadas sob demanda.
-- [ ] Não há erros no console nas rotas publicadas.
-- [ ] CI bloqueia build com schema inválido ou referência quebrada.
-- [ ] Lockfile está versionado.
+## 5. Iteração 5 — Observatório MVP
 
-## 2. Definition of Done por alteração
+### 5.1 Cobertura
 
-Uma alteração só está concluída quando:
+- página declara fonte, busca, data e não exaustividade;
+- quatro resultados CB Insights não são denominados universo global;
+- contadores distinguem descoberto, único, validado, pendente e excluído;
+- filtros Brasil/global e direta/adjacente não duplicam registros.
 
-1. escopo solicitado foi implementado sem mudanças extras;
-2. lint, typecheck, testes e build passam;
-3. foram inspecionados os breakpoints afetados;
-4. conteúdo científico alterado foi explicitamente listado;
-5. limitações e pendências foram reportadas;
-6. diff foi revisado;
-7. usuário aprovou o checkpoint correspondente.
+### 5.2 Dados
 
-## 3. Critérios da Iteração 1 — fundação
+- organização, relevância, produto, claim, evidência, observação e revisão são separados;
+- status CB Insights não substitui validação do projeto;
+- estágio de produto tem data/fonte;
+- dados ausentes não são preenchidos;
+- campos sensíveis/proprietários são excluídos da camada pública;
+- GlycoGenesys não é validada apenas pelo nome;
+- candidatos não publicados não entram nos totais validados.
 
-### Repositório e stack
+### 5.3 Interface
 
-- [ ] Astro estático inicializado com TypeScript estrito.
-- [ ] React instalado, mas usado somente na demonstração de interação se necessário.
-- [ ] Estrutura de pastas segue a especificação ou divergências são justificadas.
-- [ ] scripts de dev, build, lint, format, typecheck e test funcionam.
-- [ ] GitHub Actions possui CI; deploy pode ficar parametrizado até a definição do repositório final.
-- [ ] `site`/`base` não estão presos a um caminho pessoal de máquina.
+- cards e fichas funcionam com poucos registros;
+- filtros sem variância não poluem a interface;
+- comparação 3 desktop/2 mobile;
+- URL preserva filtros;
+- estado sem resultados é explicativo;
+- visualizações quantitativas obedecem limiares de densidade;
+- fonte, revisão e completude são acessíveis.
 
-### SoT e documentação
+## 6. Pipeline mensal
 
-- [ ] Três SoTs copiadas para `docs/source-of-truth/` sem alterações de conteúdo.
-- [ ] Pacote de implementação copiado para `docs/implementation/`.
-- [ ] hashes das SoTs registrados em inventário local.
-- [ ] `AGENTS.md` contém as regras permanentes.
-- [ ] README explica execução, build e escopo da Iteração 1.
+- catálogo de fontes versionado;
+- cada execução registra query, data, cobertura e erros;
+- reconciliação é reproduzível;
+- snapshots são imutáveis e checksummed;
+- último snapshot válido não é substituído em falha;
+- mudança entre snapshots gera changelog;
+- nenhum candidato é publicado sem revisão;
+- logs não contêm credenciais.
 
-### Design System
+## 7. Gates técnicos
 
-- [ ] tokens de cor, tipografia, escala, grid, raio e movimento definidos.
-- [ ] página interna `/design-system/` demonstra tokens e componentes.
-- [ ] demonstração inclui superfícies claras e escuras.
-- [ ] estados de evidência aparecem com texto e não só cor.
-- [ ] tipografia usa fallback robusto se as fontes finais não estiverem disponíveis.
+```text
+npm ci
+npm run format:check
+npm run lint
+npm run typecheck
+npm test
+SITE_URL=... BASE_PATH=/ npm run build
+SITE_URL=... BASE_PATH=/painel-gsds/ npm run build
+npm run test:e2e
+```
 
-### Componentes mínimos
+Dependência nova, mudança de schema ou migração exige teste negativo e ADR quando estrutural.
 
-- [ ] `SkipLink`.
-- [ ] `GlobalHeader` desktop e mobile.
-- [ ] `PageContainer`/grid base.
-- [ ] `HeroStatement`.
-- [ ] `KeyMetric` com todos os estados de evidência.
-- [ ] `EvidenceBadge`.
-- [ ] `SourceAnchor` com dado fictício explicitamente rotulado como fixture na página interna.
-- [ ] `EvidenceCallout`.
-- [ ] `SectionPortal`.
-- [ ] `DataAbsentState`.
-- [ ] `GlobalFooter`.
+## 8. Acessibilidade
 
-Fixtures da página interna não podem ser importadas por páginas públicas futuras.
+- WCAG 2.2 AA;
+- axe sem violações críticas/sérias;
+- headings e landmarks corretos;
+- leitor de tela entende estado/fonte;
+- filtros anunciam resultado;
+- gráficos têm equivalentes;
+- drawer/modal trata Escape, trap e retorno de foco;
+- toque ≥ 44×44 px.
 
-### Validação visual
+## 9. Performance
 
-- [ ] screenshots de 375px, 768px e 1440px.
-- [ ] sem overflow em 320px.
-- [ ] menu mobile acessível por teclado e fecha com Escape.
-- [ ] redução de movimento testada.
-- [ ] temas claro/escuro de seção mantêm contraste.
+- Home preserva orçamento;
+- páginas editoriais não hidratam sem necessidade;
+- observatório usa JSON público enxuto;
+- LCP/CLS/INP monitorados;
+- nenhuma fonte/logo remoto bloqueia render;
+- bundles adicionais são reportados.
 
-### Limites da Iteração 1
+## 10. Aceite documental
 
-- [ ] Home final não foi implementada.
-- [ ] Conteúdo médico não foi transformado em página.
-- [ ] Conteúdo socioeconômico não foi transformado em página.
-- [ ] Nenhuma startup ou empresa fictícia foi criada.
-- [ ] Nenhum gráfico de dados científicos foi publicado.
-- [ ] Nenhum CMS/backend foi adicionado.
-
-## 4. Saída de validação esperada do agente
-
-O report final inclui:
-
-- arquivos criados e alterados;
-- comandos executados e resultados;
-- screenshots e viewports;
-- divergências justificadas;
-- pendências;
-- confirmação da preservação das SoTs;
-- sugestão objetiva para a Iteração 2, sem iniciá-la.
+- documentação vigente e código não divergem;
+- instruções históricas preservadas;
+- SoTs sem diff;
+- ADRs registram divergências;
+- report final permite auditoria sem ler todo o chat.

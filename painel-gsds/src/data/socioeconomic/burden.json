@@ -1,0 +1,78 @@
+{
+  "title": "Carga socioeconômica desigual",
+  "summary": "A carga das glicogenoses ultrapassa sintomas clínicos e incorpora manejo cotidiano, cuidado informal, restrição funcional e barreiras de acesso; a mensuração é desigual entre tipos.",
+  "findings": [
+    {
+      "id": "brd-hepatic-home-care",
+      "actor": "patient",
+      "gsdScope": "GSDs hepáticas, especialmente GSD I",
+      "summary": "Parte expressiva do tratamento ocorre no domicílio; a tolerância ao jejum pode ser de apenas 2 a 4 horas, exigindo administração recorrente de amido de milho cru e, em alguns casos, alimentação ou vigilância noturna.",
+      "evidenceState": "observed",
+      "claimIds": ["clm-socio-001", "clm-socio-003"],
+      "limitations": [
+        "Evidência destacada para GSD I; não generalizar a todas as GSDs hepáticas sem suporte adicional."
+      ]
+    },
+    {
+      "id": "brd-gsd-i-night-feeding",
+      "actor": "patient",
+      "gsdScope": "GSD I — adultos alemães no estudo citado (CAR-048, CAR-049)",
+      "summary": "Entre adultos alemães com GSD I, 41,2% dependiam de alimentação enteral noturna e 60,6% relataram hipoglicemia noturna em seis meses.",
+      "evidenceState": "observed",
+      "claimIds": ["clm-socio-003"],
+      "limitations": [
+        "Amostra e geografia específicas (adultos alemães); não é taxa universal de GSD I."
+      ]
+    },
+    {
+      "id": "brd-mcardle-delay",
+      "actor": "patient",
+      "gsdScope": "GSD V — McArdle (estudo citado CAR-010 a CAR-013)",
+      "summary": "Atraso diagnóstico mediano de 29 anos, com 90% dos pacientes recebendo diagnóstico incorreto anteriormente; o custo pode se manifestar menos por hospitalização e mais por atraso diagnóstico, restrição laboral e perda de autonomia.",
+      "evidenceState": "observed",
+      "claimIds": ["clm-socio-002", "clm-socio-001"],
+      "limitations": ["Achado específico de McArdle e do estudo; não é mediana universal das GSDs."]
+    },
+    {
+      "id": "brd-pompe-lopd-delay",
+      "actor": "patient",
+      "gsdScope": "Pompe de início tardio (CAR-001, CAR-006 a CAR-008)",
+      "summary": "Atrasos diagnósticos de aproximadamente 9 a 12 anos foram documentados; o diagnóstico tardio prolonga investigações, permite progressão funcional e posterga o acesso ao manejo apropriado.",
+      "evidenceState": "observed",
+      "claimIds": ["clm-socio-003"],
+      "limitations": ["Escopo restrito à forma de início tardio e aos estudos citados."]
+    },
+    {
+      "id": "brd-pompe-caregiver-hours",
+      "actor": "caregiver",
+      "gsdScope": "Pompe — estudo de cuidado informal (CAR-039)",
+      "summary": "Um estudo estimou 17,7 horas semanais de cuidado informal, chegando a 25,6 horas quando o paciente utilizava cadeira de rodas.",
+      "evidenceState": "observed",
+      "claimIds": ["clm-socio-001", "clm-socio-003"],
+      "limitations": [
+        "Carga sobre cuidadores é documentada principalmente em Pompe; não extrapolar horas a outros tipos."
+      ]
+    },
+    {
+      "id": "brd-pompe-caregiver-mental",
+      "actor": "caregiver",
+      "gsdScope": "Pompe — cuidadores/pais em estudos citados (CAR-040, CAR-043)",
+      "summary": "Problemas de saúde mental em 50% dos cuidadores avaliados e sobrecarga moderada a grave em 57,1% de pais de crianças com Pompe.",
+      "evidenceState": "observed",
+      "claimIds": ["clm-socio-003"],
+      "limitations": ["Instrumentos e amostras dos estudos originais condicionam a interpretação."]
+    },
+    {
+      "id": "brd-unequal-measurement",
+      "actor": "health-system",
+      "gsdScope": "GSD I, III, V e IX versus Pompe",
+      "summary": "Para GSD I, III, V e IX, não foram localizadas estimativas comparáveis de horas de cuidado, perda de renda ou despertares noturnos. Essa ausência representa falta de mensuração, não ausência de impacto.",
+      "evidenceState": "limited",
+      "claimIds": ["clm-socio-001", "clm-socio-003"],
+      "limitations": ["Ausência de mensuração não deve ser lida como ausência de carga."]
+    }
+  ],
+  "claimIds": ["clm-socio-001", "clm-socio-002", "clm-socio-003"],
+  "sourceIds": ["src-sot-socioeconomic-2026"],
+  "lastReviewedAt": "2026-08-12"
+}

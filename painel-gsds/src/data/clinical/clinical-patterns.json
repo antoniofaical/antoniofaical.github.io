@@ -1,0 +1,43 @@
+[
+  {
+    "id": "pattern-hepatic",
+    "pattern": "hepatic",
+    "title": "Formas predominantemente hepáticas",
+    "summary": "A deficiência compromete a manutenção da glicemia durante o jejum. O padrão típico combina hepatomegalia, hipoglicemia, atraso de crescimento, hipertransaminasemia e dislipidemia. A presença de cetose, lactato elevado, hiperuricemia, neutropenia ou fibrose ajuda a distinguir os tipos.",
+    "examples": ["GSD I", "GSD III", "GSD VI", "GSD IX"],
+    "claimIds": ["clm-clinical-002"],
+    "limitations": [
+      "Exemplos centrais diferem substancialmente em gravidade e complicações.",
+      "O fenótipo forma um contínuo; o agrupamento é pedagógico."
+    ],
+    "sourceIds": ["src-sot-medical-exec-2026"],
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "pattern-muscular",
+    "pattern": "muscular",
+    "title": "Formas predominantemente musculares",
+    "summary": "O defeito limita a produção de energia durante o exercício. Sinais característicos incluem intolerância ao esforço, fadiga, dor, cãibras, fraqueza, elevação de creatinoquinase, rabdomiólise e mioglobinúria. Na GSD V, o fenômeno de second wind é particularmente sugestivo.",
+    "examples": ["GSD V", "GSD VII", "GSD X", "GSD XII", "GSD XIII", "algumas formas de GSD IX"],
+    "claimIds": ["clm-clinical-002"],
+    "limitations": [
+      "Algumas formas de GSD IX pertencem a este grupo sem detalhamento adicional na SoT.",
+      "O agrupamento não substitui o tipo molecular."
+    ],
+    "sourceIds": ["src-sot-medical-exec-2026"],
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "pattern-multisystemic",
+    "pattern": "multisystemic",
+    "title": "Formas multissistêmicas",
+    "summary": "Não se encaixam na divisão simples hepática/muscular. A doença de Pompe é simultaneamente glicogenose e doença de depósito lisossômico, com comprometimento de músculos esquelético, respiratório e cardíaco. A GSD IV varia de doença hepática progressiva na infância a doença neurodegenerativa de início adulto. A síndrome de Fanconi–Bickel combina armazenamento hepatorrenal com tubulopatia proximal por deficiência do transportador GLUT2.",
+    "examples": ["GSD II — Pompe", "GSD IV — Andersen", "Síndrome de Fanconi–Bickel"],
+    "claimIds": ["clm-clinical-002"],
+    "limitations": [
+      "Formas multissistêmicas ilustram contínuos fenotípicos; não esgotam todas as GSDs."
+    ],
+    "sourceIds": ["src-sot-medical-exec-2026"],
+    "lastReviewedAt": "2026-08-12"
+  }
+]

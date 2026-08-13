@@ -143,24 +143,24 @@ const sotCutoff = '2026-08-10';
           <p class="section-kicker">Próximas profundidades</p>
           <h2 id="analises-title">Explore as análises</h2>
           <p class="section-lede">
-            As páginas analíticas completas serão publicadas em iterações posteriores. Os portais
-            abaixo deixam explícito o estado de desenvolvimento.
+            Aprofunde a leitura clínica e socioeconômica com rastreabilidade às fontes de verdade. O
+            ecossistema de inovação permanece em desenvolvimento.
           </p>
         </header>
         <div class="portals-grid">
           <SectionPortal
             question="Como o mecanismo molecular se traduz em diagnóstico, manejo e lacunas clínicas?"
             summary="Bases clínicas: tipos, fenótipos, diagnóstico e opções terapêuticas com rastreabilidade."
-            href="#"
-            available={false}
-            unavailableLabel="Em desenvolvimento"
+            href={withBase('analises/bases-clinicas/')}
+            available={true}
+            ctaLabel="Abrir bases clínicas"
           />
           <SectionPortal
             question="Qual é a carga socioeconômica e o que o mercado observado realmente captura?"
             summary="Impacto socioeconômico e estrutura de mercado: custos, desigualdade, Brasil e limites de dimensionamento."
-            href="#"
-            available={false}
-            unavailableLabel="Em desenvolvimento"
+            href={withBase('analises/impacto-socioeconomico/')}
+            available={true}
+            ctaLabel="Abrir impacto socioeconômico"
           />
         </div>
       </PageContainer>

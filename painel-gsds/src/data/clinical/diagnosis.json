@@ -1,0 +1,52 @@
+{
+  "title": "Reconhecimento e diagnóstico",
+  "summary": "O diagnóstico moderno combina fenótipo, biomarcadores, imagem e genética molecular. A investigação deve começar pelo padrão predominante e ser direcionada pelas alterações metabólicas. Isto não é um algoritmo clínico.",
+  "disclaimer": "Conteúdo informativo e não substitutivo de avaliação médica especializada. Não constitui algoritmo diagnóstico.",
+  "stages": [
+    {
+      "id": "dx-alert-signs",
+      "label": "Sinais de alerta",
+      "detail": "Hipoglicemia de jejum (especialmente com hepatomegalia); lactato, triglicerídeos ou ácido úrico elevados; hipertransaminasemia persistente sem explicação; intolerância ao exercício, cãibras, fraqueza, CK elevada ou rabdomiólise; cardiomiopatia hipertrófica ou insuficiência respiratória neuromuscular; associação entre doença hepática, renal, intestinal, hematológica ou neurológica.",
+      "claimIds": ["clm-clinical-007"]
+    },
+    {
+      "id": "dx-biochem",
+      "label": "Testes bioquímicos",
+      "detail": "Glicemia, cetonas, lactato, perfil lipídico, ácido úrico, transaminases, CK, função renal e marcadores específicos escolhidos conforme a hipótese ajudam a definir o mecanismo.",
+      "claimIds": ["clm-clinical-007"]
+    },
+    {
+      "id": "dx-imaging",
+      "label": "Imagem e avaliações funcionais",
+      "detail": "Ultrassonografia e ressonância avaliam fígado, adenomas, fibrose e outros órgãos; eletrocardiograma, ecocardiograma, testes respiratórios e avaliações funcionais são importantes nas formas musculares e cardíacas.",
+      "claimIds": ["clm-clinical-007"]
+    },
+    {
+      "id": "dx-genetics",
+      "label": "Genética molecular",
+      "detail": "O teste genético tornou-se a principal ferramenta confirmatória. Quando o fenótipo é altamente específico, pode-se testar um gene; diante de sobreposição clínica, painéis multigênicos, exoma ou genoma são mais eficientes.",
+      "claimIds": ["clm-clinical-007"]
+    },
+    {
+      "id": "dx-enzyme",
+      "label": "Dosagem enzimática",
+      "detail": "Continua relevante, particularmente em Pompe e quando variantes genéticas têm interpretação incerta.",
+      "claimIds": ["clm-clinical-007"]
+    },
+    {
+      "id": "dx-biopsy-reserved",
+      "label": "Biópsia reservada",
+      "detail": "Biópsia hepática ou muscular, antes central, hoje é reservada para casos não resolvidos ou para responder a questões histológicas específicas.",
+      "claimIds": ["clm-clinical-007"]
+    },
+    {
+      "id": "dx-nbs-pompe",
+      "label": "Triagem neonatal para Pompe",
+      "detail": "Permite reconhecer casos antes da instalação de dano irreversível, embora sua implantação e interpretação ainda variem entre locais.",
+      "claimIds": ["clm-clinical-007"]
+    }
+  ],
+  "claimIds": ["clm-clinical-007"],
+  "sourceIds": ["src-sot-medical-exec-2026"],
+  "lastReviewedAt": "2026-08-12"
+}

@@ -1,0 +1,84 @@
+---
+export interface Props {
+  eyebrow?: string;
+  title: string;
+  summary: string;
+  notice?: string;
+  updatedAt?: string;
+  cutoff?: string;
+}
+
+const {
+  eyebrow = 'Análise',
+  title,
+  summary,
+  notice = 'Conteúdo informativo e não substitutivo de avaliação médica especializada.',
+  updatedAt,
+  cutoff,
+} = Astro.props;
+---
+
+<header class="research-header section-space surface-executive">
+  <div class="container stack stack--lg">
+    <p class="research-header__eyebrow">{eyebrow}</p>
+    <h1 class="research-header__title">{title}</h1>
+    <p class="research-header__summary">{summary}</p>
+    <p class="research-header__notice" role="note">{notice}</p>
+    {
+      (updatedAt || cutoff) && (
+        <p class="research-header__meta">
+          {updatedAt && (
+            <>
+              Última revisão: <time datetime={updatedAt}>{updatedAt}</time>
+            </>
+          )}
+          {updatedAt && cutoff ? ' · ' : ''}
+          {cutoff && (
+            <>
+              Corte das fontes: <time datetime={cutoff}>{cutoff}</time>
+            </>
+          )}
+        </p>
+      )
+    }
+  </div>
+</header>
+
+<style>
+  .research-header__eyebrow {
+    font-size: var(--annotation);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.85;
+    max-width: none;
+  }
+
+  .research-header__title {
+    font-size: var(--heading-1);
+    color: var(--paper-50);
+    max-width: 18ch;
+    margin: 0;
+  }
+
+  .research-header__summary {
+    max-width: 62ch;
+    opacity: 0.92;
+    margin: 0;
+  }
+
+  .research-header__notice {
+    max-width: 62ch;
+    margin: 0;
+    padding: var(--space-3) var(--space-4);
+    border-left: 3px solid var(--cyan-300);
+    background: rgb(246 248 247 / 8%);
+  }
+
+  .research-header__meta {
+    font-size: var(--annotation);
+    opacity: 0.8;
+    max-width: none;
+    margin: 0;
+  }
+</style>

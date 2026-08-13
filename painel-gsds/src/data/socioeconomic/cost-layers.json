@@ -1,0 +1,94 @@
+{
+  "title": "Camadas de custo",
+  "summary": "Os custos disponíveis não representam uma única cesta de recursos. Dependendo da fonte, podem incluir medicamentos, internações, consultas, dispositivos, cuidado domiciliar ou produtividade. O custo mais visível não é necessariamente o maior componente social.",
+  "layers": [
+    {
+      "id": "cost-pharma-observed",
+      "label": "Farmacoterapia observada (Pompe)",
+      "perspective": "payer",
+      "summary": "Receita farmacêutica global observada em 2024 ≈ €1,4 bilhão (Pompe). No Brasil, uma contratação pública de Myozyme (fevereiro de 2025) somou R$78,4 milhões — âncora de gasto, não tamanho nacional total.",
+      "amounts": [
+        {
+          "displayValue": "≈ €1,403 bilhão",
+          "scope": "Receita global Pompe 2024 (Sanofi + Amicus)",
+          "caveat": "Receita realizada, não TAM/SAM/SOM."
+        },
+        {
+          "displayValue": "R$78,4 milhões",
+          "scope": "Contratação pública Myozyme 50 mg, fevereiro de 2025 (62.969 frascos)",
+          "caveat": "Equivalentes pacientes-ano teóricos não informam o número real de pacientes tratados."
+        }
+      ],
+      "claimIds": ["clm-market-001", "clm-socio-005"],
+      "limitations": ["Camadas farmacêutica e hospitalar são incomparáveis entre si."]
+    },
+    {
+      "id": "cost-hospital-datasus",
+      "label": "Utilização hospitalar SIH/SUS (E74.0)",
+      "perspective": "health-system",
+      "summary": "VAL_TOT nominal de R$533.796,75 nas 997 AIHs E74.0 (jan/2020–mai/2026). Mede hospitalização codificada, não terapia ambulatorial, dieta ou cuidado doméstico.",
+      "amounts": [
+        {
+          "displayValue": "R$533.796,75",
+          "scope": "Soma de VAL_TOT das AIHs com DIAG_PRINC E74.0",
+          "caveat": "AIH ≠ paciente; CID não distingue tipos; não é custo total das GSDs."
+        }
+      ],
+      "claimIds": ["clm-brasil-001", "clm-socio-005"],
+      "limitations": ["Valor médio por AIH e totais anuais não representam custo por paciente."]
+    },
+    {
+      "id": "cost-pompe-qaly",
+      "label": "Avaliações econômicas / QALY (Pompe)",
+      "perspective": "health-system",
+      "summary": "Avaliações econômicas identificadas encontraram razões de custo-efetividade elevadas e sensíveis a preço e dose.",
+      "amounts": [
+        {
+          "displayValue": "≈ €1.043.868 por QALY",
+          "scope": "Terapia na forma infantil em estudo europeu (ECO-001, ECO-002); €286.114 em cenário de dose reduzida",
+          "caveat": "Resultados sensíveis a preço e dose; não transferir mecanicamente ao Brasil."
+        },
+        {
+          "displayValue": "≈ €3,2 milhões por QALY",
+          "scope": "Forma tardia em estudo japonês (ECO-006)",
+          "caveat": "Contexto japonês; sensível a premissas."
+        },
+        {
+          "displayValue": "> £2 milhões por QALY",
+          "scope": "Frente ao cuidado de suporte em reanálise independente do NIHR (ECO-052)",
+          "caveat": "Não equivale a preço de lista nem a gasto brasileiro."
+        }
+      ],
+      "claimIds": ["clm-socio-005"],
+      "limitations": [
+        "Custos internacionais não são diretamente transferíveis ao Brasil.",
+        "Parte da literatura econômica possui patrocínio de fabricantes; exige transparência e triangulação."
+      ]
+    },
+    {
+      "id": "cost-household-diet-care",
+      "label": "Carga doméstica e dieta (qualitativa)",
+      "perspective": "patient",
+      "summary": "Em GSDs hepáticas, o cuidado doméstico e o tratamento dietético podem ser economicamente relevantes mesmo quando internações e medicamentos específicos são limitados; dieta e insumos são capturados apenas parcialmente por bases de pagadores.",
+      "amounts": [],
+      "claimIds": ["clm-socio-001", "clm-socio-005"],
+      "limitations": [
+        "Sem sizing monetário GSD-específico uniforme na SoT para dieta e cuidado informal fora de Pompe."
+      ]
+    },
+    {
+      "id": "cost-indirect",
+      "label": "Custos indiretos e produtividade (qualitativa)",
+      "perspective": "societal",
+      "summary": "Ausência no trabalho, redução de jornada, aposentadoria precoce, perda de produtividade e tempo de cuidado informal são descritos, mas raramente com estimativas comparáveis por tipo.",
+      "amounts": [],
+      "claimIds": ["clm-socio-005"],
+      "limitations": [
+        "Literatura descreve efeitos sem fornecer estimativas comparáveis por tipo na síntese."
+      ]
+    }
+  ],
+  "claimIds": ["clm-socio-005", "clm-brasil-001", "clm-market-001"],
+  "sourceIds": ["src-sot-socioeconomic-2026"],
+  "lastReviewedAt": "2026-08-12"
+}

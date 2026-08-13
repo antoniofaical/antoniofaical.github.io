@@ -1,0 +1,71 @@
+{
+  "title": "Segmentos de mercado e necessidade",
+  "summary": "O mercado farmacêutico específico e publicamente observável concentra-se em Pompe; segmentos não farmacêuticos existem como mercados adjacentes ou emergentes, fragmentados e raramente desagregados para GSD.",
+  "segments": [
+    {
+      "id": "seg-pompe-pharma",
+      "label": "Farmacoterapia específica — Pompe",
+      "beneficiary": ["pacientes com doença de Pompe"],
+      "buyerPayer": ["sistemas de saúde", "pagadores", "centros de infusão"],
+      "maturity": "established",
+      "observability": "monetary",
+      "summary": "Em 2024, receita farmacêutica observada consolidada de aproximadamente €1,403 bilhão (Sanofi + Amicus). Representa receita realizada, não TAM/SAM/SOM.",
+      "claimIds": ["clm-market-001"],
+      "limitations": [
+        "Concentração em Pompe não dimensiona necessidade das demais GSDs.",
+        "Para GSD I, III, IV, V, VI e VII, não foi identificada receita pública desagregada de farmacoterapia específica aprovada na data de corte da SoT."
+      ]
+    },
+    {
+      "id": "seg-diagnosis",
+      "label": "Diagnóstico genético e enzimático / triagem",
+      "beneficiary": ["pacientes sob investigação", "recém-nascidos em programas de triagem"],
+      "buyerPayer": ["sistemas de saúde", "laboratórios", "programas de triagem"],
+      "maturity": "fragmented",
+      "observability": "conceptual-only",
+      "summary": "Diagnóstico genético e enzimático e triagem neonatal existem como mercados adjacentes ou emergentes, mas suas receitas não podem ser atribuídas às glicogenoses com os dados públicos disponíveis na SoT.",
+      "claimIds": ["clm-socio-004"],
+      "limitations": [
+        "Observabilidade monetária GSD-específica ausente nos dados públicos citados."
+      ]
+    },
+    {
+      "id": "seg-nutrition",
+      "label": "Nutrição e insumos dietéticos",
+      "beneficiary": ["pacientes com GSDs hepáticas e famílias"],
+      "buyerPayer": ["famílias", "sistemas de saúde (cobertura desigual)"],
+      "maturity": "fragmented",
+      "observability": "conceptual-only",
+      "summary": "Amidos, alimentos para fins especiais e manejo dietético doméstico são centrais em várias GSDs hepáticas; a atividade econômica é fragmentada e grande parcela do custo pode ser transferida às famílias.",
+      "claimIds": ["clm-socio-004"],
+      "limitations": ["Receitas não desagregadas para GSD nos dados públicos da SoT."]
+    },
+    {
+      "id": "seg-monitoring",
+      "label": "Monitoramento e dispositivos",
+      "beneficiary": ["pacientes em manejo crônico"],
+      "buyerPayer": ["famílias", "pagadores", "serviços de saúde"],
+      "maturity": "emerging",
+      "observability": "conceptual-only",
+      "summary": "Monitorização contínua de glicose, bombas de alimentação e telemonitoramento existem como mercados adjacentes ou emergentes sem receita GSD-atribuível nos dados públicos disponíveis.",
+      "claimIds": ["clm-socio-004"],
+      "limitations": ["Sem sizing monetário GSD-específico na SoT."]
+    },
+    {
+      "id": "seg-rehab-support",
+      "label": "Reabilitação e suporte",
+      "beneficiary": ["pacientes com GSDs musculares e ultrarraras", "cuidadores"],
+      "buyerPayer": ["sistemas de saúde", "famílias"],
+      "maturity": "conceptual",
+      "observability": "absent",
+      "summary": "GSDs musculares e ultrarraras apresentam necessidades de reabilitação, coordenação e geração de evidência sem mercado ou pagador estruturado conforme a síntese estratégica da SoT.",
+      "claimIds": ["clm-socio-004"],
+      "limitations": [
+        "Observabilidade monetária ausente; necessidade clínica não constitui automaticamente mercado validado."
+      ]
+    }
+  ],
+  "claimIds": ["clm-market-001", "clm-socio-004"],
+  "sourceIds": ["src-sot-socioeconomic-2026"],
+  "lastReviewedAt": "2026-08-12"
+}

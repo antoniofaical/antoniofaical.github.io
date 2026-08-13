@@ -1,0 +1,101 @@
+---
+import type { BurdenFinding } from '../../schemas/socioeconomic/domain';
+
+export interface Props {
+  title: string;
+  summary: string;
+  findings: BurdenFinding[];
+}
+
+const ACTOR_LABEL: Record<BurdenFinding['actor'], string> = {
+  patient: 'Paciente',
+  caregiver: 'Cuidador',
+  family: 'Família',
+  'health-system': 'Sistema de saúde',
+};
+
+const STATE_LABEL: Record<BurdenFinding['evidenceState'], string> = {
+  observed: 'Observado',
+  estimated: 'Estimado',
+  proxy: 'Proxy',
+  conceptual: 'Conceitual',
+  limited: 'Evidência limitada',
+};
+
+const { title, summary, findings } = Astro.props;
+const byActor = (Object.keys(ACTOR_LABEL) as BurdenFinding['actor'][]).filter((actor) =>
+  findings.some((f) => f.actor === actor),
+);
+---
+
+<section id="carga" class="section-space" aria-labelledby="carga-title">
+  <div class="container stack stack--lg">
+    <header class="stack stack--tight">
+      <h2 id="carga-title">{title}</h2>
+      <p>{summary}</p>
+    </header>
+    <div class="actor-grid">
+      {
+        byActor.map((actor) => (
+          <article>
+            <h3>{ACTOR_LABEL[actor]}</h3>
+            <ul>
+              {findings
+                .filter((f) => f.actor === actor)
+                .map((finding) => (
+                  <li>
+                    <p>
+                      <strong>{finding.gsdScope}.</strong> {finding.summary}
+                    </p>
+                    <p class="meta">
+                      Estado: {STATE_LABEL[finding.evidenceState]} · {finding.claimIds.join(', ')}
+                    </p>
+                    {finding.limitations[0] && <p class="limit">{finding.limitations[0]}</p>}
+                  </li>
+                ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .actor-grid {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  @media (min-width: 64rem) {
+    .actor-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .actor-grid article {
+    padding: var(--space-5);
+    border: var(--border-thin) solid var(--line-200);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+  }
+
+  .actor-grid ul {
+    list-style: none;
+    margin: var(--space-4) 0 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .meta,
+  .limit {
+    color: var(--ink-600);
+    font-size: var(--annotation);
+    max-width: none;
+  }
+
+  .limit {
+    font-weight: 600;
+  }
+</style>

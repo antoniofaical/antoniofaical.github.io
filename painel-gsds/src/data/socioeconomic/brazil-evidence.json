@@ -1,0 +1,37 @@
+{
+  "title": "Evidência brasileira observável",
+  "summary": "O Brasil combina potencial subdiagnóstico, acesso fragmentado e baixa visibilidade de dados. Não há denominador nacional confiável; proxies hospitalares e casuísticas não equivalem a prevalência.",
+  "points": [
+    {
+      "id": "br-no-national-denominator",
+      "label": "Sem denominador nacional",
+      "detail": "Não foi localizada estimativa de prevalência nacional com denominador populacional para qualquer GSD.",
+      "claimIds": ["clm-brasil-001"],
+      "metricIds": []
+    },
+    {
+      "id": "br-fragmented-access",
+      "label": "Acesso fragmentado",
+      "detail": "Em Pompe, números de diagnosticados/em terapia citados pela SoT (ex.: Conitec 2018; audiência 2024) não constituem censo atual, mas demonstram diferença entre potencial epidemiológico e população conhecida pelo sistema. Estudo multicêntrico brasileiro reuniu 132 pacientes hepáticos em 13 centros de sete estados e do Distrito Federal — maior casuística nacional consolidada no material, sem representar prevalência nem cobertura nacional.",
+      "claimIds": ["clm-brasil-001", "clm-socio-005"],
+      "metricIds": []
+    },
+    {
+      "id": "br-datasus-aih",
+      "label": "DATASUS / SIH — 997 AIHs E74.0",
+      "detail": "Nos microdados do SIH/SUS, 997 AIHs com diagnóstico principal E74.0 entre janeiro de 2020 e maio de 2026, com nove registros de óbito hospitalar e VAL_TOT nominal de R$533.796,75. AIHs não correspondem a pacientes únicos; o CID E74.0 não distingue tipos de GSD. A análise demonstra utilização hospitalar e limitações informacionais, não dimensão epidemiológica ou custo total.",
+      "claimIds": ["clm-brasil-001"],
+      "metricIds": ["met-datasus-001"]
+    },
+    {
+      "id": "br-clinical-capacity-no-coverage",
+      "label": "Capacidade clínica sem inferência de cobertura",
+      "detail": "A existência de centros e casuísticas multicêntricas documenta capacidade clínica parcial; não autoriza inferir cobertura nacional nem prevalência a partir desses recortes.",
+      "claimIds": ["clm-brasil-001", "clm-socio-005"],
+      "metricIds": []
+    }
+  ],
+  "claimIds": ["clm-brasil-001", "clm-socio-005"],
+  "sourceIds": ["src-sot-socioeconomic-2026"],
+  "lastReviewedAt": "2026-08-12"
+}

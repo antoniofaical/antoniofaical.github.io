@@ -1,0 +1,44 @@
+{
+  "title": "Lacunas e prioridades clínicas",
+  "summary": "Principais necessidades do campo conforme a seção Lacunas e prioridades da SoT médica. Sem mapeamento a empresas ou produtos comerciais.",
+  "gaps": [
+    {
+      "id": "gap-early-equitable-dx",
+      "priority": 1,
+      "label": "Diagnóstico mais precoce e equitativo",
+      "detail": "Maior acesso a genética e expansão criteriosa da triagem neonatal.",
+      "claimIds": ["clm-clinical-010"]
+    },
+    {
+      "id": "gap-longitudinal-registries",
+      "priority": 2,
+      "label": "Registros longitudinais padronizados",
+      "detail": "Capazes de estimar epidemiologia, história natural e desfechos em populações diversas.",
+      "claimIds": ["clm-clinical-010"]
+    },
+    {
+      "id": "gap-patient-centered-outcomes",
+      "priority": 3,
+      "label": "Desfechos centrados no paciente",
+      "detail": "Incluindo qualidade de vida, fadiga, carga dietética, impacto escolar/profissional e autonomia.",
+      "claimIds": ["clm-clinical-010"]
+    },
+    {
+      "id": "gap-harmonized-surveillance",
+      "priority": 4,
+      "label": "Protocolos de vigilância harmonizados",
+      "detail": "Especialmente para adenomas e carcinoma hepático, doença renal, fibrose, cardiomiopatia e insuficiência respiratória.",
+      "claimIds": ["clm-clinical-010"]
+    },
+    {
+      "id": "gap-durable-multisystem-therapy",
+      "priority": 5,
+      "label": "Terapias multissistêmicas e duráveis",
+      "detail": "Que ultrapassem as limitações de dieta, transplante e reposição enzimática.",
+      "claimIds": ["clm-clinical-010"]
+    }
+  ],
+  "claimIds": ["clm-clinical-010"],
+  "sourceIds": ["src-sot-medical-exec-2026"],
+  "lastReviewedAt": "2026-08-12"
+}

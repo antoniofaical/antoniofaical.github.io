@@ -188,5 +188,357 @@
     ],
     "approvedForPublication": true,
     "lastReviewedAt": "2026-08-10"
+  },
+  {
+    "id": "clm-clinical-003",
+    "statement": "Defeitos em enzimas ou transportadores da síntese, degradação ou utilização do glicogênio podem resultar em armazenamento excessivo ou estruturalmente anormal, redução das reservas (como na GSD 0) e incapacidade de disponibilizar glicose ou energia adequadamente, com efeitos predominantemente em fígado e músculo esquelético e possível envolvimento de outros órgãos.",
+    "shortStatement": "Falha na via do glicogênio altera reservas e disponibilidade de glicose/energia.",
+    "domain": "clinical",
+    "scope": {
+      "population": "Família das glicogenoses — lógica fisiopatológica",
+      "geography": ["global"]
+    },
+    "evidenceState": "observed",
+    "sourceRefs": [
+      {
+        "sourceId": "src-sot-medical-exec-2026",
+        "locator": "Visão geral / Lógica fisiopatológica",
+        "supports": "direct"
+      }
+    ],
+    "sotRefs": [
+      {
+        "file": "docs/source-of-truth/Glicogenose Resumo Médico Executivo.md",
+        "heading": "Visão geral"
+      },
+      {
+        "file": "docs/source-of-truth/Glicogenose Resumo Médico Executivo.md",
+        "heading": "Lógica fisiopatológica e apresentação clínica"
+      }
+    ],
+    "limitations": [
+      "Padrões clínicos variam; o fenótipo forma um contínuo entre pacientes do mesmo tipo molecular."
+    ],
+    "approvedForPublication": true,
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "clm-clinical-004",
+    "statement": "A classificação essencial da SoT médica descreve condições de GSD 0a, 0b, Ia, Ib, II (Pompe), III (Cori/Forbes), IV (Andersen), V (McArdle), VI (Hers), VII (Tarui), IX, o grupo X–XV e condições relacionadas, e a síndrome de Fanconi–Bickel, cada uma com gene/proteína, predomínio clínico e elementos distintivos explicitados na tabela.",
+    "shortStatement": "Classificação essencial: tipos, genes e elementos distintivos da tabela da SoT.",
+    "domain": "clinical",
+    "scope": {
+      "population": "Condições da tabela de classificação essencial da SoT médica",
+      "geography": ["global"]
+    },
+    "evidenceState": "observed",
+    "sourceRefs": [
+      {
+        "sourceId": "src-sot-medical-exec-2026",
+        "locator": "Classificação essencial",
+        "supports": "direct"
+      }
+    ],
+    "sotRefs": [
+      {
+        "file": "docs/source-of-truth/Glicogenose Resumo Médico Executivo.md",
+        "heading": "Classificação essencial"
+      }
+    ],
+    "limitations": [
+      "A tabela é recorte essencial, não inventário exaustivo de todos os fenótipos.",
+      "Órgãos e herança só devem ser registrados quando explicitados na SoT."
+    ],
+    "approvedForPublication": true,
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "clm-clinical-005",
+    "statement": "A nomenclatura evoluiu: GSD Ic e Id correspondem em sua maioria à GSD Ib; as antigas GSD VIa, VIII, IX e X ligadas à fosforilase-quinase foram reorganizadas em favor de subunidade/gene (ex.: GSD IX α2/PHKA2); “GSD XI” foi usado tanto para deficiência de LDHA quanto para Fanconi–Bickel, e Hannah et al. (2023) reservam GSD XI para LDHA.",
+    "shortStatement": "Nomenclatura: Ic/Id→Ib; reorg. fosforilase-quinase; ambiguidade de GSD XI.",
+    "domain": "clinical",
+    "scope": {
+      "population": "Evolução nomenclatural das GSDs",
+      "geography": ["global"]
+    },
+    "evidenceState": "observed",
+    "sourceRefs": [
+      {
+        "sourceId": "src-sot-medical-exec-2026",
+        "locator": "Evolução da nomenclatura",
+        "supports": "direct"
+      }
+    ],
+    "sotRefs": [
+      {
+        "file": "docs/source-of-truth/Glicogenose Resumo Médico Executivo.md",
+        "heading": "Evolução da nomenclatura"
+      }
+    ],
+    "limitations": [
+      "Não inventar datas de transição além do que a SoT reporta.",
+      "A nomenclatura do grupo X–XV permanece não uniforme."
+    ],
+    "approvedForPublication": true,
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "clm-clinical-006",
+    "statement": "Estimativas ilustrativas da SoT incluem GSD I ≈1/100.000 (≈80% Ia, 20% Ib); Pompe com estimativa histórica ≈1/40.000 e prevalência genética ≈1/23.232; GSD III ≈1/100.000 (≈85% IIIa, 15% IIIb); GSD IV ≈1/600.000–800.000; GSD VI e deficiência hepática de fosforilase-quinase próximas de 1/100.000 com elevada incerteza. Incidência, prevalência clínica e prevalência genética predita não são medidas equivalentes.",
+    "shortStatement": "Epi ilustrativa por tipo; incidência ≠ prevalência clínica ≠ genética.",
+    "domain": "epidemiology",
+    "scope": {
+      "population": "Estimativas epidemiológicas ilustrativas por tipo na SoT médica",
+      "geography": ["global"]
+    },
+    "evidenceState": "estimated",
+    "sourceRefs": [
+      {
+        "sourceId": "src-sot-medical-exec-2026",
+        "locator": "Epidemiologia: o que os números permitem concluir",
+        "supports": "direct"
+      }
+    ],
+    "sotRefs": [
+      {
+        "file": "docs/source-of-truth/Glicogenose Resumo Médico Executivo.md",
+        "heading": "Epidemiologia: o que os números permitem concluir"
+      }
+    ],
+    "limitations": [
+      "Epidemiologia incompleta por raridade, subdiagnóstico e ausência de registros sustentáveis.",
+      "Variantes fundadoras produzem diferenças marcantes entre populações."
+    ],
+    "approvedForPublication": true,
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "clm-clinical-007",
+    "statement": "O diagnóstico moderno combina fenótipo, biomarcadores, imagem e genética molecular; inicia-se pelo padrão predominante. Sinais de alerta, testes bioquímicos, imagem/avaliações funcionais, genética confirmatória, dosagem enzimática (especialmente Pompe), biópsia reservada a casos não resolvidos e triagem neonatal para Pompe compõem a jornada descrita — sem constituir algoritmo clínico.",
+    "shortStatement": "Diagnóstico: fenótipo + bioquímica + imagem + genética; biópsia reservada; NBS Pompe.",
+    "domain": "clinical",
+    "scope": {
+      "population": "Jornada diagnóstica das GSDs conforme SoT médica",
+      "geography": ["global"]
+    },
+    "evidenceState": "observed",
+    "sourceRefs": [
+      {
+        "sourceId": "src-sot-medical-exec-2026",
+        "locator": "Diagnóstico",
+        "supports": "direct"
+      }
+    ],
+    "sotRefs": [
+      {
+        "file": "docs/source-of-truth/Glicogenose Resumo Médico Executivo.md",
+        "heading": "Diagnóstico"
+      }
+    ],
+    "limitations": [
+      "Não é algoritmo diagnóstico nem substitui avaliação especializada.",
+      "Implantação e interpretação da triagem neonatal para Pompe variam entre locais."
+    ],
+    "approvedForPublication": true,
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "clm-clinical-008",
+    "statement": "O manejo é específico por GSD: nas hepáticas, evitar jejum e estabilizar glicemia (com empagliflozina como terapia específica relevante na GSD Ib); na Pompe, a reposição enzimática transforma a história natural mas não é curativa; nas musculares, exercício individualizado e nutrição específica — a sacarose pré-esforço útil em GSD V não deve ser extrapolada à GSD VII (out-of-wind).",
+    "shortStatement": "Manejo por padrão; ERT Pompe não curativa; empagliflozina Ib; sacarose V≠VII.",
+    "domain": "clinical",
+    "scope": {
+      "population": "Trilhas de manejo hepática, Pompe e muscular",
+      "geography": ["global"]
+    },
+    "evidenceState": "observed",
+    "sourceRefs": [
+      {
+        "sourceId": "src-sot-medical-exec-2026",
+        "locator": "Manejo atual",
+        "supports": "direct"
+      }
+    ],
+    "sotRefs": [
+      {
+        "file": "docs/source-of-truth/Glicogenose Resumo Médico Executivo.md",
+        "heading": "Manejo atual"
+      },
+      {
+        "file": "docs/source-of-truth/Glicogenose Resumo Médico Executivo.md",
+        "heading": "GSDs hepáticas"
+      },
+      {
+        "file": "docs/source-of-truth/Glicogenose Resumo Médico Executivo.md",
+        "heading": "Doença de Pompe"
+      },
+      {
+        "file": "docs/source-of-truth/Glicogenose Resumo Médico Executivo.md",
+        "heading": "GSDs musculares"
+      }
+    ],
+    "limitations": [
+      "Não constitui orientação terapêutica individual.",
+      "Uso de empagliflozina exige supervisão especializada (riscos como hipoglicemia e infecções geniturinárias)."
+    ],
+    "approvedForPublication": true,
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "clm-clinical-009",
+    "statement": "Segundo Koeberl et al. (2024), terapia gênica para GSD Ia havia avançado de fase I/II (AAV8/G6PC1) para fase III, e em Pompe estudos iniciais avaliavam estratégias hepáticas de secreção de GAA e abordagens musculares; obstáculos incluem perda de expressão do transgene, imunidade, doses elevadas, anticorpos preexistentes, hepatotoxicidade, risco teórico de integração e dificuldade de corrigir múltiplos órgãos. Esses estágios não são status regulatório atual.",
+    "shortStatement": "Terapia gênica (Koeberl 2024): status reportado, não regulatório atual.",
+    "domain": "clinical",
+    "scope": {
+      "population": "Terapia gênica/edição em GSDs — panorama Koeberl 2024",
+      "geography": ["global"],
+      "period": "status reportado em Koeberl et al. (2024)"
+    },
+    "evidenceState": "observed",
+    "sourceRefs": [
+      {
+        "sourceId": "src-sot-medical-exec-2026",
+        "locator": "Terapias emergentes / Koeberl et al. (2024)",
+        "supports": "direct"
+      }
+    ],
+    "sotRefs": [
+      {
+        "file": "docs/source-of-truth/Glicogenose Resumo Médico Executivo.md",
+        "heading": "Terapias emergentes"
+      }
+    ],
+    "limitations": [
+      "Não interpretar como status regulatório ou comercial contemporâneo.",
+      "Edição genômica permanece dependente de comprovação de durabilidade e segurança em longo prazo."
+    ],
+    "approvedForPublication": true,
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "clm-clinical-010",
+    "statement": "As principais prioridades clínicas da SoT são: (1) diagnóstico mais precoce e equitativo; (2) registros longitudinais padronizados; (3) desfechos centrados no paciente; (4) protocolos de vigilância harmonizados; (5) terapias multissistêmicas e duráveis — sem associação a empresas.",
+    "shortStatement": "Cinco prioridades clínicas da seção Lacunas — sem empresas.",
+    "domain": "clinical",
+    "scope": {
+      "population": "Lacunas e prioridades do campo das GSDs",
+      "geography": ["global"]
+    },
+    "evidenceState": "conceptual",
+    "sourceRefs": [
+      {
+        "sourceId": "src-sot-medical-exec-2026",
+        "locator": "Lacunas e prioridades",
+        "supports": "direct"
+      }
+    ],
+    "sotRefs": [
+      {
+        "file": "docs/source-of-truth/Glicogenose Resumo Médico Executivo.md",
+        "heading": "Lacunas e prioridades"
+      }
+    ],
+    "limitations": ["Prioridades do campo, não roadmap comercial ou inventário de empresas."],
+    "approvedForPublication": true,
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "clm-socio-003",
+    "statement": "A mensuração da carga é desigual: em Pompe, cuidado informal estimado em 17,7 h/semana (até 25,6 h com cadeira de rodas) e impactos em saúde mental/sobrecarga de cuidadores; em McArdle e Pompe tardia há atrasos diagnósticos documentados; para GSD I, III, V e IX faltam estimativas comparáveis de horas de cuidado — ausência de mensuração, não de impacto.",
+    "shortStatement": "Carga desigual: horas Pompe documentadas; lacuna de mensuração em outros tipos.",
+    "domain": "socioeconomic",
+    "scope": {
+      "population": "Pacientes e cuidadores — evidências por subtipo na SoT socioeconômica §1.1",
+      "geography": ["global — estudos específicos citados"]
+    },
+    "evidenceState": "limited",
+    "sourceRefs": [
+      {
+        "sourceId": "src-sot-socioeconomic-2026",
+        "locator": "1.1 A carga socioeconômica é distribuída de forma desigual",
+        "supports": "direct"
+      }
+    ],
+    "sotRefs": [
+      {
+        "file": "docs/source-of-truth/Glicogenose Estudo Socioeconômico Mercadológico.md",
+        "heading": "1.1 A carga socioeconômica é distribuída de forma desigual"
+      }
+    ],
+    "limitations": [
+      "Manter escopo de amostra/subtipo; não agregar horários ou atrasos entre tipos.",
+      "Estimativas quantitativas de cuidado informal estão melhor documentadas em Pompe."
+    ],
+    "approvedForPublication": true,
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "clm-socio-004",
+    "statement": "Além do mercado farmacêutico estabelecido em Pompe, diagnóstico, nutrição, monitoramento e reabilitação/suporte existem como segmentos adjacentes ou emergentes, fragmentados e sem receita publicamente atribuível às GSDs nos dados da SoT; GSDs musculares/ultrarraras carecem de mercado ou pagador estruturado.",
+    "shortStatement": "Segmentos não farmacêuticos: fragmentados/conceituais; só Pompe é monetariamente observável.",
+    "domain": "market",
+    "scope": {
+      "population": "Estrutura mercadológica das GSDs — segmentos farmacêutico e adjacentes",
+      "geography": ["global"]
+    },
+    "evidenceState": "conceptual",
+    "sourceRefs": [
+      {
+        "sourceId": "src-sot-socioeconomic-2026",
+        "locator": "1.2 / segmentos não farmacêuticos; 1.6 síntese estratégica",
+        "supports": "direct"
+      }
+    ],
+    "sotRefs": [
+      {
+        "file": "docs/source-of-truth/Glicogenose Estudo Socioeconômico Mercadológico.md",
+        "heading": "1.2 O mercado farmacêutico realizado está concentrado em Pompe"
+      },
+      {
+        "file": "docs/source-of-truth/Glicogenose Estudo Socioeconômico Mercadológico.md",
+        "heading": "1.6 Síntese estratégica"
+      }
+    ],
+    "limitations": [
+      "Necessidade clínica não constitui automaticamente mercado validado.",
+      "Receitas adjacentes não são atribuíveis às glicogenoses com os dados públicos disponíveis."
+    ],
+    "approvedForPublication": true,
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "clm-socio-005",
+    "statement": "Camadas de custo devem ser lidas separadamente: receita/farmacoterapia observada (Pompe), VAL_TOT hospitalar SIH/SUS (R$533.796,75 nas 997 AIHs E74.0), razões de custo-efetividade/QALY internacionais em Pompe com plena ressalva de transferência, e camadas qualitativas de dieta/cuidado doméstico e custos indiretos. No Brasil, acesso é fragmentado e casuísticas clínicas não autorizam inferir cobertura nacional.",
+    "shortStatement": "Custos em camadas incomparáveis; Brasil sem cobertura nacional inferível.",
+    "domain": "socioeconomic",
+    "scope": {
+      "population": "Perspectivas de custo e evidência brasileira de acesso/utilização",
+      "geography": ["global", "Brasil"]
+    },
+    "evidenceState": "limited",
+    "sourceRefs": [
+      {
+        "sourceId": "src-sot-socioeconomic-2026",
+        "locator": "1.5 Brasil; 5.x custos; DATASUS VAL_TOT",
+        "supports": "direct"
+      }
+    ],
+    "sotRefs": [
+      {
+        "file": "docs/source-of-truth/Glicogenose Estudo Socioeconômico Mercadológico.md",
+        "heading": "1.5 O Brasil combina potencial subdiagnóstico, acesso fragmentado e baixa visibilidade de dados"
+      },
+      {
+        "file": "docs/source-of-truth/Glicogenose Estudo Socioeconômico Mercadológico.md",
+        "heading": "5.9 DATASUS: utilização hospitalar brasileira"
+      }
+    ],
+    "limitations": [
+      "Custos internacionais não são diretamente transferíveis ao Brasil.",
+      "QALY e razões de custo-efetividade são sensíveis a preço/dose e contexto do estudo.",
+      "Comparar VAL_TOT hospitalar com contratação farmacêutica mistura camadas distintas."
+    ],
+    "approvedForPublication": true,
+    "lastReviewedAt": "2026-08-12"
   }
 ]

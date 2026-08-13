@@ -14,8 +14,8 @@ export type MobileNavigationProps = {
 
 const DEFAULT_ITEMS: MobileNavItem[] = [
   { label: 'Visão geral', href: '/', available: true },
-  { label: 'Bases clínicas', href: '/analises/bases-clinicas/', available: false },
-  { label: 'Impacto socioeconômico', href: '/analises/impacto-socioeconomico/', available: false },
+  { label: 'Bases clínicas', href: '/analises/bases-clinicas/', available: true },
+  { label: 'Impacto socioeconômico', href: '/analises/impacto-socioeconomico/', available: true },
   { label: 'Metodologia', href: '/metodologia/', available: false },
 ];
 

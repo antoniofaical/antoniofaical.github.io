@@ -1,0 +1,316 @@
+[
+  {
+    "id": "gsd-0a",
+    "preferredName": "GSD 0a",
+    "alternativeNames": [],
+    "gene": "GYS2",
+    "proteinOrEnzyme": "glicogênio-sintase hepática",
+    "clinicalPattern": ["hepatic"],
+    "organsExplicitlyDescribed": [
+      {
+        "organ": "fígado",
+        "state": "characteristic",
+        "note": "Fígado geralmente não aumentado (SoT)."
+      }
+    ],
+    "distinctiveFeatures": "Hipoglicemia cetótica em jejum, hiperglicemia e lactato elevado após refeições; fígado geralmente não aumentado.",
+    "claimIds": ["clm-clinical-001", "clm-clinical-004"],
+    "sourceIds": ["src-sot-medical-exec-2026"],
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "gsd-0b",
+    "preferredName": "GSD 0b",
+    "alternativeNames": [],
+    "gene": "GYS1",
+    "proteinOrEnzyme": "glicogênio-sintase muscular",
+    "clinicalPattern": ["muscular"],
+    "organsExplicitlyDescribed": [
+      {
+        "organ": "músculo esquelético",
+        "state": "characteristic"
+      },
+      {
+        "organ": "coração",
+        "state": "characteristic",
+        "note": "Cardiomiopatia e risco de morte súbita descritos na SoT."
+      }
+    ],
+    "distinctiveFeatures": "Intolerância ao exercício, cardiomiopatia e risco de morte súbita; extremamente rara.",
+    "claimIds": ["clm-clinical-001", "clm-clinical-004"],
+    "sourceIds": ["src-sot-medical-exec-2026"],
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "gsd-ia",
+    "preferredName": "GSD Ia",
+    "alternativeNames": [],
+    "gene": "G6PC1",
+    "proteinOrEnzyme": "glicose-6-fosfatase",
+    "clinicalPattern": ["hepatic"],
+    "organsExplicitlyDescribed": [
+      {
+        "organ": "fígado",
+        "state": "characteristic",
+        "note": "Hepatomegalia; risco de adenomas e carcinoma hepatocelular."
+      },
+      {
+        "organ": "rins",
+        "state": "characteristic",
+        "note": "Doença renal descrita no predomínio hepatorrenal."
+      }
+    ],
+    "distinctiveFeatures": "Hipoglicemia hipocetótica, acidose láctica, hipertrigliceridemia, hiperuricemia, hepatomegalia e doença renal; risco de adenomas e carcinoma hepatocelular.",
+    "claimIds": ["clm-clinical-001", "clm-clinical-004"],
+    "sourceIds": ["src-sot-medical-exec-2026"],
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "gsd-ib",
+    "preferredName": "GSD Ib",
+    "alternativeNames": [],
+    "gene": "SLC37A4",
+    "proteinOrEnzyme": "transportador de glicose-6-fosfato",
+    "clinicalPattern": ["hepatic", "multisystemic"],
+    "organsExplicitlyDescribed": [
+      {
+        "organ": "fígado",
+        "state": "characteristic",
+        "note": "Fenótipo metabólico semelhante ao da Ia."
+      },
+      {
+        "organ": "rins",
+        "state": "characteristic"
+      },
+      {
+        "organ": "sistema hematológico",
+        "state": "characteristic",
+        "note": "Neutropenia e disfunção de neutrófilos."
+      },
+      {
+        "organ": "intestino",
+        "state": "characteristic",
+        "note": "Doença inflamatória intestinal."
+      }
+    ],
+    "distinctiveFeatures": "Fenótipo metabólico semelhante ao da Ia, acrescido de neutropenia, disfunção de neutrófilos e doença inflamatória intestinal.",
+    "claimIds": ["clm-clinical-001", "clm-clinical-004"],
+    "sourceIds": ["src-sot-medical-exec-2026"],
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "gsd-ii-pompe",
+    "preferredName": "GSD II — Pompe",
+    "alternativeNames": ["doença de Pompe", "Pompe"],
+    "gene": "GAA",
+    "proteinOrEnzyme": "α-glicosidase ácida",
+    "clinicalPattern": ["muscular", "multisystemic"],
+    "organsExplicitlyDescribed": [
+      {
+        "organ": "músculo esquelético",
+        "state": "characteristic"
+      },
+      {
+        "organ": "músculo respiratório",
+        "state": "characteristic"
+      },
+      {
+        "organ": "coração",
+        "state": "characteristic",
+        "note": "Forma infantil com cardiomiopatia; também doença de depósito lisossômico."
+      }
+    ],
+    "distinctiveFeatures": "Forma infantil com cardiomiopatia e hipotonia; forma tardia com fraqueza muscular e respiratória predominante.",
+    "claimIds": ["clm-clinical-001", "clm-clinical-002", "clm-clinical-004"],
+    "sourceIds": ["src-sot-medical-exec-2026"],
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "gsd-iii-cori-forbes",
+    "preferredName": "GSD III — Cori/Forbes",
+    "alternativeNames": ["Cori", "Forbes", "GSD IIIa", "GSD IIIb"],
+    "gene": "AGL",
+    "proteinOrEnzyme": "enzima desramificadora",
+    "clinicalPattern": ["hepatic", "muscular"],
+    "organsExplicitlyDescribed": [
+      {
+        "organ": "fígado",
+        "state": "characteristic",
+        "note": "IIIa afeta fígado e músculo; IIIb, principalmente fígado. Pode haver fibrose e cirrose."
+      },
+      {
+        "organ": "músculo esquelético",
+        "state": "variable",
+        "note": "Miopatia em IIIa; variável conforme subtipo."
+      },
+      {
+        "organ": "coração",
+        "state": "variable",
+        "note": "Cardiomiopatia pode ocorrer."
+      }
+    ],
+    "distinctiveFeatures": "IIIa afeta fígado e músculo; IIIb, principalmente fígado. Pode haver fibrose, cirrose, miopatia e cardiomiopatia.",
+    "claimIds": ["clm-clinical-001", "clm-clinical-004"],
+    "sourceIds": ["src-sot-medical-exec-2026"],
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "gsd-iv-andersen",
+    "preferredName": "GSD IV — Andersen",
+    "alternativeNames": ["Andersen"],
+    "gene": "GBE1",
+    "proteinOrEnzyme": "enzima ramificadora",
+    "clinicalPattern": ["hepatic", "muscular", "multisystemic"],
+    "organsExplicitlyDescribed": [
+      {
+        "organ": "fígado",
+        "state": "variable",
+        "note": "Formas hepáticas progressivas ou não progressivas."
+      },
+      {
+        "organ": "músculo esquelético",
+        "state": "variable",
+        "note": "Formas neuromusculares no contínuo fenotípico."
+      },
+      {
+        "organ": "sistema nervoso",
+        "state": "variable",
+        "note": "Doença neurodegenerativa de início adulto possível."
+      }
+    ],
+    "distinctiveFeatures": "Contínuo fenotípico: formas perinatais, hepáticas progressivas ou não progressivas, neuromusculares e neurodegenerativa adulta.",
+    "claimIds": ["clm-clinical-001", "clm-clinical-002", "clm-clinical-004"],
+    "sourceIds": ["src-sot-medical-exec-2026"],
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "gsd-v-mcardle",
+    "preferredName": "GSD V — McArdle",
+    "alternativeNames": ["McArdle", "doença de McArdle"],
+    "gene": "PYGM",
+    "proteinOrEnzyme": "fosforilase muscular",
+    "clinicalPattern": ["muscular"],
+    "organsExplicitlyDescribed": [
+      {
+        "organ": "músculo esquelético",
+        "state": "characteristic",
+        "note": "Dor e fadiga precoces ao exercício; fenômeno de second wind."
+      }
+    ],
+    "distinctiveFeatures": "Dor e fadiga precoces ao exercício, rabdomiólise e fenômeno de second wind.",
+    "claimIds": ["clm-clinical-001", "clm-clinical-002", "clm-clinical-004"],
+    "sourceIds": ["src-sot-medical-exec-2026"],
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "gsd-vi-hers",
+    "preferredName": "GSD VI — Hers",
+    "alternativeNames": ["Hers"],
+    "gene": "PYGL",
+    "proteinOrEnzyme": "fosforilase hepática",
+    "clinicalPattern": ["hepatic"],
+    "organsExplicitlyDescribed": [
+      {
+        "organ": "fígado",
+        "state": "characteristic",
+        "note": "Hepatomegalia; fibrose pode ocorrer."
+      }
+    ],
+    "distinctiveFeatures": "Hepatomegalia, atraso de crescimento e hipoglicemia cetótica geralmente mais branda; fibrose pode ocorrer.",
+    "claimIds": ["clm-clinical-001", "clm-clinical-004"],
+    "sourceIds": ["src-sot-medical-exec-2026"],
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "gsd-vii-tarui",
+    "preferredName": "GSD VII — Tarui",
+    "alternativeNames": ["Tarui"],
+    "gene": "PFKM",
+    "proteinOrEnzyme": "fosfofrutoquinase muscular",
+    "clinicalPattern": ["muscular"],
+    "organsExplicitlyDescribed": [
+      {
+        "organ": "músculo esquelético",
+        "state": "characteristic"
+      },
+      {
+        "organ": "sistema hematológico",
+        "state": "variable",
+        "note": "Possível anemia hemolítica."
+      }
+    ],
+    "distinctiveFeatures": "Intolerância ao exercício, mioglobinúria e possível anemia hemolítica; não apresenta second wind.",
+    "claimIds": ["clm-clinical-001", "clm-clinical-004"],
+    "sourceIds": ["src-sot-medical-exec-2026"],
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "gsd-ix",
+    "preferredName": "GSD IX",
+    "alternativeNames": [],
+    "gene": "PHKA1, PHKA2, PHKB ou PHKG2",
+    "proteinOrEnzyme": "fosforilase-quinase",
+    "clinicalPattern": ["hepatic", "muscular"],
+    "organsExplicitlyDescribed": [
+      {
+        "organ": "fígado",
+        "state": "variable",
+        "note": "Subtipos hepáticos; GSD IX γ2 tende a ser mais grave e pode evoluir com cirrose."
+      },
+      {
+        "organ": "músculo esquelético",
+        "state": "variable",
+        "note": "Subtipos definidos pela subunidade e pelo tecido."
+      }
+    ],
+    "distinctiveFeatures": "Subtipos definidos pela subunidade e pelo tecido. GSD IX α2 é ligada ao X; GSD IX γ2 tende a ser mais grave e pode evoluir com cirrose.",
+    "nomenclatureNotes": "GSD IX α2 (PHKA2) é ligada ao X. É mais informativo identificar a subunidade e o gene do que depender somente da numeração histórica.",
+    "claimIds": ["clm-clinical-001", "clm-clinical-004", "clm-clinical-005"],
+    "sourceIds": ["src-sot-medical-exec-2026"],
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "gsd-x-xv-related",
+    "preferredName": "GSD X–XV e condições relacionadas",
+    "alternativeNames": ["GSD X–XV", "deficiência de LDHA", "PGM1-CDG", "GSD XV"],
+    "gene": "Diferentes genes da glicólise ou metabolismo do glicogênio",
+    "clinicalPattern": ["muscular", "multisystemic"],
+    "organsExplicitlyDescribed": [
+      {
+        "organ": "músculo esquelético",
+        "state": "variable",
+        "note": "Predominantemente muscular ou multissistêmico conforme a condição."
+      }
+    ],
+    "distinctiveFeatures": "Grupo raro e heterogêneo, incluindo deficiência de LDHA, PGM1-CDG e GSD XV. A nomenclatura não é uniforme.",
+    "nomenclatureNotes": "A nomenclatura não é uniforme neste grupo.",
+    "claimIds": ["clm-clinical-001", "clm-clinical-004", "clm-clinical-005"],
+    "sourceIds": ["src-sot-medical-exec-2026"],
+    "lastReviewedAt": "2026-08-12"
+  },
+  {
+    "id": "gsd-fanconi-bickel",
+    "preferredName": "Síndrome de Fanconi–Bickel",
+    "alternativeNames": ["Fanconi–Bickel"],
+    "gene": "SLC2A2",
+    "proteinOrEnzyme": "GLUT2",
+    "clinicalPattern": ["hepatic", "multisystemic"],
+    "organsExplicitlyDescribed": [
+      {
+        "organ": "fígado",
+        "state": "characteristic",
+        "note": "Armazenamento hepatorrenal."
+      },
+      {
+        "organ": "rins",
+        "state": "characteristic",
+        "note": "Tubulopatia proximal / síndrome de Fanconi renal."
+      }
+    ],
+    "distinctiveFeatures": "Hipoglicemia em jejum, hiperglicemia pós-prandial, galactosemia e síndrome de Fanconi renal.",
+    "nomenclatureNotes": "Hannah et al. (2023) tratam Fanconi–Bickel separadamente de GSD XI (reservado para deficiência de LDHA).",
+    "claimIds": ["clm-clinical-001", "clm-clinical-002", "clm-clinical-004", "clm-clinical-005"],
+    "sourceIds": ["src-sot-medical-exec-2026"],
+    "lastReviewedAt": "2026-08-12"
+  }
+]

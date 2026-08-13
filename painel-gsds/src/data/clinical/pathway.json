@@ -1,0 +1,34 @@
+{
+  "title": "Onde a via do glicogênio falha",
+  "summary": "Defeitos em enzimas ou transportadores da síntese, degradação ou utilização do glicogênio alteram reservas e a capacidade de disponibilizar glicose ou energia.",
+  "steps": [
+    {
+      "id": "path-step-defect",
+      "label": "Defeito na via",
+      "detail": "Defeitos em enzimas ou transportadores envolvidos na síntese, degradação ou utilização do glicogênio.",
+      "claimIds": ["clm-clinical-003"]
+    },
+    {
+      "id": "path-step-glycogen-state",
+      "label": "Alteração das reservas",
+      "detail": "Conforme a etapa afetada, pode haver armazenamento excessivo ou estruturalmente anormal, ou redução das reservas — como na GSD 0.",
+      "claimIds": ["clm-clinical-003"]
+    },
+    {
+      "id": "path-step-energy-glucose",
+      "label": "Disponibilização inadequada",
+      "detail": "Incapacidade de disponibilizar glicose ou energia adequadamente durante jejum ou exercício.",
+      "claimIds": ["clm-clinical-003"]
+    },
+    {
+      "id": "path-step-organ-effects",
+      "label": "Efeitos nos órgãos",
+      "detail": "Fígado e músculo esquelético são os órgãos mais frequentemente afetados; coração, rins, intestino, sistema nervoso e células hematopoiéticas também podem estar envolvidos.",
+      "claimIds": ["clm-clinical-002", "clm-clinical-003"]
+    }
+  ],
+  "caveat": "Os padrões clínicos variam: o fenótipo forma um contínuo e a mesma doença pode apresentar gravidade e órgãos envolvidos muito diferentes; agrupamentos hepático, muscular e multissistêmico são pedagógicos.",
+  "claimIds": ["clm-clinical-002", "clm-clinical-003"],
+  "sourceIds": ["src-sot-medical-exec-2026"],
+  "lastReviewedAt": "2026-08-12"
+}

@@ -1,0 +1,31 @@
+{
+  "title": "Manejo atual",
+  "summary": "O tratamento é específico para cada GSD e exige acompanhamento multidisciplinar. O objetivo transversal é evitar crises metabólicas, preservar órgãos e antecipar complicações crônicas.",
+  "disclaimer": "Conteúdo informativo e não substitutivo de avaliação médica especializada. Não constitui orientação terapêutica individual.",
+  "tracks": [
+    {
+      "id": "mgmt-hepatic",
+      "pattern": "hepatic",
+      "label": "GSDs hepáticas",
+      "summary": "A base do tratamento é evitar jejum e manter glicemia estável com refeições programadas, carboidratos de liberação lenta e, em várias doenças, amido de milho cru. A composição da dieta varia; planos de emergência para doença intercorrente, cirurgia ou incapacidade de alimentação são essenciais. O controle metabólico reduz crises e melhora crescimento, mas não elimina todas as complicações. Na GSD I, é necessária vigilância de rins, pressão arterial, ossos e lesões hepáticas; adenomas podem surgir principalmente após a puberdade. Transplante hepático é reservado para situações como controle refratário, adenomas de alto risco, carcinoma, cirrose ou falência hepática — corrige o defeito metabólico hepático, mas pode não prevenir ou reverter integralmente doença renal e manifestações extra-hepáticas. Na GSD Ib, a empagliflozina (inibidor de SGLT2) reduz o metabólito tóxico 1,5-anidroglucitol-6-fosfato nos neutrófilos; estudos reunidos em 2023–2024 mostram melhora de neutropenia, função neutrofílica, infecções e manifestações intestinais, exigindo supervisão especializada.",
+      "claimIds": ["clm-clinical-008"]
+    },
+    {
+      "id": "mgmt-pompe",
+      "pattern": "multisystemic",
+      "label": "Doença de Pompe",
+      "summary": "A reposição enzimática transformou a história natural da doença de Pompe. A alglucosidase alfa prolonga sobrevida, reduz cardiomiopatia e melhora desfechos motores, sobretudo quando iniciada precocemente; formulações de nova geração, como avalglucosidase alfa, buscam aumentar a captação celular. Apesar dos benefícios, a reposição enzimática não é curativa: requer infusões repetidas e pode apresentar resposta incompleta no músculo esquelético, além de reações infusionais e imunogenicidade. Monitoramento cardíaco, respiratório, motor, nutricional e reabilitação permanecem necessários.",
+      "claimIds": ["clm-clinical-008"]
+    },
+    {
+      "id": "mgmt-muscular",
+      "pattern": "muscular",
+      "label": "GSDs musculares",
+      "summary": "O manejo combina prevenção de rabdomiólise, exercício individualizado e estratégias nutricionais específicas. Inatividade completa é indesejável: treinamento aeróbico gradual e supervisionado pode melhorar capacidade oxidativa e tolerância. Na GSD V, aquecimento prolongado e reconhecimento do second wind ajudam a reduzir crises; ingestão de sacarose antes do exercício pode melhorar desempenho em situações selecionadas. Essa estratégia de sacarose pré-esforço não deve ser extrapolada à GSD VII, na qual carboidrato antes do esforço pode piorar a tolerância — o chamado out-of-wind phenomenon.",
+      "claimIds": ["clm-clinical-008"]
+    }
+  ],
+  "claimIds": ["clm-clinical-008"],
+  "sourceIds": ["src-sot-medical-exec-2026"],
+  "lastReviewedAt": "2026-08-12"
+}
