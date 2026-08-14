@@ -1,23 +1,13 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { withBase } from '../../lib/paths/withBase';
+import { SITE_NAV_ITEMS, type SiteNavItem } from '../../lib/navigation/siteNav';
 
-export type MobileNavItem = {
-  label: string;
-  href: string;
-  available?: boolean;
-};
+export type MobileNavItem = SiteNavItem;
 
 export type MobileNavigationProps = {
   title?: string;
   items?: MobileNavItem[];
 };
-
-const DEFAULT_ITEMS: MobileNavItem[] = [
-  { label: 'Visão geral', href: '/', available: true },
-  { label: 'Bases clínicas', href: '/analises/bases-clinicas/', available: true },
-  { label: 'Impacto socioeconômico', href: '/analises/impacto-socioeconomico/', available: true },
-  { label: 'Metodologia', href: '/metodologia/', available: false },
-];
 
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
@@ -30,7 +20,7 @@ function getFocusable(container: HTMLElement): HTMLElement[] {
 
 export default function MobileNavigation({
   title = 'Menu de navegação',
-  items = DEFAULT_ITEMS,
+  items = SITE_NAV_ITEMS,
 }: MobileNavigationProps) {
   const [open, setOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);

@@ -1,0 +1,35 @@
+{
+  "id": "snap-initial-empty-2026-08-14",
+  "schemaVersion": "1.0.0",
+  "period": "2026-08",
+  "generatedAt": "2026-08-14T12:00:00.000Z",
+  "publishedAt": "2026-08-14T12:00:00.000Z",
+  "protocolVersion": "startup-public-v1",
+  "previousSnapshotId": null,
+  "coverage": {
+    "status": "not-yet-populated",
+    "summary": "A infraestrutura do Observatório de Startups está publicada, mas o snapshot público ainda não foi populado com organizações curadas. A ausência de registros não significa inexistência de soluções no mundo.",
+    "limitations": [
+      "Nenhuma organização foi publicada neste snapshot.",
+      "Contagens zeradas descrevem o artefato vazio, não um censo de startups em glicogenoses.",
+      "A ingestão e a revisão editorial de dados reais ocorrem fora deste site e só entram via novo snapshot imutável."
+    ]
+  },
+  "counts": {
+    "organizations": 0,
+    "productsOrPrograms": 0,
+    "relevanceAssessments": 0,
+    "publicSources": 0,
+    "directGsd": 0,
+    "adjacentGsd": 0,
+    "ecosystemSupport": 0,
+    "relevanceUnconfirmed": 0,
+    "brazil": 0,
+    "global": 0
+  },
+  "organizations": [],
+  "productsOrPrograms": [],
+  "relevanceAssessments": [],
+  "publicSources": [],
+  "checksum": "reserved-not-computed"
+}

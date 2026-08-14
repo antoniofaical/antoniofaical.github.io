@@ -36,6 +36,9 @@ jobs:
       - name: Test
         run: npm run test
 
+      - name: Validate startup published data
+        run: npm run data:validate
+
       - name: Build (project pages base)
         env:
           SITE_URL: https://antoniofaical.github.io

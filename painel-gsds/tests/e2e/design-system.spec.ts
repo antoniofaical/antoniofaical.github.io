@@ -62,9 +62,11 @@ test.describe('design-system', () => {
     const closeButton = dialog.getByRole('button', { name: /fechar menu/i });
     await expect(firstLink).toBeFocused();
 
-    // Available analysis routes are now linked; tab through them to the close control.
+    // Available routes are linked (home, clinical, socioeconomic, observatory); tab to close.
     await page.keyboard.press('Tab');
     await expect(links.nth(1)).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(links.nth(2)).toBeFocused();
     await page.keyboard.press('Tab');
     await expect(lastLink).toBeFocused();
     await page.keyboard.press('Tab');

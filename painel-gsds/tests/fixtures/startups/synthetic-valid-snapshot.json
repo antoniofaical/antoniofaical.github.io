@@ -1,0 +1,192 @@
+{
+  "id": "snap-synth-fixture-valid-2026-08-14",
+  "schemaVersion": "1.0.0",
+  "period": "2026-08",
+  "generatedAt": "2026-08-14T15:00:00.000Z",
+  "publishedAt": "2026-08-14T15:00:00.000Z",
+  "protocolVersion": "startup-public-v1",
+  "previousSnapshotId": null,
+  "coverage": {
+    "status": "limited",
+    "summary": "SYNTHETIC FIXTURE ONLY — not a real mapping of GSD startups. Names, URLs and claims are invented for automated tests.",
+    "limitations": [
+      "All organizations in this file are fictional (SYNTHETIC FIXTURE).",
+      "Do not import this snapshot into published/snapshots/.",
+      "Counts describe the fixture only."
+    ]
+  },
+  "counts": {
+    "organizations": 2,
+    "productsOrPrograms": 2,
+    "relevanceAssessments": 2,
+    "publicSources": 3,
+    "directGsd": 1,
+    "adjacentGsd": 1,
+    "ecosystemSupport": 0,
+    "relevanceUnconfirmed": 0,
+    "brazil": 1,
+    "global": 2
+  },
+  "organizations": [
+    {
+      "id": "org-synth-helix-glyph-labs",
+      "slug": "synth-helix-glyph-labs",
+      "preferredName": "HelixGlyph Labs (SYNTHETIC FIXTURE)",
+      "aliases": ["HGL Synthetic", "HelixGlyph Test Org"],
+      "organizationType": "startup",
+      "website": "https://example.invalid/synth-helix-glyph",
+      "foundedYear": 2021,
+      "headquarters": {
+        "country": "Testland",
+        "region": "Fixture Province",
+        "city": "Mock City"
+      },
+      "operationalStatus": "active",
+      "description": "SYNTHETIC FIXTURE organization inventing a fictional enzyme-replacement concept for a nonexistent GSD subtype used only in tests.",
+      "sector": "biotechnology",
+      "industry": "rare-disease-therapeutics",
+      "businessModels": ["therapeutics"],
+      "firstDiscoveredAt": "2026-01-10",
+      "lastReviewedAt": "2026-08-01",
+      "publicationState": "published"
+    },
+    {
+      "id": "org-synth-amazon-care-bridge",
+      "slug": "synth-amazon-care-bridge",
+      "preferredName": "Amazon Care Bridge (SYNTHETIC FIXTURE)",
+      "aliases": ["ACB Synthetic BR"],
+      "organizationType": "initiative",
+      "website": "https://example.invalid/synth-amazon-care-bridge",
+      "foundedYear": 2019,
+      "headquarters": {
+        "country": "Brazil",
+        "region": "SP",
+        "city": "Fixtureopolis"
+      },
+      "operationalStatus": "active",
+      "description": "SYNTHETIC FIXTURE care-coordination platform that allegedly assists rare-disease navigation in Brazil; invented for filter and geography tests.",
+      "sector": "digital-health",
+      "industry": "care-coordination",
+      "businessModels": ["b2b-saas", "public-private"],
+      "firstDiscoveredAt": "2026-02-15",
+      "lastReviewedAt": "2026-07-20",
+      "publicationState": "published"
+    }
+  ],
+  "productsOrPrograms": [
+    {
+      "id": "prd-synth-glyphase",
+      "organizationId": "org-synth-helix-glyph-labs",
+      "name": "Glyphase-X (SYNTHETIC)",
+      "modality": "enzyme-replacement",
+      "indicationOrNeed": ["fictional-hepatic-gsd"],
+      "gsdRefs": ["gsd-synth-99"],
+      "stage": "preclinical",
+      "stageObservedAt": "2026-06-01",
+      "territories": ["global"],
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-synth-hgl-site",
+          "locator": "pipeline#glyphase-x",
+          "role": "supports"
+        }
+      ]
+    },
+    {
+      "id": "prd-synth-care-bridge-nav",
+      "organizationId": "org-synth-amazon-care-bridge",
+      "name": "Care Bridge Navigator (SYNTHETIC)",
+      "modality": "digital-navigation",
+      "indicationOrNeed": ["care-coordination", "diagnostic-odyssey"],
+      "gsdRefs": ["gsd-synth-02", "gsd-synth-05"],
+      "stage": "commercial",
+      "stageObservedAt": "2026-05-12",
+      "territories": ["brazil"],
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-synth-acb-report",
+          "role": "supports"
+        }
+      ]
+    }
+  ],
+  "relevanceAssessments": [
+    {
+      "id": "rel-synth-hgl-direct",
+      "organizationId": "org-synth-helix-glyph-labs",
+      "relationship": "direct-gsd",
+      "geographicScopes": ["global"],
+      "modalities": ["enzyme-replacement"],
+      "gsdRefs": ["gsd-synth-99"],
+      "clinicalNeedRefs": ["pag-synth-hepatic-enzyme"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "SYNTHETIC rationale: the fixture product claims to replace a fictional enzyme deficiency specific to gsd-synth-99, addressing a stated hepatic enzyme gap.",
+      "confidence": "high",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-synth-hgl-site",
+          "role": "supports"
+        },
+        {
+          "sourceId": "sps-synth-registry",
+          "role": "contextual"
+        }
+      ],
+      "assessedAt": "2026-08-01",
+      "protocolVersion": "startup-public-v1"
+    },
+    {
+      "id": "rel-synth-acb-adjacent",
+      "organizationId": "org-synth-amazon-care-bridge",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil", "global"],
+      "modalities": ["care-navigation"],
+      "gsdRefs": ["gsd-synth-02", "gsd-synth-05"],
+      "clinicalNeedRefs": ["pag-synth-diagnostic-odyssey"],
+      "socioeconomicNeedRefs": ["pag-synth-access-equity"],
+      "rationale": "SYNTHETIC rationale: the fixture navigation service may reduce care fragmentation for people with rare metabolic diseases in Brazil without claiming a disease-modifying therapy.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-synth-acb-report",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-07-20",
+      "protocolVersion": "startup-public-v1"
+    }
+  ],
+  "publicSources": [
+    {
+      "id": "sps-synth-hgl-site",
+      "title": "HelixGlyph Labs synthetic pipeline page",
+      "publisher": "HelixGlyph Labs (SYNTHETIC FIXTURE)",
+      "url": "https://example.invalid/synth-helix-glyph/pipeline",
+      "sourceType": "company-site",
+      "publishedAt": "2026-06-01",
+      "accessedAt": "2026-08-01",
+      "availability": "public",
+      "notes": "Synthetic fixture source — not a real company page."
+    },
+    {
+      "id": "sps-synth-registry",
+      "title": "Synthetic rare-disease registry entry",
+      "publisher": "Fixture Registry Org",
+      "url": "https://example.invalid/synth-registry/hgl",
+      "sourceType": "registry",
+      "accessedAt": "2026-08-01",
+      "availability": "public"
+    },
+    {
+      "id": "sps-synth-acb-report",
+      "title": "Amazon Care Bridge synthetic impact brief",
+      "publisher": "Amazon Care Bridge (SYNTHETIC FIXTURE)",
+      "url": "https://example.invalid/synth-amazon-care-bridge/brief",
+      "sourceType": "project-report",
+      "publishedAt": "2026-05-01",
+      "accessedAt": "2026-07-20",
+      "availability": "public"
+    }
+  ],
+  "checksum": "reserved-not-computed"
+}

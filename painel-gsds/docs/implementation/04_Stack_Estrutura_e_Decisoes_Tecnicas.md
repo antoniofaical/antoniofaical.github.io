@@ -93,14 +93,12 @@ Adaptar incrementalmente; não mover arquivos existentes apenas por estética.
 ### 5.1 MVP estático
 
 ```text
-startups-current.json
-snapshots/2026-08.json
-snapshot-manifest.json
-source-catalog.json
-taxonomy.json
+src/data/startups/published/current.json          # seletor apenas
+src/data/startups/published/snapshots/*.json      # corpos imutáveis
+tests/fixtures/startups/*.json                    # sintéticos de teste
 ```
 
-O estado atual é derivado do snapshot mais recente; não duplicar edição manual.
+O nome legado `startups-current.json` / `snapshot-manifest.json` da especificação v0.3 foi consolidado no par `current.json` + `snapshots/` (ADR-0005). O estado público deriva exclusivamente do snapshot selecionado; não editar snapshots publicados in-place. O loader descobre automaticamente, em build time, todos os JSON em `published/snapshots/` e os indexa pelo `id` interno — publicar um snapshot novo não exige editar o código do registry.
 
 ### 5.2 Evolução futura
 

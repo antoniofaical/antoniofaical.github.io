@@ -1,0 +1,56 @@
+{
+  "id": "snap-synth-fixture-invalid-orphan-2026-08-14",
+  "schemaVersion": "1.0.0",
+  "period": "2026-08",
+  "generatedAt": "2026-08-14T15:00:00.000Z",
+  "publishedAt": "2026-08-14T15:00:00.000Z",
+  "protocolVersion": "startup-public-v1",
+  "coverage": {
+    "status": "limited",
+    "summary": "SYNTHETIC INVALID FIXTURE — orphan organization reference.",
+    "limitations": ["Intentionally invalid for negative schema tests."]
+  },
+  "counts": {
+    "organizations": 0,
+    "productsOrPrograms": 0,
+    "relevanceAssessments": 1,
+    "publicSources": 1,
+    "directGsd": 1,
+    "adjacentGsd": 0,
+    "ecosystemSupport": 0,
+    "relevanceUnconfirmed": 0,
+    "brazil": 0,
+    "global": 1
+  },
+  "organizations": [],
+  "productsOrPrograms": [],
+  "relevanceAssessments": [
+    {
+      "id": "rel-synth-orphan",
+      "organizationId": "org-synth-missing",
+      "relationship": "direct-gsd",
+      "geographicScopes": ["global"],
+      "modalities": ["test"],
+      "gsdRefs": ["gsd-synth-00"],
+      "clinicalNeedRefs": [],
+      "socioeconomicNeedRefs": [],
+      "rationale": "SYNTHETIC invalid fixture rationale long enough for schema min length.",
+      "confidence": "low",
+      "evidenceRefs": [{ "sourceId": "sps-synth-orphan-src", "role": "supports" }],
+      "assessedAt": "2026-08-01",
+      "protocolVersion": "startup-public-v1"
+    }
+  ],
+  "publicSources": [
+    {
+      "id": "sps-synth-orphan-src",
+      "title": "Orphan fixture source",
+      "publisher": "Synthetic",
+      "url": "https://example.invalid/synth-orphan",
+      "sourceType": "other",
+      "accessedAt": "2026-08-01",
+      "availability": "public"
+    }
+  ],
+  "checksum": "reserved-not-computed"
+}
