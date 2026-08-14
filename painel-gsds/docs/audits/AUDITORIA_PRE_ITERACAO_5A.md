@@ -10,19 +10,19 @@
 
 ## 1. Estado Git autoritativo (inicial)
 
-| Campo | Valor |
-|---|---|
-| Raiz do repositório | `/workspace` |
-| App | `/workspace/painel-gsds` |
-| Branch | `cursor/iteracoes-3-4-analises-13a9` |
-| HEAD | `0476d8853a18132e25a3c267ee7203fbc88edae0` |
-| Mensagem | `Implement clinical and socioeconomic analysis pages with v0.3 docs.` |
-| Upstream | `origin/cursor/iteracoes-3-4-analises-13a9` (sincronizado) |
-| Remote | `origin` → `github.com/antoniofaical/antoniofaical.github.io` |
-| `git status --short` inicial | *(vazio — working tree limpa)* |
-| Staged / unstaged / untracked | nenhum |
-| Iterações 3–4 presentes | sim (`623968b`, `0476d88`; PR #3 **merged** em `origin/main` = `f5daa92`) |
-| Último commit 3–4 | `0476d88` |
+| Campo                         | Valor                                                                     |
+| ----------------------------- | ------------------------------------------------------------------------- |
+| Raiz do repositório           | `/workspace`                                                              |
+| App                           | `/workspace/painel-gsds`                                                  |
+| Branch                        | `cursor/iteracoes-3-4-analises-13a9`                                      |
+| HEAD                          | `0476d8853a18132e25a3c267ee7203fbc88edae0`                                |
+| Mensagem                      | `Implement clinical and socioeconomic analysis pages with v0.3 docs.`     |
+| Upstream                      | `origin/cursor/iteracoes-3-4-analises-13a9` (sincronizado)                |
+| Remote                        | `origin` → `github.com/antoniofaical/antoniofaical.github.io`             |
+| `git status --short` inicial  | _(vazio — working tree limpa)_                                            |
+| Staged / unstaged / untracked | nenhum                                                                    |
+| Iterações 3–4 presentes       | sim (`623968b`, `0476d88`; PR #3 **merged** em `origin/main` = `f5daa92`) |
+| Último commit 3–4             | `0476d88`                                                                 |
 
 **Observação:** o ponteiro local de `main` (`48dc6c1`) está atrasado em relação a `origin/main` (`f5daa92`). Nenhum sync/merge/rebase foi executado nesta auditoria. O conteúdo das Iterações 3–4 está na branch atual e já foi incorporado a `origin/main` via PR #3.
 
@@ -65,12 +65,12 @@ Artefatos locais pré-existentes (ignorados pelo Git): `painel-gsds/dist/`, `pai
 
 ## 3. Integridade das SoTs
 
-| Arquivo | SHA-256 calculado | INVENTORY.md | `git diff` vs HEAD |
-|---|---|---|---|
-| `Glicogenose Resumo Médico Executivo.md` | `37e3fbea…866389` | coincide (case-insensitive) | limpo |
-| `Glicogenose Estudo Socioeconômico Mercadológico.md` | `489fd652…10c3d2` | coincide | limpo |
-| `Design_System_Painel_Glicogenoses.md` | `634a782d…2a7bd6` | coincide | limpo |
-| `INVENTORY.md` | `266a341b…23ae5c` | n/a (metadado) | limpo |
+| Arquivo                                              | SHA-256 calculado | INVENTORY.md                | `git diff` vs HEAD |
+| ---------------------------------------------------- | ----------------- | --------------------------- | ------------------ |
+| `Glicogenose Resumo Médico Executivo.md`             | `37e3fbea…866389` | coincide (case-insensitive) | limpo              |
+| `Glicogenose Estudo Socioeconômico Mercadológico.md` | `489fd652…10c3d2` | coincide                    | limpo              |
+| `Design_System_Painel_Glicogenoses.md`               | `634a782d…2a7bd6` | coincide                    | limpo              |
+| `INVENTORY.md`                                       | `266a341b…23ae5c` | n/a (metadado)              | limpo              |
 
 **Resultado:** SoTs científicas **preservadas byte a byte** relativamente a HEAD. Nenhuma divergência bloqueadora.
 
@@ -113,17 +113,17 @@ Artefatos locais pré-existentes (ignorados pelo Git): `painel-gsds/dist/`, `pai
 
 Diretório: `/workspace/painel-gsds`. Preferido `npm ci` (exit 0, ~5s; `package-lock.json` inalterado).
 
-| Comando | Exit | Duração approx. | Síntese |
-|---|---:|---:|---|
-| `npm ci` | 0 | 5s | 657 pacotes; 0 vulnerabilities |
-| `npm run format:check` | 0 | 2s | Prettier OK |
-| `npm run lint` | 0 | 3s | ESLint OK |
-| `npm run typecheck` | 0 | 6s | 0 errors; 1 hint: `z.string().url()` deprecated em `src/schemas/source.ts:22` |
-| `npm test` | 0 | 1s | 5 files / **16** tests passed |
-| `BASE_PATH=/ npm run build` | 0 | 1s | 4 páginas |
-| `BASE_PATH=/painel-gsds/ npm run build` | 0 | 1s | 4 páginas; hrefs `/painel-gsds/...` |
-| `npm run test:e2e` | 0 | 9s | **24/24** passed (Chromium) |
-| Smoke `site-output` (hub + dist Pages) | 0 | <1s | hub + rotas clínicas/socio + fontes |
+| Comando                                 | Exit | Duração approx. | Síntese                                                                       |
+| --------------------------------------- | ---: | --------------: | ----------------------------------------------------------------------------- |
+| `npm ci`                                |    0 |              5s | 657 pacotes; 0 vulnerabilities                                                |
+| `npm run format:check`                  |    0 |              2s | Prettier OK                                                                   |
+| `npm run lint`                          |    0 |              3s | ESLint OK                                                                     |
+| `npm run typecheck`                     |    0 |              6s | 0 errors; 1 hint: `z.string().url()` deprecated em `src/schemas/source.ts:22` |
+| `npm test`                              |    0 |              1s | 5 files / **16** tests passed                                                 |
+| `BASE_PATH=/ npm run build`             |    0 |              1s | 4 páginas                                                                     |
+| `BASE_PATH=/painel-gsds/ npm run build` |    0 |              1s | 4 páginas; hrefs `/painel-gsds/...`                                           |
+| `npm run test:e2e`                      |    0 |              9s | **24/24** passed (Chromium)                                                   |
+| Smoke `site-output` (hub + dist Pages)  |    0 |             <1s | hub + rotas clínicas/socio + fontes                                           |
 
 Nenhuma falha de projeto. Limitação ambiental: nenhuma (browser Playwright disponível).
 
@@ -135,12 +135,12 @@ Nenhuma falha de projeto. Limitação ambiental: nenhuma (browser Playwright dis
 
 Base: execução e2e + inspeção do HTML buildado (sem alterar snapshots oficiais).
 
-| Rota | Overflow 320 | Axe | Viewports 375/768/1440 | Notas |
-|---|---|---|---|---|
-| Home | OK | 0 violações | screenshots e2e | menu mobile Escape/foco OK |
-| Design System | OK | coberto | screenshots e2e | fontes locais WOFF2; reduced motion |
-| Bases clínicas | OK | 0 violações | screenshots + explorer filtrado | headings/landmarks presentes |
-| Impacto socioeconômico | OK | 0 violações | screenshots e2e | callout DATASUS visível |
+| Rota                   | Overflow 320 | Axe         | Viewports 375/768/1440          | Notas                               |
+| ---------------------- | ------------ | ----------- | ------------------------------- | ----------------------------------- |
+| Home                   | OK           | 0 violações | screenshots e2e                 | menu mobile Escape/foco OK          |
+| Design System          | OK           | coberto     | screenshots e2e                 | fontes locais WOFF2; reduced motion |
+| Bases clínicas         | OK           | 0 violações | screenshots + explorer filtrado | headings/landmarks presentes        |
+| Impacto socioeconômico | OK           | 0 violações | screenshots e2e                 | callout DATASUS visível             |
 
 Screenshots de auditoria/e2e em `tests/visual/*.png` permaneceram **gitignored** (17 PNGs locais; não versionados).
 
@@ -148,16 +148,16 @@ Screenshots de auditoria/e2e em `tests/visual/*.png` permaneceram **gitignored**
 
 ## 7. Consistência documentação × implementação
 
-| Tema | Situação |
-|---|---|
-| Pacote v0.3 vigente vs archive v0.2 | coerente |
-| ADR-0003 status `proposed` / startups futuros | coerente com código (sem implementação) |
-| AGENTS.md proíbe startups sem autorização | coerente |
-| AI documenta rota **`/inovacao/startups/`** | **não implementada** (esperado); nome pode divergir de uma 5A em `/startups/` |
-| Modelo de dados documenta taxonomias Startup | só em docs; schemas de código ainda ausentes (escopo 5A) |
+| Tema                                                           | Situação                                                                                                                                         |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Pacote v0.3 vigente vs archive v0.2                            | coerente                                                                                                                                         |
+| ADR-0003 status `proposed` / startups futuros                  | coerente com código (sem implementação)                                                                                                          |
+| AGENTS.md proíbe startups sem autorização                      | coerente                                                                                                                                         |
+| AI documenta rota **`/inovacao/startups/`**                    | **não implementada** (esperado); nome pode divergir de uma 5A em `/startups/`                                                                    |
+| Modelo de dados documenta taxonomias Startup                   | só em docs; schemas de código ainda ausentes (escopo 5A)                                                                                         |
 | `MANIFEST.sha256` vs arquivos atuais em `docs/implementation/` | **múltiplos MISMATCH** (Prettier pós-integração) + ADRs listados em `./decisions/` mas vivem em `docs/decisions/` (já notado em `09_Status_Quo`) |
-| Home “Em desenvolvimento” para inovação | coerente |
-| Funcionalidade de startups descrita como concluída | **não encontrada** |
+| Home “Em desenvolvimento” para inovação                        | coerente                                                                                                                                         |
+| Funcionalidade de startups descrita como concluída             | **não encontrada**                                                                                                                               |
 
 ---
 
@@ -188,35 +188,35 @@ Screenshots de auditoria/e2e em `tests/visual/*.png` permaneceram **gitignored**
 
 ### BLOCKER
 
-*Nenhum.*
+_Nenhum._
 
 ### FIX_IN_5A
 
-| ID | Achado | Evidência |
-|---|---|---|
-| F1 | Unificar fonte de itens de navegação ao habilitar rota do observatório | `GlobalHeader.astro` L19–28; `MobileNavigation.tsx` L15–19 |
-| F2 | Decidir e documentar path canônico (`/inovacao/startups/` vs `/startups/`) e alinhar AI/ADR | `docs/implementation/02_Arquitetura_da_Informacao.md` L41–44; ausência de `src/pages/**/startups` |
-| F3 | Atualizar portal/status Home `#inovacao` e nav `available` quando a fundação for publicada | `src/pages/index.astro` seção `#inovacao`; nav `Metodologia` ainda `available: false` |
-| F4 | Atualizar e2e de foco do menu mobile ao adicionar novo link disponível | `tests/e2e/design-system.spec.ts` L59–71 (Tab até close assume 3 links) |
-| F5 | Introduzir schemas/loader/fixtures do domínio startups + comando de validação npm | ausência em `src/schemas`, `src/data`, `package.json` scripts; modelo em `03_Modelo_de_Dados…` § startups |
+| ID  | Achado                                                                                      | Evidência                                                                                                 |
+| --- | ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| F1  | Unificar fonte de itens de navegação ao habilitar rota do observatório                      | `GlobalHeader.astro` L19–28; `MobileNavigation.tsx` L15–19                                                |
+| F2  | Decidir e documentar path canônico (`/inovacao/startups/` vs `/startups/`) e alinhar AI/ADR | `docs/implementation/02_Arquitetura_da_Informacao.md` L41–44; ausência de `src/pages/**/startups`         |
+| F3  | Atualizar portal/status Home `#inovacao` e nav `available` quando a fundação for publicada  | `src/pages/index.astro` seção `#inovacao`; nav `Metodologia` ainda `available: false`                     |
+| F4  | Atualizar e2e de foco do menu mobile ao adicionar novo link disponível                      | `tests/e2e/design-system.spec.ts` L59–71 (Tab até close assume 3 links)                                   |
+| F5  | Introduzir schemas/loader/fixtures do domínio startups + comando de validação npm           | ausência em `src/schemas`, `src/data`, `package.json` scripts; modelo em `03_Modelo_de_Dados…` § startups |
 
 ### BACKLOG
 
-| ID | Achado | Evidência |
-|---|---|---|
-| B1 | Regenerar/`MANIFEST.sha256` após formatação; reconciliar paths de ADRs no manifesto | check: 10 MISMATCH + 3 MISSING `./decisions/*`; nota em `09_Status_Quo_e_Divergencias.md` |
-| B2 | Substituir `z.string().url()` deprecated (hint TypeScript) | `src/schemas/source.ts:22`; `astro check` hint |
-| B3 | Nome genérico `schemas/socioeconomic/domain.ts` — considerar nomes mais específicos em refactors futuros | arquivo presente; sem impacto na 5A |
-| B4 | Atualizar ponteiro local `main` para `origin/main` em ambientes de desenvolvimento | local `main=48dc6c1` vs `origin/main=f5daa92` |
+| ID  | Achado                                                                                                   | Evidência                                                                                 |
+| --- | -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| B1  | Regenerar/`MANIFEST.sha256` após formatação; reconciliar paths de ADRs no manifesto                      | check: 10 MISMATCH + 3 MISSING `./decisions/*`; nota em `09_Status_Quo_e_Divergencias.md` |
+| B2  | Substituir `z.string().url()` deprecated (hint TypeScript)                                               | `src/schemas/source.ts:22`; `astro check` hint                                            |
+| B3  | Nome genérico `schemas/socioeconomic/domain.ts` — considerar nomes mais específicos em refactors futuros | arquivo presente; sem impacto na 5A                                                       |
+| B4  | Atualizar ponteiro local `main` para `origin/main` em ambientes de desenvolvimento                       | local `main=48dc6c1` vs `origin/main=f5daa92`                                             |
 
 ### NO_ACTION
 
-| ID | Achado | Motivo |
-|---|---|---|
-| N1 | ADR-0003 proposto sem código de startups | intencional; contrato futuro |
-| N2 | WOFF2 rastreados em `public/fonts/` | requisito de fontes locais |
-| N3 | `dist`/`playwright-report`/`test-results`/PNG locais | gitignored; não mutam Git |
-| N4 | Playwright rebuild com `BASE_PATH=/` | configuração documentada; workflows fazem build Pages separado |
+| ID  | Achado                                               | Motivo                                                         |
+| --- | ---------------------------------------------------- | -------------------------------------------------------------- |
+| N1  | ADR-0003 proposto sem código de startups             | intencional; contrato futuro                                   |
+| N2  | WOFF2 rastreados em `public/fonts/`                  | requisito de fontes locais                                     |
+| N3  | `dist`/`playwright-report`/`test-results`/PNG locais | gitignored; não mutam Git                                      |
+| N4  | Playwright rebuild com `BASE_PATH=/`                 | configuração documentada; workflows fazem build Pages separado |
 
 ---
 
@@ -238,7 +238,7 @@ O futuro bot mensal/sob demanda **não precisa existir na 5A**. A arquitetura at
 4. Namespaces explícitos para não colidir `Source`/`Claim` editoriais com entidades do pipeline (F7).
 5. Atualizar e2e de menu mobile e smoke de rota nova (F4).
 6. Declarar no ADR/contrato que `ResearchRun` / `ChangeSet` / staging ficam fora do site (F9; backlog de pipeline).
-7. *(Backlog, não pré-requisito)* reconciliar `MANIFEST.sha256` / hint Zod (B1, B2).
+7. _(Backlog, não pré-requisito)_ reconciliar `MANIFEST.sha256` / hint Zod (B1, B2).
 
 Nenhuma ação corretiva é exigida **antes** de abrir a 5A além do alinhamento de rota e da fronteira snapshot/staging (podem ser as primeiras decisões da própria 5A).
 
@@ -263,17 +263,17 @@ Nenhuma ação corretiva é exigida **antes** de abrir a 5A além do alinhamento
 
 ### 13.1 Modelo futuro avaliado (contrato do adendo)
 
-| Entidade futura | Papel |
-|---|---|
-| `StartupCandidate` | candidato descoberto, ainda não publicado |
-| `Startup` | identidade canônica da organização |
-| `Source` | fonte coletada (pipeline) |
-| `Claim` | alegação extraída e temporal (pipeline) |
-| `Evidence` | relação claim ↔ fonte |
-| `ReviewDecision` | decisão humana/editorial |
-| `PublishedSnapshot` | versão aprovada que alimenta o dashboard |
-| `ResearchRun` | execução mensal ou manual |
-| `ChangeSet` | diferenças propostas vs. snapshot publicado anterior |
+| Entidade futura     | Papel                                                |
+| ------------------- | ---------------------------------------------------- |
+| `StartupCandidate`  | candidato descoberto, ainda não publicado            |
+| `Startup`           | identidade canônica da organização                   |
+| `Source`            | fonte coletada (pipeline)                            |
+| `Claim`             | alegação extraída e temporal (pipeline)              |
+| `Evidence`          | relação claim ↔ fonte                                |
+| `ReviewDecision`    | decisão humana/editorial                             |
+| `PublishedSnapshot` | versão aprovada que alimenta o dashboard             |
+| `ResearchRun`       | execução mensal ou manual                            |
+| `ChangeSet`         | diferenças propostas vs. snapshot publicado anterior |
 
 Mapeamento documental já existente (v0.3, **não implementado em código**): `DiscoveryCandidate` ≈ candidato; `Organization` ≈ Startup canônica; `SourceRun` ≈ fatia de execução por fonte; `Review` ≈ ReviewDecision; `SnapshotManifest` ≈ manifesto de PublishedSnapshot; pipeline `discover→…→publish` em `04_Stack…` §6.  
 **`ResearchRun` e `ChangeSet` nomeados neste adendo ainda não aparecem como tipos explícitos no pacote** (há “report/changelog” e `previousSnapshotId`, mas não o objeto `ChangeSet`).
@@ -291,25 +291,25 @@ Não há BLOCKER estrutural ao bot. O risco principal é a **5A misturar staging
 
 ### 13.3 Componentes / padrões existentes reutilizáveis
 
-| Recurso atual | Reuso no observatório + bot |
-|---|---|
-| Zod + loaders + testes de IDs/refs/`approvedForPublication` | Validar projeção pública do snapshot |
-| `withBase` + dual `BASE_PATH` + CI/deploy Pages | Manter site 100% estático após publish |
-| Research chrome (`ResearchHeader`, `EvidenceFooter`, badges, callouts) | Disclosure de cobertura, limitações, datas |
-| `SectionPortal` / nav `available` | Expor rota quando houver snapshot mínimo |
-| `GSDExplorer` (island React) | Padrão para futuro explorer sobre dataset público enxuto |
-| Modelo v0.3 §§6–10 + ADR-0003 | Contrato conceitual Organization/Candidate/Review/Snapshot |
-| Gate `approvedForPublication` em claims editoriais | Analogia a “só entra no PublishedSnapshot após ReviewDecision” |
+| Recurso atual                                                          | Reuso no observatório + bot                                    |
+| ---------------------------------------------------------------------- | -------------------------------------------------------------- |
+| Zod + loaders + testes de IDs/refs/`approvedForPublication`            | Validar projeção pública do snapshot                           |
+| `withBase` + dual `BASE_PATH` + CI/deploy Pages                        | Manter site 100% estático após publish                         |
+| Research chrome (`ResearchHeader`, `EvidenceFooter`, badges, callouts) | Disclosure de cobertura, limitações, datas                     |
+| `SectionPortal` / nav `available`                                      | Expor rota quando houver snapshot mínimo                       |
+| `GSDExplorer` (island React)                                           | Padrão para futuro explorer sobre dataset público enxuto       |
+| Modelo v0.3 §§6–10 + ADR-0003                                          | Contrato conceitual Organization/Candidate/Review/Snapshot     |
+| Gate `approvedForPublication` em claims editoriais                     | Analogia a “só entra no PublishedSnapshot após ReviewDecision” |
 
 ### 13.4 Acoplamentos ou conflitos
 
-| Conflito | Detalhe | Classificação |
-|---|---|---|
-| Homônimos `Source` / `Claim` | Já existem em `src/schemas/{source,claim}.ts` para SoTs; o bot usa os mesmos nomes para coleta/extração. Colisão de tipos/IDs se misturados. | FIX_IN_5A (F7) |
-| `claimDomainSchema` | Domínios atuais sem inovação/startup; expandir sem poluir claims SoT. | FIX_IN_5A (F7) |
-| Docs: `Organization`/`DiscoveryCandidate` vs adendo: `Startup`/`StartupCandidate` | Sinônimos; 5A deve fixar vocabulário canônico. | FIX_IN_5A (F2/F7) |
-| `ResearchRun` / `ChangeSet` | Pipeline documenta estágios e `previousSnapshotId`, mas não tipa Run agregado nem ChangeSet. | BACKLOG (pipeline) |
-| Nav/Home duplicadas | Já F1/F3 — afetam exposição pós-publish. | FIX_IN_5A |
+| Conflito                                                                          | Detalhe                                                                                                                                      | Classificação      |
+| --------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| Homônimos `Source` / `Claim`                                                      | Já existem em `src/schemas/{source,claim}.ts` para SoTs; o bot usa os mesmos nomes para coleta/extração. Colisão de tipos/IDs se misturados. | FIX_IN_5A (F7)     |
+| `claimDomainSchema`                                                               | Domínios atuais sem inovação/startup; expandir sem poluir claims SoT.                                                                        | FIX_IN_5A (F7)     |
+| Docs: `Organization`/`DiscoveryCandidate` vs adendo: `Startup`/`StartupCandidate` | Sinônimos; 5A deve fixar vocabulário canônico.                                                                                               | FIX_IN_5A (F2/F7)  |
+| `ResearchRun` / `ChangeSet`                                                       | Pipeline documenta estágios e `previousSnapshotId`, mas não tipa Run agregado nem ChangeSet.                                                 | BACKLOG (pipeline) |
+| Nav/Home duplicadas                                                               | Já F1/F3 — afetam exposição pós-publish.                                                                                                     | FIX_IN_5A          |
 
 ### 13.5 Mudanças necessárias dentro da 5A
 
@@ -332,12 +332,12 @@ Não há BLOCKER estrutural ao bot. O risco principal é a **5A misturar staging
 
 ### 13.7 Riscos de misturar staging e dados publicados
 
-| Risco | Se ocorrer | Mitigação na 5A | Classe |
-|---|---|---|---|
-| CSV/candidatos em `src/data` importados pelo Astro | Vazam no bundle GitHub Pages | Só `PublishedSnapshot`/fixture redigida no build | FIX_IN_5A (F8) |
-| Contar candidatos como “startups validadas” | Falsa precisão | Contadores do snapshot com estados explícitos | FIX_IN_5A (F6) |
-| Bot escrever direto sobre o JSON que a UI importa | Corrompe publish; sem ReviewDecision | Publish gera artefato novo imutável | BACKLOG (pipeline) + F9 |
-| Reusar `claims.json`/`sources.json` SoT para coleta | Contamina rastreabilidade científica | Domínios/arquivos separados | FIX_IN_5A (F7) |
+| Risco                                               | Se ocorrer                           | Mitigação na 5A                                  | Classe                  |
+| --------------------------------------------------- | ------------------------------------ | ------------------------------------------------ | ----------------------- |
+| CSV/candidatos em `src/data` importados pelo Astro  | Vazam no bundle GitHub Pages         | Só `PublishedSnapshot`/fixture redigida no build | FIX_IN_5A (F8)          |
+| Contar candidatos como “startups validadas”         | Falsa precisão                       | Contadores do snapshot com estados explícitos    | FIX_IN_5A (F6)          |
+| Bot escrever direto sobre o JSON que a UI importa   | Corrompe publish; sem ReviewDecision | Publish gera artefato novo imutável              | BACKLOG (pipeline) + F9 |
+| Reusar `claims.json`/`sources.json` SoT para coleta | Contamina rastreabilidade científica | Domínios/arquivos separados                      | FIX_IN_5A (F7)          |
 
 ### 13.8 Capacidade: site estático lendo apenas `PublishedSnapshot`
 
@@ -346,43 +346,43 @@ Não há BLOCKER estrutural ao bot. O risco principal é a **5A misturar staging
 
 ### 13.9 Capacidade: proveniência, temporalidade e histórico
 
-| Necessidade | Estado atual | Conclusão |
-|---|---|---|
-| Proveniência editorial SoT | `sourceRefs` / `sotRefs` / method+limitations | Padrão reutilizável |
-| Proveniência do observatório | Documentada (`sourceRuns`, reviews, checksum); **não codificada** | Projeção mínima na 5A; grafo completo no pipeline |
-| Temporalidade | Docs: Observation append-only; Claim editorial só `lastReviewedAt` | Histórico append-only = pipeline (BACKLOG); snapshot imutável + `previousSnapshotId` = base pública |
-| Histórico de publicações | `previousSnapshotId`; `SnapshotSelector` só com histórico | Contrato OK; UI multi-snapshot = BACKLOG de produto |
+| Necessidade                  | Estado atual                                                       | Conclusão                                                                                           |
+| ---------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| Proveniência editorial SoT   | `sourceRefs` / `sotRefs` / method+limitations                      | Padrão reutilizável                                                                                 |
+| Proveniência do observatório | Documentada (`sourceRuns`, reviews, checksum); **não codificada**  | Projeção mínima na 5A; grafo completo no pipeline                                                   |
+| Temporalidade                | Docs: Observation append-only; Claim editorial só `lastReviewedAt` | Histórico append-only = pipeline (BACKLOG); snapshot imutável + `previousSnapshotId` = base pública |
+| Histórico de publicações     | `previousSnapshotId`; `SnapshotSelector` só com histórico          | Contrato OK; UI multi-snapshot = BACKLOG de produto                                                 |
 
 ### 13.10 Achados adicionais classificados
 
 #### BLOCKER
 
-*Nenhum adicional.*
+_Nenhum adicional._
 
 #### FIX_IN_5A (adendo)
 
-| ID | Achado | Evidência |
-|---|---|---|
-| F6 | `PublishedSnapshot` (fixture inicial) como **única** fonte do dashboard; contadores com estados | ADR-0003; `03_Modelo…` §§8–9; `05_Criterios…` |
-| F7 | Evitar colisão com `Source`/`Claim` editoriais; namespacar domínio startups | `src/schemas/source.ts`, `claim.ts`; `claimDomainSchema` |
-| F8 | Não versionar/importar `StartupCandidate`, CSV bruto ou staging no client/build público | `04_Stack…` L138; oportunidade enquanto staging ainda não existe |
-| F9 | Documentar fronteira: bot/`ResearchRun`/`ChangeSet`/review operacional fora do app estático | `04_Stack…` §6; ADR-0003 `proposed` |
+| ID  | Achado                                                                                          | Evidência                                                        |
+| --- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| F6  | `PublishedSnapshot` (fixture inicial) como **única** fonte do dashboard; contadores com estados | ADR-0003; `03_Modelo…` §§8–9; `05_Criterios…`                    |
+| F7  | Evitar colisão com `Source`/`Claim` editoriais; namespacar domínio startups                     | `src/schemas/source.ts`, `claim.ts`; `claimDomainSchema`         |
+| F8  | Não versionar/importar `StartupCandidate`, CSV bruto ou staging no client/build público         | `04_Stack…` L138; oportunidade enquanto staging ainda não existe |
+| F9  | Documentar fronteira: bot/`ResearchRun`/`ChangeSet`/review operacional fora do app estático     | `04_Stack…` §6; ADR-0003 `proposed`                              |
 
 #### BACKLOG (pipeline / pós-5A)
 
-| ID | Achado | Evidência |
-|---|---|---|
-| B5 | Tipar `ResearchRun` e `ChangeSet` além de `SourceRun` + changelog narrativo | `03_Modelo…` §6.7–8; `04_Stack…` §6 |
-| B6 | Observation append-only, fila `ReviewDecision`, idempotência, “falha não derruba último snapshot” | ADR-0003; `04_Stack…` L130 |
-| B7 | `SnapshotSelector` / histórico multi-snapshot na UI após ≥2 publicações | `01_Design_System_v0.3.md` §11 |
+| ID  | Achado                                                                                            | Evidência                           |
+| --- | ------------------------------------------------------------------------------------------------- | ----------------------------------- |
+| B5  | Tipar `ResearchRun` e `ChangeSet` além de `SourceRun` + changelog narrativo                       | `03_Modelo…` §6.7–8; `04_Stack…` §6 |
+| B6  | Observation append-only, fila `ReviewDecision`, idempotência, “falha não derruba último snapshot” | ADR-0003; `04_Stack…` L130          |
+| B7  | `SnapshotSelector` / histórico multi-snapshot na UI após ≥2 publicações                           | `01_Design_System_v0.3.md` §11      |
 
 #### NO_ACTION
 
-| ID | Achado | Motivo |
-|---|---|---|
-| N5 | Bot ainda não existe no repositório | Esperado; auditoria não o cria |
-| N6 | Modelo documental já separa discover→review→publish | Base suficiente para não redesenhar o dashboard depois |
-| N7 | Site sem fetch runtime a fontes externas | Compatível com leitura exclusiva de PublishedSnapshot |
+| ID  | Achado                                              | Motivo                                                 |
+| --- | --------------------------------------------------- | ------------------------------------------------------ |
+| N5  | Bot ainda não existe no repositório                 | Esperado; auditoria não o cria                         |
+| N6  | Modelo documental já separa discover→review→publish | Base suficiente para não redesenhar o dashboard depois |
+| N7  | Site sem fetch runtime a fontes externas            | Compatível com leitura exclusiva de PublishedSnapshot  |
 
 ### 13.11 Implicação no veredito
 
@@ -390,4 +390,4 @@ O adendo **não altera** o veredito `READY_WITH_FIXES_IN_5A`. Reforça que a 5A 
 
 ---
 
-*Fim da auditoria (com adendo do bot). Aguardar revisão humana antes de corrigir achados ou iniciar a Iteração 5A.*
+_Fim da auditoria (com adendo do bot). Aguardar revisão humana antes de corrigir achados ou iniciar a Iteração 5A._
