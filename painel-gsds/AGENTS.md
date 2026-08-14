@@ -35,7 +35,7 @@ Conflitos são reportados; não resolvidos silenciosamente.
 - Não adicione backend, CMS, autenticação, analytics, cookies ou formulários sem solicitação.
 - Não altere branding institucional ou use logotipos sem autorização.
 - Preserve mudanças existentes que não pertençam à tarefa.
-- Observatório de startups: arquitetura futura (ADR-0003); não implementar entidades Startup, CSV, DB ou pipeline sem autorização.
+- Observatório de startups: fundação 5A autorizada (PublishedSnapshot vazio + `/inovacao/startups/`). Não importar startups reais, CSV, DB, bot, `ResearchRun`, candidatos, staging ou `ChangeSet` sem autorização da 5B+.
 
 Não executar sem autorização explícita: pesquisa externa; alteração de SoT; mudança de stack; commit, push, PR, merge ou deploy; publicação automática de candidatos.
 

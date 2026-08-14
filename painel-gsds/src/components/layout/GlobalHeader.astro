@@ -1,11 +1,8 @@
 ---
 import { withBase } from '../../lib/paths/withBase';
+import { SITE_NAV_ITEMS, type SiteNavItem } from '../../lib/navigation/siteNav';
 
-export interface NavItem {
-  label: string;
-  href: string;
-  available?: boolean;
-}
+export type NavItem = SiteNavItem;
 
 export interface Props {
   currentPath?: string;
@@ -16,16 +13,7 @@ export interface Props {
 const {
   currentPath = Astro.url.pathname,
   title = 'Painel GSDs',
-  items = [
-    { label: 'Visão geral', href: '/', available: true },
-    { label: 'Bases clínicas', href: '/analises/bases-clinicas/', available: true },
-    {
-      label: 'Impacto socioeconômico',
-      href: '/analises/impacto-socioeconomico/',
-      available: true,
-    },
-    { label: 'Metodologia', href: '/metodologia/', available: false },
-  ],
+  items = SITE_NAV_ITEMS,
 } = Astro.props;
 
 const homeHref = withBase('/');

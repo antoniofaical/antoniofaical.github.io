@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageContainer from '../../../components/layout/PageContainer.astro';
+import Breadcrumbs from '../../../components/research/Breadcrumbs.astro';
+import ResearchHeader from '../../../components/research/ResearchHeader.astro';
+import StartupExplorer from '../../../components/startups/StartupExplorer';
+import StartupEmptyState from '../../../components/startups/StartupEmptyState';
+import { loadPublishedSnapshot } from '../../../lib/startups/loadPublishedSnapshot';
+import { withBase } from '../../../lib/paths/withBase';
+
+const snapshot = loadPublishedSnapshot();
+const isEmpty =
+  snapshot.coverage.status === 'not-yet-populated' || snapshot.organizations.length === 0;
+const updatedAt = snapshot.publishedAt.slice(0, 10);
+---
+
+<BaseLayout
+  title="Observatório de startups em glicogenoses"
+  description="Base curada de organizações com relevância direta ou adjacente às glicogenoses. Snapshot público estático, sujeito a atualização editorial."
+  currentPath={withBase('inovacao/startups/')}
+  lastReviewedAt={updatedAt}
+>
+  <main id="conteudo-principal">
+    <div class="container section-space stack stack--lg">
+      <Breadcrumbs
+        items={[
+          { label: 'Início', href: '/' },
+          { label: 'Inovação' },
+          { label: 'Observatório de startups' },
+        ]}
+      />
+    </div>
+
+    <ResearchHeader
+      eyebrow="Observatório"
+      title="Observatório de startups em glicogenoses"
+      summary="Mapeamento curado — não exaustivo — de organizações cuja solução se relaciona diretamente às GSDs ou de forma adjacente à jornada clínica e socioeconômica."
+      updatedAt={updatedAt}
+      cutoff={updatedAt}
+    />
+
+    <section class="section-space" aria-labelledby="startup-method-note">
+      <PageContainer class="stack stack--md">
+        <h2 id="startup-method-note">Nota metodológica</h2>
+        <ul class="startup-page__notes">
+          <li>A base é curada e revisada; não é um censo global de startups.</li>
+          <li>
+            Os dados públicos vêm exclusivamente do snapshot selecionado e são sujeitos a
+            atualização por novo artefato imutável.
+          </li>
+          <li>
+            Classificações direta / adjacente / ecossistema e Brasil / global são atributos da
+            organização, não bases separadas.
+          </li>
+          <li>
+            Última publicação do dataset:{' '}
+            <time datetime={snapshot.publishedAt}>{updatedAt}</time> · protocolo{' '}
+            {snapshot.protocolVersion} · snapshot <code>{snapshot.id}</code>.
+          </li>
+        </ul>
+      </PageContainer>
+    </section>
+
+    <section class="section-space surface-editorial" aria-labelledby="startup-explorer-title">
+      <PageContainer class="stack stack--lg">
+        <header class="stack stack--tight">
+          <p class="section-kicker">Projeção pública</p>
+          <h2 id="startup-explorer-title">Organizações publicadas</h2>
+        </header>
+
+        {
+          isEmpty ? (
+            <StartupEmptyState
+              publishedAt={snapshot.publishedAt}
+              summary={snapshot.coverage.summary}
+              limitations={snapshot.coverage.limitations}
+            />
+          ) : (
+            <StartupExplorer client:load snapshot={snapshot} />
+          )
+        }
+      </PageContainer>
+    </section>
+
+    <section class="section-space" aria-labelledby="startup-traceability">
+      <PageContainer class="stack stack--md">
+        <h2 id="startup-traceability">Rastreabilidade</h2>
+        <p>
+          Toda alegação material sobre uma organização publicada deve apontar para fontes públicas
+          no snapshot. Candidatos, staging, <code>ResearchRun</code> e <code>ChangeSet</code> ficam fora
+          do app estático e só entram via novo <code>PublishedSnapshot</code> após revisão humana.
+        </p>
+      </PageContainer>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .startup-page__notes {
+    margin: 0;
+    padding-left: 1.15rem;
+    display: grid;
+    gap: var(--space-2);
+    color: var(--ink-700);
+    max-width: 48rem;
+  }
+</style>

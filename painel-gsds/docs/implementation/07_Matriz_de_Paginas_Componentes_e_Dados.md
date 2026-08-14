@@ -48,19 +48,16 @@ Regra: habilitar portais; não refazer a Home.
 
 ## 4. Observatório
 
-| Área        | Pergunta                       | Componente               | Entidade                         |
-| ----------- | ------------------------------ | ------------------------ | -------------------------------- |
-| cobertura   | O que foi buscado?             | `CoverageDisclosure`     | `SourceRun`                      |
-| atualização | Quando mudou?                  | `LastUpdateSummary`      | `SnapshotManifest`               |
-| funil       | Quantos chegaram à publicação? | `ValidationFunnel`       | reviews/counts                   |
-| exploração  | Quem foi identificado?         | `StartupExplorer`        | Organization + assessment        |
-| card        | Por que importa?               | `StartupCard`            | current projection               |
-| comparação  | Como diferem?                  | `CompareTray`            | selected orgs/products           |
-| necessidade | Que lacuna atendem?            | `NeedSolutionMatrix`     | relevance links                  |
-| evidência   | Quão sólido?                   | `EvidenceCoverage`       | Claim/Evidence/Review            |
-| geografia   | Onde estão?                    | `GeographicDistribution` | HQ; somente densidade suficiente |
-| maturidade  | Em que estágio?                | `MaturityDistribution`   | products; não empresa            |
-| histórico   | O que mudou?                   | `UpdateTimeline`         | observations/snapshots           |
+Estado 5A: infraestrutura pública com snapshot vazio. Componentes operacionais: `StartupExplorer`, busca/filtros/ordenação/resumo/cards/detalhe/evidência/estados vazio e sem resultados. Funil de validação, timeline de updates e ingestão real permanecem 5B+.
+
+| Área        | Pergunta                        | Componente (5A)                         | Entidade                       |
+| ----------- | ------------------------------- | --------------------------------------- | ------------------------------ |
+| cobertura   | O snapshot foi populado?        | `StartupEmptyState` / nota metodológica | `coverage` no snapshot         |
+| atualização | Qual snapshot está selecionado? | metadados da página                     | `current.json` + snapshot id   |
+| exploração  | Quem foi publicado?             | `StartupExplorer`                       | Organization + assessment      |
+| card        | Por que importa?                | `StartupCard`                           | projeção publicada             |
+| detalhe     | Quais evidências?               | `StartupDetail` (drawer)                | products + publicSources       |
+| funil/bot   | (futuro)                        | —                                       | ResearchRun / ChangeSet (fora) |
 
 ## 5. Ficha de organização
 

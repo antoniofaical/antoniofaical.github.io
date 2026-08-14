@@ -1,0 +1,98 @@
+{
+  "id": "snap-synth-fixture-invalid-dup-2026-08-14",
+  "schemaVersion": "1.0.0",
+  "period": "2026-08",
+  "generatedAt": "2026-08-14T15:00:00.000Z",
+  "publishedAt": "2026-08-14T15:00:00.000Z",
+  "protocolVersion": "startup-public-v1",
+  "coverage": {
+    "status": "limited",
+    "summary": "SYNTHETIC INVALID FIXTURE — duplicate organization ids.",
+    "limitations": ["Intentionally invalid for negative schema tests."]
+  },
+  "counts": {
+    "organizations": 2,
+    "productsOrPrograms": 0,
+    "relevanceAssessments": 2,
+    "publicSources": 1,
+    "directGsd": 2,
+    "adjacentGsd": 0,
+    "ecosystemSupport": 0,
+    "relevanceUnconfirmed": 0,
+    "brazil": 0,
+    "global": 2
+  },
+  "organizations": [
+    {
+      "id": "org-synth-dup",
+      "slug": "synth-dup-a",
+      "preferredName": "Dup A (SYNTHETIC FIXTURE)",
+      "aliases": [],
+      "organizationType": "startup",
+      "operationalStatus": "active",
+      "description": "SYNTHETIC FIXTURE duplicate-id org A.",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-01-01",
+      "lastReviewedAt": "2026-08-01",
+      "publicationState": "published"
+    },
+    {
+      "id": "org-synth-dup",
+      "slug": "synth-dup-b",
+      "preferredName": "Dup B (SYNTHETIC FIXTURE)",
+      "aliases": [],
+      "organizationType": "startup",
+      "operationalStatus": "active",
+      "description": "SYNTHETIC FIXTURE duplicate-id org B.",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-01-01",
+      "lastReviewedAt": "2026-08-01",
+      "publicationState": "published"
+    }
+  ],
+  "productsOrPrograms": [],
+  "relevanceAssessments": [
+    {
+      "id": "rel-synth-dup-a",
+      "organizationId": "org-synth-dup",
+      "relationship": "direct-gsd",
+      "geographicScopes": ["global"],
+      "modalities": ["test"],
+      "gsdRefs": [],
+      "clinicalNeedRefs": [],
+      "socioeconomicNeedRefs": [],
+      "rationale": "SYNTHETIC invalid fixture rationale long enough for schema min length A.",
+      "confidence": "low",
+      "evidenceRefs": [{ "sourceId": "sps-synth-dup-src", "role": "supports" }],
+      "assessedAt": "2026-08-01",
+      "protocolVersion": "startup-public-v1"
+    },
+    {
+      "id": "rel-synth-dup-b",
+      "organizationId": "org-synth-dup",
+      "relationship": "direct-gsd",
+      "geographicScopes": ["global"],
+      "modalities": ["test"],
+      "gsdRefs": [],
+      "clinicalNeedRefs": [],
+      "socioeconomicNeedRefs": [],
+      "rationale": "SYNTHETIC invalid fixture rationale long enough for schema min length B.",
+      "confidence": "low",
+      "evidenceRefs": [{ "sourceId": "sps-synth-dup-src", "role": "supports" }],
+      "assessedAt": "2026-08-01",
+      "protocolVersion": "startup-public-v1"
+    }
+  ],
+  "publicSources": [
+    {
+      "id": "sps-synth-dup-src",
+      "title": "Dup fixture source",
+      "publisher": "Synthetic",
+      "url": "https://example.invalid/synth-dup",
+      "sourceType": "other",
+      "accessedAt": "2026-08-01",
+      "availability": "public"
+    }
+  ],
+  "checksum": "reserved-not-computed"
+}

@@ -144,7 +144,8 @@ const sotCutoff = '2026-08-10';
           <h2 id="analises-title">Explore as análises</h2>
           <p class="section-lede">
             Aprofunde a leitura clínica e socioeconômica com rastreabilidade às fontes de verdade. O
-            ecossistema de inovação permanece em desenvolvimento.
+            observatório de startups já tem infraestrutura pública; o snapshot ainda aguarda
+            população editorial.
           </p>
         </header>
         <div class="portals-grid">
@@ -169,15 +170,21 @@ const sotCutoff = '2026-08-10';
     <section id="inovacao" class="section-space surface-editorial" aria-labelledby="inovacao-title">
       <PageContainer class="stack stack--lg">
         <header class="stack stack--tight">
-          <p class="section-kicker">Reserva editorial</p>
+          <p class="section-kicker">Observatório</p>
           <h2 id="inovacao-title">Ecossistema de inovação</h2>
+          <p class="section-lede">
+            Infraestrutura pronta para mapear organizações com relevância direta ou adjacente às
+            GSDs. O snapshot público ainda não foi populado — sem empresas reais, logos ou exemplos
+            fictícios na Home.
+          </p>
         </header>
-        <p class="section-lede">
-          Futuramente, o painel mapeará soluções diretamente ligadas às GSDs e tecnologias
-          adjacentes aplicáveis à jornada. Nesta iteração, o bloco permanece em desenvolvimento —
-          sem empresas, contadores, logos ou exemplos fictícios.
-        </p>
-        <p class="status-chip" role="status">Em desenvolvimento</p>
+        <SectionPortal
+          question="Quais organizações publicadas se relacionam às glicogenoses — e com qual evidência?"
+          summary="O observatório consome exclusivamente um PublishedSnapshot validado. Nesta etapa a base está vazia de propósito; a ingestão real ocorre na próxima iteração."
+          href={withBase('inovacao/startups/')}
+          available={true}
+          ctaLabel="Abrir observatório de startups"
+        />
       </PageContainer>
     </section>
 

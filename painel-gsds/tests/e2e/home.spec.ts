@@ -49,7 +49,8 @@ test.describe('home executive', () => {
     await expect(page).toHaveURL(/\/analises\/impacto-socioeconomico\/?$/);
     await page.goto('/');
     const developing = page.getByRole('status').filter({ hasText: /em desenvolvimento/i });
-    await expect(developing.first()).toBeVisible();
+    await expect(developing).toHaveCount(0);
+    await expect(page.getByRole('link', { name: /abrir observatório de startups/i })).toBeVisible();
   });
 
   test('has no serious accessibility violations', async ({ page }) => {

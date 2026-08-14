@@ -90,7 +90,18 @@ Nenhum requisito visual autoriza alteração silenciosa de conteúdo científico
 - Candidato automatizado não é publicado antes de validação humana.
 - Documentos antigos vão para `archive/`; não são reescritos retroativamente.
 
-## 8. Decisões ainda abertas
+## 8. Integridade do manifesto
+
+Validar `MANIFEST.sha256` **a partir de** `painel-gsds/docs/implementation/`:
+
+```bash
+cd docs/implementation
+sha256sum -c MANIFEST.sha256
+```
+
+Os ADRs usam caminhos relativos verificáveis `../decisions/...`. O próprio `MANIFEST.sha256` não entra no manifesto.
+
+## 9. Decisões ainda abertas
 
 - conjunto final das 50–100 fontes monitoradas;
 - orquestrador do pipeline mensal;
