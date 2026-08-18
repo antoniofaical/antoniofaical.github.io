@@ -3,12 +3,12 @@ import {
   BRAZIL_INDIRECT_EDITORIAL_IDS,
   editorialIdToOrgId,
 } from '../../data/startups/brazilIndirectLineage';
-import { loadPublishedSnapshot, listPublishedSnapshotIds } from './loadPublishedSnapshot';
+import { loadPublishedSnapshotById, listPublishedSnapshotIds } from './loadPublishedSnapshot';
 import { queryStartups } from './queryStartups';
 import { computeStartupStats } from './startupStats';
 
 describe('Iteration 5B brazil-indirect snapshot', () => {
-  const snapshot = loadPublishedSnapshot();
+  const snapshot = loadPublishedSnapshotById('snap-brazil-indirect-2026-08-14');
 
   it('publishes exactly 33 organizations with unique ids and slugs', () => {
     expect(snapshot.id).toBe('snap-brazil-indirect-2026-08-14');
@@ -72,9 +72,10 @@ describe('Iteration 5B brazil-indirect snapshot', () => {
     expect(stats.filteredOrganizations).toBe(22);
   });
 
-  it('keeps empty snapshot discoverable while current points to brazil-indirect', () => {
+  it('keeps the brazil-indirect snapshot discoverable alongside cumulative and empty', () => {
     expect(listPublishedSnapshotIds()).toEqual([
       'snap-brazil-indirect-2026-08-14',
+      'snap-indirect-cumulative-2026-08-18',
       'snap-initial-empty-2026-08-14',
     ]);
   });

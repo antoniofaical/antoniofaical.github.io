@@ -26,11 +26,11 @@ Publicar uma nova versão exige somente:
 
 Fixtures sob `tests/fixtures/` ficam fora desse glob.
 
-### Semântica de datas (5B)
+### Semântica de datas (5B / 5C)
 
-- `lastReviewedAt` / `assessedAt`: data da Evidence QA do baseline (`2026-08-13`).
-- `firstDiscoveredAt`: data do **primeiro registro no baseline público importado** (`2026-08-13`), não a descoberta histórica original da organização.
-- `generatedAt` / `publishedAt` / `selectedAt`: instante UTC da geração/seleção da projeção 5B.
+- Brazil indirect (`snap-brazil-indirect-2026-08-14`): `lastReviewedAt` / `assessedAt` / `firstDiscoveredAt` = Evidence QA do baseline (`2026-08-13`); timestamps de geração 5B preservados no snapshot histórico.
+- Global indirect (projeção 5C): `firstDiscoveredAt` / `lastReviewedAt` / `assessedAt` = `2026-08-12` (baseline do pacote Global auditado).
+- Snapshot cumulativo 5C: `generatedAt` / `publishedAt` / `selectedAt` = instante UTC único da geração/seleção (`2026-08-18T12:37:11.000Z`).
 
 ### Checksum (5B+)
 
@@ -42,10 +42,13 @@ Campos mínimos: `id`, `schemaVersion`, `period`, `generatedAt`, `publishedAt`, 
 
 - `checksum` na 5A é placeholder documentado (`reserved-not-computed`), não um digest calculado.
 - `coverage.status = not-yet-populated` exige coleções vazias e comunica infraestrutura pronta sem censo.
+- A 5C publica `snap-indirect-cumulative-2026-08-18` (`coverage.status = partial`) preservando os snapshots históricos Brazil e empty.
 
 ## Contagens
 
 `counts.*` deve coincidir com o derivado das coleções. Contagens zeradas no snapshot vazio descrevem o artefato, não “zero startups no mundo”.
+
+No snapshot cumulativo, `counts.adjacentGsd` / `counts.brazil` / `counts.global` são **por assessment**. A UI consolida por organização (Saventic conta em Brazil e Global), então facetas organizacionais podem somar acima do total de organizações.
 
 ## Validação
 
