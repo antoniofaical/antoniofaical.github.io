@@ -3,12 +3,14 @@
  * Validates published startup snapshots selected by current.json.
  * Exit non-zero on invalid data. Empty published base is valid.
  */
+import { createHash } from 'node:crypto';
 import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   startupCurrentSelectorSchema,
   startupPublishedSnapshotSchema,
+  type StartupPublishedSnapshot,
 } from '../src/schemas/startups/publishedSnapshot';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -26,6 +28,24 @@ function fail(message: string): never {
   process.exit(1);
 }
 
+function canonicalize(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(canonicalize);
+  if (value && typeof value === 'object') {
+    const entries = Object.entries(value as Record<string, unknown>).sort(([a], [b]) =>
+      a.localeCompare(b),
+    );
+    return Object.fromEntries(entries.map(([key, nested]) => [key, canonicalize(nested)]));
+  }
+  return value;
+}
+
+/** SHA-256 of canonical JSON excluding the checksum field itself. */
+export function computeSnapshotChecksum(snapshot: StartupPublishedSnapshot): string {
+  const { checksum: _ignored, ...body } = snapshot;
+  const canon = JSON.stringify(canonicalize(body));
+  return createHash('sha256').update(canon, 'utf8').digest('hex');
+}
+
 try {
   const selectorRaw = readJson(path.join(publishedDir, 'current.json'));
   const selector = startupCurrentSelectorSchema.parse(selectorRaw);
@@ -41,6 +61,19 @@ try {
       fail(`Duplicate snapshot id ${parsed.id} in ${fileName} and ${byId.get(parsed.id)}`);
     }
     byId.set(parsed.id, fileName);
+
+    if (parsed.checksum !== 'reserved-not-computed') {
+      const expected = computeSnapshotChecksum(parsed);
+      if (parsed.checksum !== expected) {
+        fail(
+          `Snapshot ${parsed.id} checksum mismatch: declared ${parsed.checksum}, computed ${expected}`,
+        );
+      }
+      console.log(`[data:validate] OK checksum ${parsed.id}`);
+    } else {
+      console.log(`[data:validate] OK snapshot ${parsed.id} (checksum placeholder reserved)`);
+    }
+
     console.log(`[data:validate] OK snapshot ${parsed.id} (${fileName})`);
   }
 

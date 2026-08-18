@@ -8,7 +8,7 @@ const shotsDir = path.resolve(__dirname, '../visual');
 
 test.describe('home executive', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/');
+    await page.goto('./');
   });
 
   test('replaces placeholder and renders core narrative sections', async ({ page }) => {
@@ -44,10 +44,10 @@ test.describe('home executive', () => {
     await expect(page.getByRole('link', { name: /abrir impacto socioeconômico/i })).toBeVisible();
     await page.getByRole('link', { name: /abrir bases clínicas/i }).click();
     await expect(page).toHaveURL(/\/analises\/bases-clinicas\/?$/);
-    await page.goto('/');
+    await page.goto('./');
     await page.getByRole('link', { name: /abrir impacto socioeconômico/i }).click();
     await expect(page).toHaveURL(/\/analises\/impacto-socioeconomico\/?$/);
-    await page.goto('/');
+    await page.goto('./');
     const developing = page.getByRole('status').filter({ hasText: /em desenvolvimento/i });
     await expect(developing).toHaveCount(0);
     await expect(page.getByRole('link', { name: /abrir observatório de startups/i })).toBeVisible();

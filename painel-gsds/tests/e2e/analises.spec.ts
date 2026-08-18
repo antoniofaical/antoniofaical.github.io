@@ -8,7 +8,7 @@ const shotsDir = path.resolve(__dirname, '../visual');
 
 test.describe('bases clinicas', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/analises/bases-clinicas/');
+    await page.goto('./analises/bases-clinicas/');
   });
 
   test('renders clinical narrative anchors and explorer', async ({ page }) => {
@@ -62,7 +62,7 @@ test.describe('bases clinicas', () => {
 
 test.describe('impacto socioeconômico', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/analises/impacto-socioeconomico/');
+    await page.goto('./analises/impacto-socioeconomico/');
   });
 
   test('renders socioeconomic narrative and guardrails', async ({ page }) => {

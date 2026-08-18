@@ -128,7 +128,7 @@ export default function StartupDetail({
         <section aria-labelledby="startup-detail-products">
           <h3 id="startup-detail-products">Produtos e programas</h3>
           {item.products.length === 0 ? (
-            <p>Nenhum produto publicado neste snapshot.</p>
+            <p>Produtos e programas não foram modelados separadamente neste snapshot.</p>
           ) : (
             <ul className="startup-detail__list">
               {item.products.map((product) => (

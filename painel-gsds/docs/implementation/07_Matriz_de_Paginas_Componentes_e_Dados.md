@@ -48,7 +48,7 @@ Regra: habilitar portais; não refazer a Home.
 
 ## 4. Observatório
 
-Estado 5A: infraestrutura pública com snapshot vazio. Componentes operacionais: `StartupExplorer`, busca/filtros/ordenação/resumo/cards/detalhe/evidência/estados vazio e sem resultados. Funil de validação, timeline de updates e ingestão real permanecem 5B+.
+Estado 5B: primeiro snapshot real (`snap-brazil-indirect-2026-08-14`) com 33 organizações do mapeamento indireto Brasil; cobertura `limited` e aviso de limitações na página. Componentes: `StartupExplorer`, `StartupCoverageNotice`, busca/filtros/ordenação/resumo/cards/detalhe/evidência.
 
 | Área        | Pergunta                        | Componente (5A)                         | Entidade                       |
 | ----------- | ------------------------------- | --------------------------------------- | ------------------------------ |
