@@ -2,7 +2,7 @@
 
 ## Status
 
-A ingestão de organizações **reais** ocorre na **Iteração 5B**. A 5A entrega apenas infraestrutura, snapshot vazio e fixtures sintéticas de teste.
+A ingestão de organizações **reais** ocorre a partir da **Iteração 5B**. A 5A entrega apenas infraestrutura, snapshot vazio e fixtures sintéticas de teste. A **5C** publica o snapshot cumulativo Brazil indirect + Global indirect main.
 
 ## Fluxo 5B (executado)
 
@@ -12,6 +12,16 @@ A ingestão de organizações **reais** ocorre na **Iteração 5B**. A 5A entreg
 4. `npm run data:validate` → CI → build Pages.
 
 Não copiar CSV bruto, fila CB ou histórico para o bundle público. Classe C, unresolved e exclusões (ex.: Kidopi) permanecem fora da projeção.
+
+## Fluxo 5C (executado)
+
+1. Pacote Global auditado `gsd_indirect_scouting-integrity-fixed-pre5C-v2.zip` (SHA-256 `817f0fa…58c5e`) fora do repositório.
+2. Transformação determinística das **60** entradas main → novo snapshot cumulativo imutável, preservando o snapshot Brazil 5B.
+3. Dedupe explícita Saventic (`GSDI-002` → `org-gsd-br-002`); nenhuma outra fusão.
+4. Atualização de `published/current.json` para `snap-indirect-cumulative-2026-08-18`.
+5. `npm run data:validate` → gates → ZIP de auditoria (sem commit nesta etapa Cloud).
+
+Não copiar MD/CSV bruto do scouting Global. Manual review, excluded e withdrawn permanecem fora da projeção. Não ingerir `gsd_direct_global_scouting` nesta etapa.
 
 ## Fluxo previsto (continua para enriquecimentos futuros)
 
@@ -27,7 +37,7 @@ O registry público é montado por descoberta automática em build time dos JSON
 
 - Nunca editar in-place um snapshot já publicado.
 - Nunca apontar o seletor para fixtures.
-- Nunca importar CSVs brutos ou artefatos proprietários diretamente no bundle público.
+- Nunca importar CSVs/MDs brutos ou artefatos proprietários diretamente no bundle público.
 - Contagens e UI devem continuar derivadas do snapshot, sem hardcode.
 
 ## Entidades ainda não implementadas

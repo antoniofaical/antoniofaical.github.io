@@ -35,7 +35,7 @@ Conflitos são reportados; não resolvidos silenciosamente.
 - Não adicione backend, CMS, autenticação, analytics, cookies ou formulários sem solicitação.
 - Não altere branding institucional ou use logotipos sem autorização.
 - Preserve mudanças existentes que não pertençam à tarefa.
-- Observatório de startups: 5A (infraestrutura) e 5B (primeiro snapshot real do mapeamento indireto Brasil, 33 organizações) autorizadas. Não importar CSV bruto, Classe C, unresolved, filas CB, mapeamento direto global, bot, `ResearchRun`, candidatos, staging ou `ChangeSet` sem nova autorização.
+- Observatório de startups: 5A (infraestrutura), 5B (Brazil indirect, 33 organizações) e 5C (snapshot cumulativo Brazil + Global indirect main, 92 organizações) autorizadas. Não importar CSV/MD bruto de scouting, Classe C, unresolved, filas CB, mapeamento direto global, manual/excluded/withdrawn Global, bot, `ResearchRun`, candidatos, staging ou `ChangeSet` sem nova autorização.
 
 Não executar sem autorização explícita: pesquisa externa; alteração de SoT; mudança de stack; commit, push, PR, merge ou deploy; publicação automática de candidatos.
 

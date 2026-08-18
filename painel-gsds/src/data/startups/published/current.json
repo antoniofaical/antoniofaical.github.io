@@ -1,5 +1,5 @@
 {
-  "currentSnapshotId": "snap-brazil-indirect-2026-08-14",
-  "selectedAt": "2026-08-17T11:43:47.000Z",
-  "note": "Selector only. Points to the first real public snapshot (Brazil indirect longlist, 33 organizations). Immutable snapshot bodies live under published/snapshots/."
+  "currentSnapshotId": "snap-indirect-cumulative-2026-08-18",
+  "selectedAt": "2026-08-18T12:37:11.000Z",
+  "note": "Selector only. Points to the cumulative public snapshot (Brazil indirect + Global indirect main). Immutable snapshot bodies live under published/snapshots/."
 }

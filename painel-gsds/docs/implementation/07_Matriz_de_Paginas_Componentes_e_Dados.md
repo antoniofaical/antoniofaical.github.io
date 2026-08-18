@@ -48,7 +48,7 @@ Regra: habilitar portais; não refazer a Home.
 
 ## 4. Observatório
 
-Estado 5B: primeiro snapshot real (`snap-brazil-indirect-2026-08-14`) com 33 organizações do mapeamento indireto Brasil; cobertura `limited` e aviso de limitações na página. Componentes: `StartupExplorer`, `StartupCoverageNotice`, busca/filtros/ordenação/resumo/cards/detalhe/evidência.
+Estado 5C: snapshot cumulativo (`snap-indirect-cumulative-2026-08-18`) com 92 organizações (Brazil indirect 33 + Global indirect main 60 − 1 dedupe Saventic); cobertura `partial` e aviso de limitações na página. O snapshot histórico 5B permanece imutável e carregável por id. Componentes: `StartupExplorer`, `StartupCoverageNotice`, busca/filtros/ordenação/resumo/cards/detalhe/evidência.
 
 | Área        | Pergunta                        | Componente (5A)                         | Entidade                       |
 | ----------- | ------------------------------- | --------------------------------------- | ------------------------------ |

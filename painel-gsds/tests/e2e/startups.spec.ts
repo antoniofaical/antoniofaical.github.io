@@ -9,7 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.resolve(__dirname, '../../dist');
 
 test.describe('observatorio startups', () => {
-  test('route renders brazil-indirect snapshot with coverage limits', async ({ page }) => {
+  test('route renders cumulative snapshot with coverage limits', async ({ page }) => {
     await page.goto('./inovacao/startups/');
     // Negative proof against a root server answering when BASE_PATH is the Pages subpath.
     if (appBasePath === '/painel-gsds/') {
@@ -20,8 +20,9 @@ test.describe('observatorio startups', () => {
     ).toBeVisible();
     await expect(page.getByTestId('startup-empty-state')).toHaveCount(0);
     await expect(page.getByTestId('startup-coverage-notice')).toBeVisible();
-    await expect(page.getByText(/33 organizações/i).first()).toBeVisible();
+    await expect(page.getByText(/92 organizações/i).first()).toBeVisible();
     await expect(page.getByText(/Validação no CB Insights permanece pendente/i)).toBeVisible();
+    await expect(page.getByText(/gsd_direct_global_scouting ainda não integra/i)).toBeVisible();
     await expect(page.getByText(/HelixGlyph Labs \(SYNTHETIC FIXTURE\)/i)).toHaveCount(0);
     await expect(page.getByText(/solução GSD-direta/i)).toBeVisible();
   });
@@ -39,6 +40,30 @@ test.describe('observatorio startups', () => {
     await expect(dialog.getByText(/Produtos e programas não foram modelados/i)).toBeVisible();
     await page.keyboard.press('Escape');
     await expect(page.getByTestId('startup-detail')).toHaveCount(0);
+
+    await page.getByTestId('startup-search').fill('ThinkGenetic');
+    await expect(page.getByRole('status')).toContainText(/1 organização/i);
+
+    await page.getByTestId('startup-search').fill('');
+    const filters = page.getByTestId('startup-filters');
+    await filters.getByLabel('Global', { exact: true }).check();
+    await expect(page.getByRole('status')).toContainText(/60 organizações/i);
+    await filters.getByLabel('Global', { exact: true }).uncheck();
+    await filters.getByLabel('Brasil', { exact: true }).check();
+    await expect(page.getByRole('status')).toContainText(/33 organizações/i);
+    await filters.getByLabel('Brasil', { exact: true }).uncheck();
+
+    await page.getByTestId('startup-search').fill('Saventic');
+    await expect(page.getByRole('status')).toContainText(/1 organização/i);
+    await page
+      .getByRole('button', { name: /Ver detalhe/i })
+      .first()
+      .click();
+    const saventic = page.getByTestId('startup-detail');
+    await expect(saventic).toBeVisible();
+    await expect(saventic.getByText('Brasil', { exact: true })).toBeVisible();
+    await expect(saventic.getByText('Global', { exact: true })).toBeVisible();
+    await page.keyboard.press('Escape');
   });
 
   test('global nav and home portal point to the route', async ({ page }) => {
@@ -87,6 +112,9 @@ test.describe('observatorio startups', () => {
       'CB_Insights_Brazil_Validation_Queue.csv',
       'Brazil Candidate ID',
       'Pre-CB Insights disposition',
+      'GSD_Indirect_Startup_Longlist.md',
+      'Advanced_Company_Search_Validation_Queue.csv',
+      'gsd_indirect_scouting-integrity-fixed-pre5C',
     ];
 
     function walk(dir: string): string[] {

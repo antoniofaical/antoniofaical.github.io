@@ -133,10 +133,11 @@ describe('production loader auto-discovery', () => {
 
   it('resolves the current selector without a manual per-id registry entry', () => {
     const production = loadPublishedSnapshot();
-    expect(production.id).toBe('snap-brazil-indirect-2026-08-14');
+    expect(production.id).toBe('snap-indirect-cumulative-2026-08-18');
     expect(listPublishedSnapshotIds()).toContain(production.id);
+    expect(listPublishedSnapshotIds()).toContain('snap-brazil-indirect-2026-08-14');
     expect(listPublishedSnapshotIds()).toContain('snap-initial-empty-2026-08-14');
-    expect(production.organizations).toHaveLength(33);
+    expect(production.organizations).toHaveLength(92);
   });
 
   it('fails clearly when the selector points to a missing snapshot id', () => {
