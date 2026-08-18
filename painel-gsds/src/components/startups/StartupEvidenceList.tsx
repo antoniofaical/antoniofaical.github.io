@@ -24,8 +24,13 @@ export default function StartupEvidenceList({ items }: { items: EvidenceLink[] }
         <li key={`${source.id}-${role ?? 'none'}-${locator ?? ''}`}>
           <p className="startup-evidence__title">{source.title}</p>
           <p className="startup-evidence__meta">
-            {source.publisher} · {startupPublicSourceTypeLabels[source.sourceType]}
-            {role ? ` · ${startupEvidenceRoleLabels[role]}` : ''}
+            {[
+              source.publisher,
+              startupPublicSourceTypeLabels[source.sourceType],
+              role ? startupEvidenceRoleLabels[role] : undefined,
+            ]
+              .filter(Boolean)
+              .join(' · ')}
           </p>
           {source.url ? (
             <a href={source.url} rel="noopener noreferrer">

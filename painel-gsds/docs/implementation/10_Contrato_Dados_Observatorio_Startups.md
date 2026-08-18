@@ -26,6 +26,16 @@ Publicar uma nova versão exige somente:
 
 Fixtures sob `tests/fixtures/` ficam fora desse glob.
 
+### Semântica de datas (5B)
+
+- `lastReviewedAt` / `assessedAt`: data da Evidence QA do baseline (`2026-08-13`).
+- `firstDiscoveredAt`: data do **primeiro registro no baseline público importado** (`2026-08-13`), não a descoberta histórica original da organização.
+- `generatedAt` / `publishedAt` / `selectedAt`: instante UTC da geração/seleção da projeção 5B.
+
+### Checksum (5B+)
+
+Quando `checksum` ≠ `reserved-not-computed`, o valor deve ser o SHA-256 do JSON canônico do snapshot **excluindo** o próprio campo `checksum`. `npm run data:validate` verifica essa igualdade.
+
 ## `StartupPublishedSnapshot`
 
 Campos mínimos: `id`, `schemaVersion`, `period`, `generatedAt`, `publishedAt`, `protocolVersion`, `previousSnapshotId?`, `coverage`, `counts`, `organizations`, `productsOrPrograms`, `relevanceAssessments`, `publicSources`, `checksum`.

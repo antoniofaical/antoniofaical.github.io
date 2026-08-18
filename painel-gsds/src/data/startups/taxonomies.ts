@@ -61,6 +61,7 @@ export const startupOrganizationTypeLabels: Record<StartupOrganizationType, stri
 };
 
 export const startupOperationalStatusValues = [
+  'apparently-active',
   'active',
   'inactive',
   'acquired',
@@ -72,6 +73,7 @@ export const startupOperationalStatusValues = [
 export type StartupOperationalStatus = (typeof startupOperationalStatusValues)[number];
 
 export const startupOperationalStatusLabels: Record<StartupOperationalStatus, string> = {
+  'apparently-active': 'Aparentemente ativa',
   active: 'Ativa',
   inactive: 'Inativa',
   acquired: 'Adquirida',

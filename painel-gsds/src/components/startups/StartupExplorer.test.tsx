@@ -44,7 +44,7 @@ describe('StartupExplorer with synthetic fixtures', () => {
     });
     expect(screen.getByTestId('startup-no-results')).toBeTruthy();
     fireEvent.click(screen.getByRole('button', { name: /Limpar busca e filtros/i }));
-    expect(screen.getByRole('status').textContent).toMatch(/2 organização/i);
+    expect(screen.getByRole('status').textContent).toMatch(/2 organizações/i);
 
     fireEvent.click(screen.getAllByRole('button', { name: /Ver detalhe/i })[0]);
     expect(screen.getByTestId('startup-detail')).toBeTruthy();

@@ -5,8 +5,10 @@ import Breadcrumbs from '../../../components/research/Breadcrumbs.astro';
 import ResearchHeader from '../../../components/research/ResearchHeader.astro';
 import StartupExplorer from '../../../components/startups/StartupExplorer';
 import StartupEmptyState from '../../../components/startups/StartupEmptyState';
+import StartupCoverageNotice from '../../../components/startups/StartupCoverageNotice';
 import { loadPublishedSnapshot } from '../../../lib/startups/loadPublishedSnapshot';
 import { withBase } from '../../../lib/paths/withBase';
+import { startupCoverageStatusLabels } from '../../../data/startups/taxonomies';
 
 const snapshot = loadPublishedSnapshot();
 const isEmpty =
@@ -16,7 +18,7 @@ const updatedAt = snapshot.publishedAt.slice(0, 10);
 
 <BaseLayout
   title="Observatório de startups em glicogenoses"
-  description="Base curada de organizações com relevância direta ou adjacente às glicogenoses. Snapshot público estático, sujeito a atualização editorial."
+  description="Base curada de organizações com relevância direta, adjacente ou ainda não confirmada às glicogenoses. Snapshot público estático, sujeito a atualização editorial."
   currentPath={withBase('inovacao/startups/')}
   lastReviewedAt={updatedAt}
 >
@@ -34,7 +36,7 @@ const updatedAt = snapshot.publishedAt.slice(0, 10);
     <ResearchHeader
       eyebrow="Observatório"
       title="Observatório de startups em glicogenoses"
-      summary="Mapeamento curado — não exaustivo — de organizações cuja solução se relaciona diretamente às GSDs ou de forma adjacente à jornada clínica e socioeconômica."
+      summary="Mapeamento curado — não exaustivo — de organizações cuja solução pode relacionar-se às GSDs de forma adjacente ou como hipótese de adaptação ainda não confirmada."
       updatedAt={updatedAt}
       cutoff={updatedAt}
     />
@@ -49,8 +51,9 @@ const updatedAt = snapshot.publishedAt.slice(0, 10);
             atualização por novo artefato imutável.
           </li>
           <li>
-            Classificações direta / adjacente / ecossistema e Brasil / global são atributos da
-            organização, não bases separadas.
+            Classificações direta / adjacente / ecossistema / relevância não confirmada e Brasil /
+            global pertencem às avaliações de relevância ligadas a cada organização — não são bases
+            separadas.
           </li>
           <li>
             Última publicação do dataset:{' '}
@@ -60,6 +63,20 @@ const updatedAt = snapshot.publishedAt.slice(0, 10);
         </ul>
       </PageContainer>
     </section>
+
+    {
+      !isEmpty && (
+        <section class="section-space" aria-label="Cobertura do snapshot">
+          <PageContainer>
+            <StartupCoverageNotice
+              statusLabel={startupCoverageStatusLabels[snapshot.coverage.status]}
+              summary={snapshot.coverage.summary}
+              limitations={snapshot.coverage.limitations}
+            />
+          </PageContainer>
+        </section>
+      )
+    }
 
     <section class="section-space surface-editorial" aria-labelledby="startup-explorer-title">
       <PageContainer class="stack stack--lg">
@@ -88,7 +105,9 @@ const updatedAt = snapshot.publishedAt.slice(0, 10);
         <p>
           Toda alegação material sobre uma organização publicada deve apontar para fontes públicas
           no snapshot. Candidatos, staging, <code>ResearchRun</code> e <code>ChangeSet</code> ficam fora
-          do app estático e só entram via novo <code>PublishedSnapshot</code> após revisão humana.
+          do app estático e só entram via novo <code>PublishedSnapshot</code> após revisão humana. A ingestão
+          da Iteração 5B projeta a longlist auditada do mapeamento indireto Brasil; o CSV bruto e as filas
+          CB Insights não fazem parte do bundle público.
         </p>
       </PageContainer>
     </section>

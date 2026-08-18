@@ -1,5 +1,5 @@
 {
-  "currentSnapshotId": "snap-initial-empty-2026-08-14",
-  "selectedAt": "2026-08-14T12:00:00.000Z",
-  "note": "Selector only. Immutable snapshot bodies live under published/snapshots/ and must not be edited in place."
+  "currentSnapshotId": "snap-brazil-indirect-2026-08-14",
+  "selectedAt": "2026-08-17T11:43:47.000Z",
+  "note": "Selector only. Points to the first real public snapshot (Brazil indirect longlist, 33 organizations). Immutable snapshot bodies live under published/snapshots/."
 }

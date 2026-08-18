@@ -49,7 +49,8 @@ export const startupPublicSourceSchema = z
   .object({
     id: z.string().regex(/^sps-[a-z0-9-]+$/),
     title: z.string().min(1),
-    publisher: z.string().min(1),
+    /** Optional: set only when the URL is the organization's official site. */
+    publisher: z.string().min(1).optional(),
     url: z.string().url().optional(),
     sourceType: z.enum(startupPublicSourceTypeValues),
     publishedAt: isoDate.optional(),

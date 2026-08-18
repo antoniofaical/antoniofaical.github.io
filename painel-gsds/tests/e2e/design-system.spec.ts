@@ -7,7 +7,7 @@ const shotsDir = path.resolve(__dirname, '../visual');
 
 test.describe('design-system', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/design-system/');
+    await page.goto('./design-system/');
   });
 
   test('renders fixture notice and evidence states', async ({ page }) => {
@@ -115,7 +115,7 @@ test.describe('design-system', () => {
 
   test('respects reduced motion', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    await page.goto('/design-system/');
+    await page.goto('./design-system/');
     const motion = await page
       .locator('.motion-demo, .motion-enter')
       .first()
@@ -135,6 +135,6 @@ test.describe('design-system', () => {
 });
 
 test('home route smoke', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('./');
   await expect(page.getByRole('heading', { name: /família de doenças/i })).toBeVisible();
 });

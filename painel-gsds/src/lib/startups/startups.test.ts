@@ -2,7 +2,6 @@ import { readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
-import { startupPublishedSnapshotSchema } from '../../schemas/startups/publishedSnapshot';
 import {
   buildPublishedSnapshotRegistry,
   listPublishedSnapshotIds,
@@ -34,11 +33,12 @@ function idsFromPublishedSnapshotFiles(): string[] {
 }
 
 describe('startup published snapshot schema', () => {
-  it('accepts the empty production snapshot', () => {
-    const snapshot = loadPublishedSnapshot();
-    expect(snapshot.organizations).toHaveLength(0);
-    expect(snapshot.coverage.status).toBe('not-yet-populated');
-    expect(() => startupPublishedSnapshotSchema.parse(snapshot)).not.toThrow();
+  it('accepts the empty production snapshot artifact', () => {
+    const empty = parseStartupPublishedSnapshot(
+      JSON.parse(readFileSync(path.join(publishedSnapshotsDir, 'initial-empty.json'), 'utf8')),
+    );
+    expect(empty.organizations).toHaveLength(0);
+    expect(empty.coverage.status).toBe('not-yet-populated');
   });
 
   it('accepts the synthetic valid fixture', () => {
@@ -133,9 +133,10 @@ describe('production loader auto-discovery', () => {
 
   it('resolves the current selector without a manual per-id registry entry', () => {
     const production = loadPublishedSnapshot();
-    expect(production.id).toBeTruthy();
+    expect(production.id).toBe('snap-brazil-indirect-2026-08-14');
     expect(listPublishedSnapshotIds()).toContain(production.id);
-    expect(production.organizations).toHaveLength(0);
+    expect(listPublishedSnapshotIds()).toContain('snap-initial-empty-2026-08-14');
+    expect(production.organizations).toHaveLength(33);
   });
 
   it('fails clearly when the selector points to a missing snapshot id', () => {

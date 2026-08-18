@@ -1,0 +1,1611 @@
+{
+  "id": "snap-brazil-indirect-2026-08-14",
+  "schemaVersion": "1.1.0",
+  "period": "2026-08",
+  "generatedAt": "2026-08-17T11:43:47.000Z",
+  "publishedAt": "2026-08-17T11:43:47.000Z",
+  "protocolVersion": "startup-public-brazil-indirect-v1",
+  "previousSnapshotId": "snap-initial-empty-2026-08-14",
+  "coverage": {
+    "status": "limited",
+    "summary": "Primeiro recorte público do Observatório, composto por 33 organizações do mapeamento indireto Brasil concluído em 13 de agosto de 2026. O conjunto é curado e não exaustivo; não representa o mapeamento direto global nem um censo do ecossistema.",
+    "limitations": [
+      "Validação no CB Insights permanece pendente.",
+      "Filtro etário das 33 organizações permanece pendente.",
+      "11 registros são hipóteses de adaptação publicadas como relevância não confirmada.",
+      "Produtos e programas não foram modelados separadamente.",
+      "Classe C, casos unresolved, exclusões e histórico não integram a projeção pública.",
+      "Nenhuma organização deste snapshot deve ser interpretada como solução GSD-direta ou como evidência de eficácia clínica."
+    ]
+  },
+  "counts": {
+    "organizations": 33,
+    "productsOrPrograms": 0,
+    "relevanceAssessments": 33,
+    "publicSources": 41,
+    "directGsd": 0,
+    "adjacentGsd": 22,
+    "ecosystemSupport": 0,
+    "relevanceUnconfirmed": 11,
+    "brazil": 33,
+    "global": 0
+  },
+  "organizations": [
+    {
+      "id": "org-gsd-br-001",
+      "slug": "mendelics",
+      "preferredName": "Mendelics",
+      "aliases": ["Abracadabra"],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "NGS rare-disease lab + Abracadabra AI variant classification — Brazilian genomic diagnostics",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://mendelics.com.br/",
+      "foundedYear": 2012
+    },
+    {
+      "id": "org-gsd-br-002",
+      "slug": "saventic-health",
+      "preferredName": "Saventic Health",
+      "aliases": ["Saventic Care", "Saventic Med"],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "AI rare-disease hospital Med + patient Care — Rare metabolic screening",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://www.saventic.com/",
+      "foundedYear": 2019
+    },
+    {
+      "id": "org-gsd-br-007",
+      "slug": "neogenomica",
+      "preferredName": "NeoGenomica",
+      "aliases": ["Infinity VUS", "Longevo Baby"],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Clinical NGS + Infinity VUS monitoring + neonatal genetic screen — Clinical genomics",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://neogenomica.com.br/"
+    },
+    {
+      "id": "org-gsd-br-008",
+      "slug": "clarity-healthcare",
+      "preferredName": "Clarity Healthcare",
+      "aliases": [],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "AI rare/chronic disease early identification and referral support (Tamis-IA) — Brazil healthtech",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://clarityhealth.com.br/"
+    },
+    {
+      "id": "org-gsd-br-009",
+      "slug": "raras-health-ltda",
+      "preferredName": "Raras Health Ltda",
+      "aliases": ["Raras.org"],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Rare-disease AI encyclopedia, clinician copilot, patient communities, QR Carteirinha — Rare disease info + CDS adjacency",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://raras.org/",
+      "foundedYear": 2026
+    },
+    {
+      "id": "org-gsd-br-010",
+      "slug": "atypia",
+      "preferredName": "Atypia",
+      "aliases": ["Caminho Atipico ecosystem"],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "QR/NFC medical ID cards/bracelets + family panel + emergency location — Invisible/rare conditions safety",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://atypia.com.br/"
+    },
+    {
+      "id": "org-gsd-br-011",
+      "slug": "reabnet-tecnologia",
+      "preferredName": "ReabNet Tecnologia",
+      "aliases": ["ReabNet"],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Serious-games telerehab + computer vision + teleconsult — Motor rehab (stroke/MSK/Parkinson evidence)",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://reabnet.com.br/",
+      "foundedYear": 2023
+    },
+    {
+      "id": "org-gsd-br-012",
+      "slug": "neri",
+      "preferredName": "neri",
+      "aliases": ["neri.care Pulse/Scrubs/Checks"],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Care-coordination infra for payers/hospitals (Pulse/Scrubs/Checks WhatsApp) — Chronic/syndromic care gaps",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://neri.care/"
+    },
+    {
+      "id": "org-gsd-br-013",
+      "slug": "pbsf",
+      "preferredName": "PBSF",
+      "aliases": ["Protecting Brains and Saving Futures", "UTINeon"],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Remote neonatal ICU specialist surveillance + coaching software — Neuroprotection NICU",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://pbsf.com.br/"
+    },
+    {
+      "id": "org-gsd-br-014",
+      "slug": "vinculoo",
+      "preferredName": "Vinculoo",
+      "aliases": ["Vinculo"],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Edtech PEI/PAEE/PDI with AI Apoio Inteligente for inclusive education — Special/inclusive education schools",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://vinculoo.com.br/"
+    },
+    {
+      "id": "org-gsd-br-015",
+      "slug": "laboratorio-genetika",
+      "preferredName": "Laboratorio Genetika",
+      "aliases": ["Telegenetika"],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Telegenetics counseling + genetic testing logistics — Clinical genetics laboratory services",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://genetika.com.br/"
+    },
+    {
+      "id": "org-gsd-br-016",
+      "slug": "kuidar",
+      "preferredName": "Kuidar+",
+      "aliases": ["Kuidar Mais"],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Caregiver support for dementia: WhatsApp companion, MH groups, care plan — Alzheimer/dementia family caregivers",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://www.kuidarmais.com.br/"
+    },
+    {
+      "id": "org-gsd-br-017",
+      "slug": "cuidame",
+      "preferredName": "Cuidame",
+      "aliases": ["Grupo Altevita", "Altevita Care Ltda"],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Caregiver app: meds, schedules, charting, family chat — Home care / elderly family caregiving",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://cuidame.grupoaltevita.com.br/"
+    },
+    {
+      "id": "org-gsd-br-022",
+      "slug": "sas-smart",
+      "preferredName": "SAS Smart",
+      "aliases": [],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Telemedicine platform (SIAS) with digital health record for institutional telehealth — Brazil healthtech",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://www.sassmart.com.br/"
+    },
+    {
+      "id": "org-gsd-br-025",
+      "slug": "techtrials",
+      "preferredName": "Techtrials",
+      "aliases": ["EpiMarket", "TT RWE Platform"],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Real-world evidence / health-data intelligence platforms (EpiMarket, Genius Hospital) — Pharma/hospital RWE and epidemiology",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://ttrials.com/",
+      "foundedYear": 2009
+    },
+    {
+      "id": "org-gsd-br-026",
+      "slug": "tuinda-care",
+      "preferredName": "Tuinda Care",
+      "aliases": [],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Remote physical exam / telepropedeutics device+platform distribution (TytoCare) — Brazil healthtech",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://tuindacare.com/",
+      "headquarters": {
+        "country": "Brazil"
+      }
+    },
+    {
+      "id": "org-gsd-br-030",
+      "slug": "medlevensohn",
+      "preferredName": "MedLevensohn",
+      "aliases": ["Smart MedLevensohn", "Smart CGM"],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Continuous glucose monitoring system (Smart 2.0) with app alerts and remote sharing — Diabetes glucose monitoring / hospital supplies distributor",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://smartmedlevensohn.com.br/",
+      "foundedYear": 2002
+    },
+    {
+      "id": "org-gsd-br-032",
+      "slug": "glucogear",
+      "preferredName": "GlucoGear",
+      "aliases": [],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "AI glycemic prediction and remote diabetes monitoring (GlucoTrends) — SF-T1-02 ABStartups Healthtech map reconciled",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://www.glucogear.io"
+    },
+    {
+      "id": "org-gsd-br-033",
+      "slug": "lonvi",
+      "preferredName": "LonVi",
+      "aliases": [],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Home-care operating system (visits, EHR, caregiver network, payer bridge) — SF-T1-02 ABStartups Healthtech map reconciled",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://www.lonvi.com.br/",
+      "headquarters": {
+        "country": "Brazil"
+      }
+    },
+    {
+      "id": "org-gsd-br-035",
+      "slug": "spincare",
+      "preferredName": "SpinCare",
+      "aliases": [],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Home-care, desospitalization and care-transition management software with multiprofessional app — SF-T1-02 reconciled batch2",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://spincare.com.br/"
+    },
+    {
+      "id": "org-gsd-br-036",
+      "slug": "conectgene",
+      "preferredName": "ConectGene",
+      "aliases": [],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Consumer/clinical genetic tests: pharmacogenetics, hereditary cancer, BabyVip childhood disease panel (~540) — SF-T1-02 reconciled batch2",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://conectgene.com/"
+    },
+    {
+      "id": "org-gsd-br-037",
+      "slug": "lincon-health",
+      "preferredName": "Lincon Health",
+      "aliases": [],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Remote patient monitoring and digital therapy for diabetes/hypertension with device alerts and multidisciplinary chat — SF-T1-02 batch3",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://somoslincon.com.br/"
+    },
+    {
+      "id": "org-gsd-br-038",
+      "slug": "doc4doc",
+      "preferredName": "Doc4Doc",
+      "aliases": [],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Digital specialist interconsultation (neurology, cardiology, ICU, nephrology, pre-hospital) — SF-T1-02 batch3",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://doc4doc.com.br/"
+    },
+    {
+      "id": "org-gsd-br-041",
+      "slug": "luckie-tech",
+      "preferredName": "Luckie Tech",
+      "aliases": [],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Wearable vital-sign monitoring with real-time caregiver and hospital alerts (pediatric oncology focus; expandable) — SF-T1-05 PIPE reopen after SF-T1-02 thin-evidence exclusion",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://luckietech.com/"
+    },
+    {
+      "id": "org-gsd-br-043",
+      "slug": "marisa-care",
+      "preferredName": "Marisa.care",
+      "aliases": [],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "AI agents for health call-center/concierge/clinical support (scheduling, confirmation, follow-up) — SF-T1-04-PSS2025-TOP100",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://marisa.care/"
+    },
+    {
+      "id": "org-gsd-br-045",
+      "slug": "let-me-trial",
+      "preferredName": "Let Me Trial",
+      "aliases": [],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Digital matching of patients/physicians to active clinical trials (patient + HCP interfaces) — SF-LOCAL-SUL-SCORES-214",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://letmetrial.com.br/"
+    },
+    {
+      "id": "org-gsd-br-046",
+      "slug": "thummi",
+      "preferredName": "Thummi",
+      "aliases": [],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Remote oncology patient symptom diary with algorithm-guided urgency/emergency triage for care teams — SF-LOCAL-SUL-SCORES-214",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://thummi.global/"
+    },
+    {
+      "id": "org-gsd-br-047",
+      "slug": "how-ai",
+      "preferredName": "How.ai",
+      "aliases": [],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "B2B AI infrastructure: EHR/clinical-note screening to identify and recruit eligible clinical-trial volunteers (hospitals/CROs/sponsors) — not a patient-facing trial portal — SF-LOCAL-SUL-SCORES-214",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://howai.tech/"
+    },
+    {
+      "id": "org-gsd-br-048",
+      "slug": "clinia",
+      "preferredName": "CLINIA",
+      "aliases": [],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "WhatsApp/AI automation of clinic patient journey (scheduling, reminders, follow-ups, oncology clinic deployments) — SF-LOCAL-SUL-SCORES-214",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://clinia.io/"
+    },
+    {
+      "id": "org-gsd-br-053",
+      "slug": "justmiine",
+      "preferredName": "JustMiine",
+      "aliases": [],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Integrated remote care / RPM platform: clinical protocols, biometric+symptom capture, care-team chat, hybrid telemedicine for chronic/post-op navigation (B2B hospitals/operators) — SF-LOCAL-SUL-SCORES-214",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://www.justmiine.com.br/"
+    },
+    {
+      "id": "org-gsd-br-054",
+      "slug": "lauduz",
+      "preferredName": "Lauduz",
+      "aliases": [],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Telekit®/Teletotem®/Telecabine® connected telemedicine hardware + LauduzOne® platform enabling remote physical exams and specialist consults (UBS, home, remote areas) — SF-LOCAL-SUL-SCORES-214",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://lauduz.com/"
+    },
+    {
+      "id": "org-gsd-br-061",
+      "slug": "warux-health",
+      "preferredName": "Warux Health",
+      "aliases": [],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "WhatsApp/AI patient-journey orchestration across pre-visit, consult, and especially post-discharge: symptom follow-up, education, reminders, escalation for clinics/operators — SF-LOCAL-SUL-SCORES-214",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://warux.com.br/"
+    },
+    {
+      "id": "org-gsd-br-081",
+      "slug": "kintsu-health-tech",
+      "preferredName": "Kintsu Health Tech",
+      "aliases": ["Bioplanner (product)", "Encontre Seu Doutor Bioplanner"],
+      "organizationType": "unconfirmed",
+      "operationalStatus": "apparently-active",
+      "description": "Bioplanner clinical CDS for immune-mediated specialty care + Encontre Seu Doutor patient\to specialist routing (immune-mediated diseases) — SF-T2-SP-ERETZ-PORTFOLIO",
+      "businessModels": [],
+      "firstDiscoveredAt": "2026-08-13",
+      "lastReviewedAt": "2026-08-13",
+      "publicationState": "published",
+      "website": "https://kintsu.com.br/"
+    }
+  ],
+  "productsOrPrograms": [],
+  "relevanceAssessments": [
+    {
+      "id": "rel-gsd-br-001",
+      "organizationId": "org-gsd-br-001",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": ["NGS rare-disease lab + Abracadabra AI variant classification"],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-006", "PAG-001"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: laboratorio NGS privado BR com exoma/paineis e classificacao de variantes (Abracadabra). 2) PAG: PAG-006 (interpretacao/VUS) e PAG-001 (fechamento diagnostico genetico). 3) Adaptacao GSD: uso confirmatorio se genes GSD/GAA cobertos no portfolio. 4) Restricao: nao e CDS de atencao primaria; cobertura GSD-especifica nao auditada exame a exame.",
+      "confidence": "high",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-001-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-002",
+      "organizationId": "org-gsd-br-002",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": ["AI rare-disease hospital Med + patient Care"],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-001"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: IA de risco/triagem para doencas raras (Care paciente + Med hospitalar global). 2) PAG: PAG-001 suspeita/aceleracao diagnostica. 3) Adaptacao GSD: Care BR ja opera em PT; Med Studio exigiria configuracao metabolica/Pompe em clientes hospitalares BR. 4) Restricao: empresa estrangeira; Care e triagem/encaminhamento, nao diagnostico GSD validado; Med hospitalar BR nao reconfirmado cliente a cliente neste QA.",
+      "confidence": "high",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-002-01",
+          "role": "supports"
+        },
+        {
+          "sourceId": "sps-gsd-br-002-02",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-007",
+      "organizationId": "org-gsd-br-007",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": ["Clinical NGS + Infinity VUS monitoring + neonatal genetic screen"],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-006", "PAG-001"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: NGS clinico BR (exoma/genoma/hibrido) com Infinity VUS pos-laudo e logistica nacional. 2) PAG: PAG-006 (reclassificacao VUS) e PAG-001 (confirmacao genomica). 3) Adaptacao GSD: caminho confirmatorio se genes GSD/GAA no escopo analitico. 4) Restricao: modelo laboratorial, nao CDS primario; cobertura GSD nao itemizada no site.",
+      "confidence": "high",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-007-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-008",
+      "organizationId": "org-gsd-br-008",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": [
+        "AI rare/chronic disease early identification and referral support (Tamis-IA)"
+      ],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-001"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: plataforma TAMIS-IA de suporte a decisao / identificacao precoce de condicoes raras e cronicas. 2) PAG: PAG-001 (suspeita/triagem). 3) Adaptacao GSD: possivel se fenotipos metabolicos/GSD forem configurados nos modulos de matching. 4) Restricao: site enfatiza cronicos (DM/HAS) alem de raras; maturidade comercial e modulos GSD-nativos nao comprovados no site primario.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-008-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-009",
+      "organizationId": "org-gsd-br-009",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": [
+        "Rare-disease AI encyclopedia, clinician copilot, patient communities, QR Carteirinha"
+      ],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-001", "PAG-002", "PAG-019"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: enciclopedia/KG aberto de doencas raras em PT (incl. Pompe/glicogenoses no catalogo), assistente WhatsApp, comunidades e carteirinha digital. 2) PAG: PAG-001/002 (orientacao/educacao na odisséia) e PAG-019 (info critica portatil). 3) Adaptacao GSD: conteudo GSD ja indexavel; carteirinha poderia carregar protocolos metabolicos. 4) Restricao: CNPJ jovem (mai/2026); informacional, nao CDS regulado; PAGs psicossociais 008/009/031 removidos por evidencia fraca de produto dedicado.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-009-01",
+          "role": "supports"
+        },
+        {
+          "sourceId": "sps-gsd-br-009-02",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-010",
+      "organizationId": "org-gsd-br-010",
+      "relationship": "relevance-unconfirmed",
+      "geographicScopes": ["brazil"],
+      "modalities": ["QR/NFC medical ID cards/bracelets + family panel + emergency location"],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-018", "PAG-019"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: IDs medicos QR/NFC comerciais (pulseira/cartao) com painel familiar, instrucoes editaveis e emergencia com localizacao. 2) PAG: PAG-018/019 reconhecimento/info critica em emergencia. 3) Adaptacao GSD: carregar protocolos metabolicos/hipoglicemia se familias/clinicas os inserirem. 4) Restricao: marketing neurodiversidade-first; packs clinicos GSD nao nativos.",
+      "confidence": "high",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-010-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-011",
+      "organizationId": "org-gsd-br-011",
+      "relationship": "relevance-unconfirmed",
+      "geographicScopes": ["brazil"],
+      "modalities": ["Serious-games telerehab + computer vision + teleconsult"],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-024", "PAG-027", "PAG-048"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: SaaS BR de telerreabilitacao com jogos serios, RV/visao computacional, planos pagos e teleconsulta. 2) PAG: PAG-024/027/048 exercicio/reabilitacao supervisionada remota. 3) Adaptacao GSD: so com protocolos de seguranca para miopatia metabolica/Pompe (nao McArdle second-wind nativo). 4) Restricao: origem MSK/neuro; sem claim GSD; PAG-017 permanece descoberto.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-011-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-012",
+      "organizationId": "org-gsd-br-012",
+      "relationship": "relevance-unconfirmed",
+      "geographicScopes": ["brazil"],
+      "modalities": ["Care-coordination infra for payers/hospitals (Pulse/Scrubs/Checks WhatsApp)"],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-020", "PAG-028"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: infra BR de coordenacao do cuidado (Pulse/Scrubs/Checks) com rotinas WhatsApp para pacientes/cuidadores e visao populacional. 2) PAG: PAG-020 fragmentacao entre visitas; PAG-028 carga do cuidador. 3) Adaptacao GSD: playbooks metabolicos e vigilancia organica teriam de ser configurados (nao nativos). 4) Restricao: modelo cronico generalista; transicao ped-adulto (PAG-021) nao coberta; clientes nomeados nao auditados neste QA.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-012-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-013",
+      "organizationId": "org-gsd-br-013",
+      "relationship": "relevance-unconfirmed",
+      "geographicScopes": ["brazil"],
+      "modalities": ["Remote neonatal ICU specialist surveillance + coaching software"],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-041"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: rede BR de monitoramento neurologico neonatal remoto + IA (UTINeon), com escala hospitalar publicada. 2) PAG: PAG-041 padrao operacional de janela critica neonatal remota. 3) Adaptacao GSD: padrao de tele-especialidade poderia ser reconfigurado para vias metabolicas/GSD neonatais (sem dosing ITI). 4) Restricao: vertical neuroprotecao, nao metabolismo; nao e produto de protocolo GSD.",
+      "confidence": "high",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-013-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-014",
+      "organizationId": "org-gsd-br-014",
+      "relationship": "relevance-unconfirmed",
+      "geographicScopes": ["brazil"],
+      "modalities": ["Edtech PEI/PAEE/PDI with AI Apoio Inteligente for inclusive education"],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-025"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: plataforma BR comercial de PEI/PAEE/PDI com Apoio Inteligente (IA) para escolas/redes inclusivas. 2) PAG: PAG-025 acomodacoes/planejamento escolar. 3) Adaptacao GSD: registrar restricoes metabolicas/atividade no PEI se escola/familia inserirem. 4) Restricao: ferramenta pedagogica; sem protocolos clinicos GSD.",
+      "confidence": "high",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-014-01",
+          "role": "supports"
+        },
+        {
+          "sourceId": "sps-gsd-br-014-02",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-015",
+      "organizationId": "org-gsd-br-015",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": ["Telegenetics counseling + genetic testing logistics"],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-023"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: laboratorio genetico BR com Telegenetika (aconselhamento genetico virtual) e coleta em casa. 2) PAG: PAG-023 acesso a especialidade genetica a distancia. 3) Adaptacao GSD: canal de aconselhamento/pos-teste para familias com suspeita ou diagnostico genetico. 4) Restricao: portfolio tambem preditivo/ancestralidade; nao e stack completo de coordenacao de cuidado GSD.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-015-01",
+          "role": "supports"
+        },
+        {
+          "sourceId": "sps-gsd-br-015-02",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-016",
+      "organizationId": "org-gsd-br-016",
+      "relationship": "relevance-unconfirmed",
+      "geographicScopes": ["brazil"],
+      "modalities": ["Caregiver support for dementia: WhatsApp companion, MH groups, care plan"],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-028", "PAG-029"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: servico BR pago de apoio ao cuidador (WhatsApp diario, equipe multi, grupos psicologicos) focado em demencia. 2) PAG: PAG-028 carga do cuidador; PAG-029 saude mental do cuidador. 3) Adaptacao GSD: mesmo modelo de companion humano+protocolos poderia ser reescrito para crises metabolicas (nao nativo). 4) Restricao: vertical Alzheimer/demencia; nao diagnostica/prescreve; protocolos GSD inexistentes.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-016-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-017",
+      "organizationId": "org-gsd-br-017",
+      "relationship": "relevance-unconfirmed",
+      "geographicScopes": ["brazil"],
+      "modalities": ["Caregiver app: meds, schedules, charting, family chat"],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-028"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: app BR de gestao de cuidado familiar (medicacoes, escalas, evolucao, chat) com planos pagos e apps stores. 2) PAG: PAG-028 reducao de fragmentacao de tarefas do cuidador. 3) Adaptacao GSD: templates de rotina metabolica teriam de ser adicionados. 4) Restricao: produto generico de home care; sem workflows GSD.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-017-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-022",
+      "organizationId": "org-gsd-br-022",
+      "relationship": "relevance-unconfirmed",
+      "geographicScopes": ["brazil"],
+      "modalities": [
+        "Telemedicine platform (SIAS) with digital health record for institutional telehealth"
+      ],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-023"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: plataforma BR SIAS de telessaude/telemedicina institucional (SAS Smart). 2) PAG: PAG-023 acesso a especialidade a distancia. 3) Adaptacao GSD: poderia hospedar fluxos de genetica/metabolismo se contratados por rede. 4) Restricao: telehealth generalista; workflows metabolicos nao evidenciados.",
+      "confidence": "high",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-022-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-025",
+      "organizationId": "org-gsd-br-025",
+      "relationship": "relevance-unconfirmed",
+      "geographicScopes": ["brazil"],
+      "modalities": [
+        "Real-world evidence / health-data intelligence platforms (EpiMarket, Genius Hospital)"
+      ],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-038"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: empresa BR madura de RWE/IA em saude (EpiMarket + Genius Hospital) sobre dados reais BR. 2) PAG: PAG-038 infraestrutura de evidencia/jornada para doencas raras se configurada. 3) Adaptacao GSD: estudos de burden/jornada GSD via RWD — uso proposto, nao produto GSD. 4) Restricao: buyer primario pharma/market access/hospital intelligence; nao registry paciente GSD dedicado.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-025-01",
+          "role": "supports"
+        },
+        {
+          "sourceId": "sps-gsd-br-025-02",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-026",
+      "organizationId": "org-gsd-br-026",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": [
+        "Remote physical exam / telepropedeutics device+platform distribution (TytoCare)"
+      ],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-023"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: operadora/distribuidora BR de telepropedeutica com dispositivo TytoCare (exame fisico remoto). 2) PAG: PAG-023 acesso remoto a avaliacao com perifericos. 3) Adaptacao GSD: teleconsulta especializada com exame fisico a distancia (nao nativo metabolico). 4) Restricao: OEM estrangeiro; site tuindacare.com inacessivel em 2026-08-13; evidencia primaria atual via imprensa setorial (Medicina S/A) + historico Sabara/Pequeno Principe.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-026-01",
+          "role": "supports"
+        },
+        {
+          "sourceId": "sps-gsd-br-026-02",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-030",
+      "organizationId": "org-gsd-br-030",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": [
+        "Continuous glucose monitoring system (Smart 2.0) with app alerts and remote sharing"
+      ],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-015", "PAG-012"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: CGM comercial BR Smart/Smart 2.0 (MedLevensohn) com app, alertas e compartilhamento remoto. 2) PAG: PAG-015 monitoramento glicemico adjacente; PAG-012 compartilhamento/alertas a cuidadores. 3) Adaptacao GSD: uso proposto para vigilancia glicemica/noturna em fenotipos relevantes — sem validade clinica GSD hepatica assumida. 4) Restricao: framing diabetes; fabricacao OEM estrangeira; nao protocolo GSD.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-030-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-032",
+      "organizationId": "org-gsd-br-032",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": ["AI glycemic prediction and remote diabetes monitoring (GlucoTrends)"],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-015", "PAG-012"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: healthtech BR de IA para predicao glicemica / monitoramento remoto em diabetes (GlucoTrends). 2) PAG: PAG-015/012 vigilancia glicemica e alertas adjacentes. 3) Adaptacao GSD: uso proposto para padroes glicemicos/noturnos sem validade clinica GSD hepatica. 4) Restricao: site glucogear.io inacessivel em 2026-08-13; evidencia atual via USP Inovacao + CNPJ historico; produto diabetes-nativo.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-032-01",
+          "role": "supports"
+        },
+        {
+          "sourceId": "sps-gsd-br-032-02",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-033",
+      "organizationId": "org-gsd-br-033",
+      "relationship": "relevance-unconfirmed",
+      "geographicScopes": ["brazil"],
+      "modalities": ["Home-care operating system (visits, EHR, caregiver network, payer bridge)"],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-028", "PAG-020"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: SaaS BR de operacao de atencao domiciliar (visitas, equipes, bridge pagador). 2) PAG: PAG-028/020 fragmentacao cuidador/home care. 3) Adaptacao GSD: protocolos metabolicos no fluxo domiciliar (nao nativos). 4) Restricao: stack home-care generalista.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-033-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-035",
+      "organizationId": "org-gsd-br-035",
+      "relationship": "relevance-unconfirmed",
+      "geographicScopes": ["brazil"],
+      "modalities": [
+        "Home-care, desospitalization and care-transition management software with multiprofessional app"
+      ],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-020", "PAG-028"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: software BR comercial de home care (prontuario, escalas, estoque, app multiprofissional, desospitalizacao). 2) PAG: PAG-020/028 coordenacao e carga assistencial domiciliar. 3) Adaptacao GSD: configurar rotinas metabolicas no home care. 4) Restricao: PAG-021 removido — desospitalizacao != transicao pediatrica-adulto GSD; produto generalista.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-035-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-036",
+      "organizationId": "org-gsd-br-036",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": [
+        "Consumer/clinical genetic tests: pharmacogenetics, hereditary cancer, BabyVip childhood disease panel (~540)"
+      ],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-006", "PAG-001"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: testes geneticos BR com coleta domiciliar (FarmaGen/OncoCare/NutriFit/BabyVip). 2) PAG: PAG-006/001 acesso genomico adjacente (painel infancia BabyVip). 3) Adaptacao GSD: so se genes GSD/GAA constarem do painel — nao auditado. 4) Restricao: modelo DTC/consumer; nao laboratorio especialidade GSD comparavel a Mendelics/NeoGenomica.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-036-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-037",
+      "organizationId": "org-gsd-br-037",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": [
+        "Remote patient monitoring and digital therapy for diabetes/hypertension with device alerts and multidisciplinary chat"
+      ],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-015", "PAG-012"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: RPM/terapia digital BR para diabetes tipo 2 e hipertensao com dispositivos e alertas (ANVISA citada no site). 2) PAG: PAG-015/012 monitoramento glicemico e compartilhamento/alertas. 3) Adaptacao GSD: adjacencia glicemica sem validade GSD hepatica. 4) Restricao: framing DM2/HAS; PAG-020 removido (cobertura de coordenacao ja coberta por outros).",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-037-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-038",
+      "organizationId": "org-gsd-br-038",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": [
+        "Digital specialist interconsultation (neurology, cardiology, ICU, nephrology, pre-hospital)"
+      ],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-023"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: interconsulta digital 24/7 BR para hospitais (neuro, cardio, UTI, etc.). 2) PAG: PAG-023 acesso a especialista a distancia. 3) Adaptacao GSD: util se rede incluir metabolica/genetica (nao evidenciado no catalogo atual). 4) Restricao: catalogo nao GSD-nativo; enfase hospitalar/pre-hospitalar.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-038-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-041",
+      "organizationId": "org-gsd-br-041",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": [
+        "Wearable vital-sign monitoring with real-time caregiver and hospital alerts (pediatric oncology focus; expandable)"
+      ],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-020"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: wearable BR de sinais vitais com alertas a cuidadores/equipes (foco oncologia pediatrica). 2) PAG: PAG-020 monitoramento remoto / alertas ao cuidador. 3) Adaptacao GSD: so com protocolos metabolicos; nao equivale a ID de emergencia (PAG-019). 4) Restricao: site recruta estudo clinico; framing neutropenia/oncologia; escala regulatoria pendente.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-041-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-043",
+      "organizationId": "org-gsd-br-043",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": [
+        "AI agents for health call-center/concierge/clinical support (scheduling, confirmation, follow-up)"
+      ],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-020", "PAG-028"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: agentes de IA BR para call center/concierge/apoio clinico (agenda, confirmacao, acompanhamento). 2) PAG: PAG-020/028 coordenacao e reducao de carga operacional/cuidado. 3) Adaptacao GSD: playbooks metabolicos nos agentes (nao nativos). 4) Restricao: framing preventivo/operacional geral; nao companion GSD.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-043-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-045",
+      "organizationId": "org-gsd-br-045",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": [
+        "Digital matching of patients/physicians to active clinical trials (patient + HCP interfaces)"
+      ],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-038"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: plataforma BR de matching de pacientes/medicos a ensaios clinicos ativos. 2) PAG: PAG-038 (corrigido) — acesso a pesquisa/evidencia; PAG-025 escolar removido (erro de mapeamento). 3) Adaptacao GSD: localizar ensaios metabolicos/GSD se indexados. 4) Restricao: foco oncologia/narrativa rara em press; nao registry GSD; nao acomodacao escolar.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-045-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-046",
+      "organizationId": "org-gsd-br-046",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": [
+        "Remote oncology patient symptom diary with algorithm-guided urgency/emergency triage for care teams"
+      ],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-020"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: diario/sintomas remoto oncologico BR com triagem de urgencia para equipes. 2) PAG: PAG-020 monitoramento remoto / escalonamento. 3) Adaptacao GSD: protocolos sintomaticos metabolicos (nao nativos). 4) Restricao: vertical oncologia; nao PAG-019 (ID emergencia).",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-046-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-047",
+      "organizationId": "org-gsd-br-047",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": [
+        "B2B AI infrastructure: EHR/clinical-note screening to identify and recruit eligible clinical-trial volunteers (hospitals/CROs/sponsors) — not a patient-facing trial portal"
+      ],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-038"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: infra B2B BR de recrutamento para trials via triagem de EHR/notas clinicas. 2) PAG: PAG-038 (corrigido) — identificacao para pesquisa; PAG-025 escolar removido. 3) Adaptacao GSD: criterios de elegibilidade metabolicos em hospitais/CROs. 4) Restricao: B2B pharma/CRO/hospital; paciente nao self-serve; buyer research/recruitment.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-047-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-048",
+      "organizationId": "org-gsd-br-048",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": [
+        "WhatsApp/AI automation of clinic patient journey (scheduling, reminders, follow-ups, oncology clinic deployments)"
+      ],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-028"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: automacao WhatsApp/IA de jornada de clinica/hospital (agenda, lembretes, follow-up). 2) PAG: PAG-028 reducao de carga operacional/comunicacao do cuidado. 3) Adaptacao GSD: templates de follow-up metabolico (nao nativos). 4) Restricao: clinic ops generalista; nao companion clinico GSD.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-048-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-053",
+      "organizationId": "org-gsd-br-053",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": [
+        "Integrated remote care / RPM platform: clinical protocols, biometric+symptom capture, care-team chat, hybrid telemedicine for chronic/post-op navigation (B2B hospitals/operators)"
+      ],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-020", "PAG-028"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: plataforma RPM/coordenacao de cuidado (protocolos, biometricos, chat, telemed hibrida) com ops BR/Tecnopuc. 2) PAG: PAG-020/028 monitoramento e coordenacao. 3) Adaptacao GSD: protocolos metabolicos no RPM (nao nativos). 4) Restricao: justmiine.com.br TLS falhou em 2026-08-13; maturidade sustentada por CNPJ/historico Tecnopuc/pilotos; origem US+BR.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-053-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-054",
+      "organizationId": "org-gsd-br-054",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": [
+        "Telekit®/Teletotem®/Telecabine® connected telemedicine hardware + LauduzOne® platform enabling remote physical exams and specialist consults (UBS, home, remote areas)"
+      ],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-023"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: hardware+plataforma BR de telemedicina com exame fisico remoto (Telekit/totem/cabine). 2) PAG: PAG-023 acesso a especialista com telepropedeutica. 3) Adaptacao GSD: teleconsulta metabolica/genetica se rede disponivel. 4) Restricao: telehealth generalista; overlap funcional com Tuinda/TytoCare pattern.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-054-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-061",
+      "organizationId": "org-gsd-br-061",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": [
+        "WhatsApp/AI patient-journey orchestration across pre-visit, consult, and especially post-discharge: symptom follow-up, education, reminders, escalation for clinics/operators"
+      ],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-020", "PAG-028"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: orquestracao WhatsApp/IA da jornada do paciente (pre/consulta/pos-alta) para clinicas. 2) PAG: PAG-020/028 follow-up remoto e carga de coordenacao. 3) Adaptacao GSD: playbooks pos-alta metabolicos. 4) Restricao: early launch (desconto primeiros usuarios no site); nao GSD-nativo.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-061-01",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    },
+    {
+      "id": "rel-gsd-br-081",
+      "organizationId": "org-gsd-br-081",
+      "relationship": "adjacent-gsd",
+      "geographicScopes": ["brazil"],
+      "modalities": [
+        "Bioplanner clinical CDS for immune-mediated specialty care + Encontre Seu Doutor patient\to specialist routing (immune-mediated diseases)"
+      ],
+      "gsdRefs": [],
+      "clinicalNeedRefs": ["PAG-001"],
+      "socioeconomicNeedRefs": [],
+      "rationale": "1) Capacidade: KINTSU HEALTH TECH LTDA opera Bioplanner (CDS clinico doencas imunomediadas) + Encontre Seu Doutor (roteamento paciente-especialista). 2) PAG: PAG-001 suspeita/roteamento em vias complexas. 3) Adaptacao GSD: so se protocolos/especialistas metabolicos forem adicionados (hoje imunomediadas). 4) Restricao: vertical imune; Bioplanner=produto nao entidade separada; nao diagnostico GSD validado.",
+      "confidence": "medium",
+      "evidenceRefs": [
+        {
+          "sourceId": "sps-gsd-br-081-01",
+          "role": "supports"
+        },
+        {
+          "sourceId": "sps-gsd-br-081-02",
+          "role": "supports"
+        }
+      ],
+      "assessedAt": "2026-08-13",
+      "protocolVersion": "startup-public-brazil-indirect-v1"
+    }
+  ],
+  "publicSources": [
+    {
+      "id": "sps-gsd-br-001-01",
+      "title": "Fonte pública (mendelics.com.br)",
+      "sourceType": "company-site",
+      "url": "https://mendelics.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Mendelics"
+    },
+    {
+      "id": "sps-gsd-br-002-01",
+      "title": "Fonte pública (saventiccare.com.br)",
+      "sourceType": "other",
+      "url": "https://www.saventiccare.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public"
+    },
+    {
+      "id": "sps-gsd-br-002-02",
+      "title": "Fonte pública (saventic.com)",
+      "sourceType": "company-site",
+      "url": "https://www.saventic.com/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Saventic Health"
+    },
+    {
+      "id": "sps-gsd-br-007-01",
+      "title": "Fonte pública (neogenomica.com.br)",
+      "sourceType": "company-site",
+      "url": "https://neogenomica.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "NeoGenomica"
+    },
+    {
+      "id": "sps-gsd-br-008-01",
+      "title": "Fonte pública (clarityhealth.com.br)",
+      "sourceType": "company-site",
+      "url": "https://clarityhealth.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Clarity Healthcare"
+    },
+    {
+      "id": "sps-gsd-br-009-01",
+      "title": "Fonte pública (raras.org)",
+      "sourceType": "company-site",
+      "url": "https://raras.org/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Raras Health Ltda"
+    },
+    {
+      "id": "sps-gsd-br-009-02",
+      "title": "Fonte pública (raras.org)",
+      "sourceType": "company-site",
+      "url": "https://raras.org/sobre",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Raras Health Ltda"
+    },
+    {
+      "id": "sps-gsd-br-010-01",
+      "title": "Fonte pública (atypia.com.br)",
+      "sourceType": "company-site",
+      "url": "https://atypia.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Atypia"
+    },
+    {
+      "id": "sps-gsd-br-011-01",
+      "title": "Fonte pública (reabnet.com.br)",
+      "sourceType": "company-site",
+      "url": "https://reabnet.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "ReabNet Tecnologia"
+    },
+    {
+      "id": "sps-gsd-br-012-01",
+      "title": "Fonte pública (neri.care)",
+      "sourceType": "company-site",
+      "url": "https://neri.care/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "neri"
+    },
+    {
+      "id": "sps-gsd-br-013-01",
+      "title": "Fonte pública (pbsf.com.br)",
+      "sourceType": "company-site",
+      "url": "https://pbsf.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "PBSF"
+    },
+    {
+      "id": "sps-gsd-br-014-01",
+      "title": "Fonte pública (vinculoo.com.br)",
+      "sourceType": "company-site",
+      "url": "https://vinculoo.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Vinculoo"
+    },
+    {
+      "id": "sps-gsd-br-014-02",
+      "title": "Fonte pública (vinculoo.com.br)",
+      "sourceType": "company-site",
+      "url": "https://vinculoo.com.br/pei/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Vinculoo"
+    },
+    {
+      "id": "sps-gsd-br-015-01",
+      "title": "Fonte pública (genetika.com.br)",
+      "sourceType": "company-site",
+      "url": "https://genetika.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Laboratorio Genetika"
+    },
+    {
+      "id": "sps-gsd-br-015-02",
+      "title": "Fonte pública (genetika.com.br)",
+      "sourceType": "company-site",
+      "url": "https://genetika.com.br/telegenetika/seu-acesso-ao-aconselhamento-genetico-virtual/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Laboratorio Genetika"
+    },
+    {
+      "id": "sps-gsd-br-016-01",
+      "title": "Fonte pública (kuidarmais.com.br)",
+      "sourceType": "company-site",
+      "url": "https://www.kuidarmais.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Kuidar+"
+    },
+    {
+      "id": "sps-gsd-br-017-01",
+      "title": "Fonte pública (cuidame.grupoaltevita.com.br)",
+      "sourceType": "company-site",
+      "url": "https://cuidame.grupoaltevita.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Cuidame"
+    },
+    {
+      "id": "sps-gsd-br-022-01",
+      "title": "Fonte pública (sassmart.com.br)",
+      "sourceType": "company-site",
+      "url": "https://www.sassmart.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "SAS Smart"
+    },
+    {
+      "id": "sps-gsd-br-025-01",
+      "title": "Fonte pública (ttrials.com)",
+      "sourceType": "company-site",
+      "url": "https://ttrials.com/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Techtrials"
+    },
+    {
+      "id": "sps-gsd-br-025-02",
+      "title": "Fonte pública (epimarket.ttrials.com)",
+      "sourceType": "other",
+      "url": "https://epimarket.ttrials.com/",
+      "accessedAt": "2026-08-13",
+      "availability": "public"
+    },
+    {
+      "id": "sps-gsd-br-026-01",
+      "title": "Fonte pública (medicinasa.com.br)",
+      "sourceType": "other",
+      "url": "https://medicinasa.com.br/tuindacare-medsa26/",
+      "accessedAt": "2026-08-13",
+      "availability": "public"
+    },
+    {
+      "id": "sps-gsd-br-026-02",
+      "title": "Fonte pública (tuindacare.com)",
+      "sourceType": "company-site",
+      "url": "https://tuindacare.com/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Tuinda Care"
+    },
+    {
+      "id": "sps-gsd-br-030-01",
+      "title": "Fonte pública (smartmedlevensohn.com.br)",
+      "sourceType": "company-site",
+      "url": "https://smartmedlevensohn.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "MedLevensohn"
+    },
+    {
+      "id": "sps-gsd-br-032-01",
+      "title": "Fonte pública (inovacao.usp.br)",
+      "sourceType": "other",
+      "url": "https://www.inovacao.usp.br/startup-utiliza-inteligencia-artificial-para-controle-diabetes/",
+      "accessedAt": "2026-08-13",
+      "availability": "public"
+    },
+    {
+      "id": "sps-gsd-br-032-02",
+      "title": "Fonte pública (glucogear.io)",
+      "sourceType": "company-site",
+      "url": "https://www.glucogear.io",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "GlucoGear"
+    },
+    {
+      "id": "sps-gsd-br-033-01",
+      "title": "Fonte pública (lonvi.com.br)",
+      "sourceType": "company-site",
+      "url": "https://www.lonvi.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "LonVi"
+    },
+    {
+      "id": "sps-gsd-br-035-01",
+      "title": "Fonte pública (spincare.com.br)",
+      "sourceType": "company-site",
+      "url": "https://spincare.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "SpinCare"
+    },
+    {
+      "id": "sps-gsd-br-036-01",
+      "title": "Fonte pública (conectgene.com)",
+      "sourceType": "company-site",
+      "url": "https://conectgene.com/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "ConectGene"
+    },
+    {
+      "id": "sps-gsd-br-037-01",
+      "title": "Fonte pública (somoslincon.com.br)",
+      "sourceType": "company-site",
+      "url": "https://somoslincon.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Lincon Health"
+    },
+    {
+      "id": "sps-gsd-br-038-01",
+      "title": "Fonte pública (doc4doc.com.br)",
+      "sourceType": "company-site",
+      "url": "https://doc4doc.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Doc4Doc"
+    },
+    {
+      "id": "sps-gsd-br-041-01",
+      "title": "Fonte pública (luckietech.com)",
+      "sourceType": "company-site",
+      "url": "https://luckietech.com/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Luckie Tech"
+    },
+    {
+      "id": "sps-gsd-br-043-01",
+      "title": "Fonte pública (marisa.care)",
+      "sourceType": "company-site",
+      "url": "https://marisa.care/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Marisa.care"
+    },
+    {
+      "id": "sps-gsd-br-045-01",
+      "title": "Fonte pública (letmetrial.com.br)",
+      "sourceType": "company-site",
+      "url": "https://letmetrial.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Let Me Trial"
+    },
+    {
+      "id": "sps-gsd-br-046-01",
+      "title": "Fonte pública (thummi.global)",
+      "sourceType": "company-site",
+      "url": "https://thummi.global/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Thummi"
+    },
+    {
+      "id": "sps-gsd-br-047-01",
+      "title": "Fonte pública (howai.tech)",
+      "sourceType": "company-site",
+      "url": "https://howai.tech/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "How.ai"
+    },
+    {
+      "id": "sps-gsd-br-048-01",
+      "title": "Fonte pública (clinia.io)",
+      "sourceType": "company-site",
+      "url": "https://clinia.io/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "CLINIA"
+    },
+    {
+      "id": "sps-gsd-br-053-01",
+      "title": "Fonte pública (justmiine.com.br)",
+      "sourceType": "company-site",
+      "url": "https://www.justmiine.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "JustMiine"
+    },
+    {
+      "id": "sps-gsd-br-054-01",
+      "title": "Fonte pública (lauduz.com)",
+      "sourceType": "company-site",
+      "url": "https://lauduz.com/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Lauduz"
+    },
+    {
+      "id": "sps-gsd-br-061-01",
+      "title": "Fonte pública (warux.com.br)",
+      "sourceType": "company-site",
+      "url": "https://warux.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Warux Health"
+    },
+    {
+      "id": "sps-gsd-br-081-01",
+      "title": "Fonte pública (kintsu.com.br)",
+      "sourceType": "company-site",
+      "url": "https://kintsu.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public",
+      "publisher": "Kintsu Health Tech"
+    },
+    {
+      "id": "sps-gsd-br-081-02",
+      "title": "Fonte pública (bioplannermedicos.com.br)",
+      "sourceType": "other",
+      "url": "https://bioplannermedicos.com.br/",
+      "accessedAt": "2026-08-13",
+      "availability": "public"
+    }
+  ],
+  "checksum": "535632ba36ce32fbde8558dd244f3abcade1abba2176ab59850297437e9ad75b"
+}

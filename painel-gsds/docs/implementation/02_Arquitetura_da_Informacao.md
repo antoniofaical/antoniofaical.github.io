@@ -38,7 +38,7 @@ Brasil/global são filtros e vistas do mesmo observatório, não bases duplicada
 | `/design-system/`                   |        1 | interna                          |
 | `/analises/bases-clinicas/`         |        3 | implementada                     |
 | `/analises/impacto-socioeconomico/` |        4 | implementada                     |
-| `/inovacao/startups/`               |       5A | implementada (snapshot vazio)    |
+| `/inovacao/startups/`               |       5B | implementada (Brasil indireto)   |
 | `/inovacao/startups/diretas/`       |       5+ | vista filtrada ou rota opcional  |
 | `/inovacao/startups/adjacentes/`    |       5+ | vista filtrada ou rota opcional  |
 | `/inovacao/startups/{slug}/`        |       5B | contrato reservado; drawer na 5A |
