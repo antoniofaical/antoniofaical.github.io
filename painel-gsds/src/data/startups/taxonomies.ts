@@ -27,13 +27,73 @@ export const startupGeographyLabels: Record<StartupGeography, string> = {
   global: 'Global',
 };
 
-export const startupConfidenceValues = ['high', 'medium', 'low'] as const;
+export const startupConfidenceValues = ['high', 'medium', 'low', 'not-assigned'] as const;
 export type StartupConfidence = (typeof startupConfidenceValues)[number];
 
 export const startupConfidenceLabels: Record<StartupConfidence, string> = {
   high: 'Alta',
   medium: 'Média',
   low: 'Baixa',
+  'not-assigned': 'Não atribuída',
+};
+
+/** Status corporativo do mapeamento direto (distinto de operationalStatus e de atividade GSD). */
+export const startupDirectOrganizationStatusValues = [
+  'private-startup',
+  'public-biotech',
+  'acquired-or-inactive',
+  'identity-unresolved',
+] as const;
+export type StartupDirectOrganizationStatus =
+  (typeof startupDirectOrganizationStatusValues)[number];
+export const startupDirectOrganizationStatusLabels: Record<
+  StartupDirectOrganizationStatus,
+  string
+> = {
+  'private-startup': 'Startup / privada',
+  'public-biotech': 'Biotecnologia de capital aberto',
+  'acquired-or-inactive': 'Adquirida ou inativa',
+  'identity-unresolved': 'Status atual incerto',
+};
+
+/** Atividade GSD atual vs histórica (não colapsar com organization_status). */
+export const startupDirectGsdActivityValues = [
+  'confirmed-current',
+  'current-uncertain',
+  'historical-only',
+] as const;
+export type StartupDirectGsdActivity = (typeof startupDirectGsdActivityValues)[number];
+export const startupDirectGsdActivityLabels: Record<StartupDirectGsdActivity, string> = {
+  'confirmed-current': 'Atividade GSD atual',
+  'current-uncertain': 'Atividade atual incerta',
+  'historical-only': 'Histórica',
+};
+
+/**
+ * Papel no ativo GSD.
+ * `HISTORICAL_OWNER` mapeia para `historical-owner` (Maze/Valerion),
+ * exceto Kriya → `historical-association-ownership-unverified`.
+ */
+export const startupDirectAssetRoleValues = [
+  'owner',
+  'developer',
+  'license-holder',
+  'historical-owner',
+  'historical-association-ownership-unverified',
+  'acquired-entity',
+  'outlicensed',
+  'unresolved',
+] as const;
+export type StartupDirectAssetRole = (typeof startupDirectAssetRoleValues)[number];
+export const startupDirectAssetRoleLabels: Record<StartupDirectAssetRole, string> = {
+  owner: 'Titular',
+  developer: 'Desenvolvedor / operador',
+  'license-holder': 'Detentor de licença',
+  'historical-owner': 'Titular histórico do ativo',
+  'historical-association-ownership-unverified': 'Relação histórica; titularidade não estabelecida',
+  'acquired-entity': 'Entidade adquirida',
+  outlicensed: 'Licenciado a terceiro',
+  unresolved: 'Papel não resolvido',
 };
 
 export const startupOrganizationTypeValues = [
@@ -65,8 +125,11 @@ export const startupOperationalStatusValues = [
   'active',
   'inactive',
   'acquired',
+  'acquired-or-inactive',
+  'private',
   'public',
   'closed',
+  'identity-unresolved',
   'unknown',
 ] as const;
 
@@ -77,8 +140,11 @@ export const startupOperationalStatusLabels: Record<StartupOperationalStatus, st
   active: 'Ativa',
   inactive: 'Inativa',
   acquired: 'Adquirida',
+  'acquired-or-inactive': 'Adquirida ou inativa',
+  private: 'Privada',
   public: 'De capital aberto',
   closed: 'Encerrada',
+  'identity-unresolved': 'Identidade/status não resolvido',
   unknown: 'Desconhecido',
 };
 

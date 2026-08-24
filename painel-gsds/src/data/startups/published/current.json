@@ -1,5 +1,5 @@
 {
-  "currentSnapshotId": "snap-indirect-cumulative-2026-08-18",
-  "selectedAt": "2026-08-18T12:37:11.000Z",
-  "note": "Selector only. Points to the cumulative public snapshot (Brazil indirect + Global indirect main). Immutable snapshot bodies live under published/snapshots/."
+  "currentSnapshotId": "snap-ecosystem-cumulative-direct-2026-08-24",
+  "selectedAt": "2026-08-24T14:10:00.000Z",
+  "note": "Snapshot cumulativo com os 28 players do mapeamento direto global, corrigido após auditoria de evidência e semântica (5D.1)."
 }

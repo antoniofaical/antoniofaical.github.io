@@ -187,15 +187,20 @@ export const startupPublishedSnapshotSchema = z
 
     for (const org of snapshot.organizations) {
       const linkedSourceIds = new Set<string>();
-      for (const assessment of snapshot.relevanceAssessments) {
-        if (assessment.organizationId !== org.id) continue;
+      const orgAssessments = snapshot.relevanceAssessments.filter(
+        (assessment) => assessment.organizationId === org.id,
+      );
+      for (const assessment of orgAssessments) {
         for (const evidence of assessment.evidenceRefs) linkedSourceIds.add(evidence.sourceId);
       }
       for (const product of snapshot.productsOrPrograms) {
         if (product.organizationId !== org.id) continue;
         for (const evidence of product.evidenceRefs) linkedSourceIds.add(evidence.sourceId);
       }
-      if (linkedSourceIds.size === 0) {
+      const exclusivelyDirect =
+        orgAssessments.length > 0 &&
+        orgAssessments.every((assessment) => assessment.relationship === 'direct-gsd');
+      if (linkedSourceIds.size === 0 && !exclusivelyDirect) {
         ctx.addIssue({
           code: 'custom',
           message: `Published organization ${org.id} must link to at least one public source`,

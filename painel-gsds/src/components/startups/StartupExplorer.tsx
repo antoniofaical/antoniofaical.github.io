@@ -84,7 +84,7 @@ export default function StartupExplorer({ snapshot }: { snapshot: StartupPublish
         {items.length === 0
           ? hasActiveFilters
             ? 'Nenhuma organização corresponde aos filtros atuais.'
-            : 'Nenhuma organização neste snapshot.'
+            : 'Nenhuma organização neste recorte.'
           : `${items.length} ${items.length === 1 ? 'organização' : 'organizações'} no recorte.`}
       </p>
 

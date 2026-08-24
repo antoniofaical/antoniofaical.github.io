@@ -15,8 +15,8 @@ export default function StartupNoResultsState({
       <h3>Nenhuma organização corresponde aos filtros</h3>
       <p>
         A consulta{query ? ` “${query}”` : ''} e os filtros ativos não encontraram correspondências
-        neste snapshot. Isso não significa que não existam soluções no mundo — apenas que o recorte
-        publicado não cobre o critério.
+        neste recorte. Isso não significa que não existam soluções no mundo — apenas que a base
+        publicada não cobre o critério.
       </p>
       <button type="button" className="btn btn--secondary" onClick={onClear}>
         Limpar busca e filtros

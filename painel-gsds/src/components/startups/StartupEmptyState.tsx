@@ -13,7 +13,7 @@ export default function StartupEmptyState({
       aria-labelledby="startup-empty-title"
       data-testid="startup-empty-state"
     >
-      <p className="startup-empty__kicker">Snapshot público</p>
+      <p className="startup-empty__kicker">Base pública</p>
       <h2 id="startup-empty-title">Observatório preparado — base ainda não populada</h2>
       <p className="startup-empty__lede">{summary}</p>
       <p className="startup-empty__meta">

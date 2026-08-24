@@ -13,9 +13,7 @@ type EvidenceLink = {
 
 export default function StartupEvidenceList({ items }: { items: EvidenceLink[] }) {
   if (items.length === 0) {
-    return (
-      <p className="startup-evidence__empty">Sem fontes públicas vinculadas neste snapshot.</p>
-    );
+    return <p className="startup-evidence__empty">Sem fontes públicas vinculadas neste recorte.</p>;
   }
 
   return (
@@ -37,7 +35,7 @@ export default function StartupEvidenceList({ items }: { items: EvidenceLink[] }
               Abrir fonte
             </a>
           ) : (
-            <span>URL não disponível ({source.availability})</span>
+            <span>URL não disponível</span>
           )}
         </li>
       ))}

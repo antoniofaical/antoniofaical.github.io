@@ -43,12 +43,17 @@ Campos mínimos: `id`, `schemaVersion`, `period`, `generatedAt`, `publishedAt`, 
 - `checksum` na 5A é placeholder documentado (`reserved-not-computed`), não um digest calculado.
 - `coverage.status = not-yet-populated` exige coleções vazias e comunica infraestrutura pronta sem censo.
 - A 5C publica `snap-indirect-cumulative-2026-08-18` (`coverage.status = partial`) preservando os snapshots históricos Brazil e empty.
+- A 5D / 5D.1 publica `snap-ecosystem-cumulative-direct-2026-08-24` adicionando 28 assessments `direct-gsd` com `directContext` opcional (status da organização, atividade GSD e papel no ativo separados). Confidence pode ser `not-assigned`. Assessments `direct-gsd` podem ter `evidenceRefs = []` quando não há URL pública mapeável; assessments não-diretas continuam exigindo ≥1. Organizações exclusivamente diretas podem não vincular `publicSources`.
 
 ## Contagens
 
 `counts.*` deve coincidir com o derivado das coleções. Contagens zeradas no snapshot vazio descrevem o artefato, não “zero startups no mundo”.
 
-No snapshot cumulativo, `counts.adjacentGsd` / `counts.brazil` / `counts.global` são **por assessment**. A UI consolida por organização (Saventic conta em Brazil e Global), então facetas organizacionais podem somar acima do total de organizações.
+No snapshot cumulativo, `counts.adjacentGsd` / `counts.brazil` / `counts.global` / `counts.directGsd` são **por assessment**. A UI consolida por organização (Saventic conta em Brazil e Global), então facetas organizacionais podem somar acima do total de organizações.
+
+### `directContext` (5D / 5D.1)
+
+Campo opcional em `PublishedGSDRelevanceAssessment`, usado somente no mapeamento direto. Não colapsar `organizationStatus`, `currentGsdActivity` e `assetRole`. `HISTORICAL_OWNER` publica-se como `historical-owner` (Maze/Valerion); Kriya permanece `historical-association-ownership-unverified`. `OUTLICENSED` usa label público inequívoco (`Licenciado a terceiro`). Status operacional dos 28 não mapeia `ACQUIRED_OR_INACTIVE`→`acquired` nem `PRIVATE_STARTUP`→`apparently-active`.
 
 ## Validação
 

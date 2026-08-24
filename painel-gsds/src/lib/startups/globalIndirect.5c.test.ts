@@ -11,7 +11,6 @@ import {
 import {
   listPublishedSnapshotIds,
   loadCurrentSelector,
-  loadPublishedSnapshot,
   loadPublishedSnapshotById,
 } from './loadPublishedSnapshot';
 import { queryStartups } from './queryStartups';
@@ -32,10 +31,10 @@ function canonicalizeUrl(raw: string): string {
 }
 
 describe('Iteration 5C indirect-cumulative snapshot', () => {
-  const snapshot = loadPublishedSnapshot();
+  const snapshot = loadPublishedSnapshotById('snap-indirect-cumulative-2026-08-18');
   const brazil = loadPublishedSnapshotById('snap-brazil-indirect-2026-08-14');
 
-  it('publishes cumulative counts and selector', () => {
+  it('publishes cumulative counts and remains loadable by id after 5D', () => {
     expect(snapshot.id).toBe('snap-indirect-cumulative-2026-08-18');
     expect(snapshot.schemaVersion).toBe('1.1.0');
     expect(snapshot.protocolVersion).toBe('startup-public-cumulative-v1');
@@ -57,11 +56,10 @@ describe('Iteration 5C indirect-cumulative snapshot', () => {
       global: 60,
     });
     expect(snapshot.coverage.status).toBe('partial');
-
-    const selector = loadCurrentSelector();
-    expect(selector.currentSnapshotId).toBe('snap-indirect-cumulative-2026-08-18');
-    expect(selector.selectedAt).toBe(snapshot.generatedAt);
-    expect(selector.selectedAt).toBe(snapshot.publishedAt);
+    expect(listPublishedSnapshotIds()).toContain('snap-indirect-cumulative-2026-08-18');
+    expect(loadCurrentSelector().currentSnapshotId).toBe(
+      'snap-ecosystem-cumulative-direct-2026-08-24',
+    );
   });
 
   it('maps Global main lineage with Saventic dedupe', () => {
@@ -84,11 +82,11 @@ describe('Iteration 5C indirect-cumulative snapshot', () => {
     expect(globalAssessments.every((a) => a.geographicScopes.length === 1)).toBe(true);
     expect(globalAssessments.every((a) => a.geographicScopes[0] === 'global')).toBe(true);
 
-    const conf = { high: 0, medium: 0, low: 0 };
+    const conf = { high: 0, medium: 0, low: 0, 'not-assigned': 0 };
     for (const assessment of globalAssessments) {
       conf[assessment.confidence] += 1;
     }
-    expect(conf).toEqual({ high: 46, medium: 14, low: 0 });
+    expect(conf).toEqual({ high: 46, medium: 14, low: 0, 'not-assigned': 0 });
   });
 
   it('keeps manual/excluded/withdrawn out of the public projection', () => {
@@ -174,7 +172,7 @@ describe('Iteration 5C indirect-cumulative snapshot', () => {
     }
   });
 
-  it('preserves historical snapshots byte-for-byte and discovers all three ids', () => {
+  it('preserves historical snapshots byte-for-byte and remains discoverable', () => {
     expect(sha256File(path.join(snapshotsDir, 'brazil-indirect-2026-08-14.json'))).toBe(
       '9abc630a91df0f4adbfaae8b1e1bb108fa5d06aa8a0bc654ada3c195e68192f6',
     );
@@ -183,6 +181,7 @@ describe('Iteration 5C indirect-cumulative snapshot', () => {
     );
     expect(listPublishedSnapshotIds()).toEqual([
       'snap-brazil-indirect-2026-08-14',
+      'snap-ecosystem-cumulative-direct-2026-08-24',
       'snap-indirect-cumulative-2026-08-18',
       'snap-initial-empty-2026-08-14',
     ]);
