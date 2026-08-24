@@ -43,13 +43,13 @@ describe('Iteration 5B brazil-indirect snapshot', () => {
     expect(snapshot.counts.brazil).toBe(33);
     expect(snapshot.counts.global).toBe(0);
 
-    const conf = { high: 0, medium: 0, low: 0 };
+    const conf = { high: 0, medium: 0, low: 0, 'not-assigned': 0 };
     for (const assessment of snapshot.relevanceAssessments) {
       conf[assessment.confidence] += 1;
       expect(assessment.geographicScopes).toEqual(['brazil']);
       expect(['direct-gsd', 'ecosystem-support']).not.toContain(assessment.relationship);
     }
-    expect(conf).toEqual({ high: 7, medium: 26, low: 0 });
+    expect(conf).toEqual({ high: 7, medium: 26, low: 0, 'not-assigned': 0 });
   });
 
   it('does not publish products/programs in 5B', () => {
@@ -75,6 +75,7 @@ describe('Iteration 5B brazil-indirect snapshot', () => {
   it('keeps the brazil-indirect snapshot discoverable alongside cumulative and empty', () => {
     expect(listPublishedSnapshotIds()).toEqual([
       'snap-brazil-indirect-2026-08-14',
+      'snap-ecosystem-cumulative-direct-2026-08-24',
       'snap-indirect-cumulative-2026-08-18',
       'snap-initial-empty-2026-08-14',
     ]);

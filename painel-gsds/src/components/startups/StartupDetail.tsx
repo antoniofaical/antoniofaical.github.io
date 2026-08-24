@@ -1,6 +1,12 @@
 import { useEffect, useId, useRef } from 'react';
 import type { StartupListItem } from '../../lib/startups/queryStartups';
-import { startupProductStageLabels, startupRelationLabels } from '../../data/startups/taxonomies';
+import {
+  startupDirectAssetRoleLabels,
+  startupDirectGsdActivityLabels,
+  startupDirectOrganizationStatusLabels,
+  startupProductStageLabels,
+  startupRelationLabels,
+} from '../../data/startups/taxonomies';
 import {
   ConfidenceBadge,
   GeographyBadge,
@@ -114,21 +120,73 @@ export default function StartupDetail({
         <section aria-labelledby="startup-detail-assessments">
           <h3 id="startup-detail-assessments">Avaliações de relevância</h3>
           <ul className="startup-detail__list">
-            {item.assessments.map((assessment) => (
-              <li key={assessment.id}>
-                <p>
-                  <strong>{startupRelationLabels[assessment.relationship]}</strong> —{' '}
-                  {assessment.rationale}
-                </p>
-              </li>
-            ))}
+            {item.assessments.map((assessment) => {
+              const ctx = assessment.directContext;
+              return (
+                <li key={assessment.id}>
+                  <p>
+                    <strong>{startupRelationLabels[assessment.relationship]}</strong> —{' '}
+                    {assessment.rationale}
+                  </p>
+                  {ctx ? (
+                    <dl className="startup-detail__direct" data-testid="startup-direct-context">
+                      {ctx.indication ? (
+                        <>
+                          <dt>Indicação GSD</dt>
+                          <dd>{ctx.indication}</dd>
+                        </>
+                      ) : null}
+                      {ctx.assetOrProgram ? (
+                        <>
+                          <dt>Ativo / programa</dt>
+                          <dd>{ctx.assetOrProgram}</dd>
+                        </>
+                      ) : null}
+                      {ctx.modality ? (
+                        <>
+                          <dt>Modalidade</dt>
+                          <dd>{ctx.modality}</dd>
+                        </>
+                      ) : null}
+                      {ctx.developmentStage ? (
+                        <>
+                          <dt>Estágio</dt>
+                          <dd>{ctx.developmentStage}</dd>
+                        </>
+                      ) : null}
+                      {ctx.organizationStatus ? (
+                        <>
+                          <dt>Status da organização</dt>
+                          <dd>{startupDirectOrganizationStatusLabels[ctx.organizationStatus]}</dd>
+                        </>
+                      ) : null}
+                      {ctx.currentGsdActivity ? (
+                        <>
+                          <dt>Atividade GSD</dt>
+                          <dd>{startupDirectGsdActivityLabels[ctx.currentGsdActivity]}</dd>
+                        </>
+                      ) : null}
+                      {ctx.assetRole ? (
+                        <>
+                          <dt>Papel no ativo</dt>
+                          <dd>{startupDirectAssetRoleLabels[ctx.assetRole]}</dd>
+                        </>
+                      ) : null}
+                    </dl>
+                  ) : null}
+                </li>
+              );
+            })}
           </ul>
         </section>
 
         <section aria-labelledby="startup-detail-products">
           <h3 id="startup-detail-products">Produtos e programas</h3>
           {item.products.length === 0 ? (
-            <p>Produtos e programas não foram modelados separadamente neste snapshot.</p>
+            <p>
+              Os ativos e programas são apresentados no contexto da organização e ainda não possuem
+              uma seção estruturada própria.
+            </p>
           ) : (
             <ul className="startup-detail__list">
               {item.products.map((product) => (
@@ -143,16 +201,21 @@ export default function StartupDetail({
           )}
         </section>
 
+        {item.organization.website ? (
+          <section aria-labelledby="startup-detail-website">
+            <h3 id="startup-detail-website">Site institucional</h3>
+            <p>
+              <a href={item.organization.website} rel="noopener noreferrer">
+                {item.organization.website}
+              </a>
+            </p>
+          </section>
+        ) : null}
+
         <section aria-labelledby="startup-detail-evidence">
           <h3 id="startup-detail-evidence">Fontes públicas</h3>
           <StartupEvidenceList items={evidenceItems} />
         </section>
-
-        <p className="startup-detail__note">
-          Contrato preparado para futura rota{' '}
-          <code>/inovacao/startups/{item.organization.slug}/</code>; nesta iteração o detalhe
-          permanece em drawer acessível.
-        </p>
       </div>
       <style>{`
         ${startupBadgeStyles}
@@ -197,10 +260,20 @@ export default function StartupDetail({
           display: grid;
           gap: var(--space-2);
         }
-        .startup-detail__note {
+        .startup-detail__direct {
+          margin: var(--space-2) 0 0;
+          display: grid;
+          grid-template-columns: minmax(7rem, auto) 1fr;
+          gap: var(--space-1) var(--space-3);
+          font-size: 0.95rem;
+        }
+        .startup-detail__direct dt {
           margin: 0;
           color: var(--ink-600);
-          font-size: 0.95rem;
+          font-weight: 600;
+        }
+        .startup-detail__direct dd {
+          margin: 0;
         }
         @media (prefers-reduced-motion: reduce) {
           .startup-detail__panel { scroll-behavior: auto; }

@@ -1,6 +1,9 @@
 import { z } from 'zod';
 import {
   startupConfidenceValues,
+  startupDirectAssetRoleValues,
+  startupDirectGsdActivityValues,
+  startupDirectOrganizationStatusValues,
   startupEvidenceRoleValues,
   startupGeographyValues,
   startupProductStageValues,
@@ -16,21 +19,46 @@ export const startupPublicEvidenceRefSchema = z.object({
   role: z.enum(startupEvidenceRoleValues),
 });
 
-export const publishedGSDRelevanceAssessmentSchema = z.object({
-  id: z.string().regex(/^rel-[a-z0-9-]+$/),
-  organizationId: z.string().regex(/^org-[a-z0-9-]+$/),
-  relationship: z.enum(startupRelationValues),
-  geographicScopes: z.array(z.enum(startupGeographyValues)).min(1),
-  modalities: z.array(z.string()),
-  gsdRefs: z.array(z.string()),
-  clinicalNeedRefs: z.array(z.string()),
-  socioeconomicNeedRefs: z.array(z.string()),
-  rationale: z.string().min(20),
-  confidence: z.enum(startupConfidenceValues),
-  evidenceRefs: z.array(startupPublicEvidenceRefSchema).min(1),
-  assessedAt: isoDate,
-  protocolVersion: z.string().min(1),
-});
+/** Contexto opcional somente para assessments do mapeamento direto global. */
+export const publishedDirectContextSchema = z
+  .object({
+    organizationStatus: z.enum(startupDirectOrganizationStatusValues).optional(),
+    currentGsdActivity: z.enum(startupDirectGsdActivityValues).optional(),
+    assetRole: z.enum(startupDirectAssetRoleValues).optional(),
+    indication: z.string().min(1).optional(),
+    assetOrProgram: z.string().min(1).optional(),
+    modality: z.string().min(1).optional(),
+    developmentStage: z.string().min(1).optional(),
+  })
+  .strict();
+
+export const publishedGSDRelevanceAssessmentSchema = z
+  .object({
+    id: z.string().regex(/^rel-[a-z0-9-]+$/),
+    organizationId: z.string().regex(/^org-[a-z0-9-]+$/),
+    relationship: z.enum(startupRelationValues),
+    geographicScopes: z.array(z.enum(startupGeographyValues)).min(1),
+    modalities: z.array(z.string()),
+    gsdRefs: z.array(z.string()),
+    clinicalNeedRefs: z.array(z.string()),
+    socioeconomicNeedRefs: z.array(z.string()),
+    rationale: z.string().min(20),
+    confidence: z.enum(startupConfidenceValues),
+    /** Direct-gsd may be empty when no public URL maps to evidence; others require ≥1. */
+    evidenceRefs: z.array(startupPublicEvidenceRefSchema),
+    assessedAt: isoDate,
+    protocolVersion: z.string().min(1),
+    directContext: publishedDirectContextSchema.optional(),
+  })
+  .superRefine((assessment, ctx) => {
+    if (assessment.relationship !== 'direct-gsd' && assessment.evidenceRefs.length < 1) {
+      ctx.addIssue({
+        code: 'custom',
+        message: `Non-direct assessment ${assessment.id} requires at least one evidenceRef`,
+        path: ['evidenceRefs'],
+      });
+    }
+  });
 
 export const publishedProductOrProgramSchema = z.object({
   id: z.string().regex(/^prd-[a-z0-9-]+$/),
@@ -69,6 +97,7 @@ export const startupPublicSourceSchema = z
   });
 
 export type PublishedGSDRelevanceAssessment = z.infer<typeof publishedGSDRelevanceAssessmentSchema>;
+export type PublishedDirectContext = z.infer<typeof publishedDirectContextSchema>;
 export type PublishedProductOrProgram = z.infer<typeof publishedProductOrProgramSchema>;
 export type StartupPublicSource = z.infer<typeof startupPublicSourceSchema>;
 export type StartupPublicEvidenceRef = z.infer<typeof startupPublicEvidenceRefSchema>;

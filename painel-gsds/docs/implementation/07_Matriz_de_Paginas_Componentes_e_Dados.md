@@ -48,7 +48,7 @@ Regra: habilitar portais; não refazer a Home.
 
 ## 4. Observatório
 
-Estado 5C: snapshot cumulativo (`snap-indirect-cumulative-2026-08-18`) com 92 organizações (Brazil indirect 33 + Global indirect main 60 − 1 dedupe Saventic); cobertura `partial` e aviso de limitações na página. O snapshot histórico 5B permanece imutável e carregável por id. Componentes: `StartupExplorer`, `StartupCoverageNotice`, busca/filtros/ordenação/resumo/cards/detalhe/evidência.
+Estado 5D: snapshot cumulativo (`snap-ecosystem-cumulative-direct-2026-08-24`) com 120 organizações (indiretos preservados + 28 diretos); cobertura `partial`. Snapshots históricos 5B/5C permanecem imutáveis. Componentes: `StartupExplorer`, `StartupCoverageNotice`, busca/filtros/ordenação/resumo/cards/detalhe (com `directContext`)/evidência.
 
 | Área        | Pergunta                        | Componente (5A)                         | Entidade                       |
 | ----------- | ------------------------------- | --------------------------------------- | ------------------------------ |

@@ -66,13 +66,43 @@ describe('startup published snapshot schema', () => {
     expect(() => parseStartupPublishedSnapshot(raw)).toThrow();
   });
 
-  it('rejects assessment without rationale/evidence', () => {
+  it('rejects assessment without rationale', () => {
     const raw = structuredClone(readFixture('synthetic-valid-snapshot.json')) as {
-      relevanceAssessments: Array<{ rationale: string; evidenceRefs: unknown[] }>;
+      relevanceAssessments: Array<{
+        rationale: string;
+        evidenceRefs: unknown[];
+        relationship: string;
+      }>;
     };
     raw.relevanceAssessments[0].rationale = 'too short';
-    raw.relevanceAssessments[0].evidenceRefs = [];
     expect(() => parseStartupPublishedSnapshot(raw)).toThrow();
+  });
+
+  it('rejects indirect assessment without evidence but allows empty evidence for direct-gsd', () => {
+    const indirect = structuredClone(readFixture('synthetic-valid-snapshot.json')) as {
+      relevanceAssessments: Array<{ evidenceRefs: unknown[]; relationship: string }>;
+    };
+    const adjacent = indirect.relevanceAssessments.find((a) => a.relationship === 'adjacent-gsd')!;
+    adjacent.evidenceRefs = [];
+    expect(() => parseStartupPublishedSnapshot(indirect)).toThrow(/evidenceRef/i);
+
+    const direct = structuredClone(readFixture('synthetic-valid-snapshot.json')) as {
+      relevanceAssessments: Array<{
+        evidenceRefs: unknown[];
+        relationship: string;
+        organizationId: string;
+      }>;
+      productsOrPrograms: Array<{ organizationId: string; evidenceRefs: unknown[] }>;
+    };
+    const directAssessment = direct.relevanceAssessments.find(
+      (a) => a.relationship === 'direct-gsd',
+    )!;
+    directAssessment.evidenceRefs = [];
+    // Product evidence may still link sources; empty direct evidenceRefs alone must pass.
+    expect(
+      direct.productsOrPrograms.some((p) => p.organizationId === directAssessment.organizationId),
+    ).toBe(true);
+    expect(() => parseStartupPublishedSnapshot(direct)).not.toThrow();
   });
 });
 
@@ -133,11 +163,12 @@ describe('production loader auto-discovery', () => {
 
   it('resolves the current selector without a manual per-id registry entry', () => {
     const production = loadPublishedSnapshot();
-    expect(production.id).toBe('snap-indirect-cumulative-2026-08-18');
+    expect(production.id).toBe('snap-ecosystem-cumulative-direct-2026-08-24');
     expect(listPublishedSnapshotIds()).toContain(production.id);
+    expect(listPublishedSnapshotIds()).toContain('snap-indirect-cumulative-2026-08-18');
     expect(listPublishedSnapshotIds()).toContain('snap-brazil-indirect-2026-08-14');
     expect(listPublishedSnapshotIds()).toContain('snap-initial-empty-2026-08-14');
-    expect(production.organizations).toHaveLength(92);
+    expect(production.organizations).toHaveLength(120);
   });
 
   it('fails clearly when the selector points to a missing snapshot id', () => {

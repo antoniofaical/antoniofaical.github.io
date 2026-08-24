@@ -33,6 +33,7 @@ export function GeographyBadge({ value }: { value: StartupGeography }) {
 }
 
 export function ConfidenceBadge({ value }: { value: StartupConfidence }) {
+  if (value === 'not-assigned') return null;
   return (
     <span className={`startup-badge ${KIND_CLASS.confidence}`}>
       Confiança: {startupConfidenceLabels[value]}
