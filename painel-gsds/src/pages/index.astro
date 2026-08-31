@@ -9,16 +9,20 @@ import HomeMetrics from '../components/home/HomeMetrics.astro';
 import ObservedVsNeed from '../components/home/ObservedVsNeed.astro';
 import BrazilOverview from '../components/home/BrazilOverview.astro';
 import HomeMethodology from '../components/home/HomeMethodology.astro';
-import { loadHomeEvidence, getApprovedHomeClaims } from '../lib/data/loadHomeEvidence';
+import { loadHomeEvidence } from '../lib/data/loadHomeEvidence';
 import { withBase, withHash } from '../lib/paths/withBase';
 
 const evidence = loadHomeEvidence();
-const approvedClaims = getApprovedHomeClaims(evidence);
 const datasus = evidence.byMetricId['met-datasus-001'];
 const market = evidence.byMetricId['met-market-001'];
 
 const updatedAt = '2026-08-10';
 const sotCutoff = '2026-08-10';
+const marketPeriodDisplay = market.metric.period.replace(
+  /síntese da SoT médica/gi,
+  'síntese médica',
+);
+const observedNote = `Receita observada de ${market.metric.displayValue} em ${marketPeriodDisplay} — não é TAM/SAM/SOM.`;
 ---
 
 <BaseLayout
@@ -41,8 +45,8 @@ const sotCutoff = '2026-08-10';
             Glicogenoses: uma família de doenças, múltiplas jornadas.
           </h1>
           <p class="home-hero__subtitle">
-            O painel conecta bases clínicas, impacto socioeconômico e, futuramente, o ecossistema de
-            soluções — com sínteses rastreáveis e limites explícitos.
+            O painel reúne contexto clínico, impacto socioeconômico e organizações relacionadas às
+            GSDs.
           </p>
           <div class="cluster">
             <a class="btn btn--on-dark" href={withHash('problema')}>Entender o problema</a>
@@ -106,7 +110,7 @@ const sotCutoff = '2026-08-10';
 
     <ObservedVsNeed
       insight="O mercado farmacêutico observado concentra-se em Pompe. População potencial, elegibilidade e necessidade total não são equivalentes a receita realizada."
-      observedNote={`A métrica ${market.metric.id} registra receita observada de ${market.metric.displayValue} em ${market.metric.period}, sem classificação TAM/SAM/SOM.`}
+      observedNote={observedNote}
       layers={[
         {
           title: 'População potencial',
@@ -140,12 +144,12 @@ const sotCutoff = '2026-08-10';
     <section id="analises" class="section-space" aria-labelledby="analises-title">
       <PageContainer class="stack stack--lg">
         <header class="stack stack--tight">
-          <p class="section-kicker">Próximas profundidades</p>
+          <p class="section-kicker">Análises</p>
           <h2 id="analises-title">Explore as análises</h2>
           <p class="section-lede">
-            Aprofunde a leitura clínica e socioeconômica com rastreabilidade às fontes de verdade. O
-            observatório publica um primeiro recorte curado do mapeamento indireto Brasil — limitado
-            e sujeito a atualização.
+            Aprofunde a leitura clínica e socioeconômica com rastreabilidade às fontes. O
+            observatório publica um primeiro recorte do mapeamento indireto Brasil — sujeito a
+            atualização.
           </p>
         </header>
         <div class="portals-grid">
@@ -173,13 +177,13 @@ const sotCutoff = '2026-08-10';
           <p class="section-kicker">Observatório</p>
           <h2 id="inovacao-title">Ecossistema de inovação</h2>
           <p class="section-lede">
-            Recorte público do Observatório: núcleos indiretos Brasil e Global e os 28 players do
-            mapeamento direto global, com cobertura parcial e sem alegação de censo.
+            Recorte do Observatório: núcleos indiretos Brasil e Global e as 28 organizações com
+            relação direta do mapeamento global, com cobertura parcial e sem alegação de censo.
           </p>
         </header>
         <SectionPortal
           question="Quais organizações publicadas se relacionam às glicogenoses — e com qual evidência?"
-          summary="A projeção pública atual cobre os recortes indiretos e 28 organizações com relação direta às GSDs. Relações diretas podem ser atuais, históricas ou ainda incertas; a cobertura é parcial e não equivale a um censo."
+          summary="O recorte publicado cobre os núcleos indiretos e as 28 organizações com relação direta às GSDs. Relações diretas podem ser atuais, históricas ou ainda incertas; a cobertura é parcial e não equivale a um censo."
           href={withBase('inovacao/startups/')}
           available={true}
           ctaLabel="Abrir observatório de startups"
@@ -190,7 +194,6 @@ const sotCutoff = '2026-08-10';
     <HomeMethodology
       updatedAt={updatedAt}
       sotCutoff={sotCutoff}
-      claims={approvedClaims}
       sources={evidence.sources}
       limitations={[
         'Sínteses executivas não substituem as análises aprofundadas nem a avaliação clínica individual.',

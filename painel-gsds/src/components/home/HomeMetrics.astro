@@ -10,6 +10,28 @@ export interface Props {
 }
 
 const { heading = 'Números que enquadram o problema', framing, items } = Astro.props;
+
+function sanitizePeriod(period: string): string {
+  return period.replace(/síntese da SoT médica/gi, 'síntese médica');
+}
+
+function resolveMarketDisplay(metric: ResolvedHomeMetric['metric']): {
+  value: string | null;
+  unit?: string;
+} {
+  const isMarketMetric =
+    metric.id === 'met-market-001' ||
+    ((metric.displayValue?.includes('€1,4') ?? false) && (metric.unit?.includes('bilh') ?? false));
+
+  if (isMarketMetric) {
+    return { value: '≈ €1,4 bilhão', unit: undefined };
+  }
+
+  return {
+    value: metric.displayValue ?? (metric.value === null ? null : String(metric.value)),
+    unit: metric.unit,
+  };
+}
 ---
 
 <section id="metricas" class="section-space surface-editorial" aria-labelledby="metricas-title">
@@ -25,23 +47,24 @@ const { heading = 'Números que enquadram o problema', framing, items } = Astro.
         items.map(({ metric, claim, sources }) => {
           const primary = sources[0];
           const locator = claim.sourceRefs.find((ref) => ref.sourceId === primary?.id)?.locator;
+          const { value, unit } = resolveMarketDisplay(metric);
           return (
             <div class="metrics-board__item">
               <KeyMetric
                 label={metric.label}
-                value={metric.displayValue ?? (metric.value === null ? null : String(metric.value))}
-                unit={metric.unit}
+                value={value}
+                unit={unit}
                 context={claim.shortStatement ?? claim.statement}
                 evidenceState={metric.evidenceState as EvidenceState}
                 evidenceReason={metric.limitations[0]}
-                period={metric.period}
+                period={sanitizePeriod(metric.period)}
                 geography={metric.geography.join(', ')}
                 limitation={metric.limitations[0]}
                 source={{
                   authorsOrInstitution: primary.authorsOrInstitution.join(', '),
                   publicationYear: primary.publicationYear,
                   sourceType: primary.sourceType,
-                  identifier: primary.localSotFile ?? primary.id,
+                  identifier: primary.title,
                   locator,
                   verifiedAt: metric.lastReviewedAt,
                 }}

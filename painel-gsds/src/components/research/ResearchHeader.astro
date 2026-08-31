@@ -8,14 +8,7 @@ export interface Props {
   cutoff?: string;
 }
 
-const {
-  eyebrow = 'Análise',
-  title,
-  summary,
-  notice = 'Conteúdo informativo e não substitutivo de avaliação médica especializada.',
-  updatedAt,
-  cutoff,
-} = Astro.props;
+const { eyebrow = 'Análise', title, summary, notice, updatedAt, cutoff } = Astro.props;
 ---
 
 <header class="research-header section-space surface-executive">
@@ -23,7 +16,13 @@ const {
     <p class="research-header__eyebrow">{eyebrow}</p>
     <h1 class="research-header__title">{title}</h1>
     <p class="research-header__summary">{summary}</p>
-    <p class="research-header__notice" role="note">{notice}</p>
+    {
+      notice && notice.trim() !== '' && (
+        <p class="research-header__notice" role="note">
+          {notice}
+        </p>
+      )
+    }
     {
       (updatedAt || cutoff) && (
         <p class="research-header__meta">

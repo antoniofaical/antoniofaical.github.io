@@ -1,7 +1,6 @@
 ---
 import EvidenceBadge from '../evidence/EvidenceBadge.astro';
 import { EVIDENCE_STATES, EVIDENCE_DESCRIPTIONS } from '../../lib/evidence/states';
-import type { Claim } from '../../schemas/claim';
 import type { Source } from '../../schemas/source';
 
 export interface Props {
@@ -9,7 +8,6 @@ export interface Props {
   updatedAt: string;
   sotCutoff: string;
   limitations: string[];
-  claims: Claim[];
   sources: Source[];
 }
 
@@ -18,7 +16,6 @@ const {
   updatedAt,
   sotCutoff,
   limitations,
-  claims,
   sources,
 } = Astro.props;
 
@@ -30,10 +27,6 @@ const homeStates = EVIDENCE_STATES.filter((state) => state !== 'not-calculable')
     <header class="stack stack--tight">
       <p class="section-kicker">Leitura e limites</p>
       <h2 id="metodologia-title">{heading}</h2>
-      <p class="section-lede">
-        Bloco compacto de metodologia da Home. Não substitui a futura página completa de metodologia
-        e fontes.
-      </p>
     </header>
 
     <div class="method-grid">
@@ -57,7 +50,7 @@ const homeStates = EVIDENCE_STATES.filter((state) => state !== 'not-calculable')
           Última revisão editorial da Home: <time datetime={updatedAt}>{updatedAt}</time>.
         </p>
         <p>
-          Corte das SoTs utilizadas: <time datetime={sotCutoff}>{sotCutoff}</time>.
+          Corte das fontes: <time datetime={sotCutoff}>{sotCutoff}</time>.
         </p>
         <p>Conteúdo informativo. Não substitui avaliação médica individual.</p>
       </article>
@@ -81,15 +74,10 @@ const homeStates = EVIDENCE_STATES.filter((state) => state !== 'not-calculable')
                 {source.authorsOrInstitution.join(', ')}
                 {source.publicationYear ? ` (${source.publicationYear})` : ''}
               </span>
-              {source.localSotFile && <code>{source.localSotFile}</code>}
             </li>
           ))
         }
       </ul>
-      <p class="method-claims">
-        Alegações aprovadas nesta página:{' '}
-        {claims.map((claim) => claim.id).join(', ')}.
-      </p>
     </article>
   </div>
 </section>
@@ -163,14 +151,5 @@ const homeStates = EVIDENCE_STATES.filter((state) => state !== 'not-calculable')
   .method-sources li {
     display: grid;
     gap: var(--space-1);
-  }
-
-  .method-sources code {
-    font-size: var(--annotation);
-    color: var(--ink-800);
-  }
-
-  .method-claims {
-    font-size: var(--annotation);
   }
 </style>
