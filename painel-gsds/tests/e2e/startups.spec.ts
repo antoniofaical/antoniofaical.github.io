@@ -237,6 +237,7 @@ test.describe('observatorio startups', () => {
       'sps-gsd-dir-',
       'Cobertura do snapshot',
       'Nenhuma organização neste snapshot.',
+      'snapshot completo',
     ];
 
     function walk(dir: string): string[] {
@@ -259,5 +260,98 @@ test.describe('observatorio startups', () => {
         expect(content.includes(marker), `${marker} leaked into ${file}`).toBe(false);
       }
     }
+  });
+
+  test('observatory analytics P0 renders audited counts without percents', async ({ page }) => {
+    await page.goto('./inovacao/startups/');
+    const analytics = page.getByTestId('observatory-analytics');
+    await expect(
+      page.getByRole('heading', { name: /Visão analítica da base publicada/i }),
+    ).toBeVisible();
+    await expect(analytics).toBeVisible();
+    await expect(page.getByTestId('viz-01-relations')).toBeVisible();
+    await expect(page.getByTestId('viz-02-geography')).toBeVisible();
+    await expect(page.getByTestId('viz-03-direct-activity')).toBeVisible();
+    await expect(page.getByTestId('viz-04-direct-status')).toBeVisible();
+    await expect(page.getByTestId('viz-05-asset-role')).toHaveCount(0);
+
+    const viz01 = page.getByTestId('viz-01-relations');
+    await expect(viz01).toContainText('81');
+    await expect(viz01).toContainText('28');
+    await expect(viz01).toContainText('11');
+    await expect(viz01).toContainText('0');
+    await expect(viz01).toContainText(/Suporte ao ecossistema/i);
+
+    const viz02 = page.getByTestId('viz-02-geography');
+    await expect(viz02).toContainText('88');
+    await expect(viz02).toContainText(/Global/i);
+    await expect(viz02).toContainText('33');
+    await expect(viz02).toContainText(/Brasil/i);
+    await expect(viz02).toContainText(/não são categorias mutuamente exclusivas/i);
+
+    const viz03 = page.getByTestId('viz-03-direct-activity');
+    await expect(viz03).toContainText('13');
+    await expect(viz03).toContainText(/atual/i);
+    await expect(viz03).toContainText('4');
+    await expect(viz03).toContainText(/incerta/i);
+    await expect(viz03).toContainText('11');
+    await expect(viz03).toContainText(/Histórica/i);
+
+    const viz04 = page.getByTestId('viz-04-direct-status');
+    await expect(viz04).toContainText('8');
+    await expect(viz04).toContainText(/privada/i);
+    await expect(viz04).toContainText('9');
+    await expect(viz04).toContainText(/capital aberto/i);
+    await expect(viz04).toContainText(/Adquirida ou inativa/i);
+    await expect(viz04).toContainText('2');
+    await expect(viz04).toContainText(/Status atual incerto/i);
+
+    await expect(analytics).toContainText(/n=28/i);
+    await expect(analytics).toContainText(/não implica programa ativo/i);
+    await expect(analytics).toContainText(/Esta visão considera toda a base publicada/i);
+    await expect(viz01).toContainText(
+      /nenhuma organização aparece em mais de uma categoria de relação/i,
+    );
+
+    const analyticsText = await analytics.innerText();
+    expect(analyticsText).not.toMatch(/\d+(\.\d+)?%/);
+    expect(analyticsText.toLowerCase()).not.toContain('percentual');
+    expect(analyticsText.toLowerCase()).not.toContain('snapshot completo');
+  });
+
+  test('analytics stays snapshot-static while explorer filters', async ({ page }) => {
+    await page.goto('./inovacao/startups/');
+    const analytics = page.getByTestId('observatory-analytics');
+    const filters = page.getByTestId('startup-filters');
+
+    await filters.getByLabel('Direta às GSDs', { exact: true }).check();
+    await expect(page.getByRole('status')).toContainText(/28 organizações/i);
+
+    const viz01 = page.getByTestId('viz-01-relations');
+    await expect(viz01).toContainText('81');
+    await expect(viz01).toContainText('28');
+    await expect(viz01).toContainText('11');
+    await expect(page.getByTestId('viz-02-geography')).toContainText('88');
+    await expect(page.getByTestId('viz-03-direct-activity')).toContainText('13');
+    await expect(page.getByTestId('viz-04-direct-status')).toContainText('8');
+    await expect(analytics).toContainText(/não muda com os filtros/i);
+  });
+
+  test('summary hides breakdown without filters and shows it when filtered', async ({ page }) => {
+    await page.goto('./inovacao/startups/');
+    await expect(page.getByTestId('startup-summary-count')).toHaveText(
+      /120 organizações na base publicada/i,
+    );
+    await expect(page.getByTestId('startup-summary-breakdown')).toHaveCount(0);
+
+    const filters = page.getByTestId('startup-filters');
+    await filters.getByLabel('Direta às GSDs', { exact: true }).check();
+    await expect(page.getByTestId('startup-summary-count')).toHaveText(
+      /28 de 120 organizações no recorte filtrado/i,
+    );
+    const breakdown = page.getByTestId('startup-summary-breakdown');
+    await expect(breakdown).toBeVisible();
+    await expect(breakdown).toContainText(/Direta às GSDs/i);
+    await expect(breakdown).toContainText('28');
   });
 });
