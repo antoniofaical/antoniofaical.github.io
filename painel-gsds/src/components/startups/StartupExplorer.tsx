@@ -38,7 +38,6 @@ export default function StartupExplorer({ snapshot }: { snapshot: StartupPublish
   );
 
   const items = useMemo(() => queryStartups(snapshot, input), [snapshot, input]);
-  const stats = useMemo(() => computeStartupStats(snapshot, items), [snapshot, items]);
   const selected = items.find((item) => item.organization.slug === selectedSlug) ?? null;
 
   const clearAll = () => {
@@ -54,9 +53,18 @@ export default function StartupExplorer({ snapshot }: { snapshot: StartupPublish
     filters.confidences.length > 0 ||
     filters.operationalStatuses.length > 0;
 
+  const stats = useMemo(
+    () => computeStartupStats(snapshot, hasActiveFilters ? items : undefined),
+    [snapshot, hasActiveFilters, items],
+  );
+
   return (
     <div className="startup-explorer" data-testid="startup-explorer">
-      <StartupSummary stats={stats} items={items as StartupListItem[]} />
+      <StartupSummary
+        stats={stats}
+        items={items as StartupListItem[]}
+        showBreakdown={hasActiveFilters}
+      />
 
       <div className="startup-explorer__controls">
         <StartupSearch value={query} onChange={setQuery} />

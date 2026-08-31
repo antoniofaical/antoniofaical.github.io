@@ -6,6 +6,7 @@ import ResearchHeader from '../../../components/research/ResearchHeader.astro';
 import StartupExplorer from '../../../components/startups/StartupExplorer';
 import StartupEmptyState from '../../../components/startups/StartupEmptyState';
 import StartupCoverageNotice from '../../../components/startups/StartupCoverageNotice';
+import ObservatoryAnalytics from '../../../components/startups/ObservatoryAnalytics';
 import { loadPublishedSnapshot } from '../../../lib/startups/loadPublishedSnapshot';
 import { withBase } from '../../../lib/paths/withBase';
 import { startupCoverageStatusLabels } from '../../../data/startups/taxonomies';
@@ -72,6 +73,16 @@ const updatedAt = snapshot.publishedAt.slice(0, 10);
               summary={snapshot.coverage.summary}
               limitations={snapshot.coverage.limitations}
             />
+          </PageContainer>
+        </section>
+      )
+    }
+
+    {
+      !isEmpty && (
+        <section class="section-space" aria-label="Visão analítica">
+          <PageContainer>
+            <ObservatoryAnalytics snapshot={snapshot} />
           </PageContainer>
         </section>
       )

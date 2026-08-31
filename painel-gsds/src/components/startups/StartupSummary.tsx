@@ -10,12 +10,15 @@ import {
 export default function StartupSummary({
   stats,
   items,
+  showBreakdown = false,
 }: {
   stats: StartupStats;
   items: StartupListItem[];
+  showBreakdown?: boolean;
 }) {
   const relationEntries = Object.entries(stats.byRelation) as Array<[StartupRelation, number]>;
   const geographyEntries = Object.entries(stats.byGeography) as Array<[StartupGeography, number]>;
+  const shouldShowBreakdown = showBreakdown && items.length > 0;
 
   return (
     <section className="startup-summary" aria-labelledby="startup-summary-title">
@@ -27,8 +30,8 @@ export default function StartupSummary({
           ? `${stats.filteredOrganizations} de ${stats.totalOrganizations} organizações no recorte filtrado`
           : `${stats.totalOrganizations} organizações na base publicada`}
       </p>
-      {items.length > 0 ? (
-        <dl className="startup-summary__grid">
+      {shouldShowBreakdown ? (
+        <dl className="startup-summary__grid" data-testid="startup-summary-breakdown">
           {relationEntries.map(([key, value]) => (
             <div key={key}>
               <dt>{startupRelationLabels[key]}</dt>
