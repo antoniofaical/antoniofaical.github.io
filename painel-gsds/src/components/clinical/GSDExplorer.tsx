@@ -64,7 +64,7 @@ export default function GSDExplorer({ items }: { items: ExplorerGsd[] }) {
       <p className="gsd-explorer__count" role="status" aria-live="polite">
         {filtered.length === 0
           ? 'Nenhuma GSD corresponde aos filtros.'
-          : `${filtered.length} de ${items.length} condições na classificação essencial da SoT.`}
+          : `${filtered.length} de ${items.length} condições na classificação essencial da síntese médica.`}
       </p>
 
       <ul className="gsd-explorer__list">
