@@ -31,8 +31,6 @@ const { metric, claim } = datasusMetric;
         · {metric.period}
       </p>
       <p>{claim.shortStatement ?? claim.statement}</p>
-      <p class="brazil-ref__limit">{metric.limitations[0]}</p>
-      <p class="brazil-ref__meta">Registro: {metric.id}</p>
     </aside>
   </div>
 </section>
@@ -73,14 +71,5 @@ const { metric, claim } = datasusMetric;
     margin: 0;
     max-width: none;
     color: var(--ink-600);
-  }
-
-  .brazil-ref__limit {
-    color: var(--ink-800) !important;
-    font-weight: 600;
-  }
-
-  .brazil-ref__meta {
-    font-size: var(--annotation);
   }
 </style>

@@ -3,9 +3,10 @@ export interface Props {
   limitations: string[];
   sources: Array<{ title: string; path?: string }>;
   claimIds?: string[];
+  showMedicalNotice?: boolean;
 }
 
-const { limitations, sources, claimIds = [] } = Astro.props;
+const { limitations, sources, showMedicalNotice = false } = Astro.props;
 ---
 
 <footer
@@ -23,17 +24,15 @@ const { limitations, sources, claimIds = [] } = Astro.props;
         sources.map((source) => (
           <li>
             <strong>{source.title}</strong>
-            {source.path && <code>{source.path}</code>}
           </li>
         ))
       }
     </ul>
     {
-      claimIds.length > 0 && (
-        <p class="evidence-footer__claims">Alegações: {claimIds.join(', ')}.</p>
+      showMedicalNotice && (
+        <p role="note">Conteúdo informativo. Não substitui avaliação médica individual.</p>
       )
     }
-    <p role="note">Conteúdo informativo. Não substitui avaliação médica individual.</p>
   </div>
 </footer>
 
@@ -55,13 +54,6 @@ const { limitations, sources, claimIds = [] } = Astro.props;
     max-width: 70ch;
   }
 
-  .evidence-footer code {
-    display: inline-block;
-    margin-left: var(--space-2);
-    font-size: var(--annotation);
-  }
-
-  .evidence-footer__claims,
   .evidence-footer p {
     color: var(--ink-600);
     max-width: 70ch;

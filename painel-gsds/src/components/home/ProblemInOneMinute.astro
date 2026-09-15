@@ -11,11 +11,7 @@ export interface Props {
   points: ProblemPoint[];
 }
 
-const {
-  heading = 'O problema em um minuto',
-  intro = 'Três leituras executivas para orientar o restante do painel.',
-  points,
-} = Astro.props;
+const { heading = 'O problema em um minuto', intro, points } = Astro.props;
 ---
 
 <section id="problema" class="section-space surface-editorial" aria-labelledby="problema-title">
@@ -23,7 +19,7 @@ const {
     <header class="stack stack--tight">
       <p class="section-kicker">Síntese</p>
       <h2 id="problema-title">{heading}</h2>
-      <p class="section-lede">{intro}</p>
+      {intro && intro.trim() !== '' && <p class="section-lede">{intro}</p>}
     </header>
 
     <ol class="problem-rail">
@@ -36,7 +32,6 @@ const {
             <div class="stack stack--tight">
               <h3>{point.title}</h3>
               <p>{point.body}</p>
-              <p class="problem-rail__meta">Alegação {point.claimId}</p>
             </div>
           </li>
         ))
@@ -97,11 +92,6 @@ const {
   .problem-rail__item p {
     color: var(--ink-600);
     max-width: none;
-  }
-
-  .problem-rail__meta {
-    font-size: var(--annotation);
-    color: var(--ink-600);
   }
 
   @media (min-width: 64rem) {

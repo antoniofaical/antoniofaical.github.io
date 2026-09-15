@@ -40,6 +40,11 @@ const {
 } = Astro.props;
 
 const isAbsent = evidenceState === 'not-calculable' || value === null;
+
+const valueHasBillion =
+  value !== null &&
+  (/\bbilhão\b/i.test(value) || /\bbilhões\b/i.test(value) || /\sbi$/i.test(value.trim()));
+const showUnit = unit && !(valueHasBillion && /bilh/i.test(unit));
 ---
 
 <article class:list={['key-metric', `key-metric--${evidenceState}`]}>
@@ -57,7 +62,7 @@ const isAbsent = evidenceState === 'not-calculable' || value === null;
     ) : (
       <p class="key-metric__value">
         <span class="key-metric__number">{value}</span>
-        {unit && <span class="key-metric__unit">{unit}</span>}
+        {showUnit && <span class="key-metric__unit">{unit}</span>}
       </p>
     )
   }
