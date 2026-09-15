@@ -38,17 +38,15 @@ const explorerItems = evidence.gsdTypes.map((gsd) => ({
   organsExplicitlyDescribed: gsd.organsExplicitlyDescribed,
 }));
 
-const pageClaimIds = [
-  ...new Set(
-    [
-      'clm-clinical-001',
-      'clm-clinical-002',
-      ...evidence.gsdTypes.flatMap((g) => g.claimIds),
-      ...(evidence.pathway.claimIds ?? []),
-      ...(evidence.patterns as Array<{ claimIds?: string[] }>).flatMap((p) => p.claimIds ?? []),
-    ].filter(Boolean),
-  ),
-];
+const ORGAN_STATE_LABEL: Record<string, string> = {
+  characteristic: 'Característica',
+  variable: 'Variável',
+  'not-described-in-sot': 'Não descrito na síntese',
+};
+
+function formatOrganState(state: string): string {
+  return ORGAN_STATE_LABEL[state] ?? state;
+}
 ---
 
 <BaseLayout
@@ -68,6 +66,7 @@ const pageClaimIds = [
       eyebrow="Análise clínica"
       title="Bases clínicas das glicogenoses"
       summary="Uma família de doenças metabólicas hereditárias: o tipo molecular, o tecido afetado e o momento do diagnóstico moldam jornadas muito diferentes."
+      notice="Conteúdo informativo e não substitutivo de avaliação médica especializada."
       updatedAt={updatedAt}
       cutoff={cutoff}
     />
@@ -93,7 +92,6 @@ const pageClaimIds = [
           <li>O fenótipo forma um contínuo — da vida fetal à adulta, com gravidade variável.</li>
           <li>Diagnóstico e tratamento precoces alteram a história natural.</li>
         </ul>
-        <p class="meta">Alegação: clm-clinical-001 · SoT médica · Visão geral</p>
       </PageContainer>
     </section>
 
@@ -114,7 +112,7 @@ const pageClaimIds = [
           }
         </ol>
         <p class="limit">{evidence.pathway.caveat}</p>
-        <p class="meta">Fonte: SoT médica · Lógica fisiopatológica e apresentação clínica</p>
+        <p class="meta">Fonte: síntese médica · Lógica fisiopatológica e apresentação clínica</p>
       </PageContainer>
     </section>
 
@@ -149,7 +147,6 @@ const pageClaimIds = [
             )
           }
         </div>
-        <p class="meta">Alegação: clm-clinical-002</p>
       </PageContainer>
     </section>
 
@@ -157,8 +154,8 @@ const pageClaimIds = [
       <PageContainer class="stack stack--lg">
         <h2 id="tipos-title">Classificação essencial: tipos e subtipos</h2>
         <p>
-          Recorte da classificação essencial da SoT médica. Não é inventário exaustivo de todas as
-          GSDs existentes; a nomenclatura histórica não é uniforme.
+          Recorte da classificação essencial da síntese médica. Não é inventário exaustivo de todas
+          as GSDs existentes; a nomenclatura histórica não é uniforme.
         </p>
         <GSDExplorer client:load items={explorerItems} />
       </PageContainer>
@@ -214,8 +211,9 @@ const pageClaimIds = [
                         : 'Não detalhado além do padrão clínico na síntese'}
                     </td>
                     <td>
-                      {gsd.organsExplicitlyDescribed.map((o) => o.state).join(', ') ||
-                        'not-described-in-sot'}
+                      {gsd.organsExplicitlyDescribed
+                        .map((o) => formatOrganState(o.state))
+                        .join(', ') || 'Não descrito na síntese'}
                     </td>
                   </tr>
                 ))
@@ -294,7 +292,7 @@ const pageClaimIds = [
         </div>
         <p class="limit">
           Tratamento não é sinônimo de cura. A reposição enzimática em Pompe, por exemplo, não é
-          curativa segundo a SoT.
+          curativa segundo a síntese médica.
         </p>
       </PageContainer>
     </section>
@@ -306,7 +304,7 @@ const pageClaimIds = [
         <p class="limit">
           {
             evidence.therapyHorizon.datedQualifier ??
-              'Status conforme panorama reportado na SoT (Koeberl et al., 2024); não é status regulatório atual.'
+              'Status conforme panorama reportado na síntese médica (Koeberl et al., 2024); não é status regulatório atual.'
           }
         </p>
         <ul>
@@ -357,18 +355,16 @@ const pageClaimIds = [
     <div id="limitacoes-e-fontes">
       <EvidenceFooter
         limitations={[
-          'Esta página é síntese editorial da SoT médica; não é protocolo clínico.',
+          'Esta página é síntese editorial da síntese médica; não é protocolo clínico.',
           'Achados de um subtipo não se generalizam a todas as GSDs.',
           'Ausência de órgão ou prevalência na matriz não significa ausência clínica.',
-          'Status de terapia emergente reflete o panorama datado da SoT, não atualização regulatória.',
+          'Status de terapia emergente reflete o panorama datado da síntese médica, não atualização regulatória.',
         ]}
         sources={[
           {
             title: 'Glicogenose: Resumo Médico Executivo',
-            path: 'docs/source-of-truth/Glicogenose Resumo Médico Executivo.md',
           },
         ]}
-        claimIds={pageClaimIds}
       />
     </div>
   </main>
