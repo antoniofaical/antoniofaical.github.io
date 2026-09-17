@@ -1,4 +1,5 @@
 ---
+import { publicSocioText } from '../../lib/copy/publicSocioText';
 import type { MarketSegment } from '../../schemas/socioeconomic/domain';
 
 export interface Props {
@@ -47,8 +48,8 @@ const { title, summary, segments } = Astro.props;
               <tr>
                 <th scope="row">
                   <span>{segment.label}</span>
-                  <p class="cell-note">{segment.summary}</p>
-                  <p class="limit">{segment.limitations[0]}</p>
+                  <p class="cell-note">{publicSocioText(segment.summary)}</p>
+                  <p class="limit">{publicSocioText(segment.limitations[0])}</p>
                 </th>
                 <td>{segment.beneficiary.join('; ')}</td>
                 <td>{segment.buyerPayer.join('; ')}</td>

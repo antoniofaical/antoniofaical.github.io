@@ -30,6 +30,21 @@ const {
 } = Astro.props;
 
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+
+function hideFooterMedicalNotice(pathname: string): boolean {
+  const normalized = pathname.replace(/\/index\.html$/i, '/').replace(/\/+$/, '') || '/';
+  return (
+    normalized === '/' ||
+    normalized === '/painel-gsds' ||
+    normalized.endsWith('/analises/bases-clinicas') ||
+    normalized.endsWith('/analises/impacto-socioeconomico') ||
+    normalized.endsWith('/inovacao/startups')
+  );
+}
+
+const footerNote = hideFooterMedicalNotice(Astro.url.pathname)
+  ? ''
+  : 'Conteúdo informativo. Não substitui avaliação médica.';
 ---
 
 <!doctype html>
@@ -66,7 +81,7 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefin
       <MobileNavigation client:load slot="mobile" />
     </GlobalHeader>
     <slot />
-    <GlobalFooter lastReviewedAt={lastReviewedAt} />
+    <GlobalFooter lastReviewedAt={lastReviewedAt} note={footerNote} />
   </body>
 </html>
 

@@ -47,6 +47,24 @@ const ORGAN_STATE_LABEL: Record<string, string> = {
 function formatOrganState(state: string): string {
   return ORGAN_STATE_LABEL[state] ?? state;
 }
+
+const GENERIC_MEDICAL_PREFIX =
+  'Conteúdo informativo e não substitutivo de avaliação médica especializada.';
+
+function stripGenericMedicalPrefix(text: string): string {
+  const trimmed = text.trim();
+  if (trimmed.startsWith(GENERIC_MEDICAL_PREFIX)) {
+    return trimmed.slice(GENERIC_MEDICAL_PREFIX.length).trim();
+  }
+  return trimmed;
+}
+
+function publicClinicalText(value: string): string {
+  return value.replace(/SoT médica/g, 'síntese médica').replace(/\bSoT\b/g, 'síntese');
+}
+
+const diagnosisSpecificNotice = stripGenericMedicalPrefix(evidence.diagnosis.disclaimer);
+const managementSpecificNotice = stripGenericMedicalPrefix(evidence.management.disclaimer);
 ---
 
 <BaseLayout
@@ -135,13 +153,15 @@ function formatOrganState(state: string): string {
               }) => (
                 <article>
                   <h3>{pattern.title}</h3>
-                  <p>{pattern.summary}</p>
+                  <p>{publicClinicalText(pattern.summary)}</p>
                   {pattern.examples && (
                     <p>
                       <strong>Exemplos na síntese:</strong> {pattern.examples.join(', ')}
                     </p>
                   )}
-                  {pattern.limitations?.[0] && <p class="limit">{pattern.limitations[0]}</p>}
+                  {pattern.limitations?.[0] && (
+                    <p class="limit">{publicClinicalText(pattern.limitations[0])}</p>
+                  )}
                 </article>
               ),
             )
@@ -178,8 +198,8 @@ function formatOrganState(state: string): string {
           }
         </ol>
         <p class="limit">
-          Sem datas inventadas: a linha do tempo é editorial e segue a narrativa da SoT, não um
-          calendário externo.
+          Sem datas inventadas: a linha do tempo é editorial e segue a narrativa da síntese médica,
+          não um calendário externo.
         </p>
       </PageContainer>
     </section>
@@ -243,9 +263,11 @@ function formatOrganState(state: string): string {
                 limitations?: string[];
               }) => (
                 <li>
-                  <strong>{est.label}:</strong> {est.displayValue}
-                  {est.scope ? ` · ${est.scope}` : ''}
-                  {est.limitations?.[0] && <span class="limit"> — {est.limitations[0]}</span>}
+                  <strong>{est.label}:</strong> {publicClinicalText(est.displayValue)}
+                  {est.scope ? ` · ${publicClinicalText(est.scope)}` : ''}
+                  {est.limitations?.[0] && (
+                    <span class="limit"> — {publicClinicalText(est.limitations[0])}</span>
+                  )}
                 </li>
               ),
             )
@@ -258,7 +280,7 @@ function formatOrganState(state: string): string {
       <PageContainer class="stack stack--lg">
         <h2 id="dx-title">Jornada diagnóstica (não é algoritmo clínico)</h2>
         <p>{evidence.diagnosis.summary}</p>
-        <p class="limit" role="note">{evidence.diagnosis.disclaimer}</p>
+        <p class="limit" role="note">{diagnosisSpecificNotice}</p>
         <ol class="flow">
           {
             (evidence.diagnosis.stages ?? []).map((stage: { label: string; detail: string }) => (
@@ -276,7 +298,7 @@ function formatOrganState(state: string): string {
       <PageContainer class="stack stack--lg">
         <h2 id="manejo-title">Eixos de manejo atual</h2>
         <p>{evidence.management.summary}</p>
-        <p class="limit" role="note">{evidence.management.disclaimer}</p>
+        <p class="limit" role="note">{managementSpecificNotice}</p>
         <div class="pattern-grid">
           {
             (evidence.management.tracks ?? []).map(
@@ -332,7 +354,7 @@ function formatOrganState(state: string): string {
     <section id="lacunas" class="section-space surface-editorial" aria-labelledby="lacunas-title">
       <PageContainer class="stack stack--lg">
         <h2 id="lacunas-title">Lacunas clínicas e prioridades</h2>
-        <p>{evidence.clinicalGaps.summary}</p>
+        <p>{publicClinicalText(evidence.clinicalGaps.summary)}</p>
         <ol>
           {
             (evidence.clinicalGaps.gaps ?? []).map(
@@ -342,7 +364,7 @@ function formatOrganState(state: string): string {
                     {gap.priority ? `${gap.priority}. ` : ''}
                     {gap.label}
                   </strong>
-                  {gap.detail ? ` — ${gap.detail}` : ''}
+                  {gap.detail ? ` — ${publicClinicalText(gap.detail)}` : ''}
                 </li>
               ),
             )

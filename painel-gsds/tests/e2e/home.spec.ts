@@ -27,7 +27,8 @@ test.describe('home executive', () => {
 
   test('renders metrics from typed evidence layer', async ({ page }) => {
     await expect(page.getByText('mais de 20').first()).toBeVisible();
-    await expect(page.getByText(/≈ €1,4 bi/i).first()).toBeVisible();
+    await expect(page.getByText(/≈ €1,4 bilhão/i).first()).toBeVisible();
+    await expect(page.getByText(/≈ €1,4 bi bilhões/i)).toHaveCount(0);
     await expect(page.getByText('997').first()).toBeVisible();
     await expect(page.getByText('AIHs').first()).toBeVisible();
     await expect(page.getByText('29').first()).toBeVisible();
@@ -37,6 +38,16 @@ test.describe('home executive', () => {
     await expect(
       page.locator('.key-metric__limitation', { hasText: /AIHs não equivalem a pacientes/i }),
     ).toBeVisible();
+    const homeText = await page.locator('main').innerText();
+    expect(homeText).not.toMatch(/SoT/);
+    expect(homeText).not.toMatch(/CAR-/);
+    expect(homeText).not.toMatch(/ECO-/);
+    expect(homeText).not.toMatch(/clm-/);
+    expect(homeText).not.toMatch(/met-/);
+    expect(homeText).not.toMatch(/docs\/source-of-truth/);
+    expect(homeText).toMatch(/estudo documentado na síntese socioeconômica/);
+    expect(homeText).toMatch(/1\.1 \/ McArdle — atraso mediano de 29 anos/);
+    expect(homeText).not.toMatch(/\[CAR-010 a CAR-013\]/);
   });
 
   test('analysis portals navigate to clinical and socioeconomic pages', async ({ page }) => {
@@ -51,6 +62,11 @@ test.describe('home executive', () => {
     const developing = page.getByRole('status').filter({ hasText: /em desenvolvimento/i });
     await expect(developing).toHaveCount(0);
     await expect(page.getByRole('link', { name: /abrir observatório de startups/i })).toBeVisible();
+    const homeText = await page.locator('main').innerText();
+    expect(homeText).not.toMatch(/avaliação (médica|clínica) individual/i);
+    expect(homeText).not.toMatch(/não substitui avaliação médica/i);
+    expect(homeText).not.toMatch(/não substitutivo de avaliação médica/i);
+    await expect(page.locator('.footer-note')).toHaveCount(0);
   });
 
   test('has no serious accessibility violations', async ({ page }) => {

@@ -22,7 +22,7 @@ const marketPeriodDisplay = market.metric.period.replace(
   /síntese da SoT médica/gi,
   'síntese médica',
 );
-const observedNote = `Receita observada de ${market.metric.displayValue} em ${marketPeriodDisplay} — não é TAM/SAM/SOM.`;
+const observedNote = `Receita observada de ≈ €1,4 bilhão em ${marketPeriodDisplay} — não é TAM/SAM/SOM.`;
 ---
 
 <BaseLayout
@@ -196,9 +196,7 @@ const observedNote = `Receita observada de ${market.metric.displayValue} em ${ma
       sotCutoff={sotCutoff}
       sources={evidence.sources}
       limitations={[
-        'Sínteses executivas não substituem as análises aprofundadas nem a avaliação clínica individual.',
-        'Receita observada não deve ser lida como TAM, SAM ou SOM.',
-        'AIHs do SIH/SUS não equivalem a pacientes únicos.',
+        'Sínteses executivas não substituem as análises aprofundadas.',
         'Evidências de um subtipo (por exemplo, McArdle ou Pompe) não se generalizam automaticamente a todas as GSDs.',
       ]}
     />

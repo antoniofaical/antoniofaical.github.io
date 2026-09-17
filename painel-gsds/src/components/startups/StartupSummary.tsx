@@ -28,7 +28,7 @@ export default function StartupSummary({
       <p className="startup-summary__lead" data-testid="startup-summary-count">
         {stats.scope === 'filtered'
           ? `${stats.filteredOrganizations} de ${stats.totalOrganizations} organizações no recorte filtrado`
-          : `${stats.totalOrganizations} organizações na base publicada`}
+          : `${stats.totalOrganizations} organizações nesta base`}
       </p>
       {shouldShowBreakdown ? (
         <dl className="startup-summary__grid" data-testid="startup-summary-breakdown">

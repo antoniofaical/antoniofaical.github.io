@@ -15,11 +15,22 @@ const snapshot = loadPublishedSnapshot();
 const isEmpty =
   snapshot.coverage.status === 'not-yet-populated' || snapshot.organizations.length === 0;
 const updatedAt = snapshot.publishedAt.slice(0, 10);
+
+const A30_ECHO =
+  /presença no recorte(?: direto)? não (?:equivale a um programa ativo hoje|significa programa GSD ativo hoje)/i;
+
+const coverageSummary = snapshot.coverage.summary
+  .replace(/\s*;?\s*presença no recorte não equivale a um programa ativo hoje\.?/i, '.')
+  .replace(/\.\s*\./g, '.')
+  .replace(/\s{2,}/g, ' ')
+  .trim();
+
+const coverageLimitations = snapshot.coverage.limitations.filter((item) => !A30_ECHO.test(item));
 ---
 
 <BaseLayout
   title="Observatório de startups em glicogenoses"
-  description="Base curada de organizações com relevância direta, adjacente ou ainda não confirmada às glicogenoses. Base pública estática, sujeita a atualização editorial."
+  description="Organizações com relevância direta, adjacente ou ainda não confirmada às glicogenoses. Base pública estática, sujeita a atualização editorial."
   currentPath={withBase('inovacao/startups/')}
   lastReviewedAt={updatedAt}
 >
@@ -42,56 +53,9 @@ const updatedAt = snapshot.publishedAt.slice(0, 10);
       cutoff={updatedAt}
     />
 
-    <section class="section-space" aria-labelledby="startup-method-note">
-      <PageContainer class="stack stack--md">
-        <h2 id="startup-method-note">Nota metodológica</h2>
-        <ul class="startup-page__notes">
-          <li>A base é curada e revisada; não é um censo global de startups.</li>
-          <li>
-            Os dados públicos são sujeitos a atualização editorial periódica quando uma nova base
-            publicada é selecionada.
-          </li>
-          <li>
-            Classificações direta / adjacente / ecossistema / relevância não confirmada e Brasil /
-            global pertencem às avaliações de relevância ligadas a cada organização — não são bases
-            separadas.
-          </li>
-          <li>
-            Última atualização:{' '}
-            <time datetime={snapshot.publishedAt}>{updatedAt}</time>.
-          </li>
-        </ul>
-      </PageContainer>
-    </section>
-
-    {
-      !isEmpty && (
-        <section class="section-space" aria-label="Cobertura da base">
-          <PageContainer>
-            <StartupCoverageNotice
-              statusLabel={startupCoverageStatusLabels[snapshot.coverage.status]}
-              summary={snapshot.coverage.summary}
-              limitations={snapshot.coverage.limitations}
-            />
-          </PageContainer>
-        </section>
-      )
-    }
-
-    {
-      !isEmpty && (
-        <section class="section-space" aria-label="Visão analítica">
-          <PageContainer>
-            <ObservatoryAnalytics snapshot={snapshot} />
-          </PageContainer>
-        </section>
-      )
-    }
-
     <section class="section-space surface-editorial" aria-labelledby="startup-explorer-title">
       <PageContainer class="stack stack--lg">
         <header class="stack stack--tight">
-          <p class="section-kicker">Projeção pública</p>
           <h2 id="startup-explorer-title">Organizações publicadas</h2>
         </header>
 
@@ -99,8 +63,8 @@ const updatedAt = snapshot.publishedAt.slice(0, 10);
           isEmpty ? (
             <StartupEmptyState
               publishedAt={snapshot.publishedAt}
-              summary={snapshot.coverage.summary}
-              limitations={snapshot.coverage.limitations}
+              summary={coverageSummary}
+              limitations={coverageLimitations}
             />
           ) : (
             <StartupExplorer client:load snapshot={snapshot} />
@@ -109,14 +73,51 @@ const updatedAt = snapshot.publishedAt.slice(0, 10);
       </PageContainer>
     </section>
 
+    {
+      !isEmpty && (
+        <section class="section-space">
+          <PageContainer>
+            <ObservatoryAnalytics snapshot={snapshot} />
+          </PageContainer>
+        </section>
+      )
+    }
+
+    {
+      !isEmpty && (
+        <section class="section-space" aria-label="Cobertura da base">
+          <PageContainer>
+            <StartupCoverageNotice
+              statusLabel={startupCoverageStatusLabels[snapshot.coverage.status]}
+              summary={coverageSummary}
+              limitations={coverageLimitations}
+            />
+          </PageContainer>
+        </section>
+      )
+    }
+
     <section class="section-space" aria-labelledby="startup-about-data">
       <PageContainer class="stack stack--md">
         <h2 id="startup-about-data">Sobre os dados</h2>
-        <p>
-          A base é revisada periodicamente. Quando uma fonte pública está vinculada ao registro, ela
-          aparece no detalhe da organização. Alguns registros diretos ainda não possuem uma fonte
-          pública vinculada nesta versão.
-        </p>
+        <ul class="startup-page__notes">
+          <li>A base não é um censo nem um inventário global de organizações.</li>
+          <li>
+            Classificações direta / adjacente / ecossistema / relevância não confirmada e Brasil /
+            global pertencem às avaliações de relevância ligadas a cada organização — não são bases
+            separadas.
+          </li>
+          <li>
+            Os dados públicos são sujeitos a atualização editorial periódica quando uma nova base
+            publicada é selecionada. Última atualização:{' '}
+            <time datetime={snapshot.publishedAt}>{updatedAt}</time>.
+          </li>
+          <li>
+            Quando uma fonte pública está vinculada ao registro, ela aparece no detalhe da
+            organização. Alguns registros diretos ainda não possuem uma fonte pública vinculada
+            nesta versão.
+          </li>
+        </ul>
       </PageContainer>
     </section>
   </main>

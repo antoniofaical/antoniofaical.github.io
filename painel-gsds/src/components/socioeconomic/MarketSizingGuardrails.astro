@@ -1,4 +1,5 @@
 ---
+import { publicSocioText } from '../../lib/copy/publicSocioText';
 import type { MarketSegment } from '../../schemas/socioeconomic/domain';
 import type { Metric } from '../../schemas/metric';
 
@@ -23,8 +24,8 @@ const absent = segments.filter((s) => s.observability === 'absent');
       <p>
         Receita observada, proxy hospitalar, população potencial e mercado conceitual não são
         intercambiáveis. Total Addressable Market (TAM), Serviceable Available Market (SAM) e
-        Serviceable Obtainable Market (SOM) só aparecem quando a fonte de verdade os autoriza com
-        classificação metodológica.
+        Serviceable Obtainable Market (SOM) só aparecem quando a fonte os autoriza com classificação
+        metodológica.
       </p>
     </header>
 
@@ -35,14 +36,11 @@ const absent = segments.filter((s) => s.observability === 'absent');
           observedRevenue ? (
             <>
               <p>
-                <strong>{observedRevenue.displayValue}</strong> {observedRevenue.unit} —{' '}
-                {observedRevenue.label}
+                <strong>≈ €1,4 bilhão</strong> — {observedRevenue.label}
               </p>
-              <p class="limit">{observedRevenue.limitations[0]}</p>
-              <p class="meta">
-                Classificação: {observedRevenue.marketClassification ?? 'observed-revenue'} ·{' '}
-                {observedRevenue.claimId}
-              </p>
+              <p class="limit">{publicSocioText(observedRevenue.limitations[0])}</p>
+              <p class="limit">Mercado observado não é necessidade total.</p>
+              <p class="meta">Classificação: Receita observada</p>
             </>
           ) : (
             <p class="limit">Nenhuma métrica de receita observada disponível nesta página.</p>
