@@ -1,0 +1,73 @@
+category,token_or_value,current_definition,file,line_or_selector,usage_count_or_scope,brand_status,recommended_action,notes
+Typography,--font-display,"'Manrope', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif",src/styles/tokens.css,21,global headings h1-h3 .display,CONFLICTS,MAP_TO_BRAND_TOKEN,MANDATORY_BRAND digital headings are Work Sans; Manrope is DS v0.2 not Einstein. KEEP_STRUCTURE of display vs body split; RESTYLE_FONT in 6D.2.
+Typography,--font-body,"'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif",src/styles/tokens.css,22,body labels controls tables,COMPATIBLE,KEEP,Inter is MANDATORY_BRAND for body/UI. Fallback stack is Segoe/Helvetica not Montserrat/Arial-only as 6D.0 DASHBOARD_DECISION. RESTYLE fallback to include Montserrat Arial in 6D.2.
+Typography,@font-face Inter,woff2-variations weight 100-900 normal+italic,src/components/layout/LocalFonts.astro,13-26,preloaded local /fonts/inter-*.woff2,MATCHES_6D0,KEEP,OFL Inter already local. Do not reinstall. KEEP_STRUCTURE.
+Typography,@font-face Manrope,woff2-variations weight 200-800,src/components/layout/LocalFonts.astro,27-33,preloaded local /fonts/manrope-variable.woff2,CONFLICTS,DEPRECATE,Display face to be replaced by Work Sans when licensed files exist. Do not install in 6D.1. RESTYLE_FONT.
+Typography,Work Sans,absent,n/a,n/a,0 files,CONFLICTS,MAP_TO_BRAND_TOKEN,PENDING_ASSET_IMPORT for Work Sans files/license. Not present in public/fonts.
+Typography,Montserrat,absent,n/a,n/a,0 files,UNSPECIFIED_BY_BRAND,NEEDS_DECISION,Institutional family; 6D.0 says do not auto-replace digital Work Sans+Inter. Fallback only.
+Typography,--display-xl,clamp(2.75rem 7vw 6.5rem),src/styles/tokens.css,24,Home hero .display,UNSPECIFIED_BY_BRAND,NEEDS_DECISION,Type scale not frozen by 6D.0. Wrapping risk if Work Sans metrics differ.
+Typography,--display-lg,clamp(2.25rem 5vw 4.5rem),src/styles/tokens.css,25,unused or rare vs heading-1,UNSPECIFIED_BY_BRAND,NEEDS_DECISION,Scale freeze is PENDING_VALIDATION in 6D.0.
+Typography,--heading-1,clamp(2rem 4vw 3.5rem),src/styles/tokens.css,26,h1 research+home,UNSPECIFIED_BY_BRAND,KEEP,KEEP_STRUCTURE; RESTYLE_SCALE only after Home pilot.
+Typography,--heading-2,clamp(1.5rem 3vw 2.5rem),src/styles/tokens.css,27,h2,UNSPECIFIED_BY_BRAND,KEEP,KEEP_STRUCTURE.
+Typography,--heading-3,clamp(1.25rem 2vw 1.5rem),src/styles/tokens.css,28,h3 cards charts,UNSPECIFIED_BY_BRAND,KEEP,KEEP_STRUCTURE. Chart labels use heading-3 + display font.
+Typography,--body,clamp(1rem 0.4vw+0.92rem 1.125rem),src/styles/tokens.css,29,body,UNSPECIFIED_BY_BRAND,KEEP,KEEP_STRUCTURE.
+Typography,--editorial,clamp(1.0625rem 0.45vw+0.95rem 1.1875rem),src/styles/tokens.css,30,lede/editorial,UNSPECIFIED_BY_BRAND,KEEP,KEEP_STRUCTURE.
+Typography,--annotation,0.75rem,src/styles/tokens.css,31,eyebrows badges meta,UNSPECIFIED_BY_BRAND,KEEP,Uppercase + letter-spacing 0.02-0.04em in several components.
+Typography,heading letter-spacing,-0.02em,src/styles/global.css,h1 h2 h3 .display,global headings,UNSPECIFIED_BY_BRAND,NEEDS_DECISION,6D.0 forbids decorative overlay on Light text; tracking not specified.
+Typography,heading line-height,1.15,src/styles/global.css,h1 h2 h3 .display,global headings,UNSPECIFIED_BY_BRAND,KEEP,KEEP_STRUCTURE.
+Typography,font-family declarations count,23 matches in src css/astro/tsx excluding duplicates from path variants,src/**,font-family,LocalFonts 3 literal + rest var(--font-*),CONFLICTS,MAP_TO_BRAND_TOKEN,Literals only Inter/Manrope in LocalFonts; components consume tokens.
+Colors,--ink-950,#071b25,src/styles/tokens.css,6,executive surfaces text brand,CONFLICTS,MAP_TO_BRAND_TOKEN,Not Einstein #212121. Used as hero/research-header background.
+Colors,--ink-800,#16313b,src/styles/tokens.css,7,primary editorial text,CONFLICTS,MAP_TO_BRAND_TOKEN,Not #212121 / #545454.
+Colors,--ink-700,referenced but undefined,src/components/startups/StartupCard.tsx; StartupBarChart; StartupCoverageNotice; StartupEmptyState; pages/inovacao/startups/index.astro,color: var(--ink-700),observatory copy,CONFLICTS,NEEDS_DECISION,Token missing from :root. Invalid custom property; color falls through. FACT of a hole; do not pre-assign a replacement value in this audit. 6D.2 must choose a compatibility strategy.
+Colors,--ink-600,#45616a,src/styles/tokens.css,8,secondary text,CONFLICTS,MAP_TO_BRAND_TOKEN,Not #545454.
+Colors,--paper-50,#f6f8f7,src/styles/tokens.css,9,editorial bg,CONFLICTS,MAP_TO_BRAND_TOKEN,Not #F2F2F2 / #FFFFFF. Close in lightness only. INFERENCE not FACT of compatibility.
+Colors,--paper-100,#edf2f0,src/styles/tokens.css,10,alt surface footer,CONFLICTS,MAP_TO_BRAND_TOKEN,Not #EDEDED.
+Colors,--teal-700,#0d6870,src/styles/tokens.css,11,links current-nav buttons,CONFLICTS,MAP_TO_BRAND_TOKEN,Not #00539A. Primary action/identity color today.
+Colors,--teal-500,#1695a0,src/styles/tokens.css,12,focus charts badges brand mark,CONFLICTS,MAP_TO_BRAND_TOKEN,Not #0096D2. Chart bars use this. NEEDS_SEMANTIC_COLOR_DECISION for charts.
+Colors,--cyan-300,#78d9d6,src/styles/tokens.css,13,hero CTA glycogen visual,CONFLICTS,MAP_TO_BRAND_TOKEN,Not #00DBFF. Do not treat as Einstein light blue.
+Colors,--amber-500,#e9a63a,src/styles/tokens.css,14,evidence estimated/limited fixture banner,NEEDS_VALIDATION,NEEDS_DECISION,NEEDS_SEMANTIC_COLOR_DECISION. Must not auto-map to Einstein blues.
+Colors,--coral-500,#d8675a,src/styles/tokens.css,15,token present; limited component use,NEEDS_VALIDATION,NEEDS_DECISION,NEEDS_SEMANTIC_COLOR_DECISION for danger/warning.
+Colors,--green-500,#439b72,src/styles/tokens.css,16,token present; limited component use,NEEDS_VALIDATION,NEEDS_DECISION,NEEDS_SEMANTIC_COLOR_DECISION for success.
+Colors,--line-200,#d7e0dd,src/styles/tokens.css,17,borders,CONFLICTS,MAP_TO_BRAND_TOKEN,Not #D4D4D4.
+Colors,--white,#ffffff,src/styles/tokens.css,18,surfaces badges,MATCHES_6D0,KEEP,Matches Einstein #FFFFFF.
+Colors,Einstein #00539A,absent in src,n/a,n/a,0,CONFLICTS,MAP_TO_BRAND_TOKEN,MANDATORY_BRAND brand-blue-dark unused.
+Colors,Einstein #0096D2,absent in src,n/a,n/a,0,CONFLICTS,MAP_TO_BRAND_TOKEN,MANDATORY_BRAND brand-blue-medium unused.
+Colors,Einstein #00DBFF,absent in src,n/a,n/a,0,CONFLICTS,MAP_TO_BRAND_TOKEN,MANDATORY_BRAND brand-blue-light unused.
+Colors,Einstein neutrals #212121-#F2F2F2,absent except #FFFFFF,n/a,n/a,0,CONFLICTS,MAP_TO_BRAND_TOKEN,No current mapping layer.
+Colors,hardcoded rgb paper/teal,rgb(246 248 247 / 92% 45% 8%); rgb(22 149 160 / 18%); rgb(13 104 112 / 8%),GlobalHeader.astro; utilities.css; ResearchHeader.astro,header btn research notice,5 rgb literals outside tokens.css,CONFLICTS,MAP_TO_BRAND_TOKEN,Quantified FACT: GlobalHeader 2 → 6D.3_HOME_PILOT; utilities.css 2 → 6D.2 only if output stays pixel-identical; ResearchHeader 1 → 6D.4_ROLLOUT. Do not expand 6D.2 to those components just to zero hardcodes.
+Colors,hex count in tokens.css,13 hex primitives,src/styles/tokens.css,6-18,design system,CONFLICTS,MAP_TO_BRAND_TOKEN,Zero Einstein hex besides white.
+Colors,favicon hex,#000 / #FFF,public/favicon.svg,path fill,favicon only,CONFLICTS,DEPRECATE,Astro default rocket deve ser aposentado quando houver asset institucional autorizado; não importar/substituir nesta iteração.
+Spacing,--space-1 to --space-11,0.25rem to 8rem,src/styles/tokens.css,34-44,global,UNSPECIFIED_BY_BRAND,NEEDS_DECISION,6D.0 PENDING_VALIDATION until 6D.1; recommend KEEP scale in 6D.2 unless Home pilot proves otherwise.
+Spacing,--margin-mobile,1.25rem,src/styles/tokens.css,50,.container,UNSPECIFIED_BY_BRAND,KEEP,DASHBOARD_DECISION.
+Radii,--radius-md,12px,src/styles/tokens.css,53,controls cards nav,UNSPECIFIED_BY_BRAND,NEEDS_DECISION,6D.0 does not freeze radii.
+Radii,--radius-lg,16px,src/styles/tokens.css,54,section cards,UNSPECIFIED_BY_BRAND,NEEDS_DECISION,
+Radii,--radius-xl,18px,src/styles/tokens.css,55,KeyMetric,UNSPECIFIED_BY_BRAND,NEEDS_DECISION,
+Radii,--radius-sm,referenced undefined,src/components/startups/StartupBadges.tsx,58,startup badges,CONFLICTS,NEEDS_DECISION,Missing token; pills fall back to UA radius 0. Distinct from 12/16/18. FACT of a hole; do not pre-assign a replacement value. 6D.2 chooses compatibility strategy; Observatory restyle stays 6D.4.
+Radii,999px pills,border-radius:999px,GlobalHeader .brand__mark; EvidenceBadge,identity + badges,2 selectors,UNSPECIFIED_BY_BRAND,RESTYLE,Generic CSS product mark (teal disc) uses pill radius; not an Einstein lockup reconstruction. Evidence pills DASHBOARD_DECISION.
+Radii,4px demo,border-radius:4px,src/pages/design-system/index.astro,469,DS demo only,UNSPECIFIED_BY_BRAND,KEEP,Not production surfaces.
+Radii,distinct radii count,12px 16px 18px 999px 4px + missing sm,src,multiple,6 distinct including missing,UNSPECIFIED_BY_BRAND,NEEDS_DECISION,Do not invent Einstein radii.
+Borders,--border-thin,1px,src/styles/tokens.css,56,most chrome,UNSPECIFIED_BY_BRAND,KEEP,
+Borders,--border-strong,2px,src/styles/tokens.css,57,data-absent,UNSPECIFIED_BY_BRAND,KEEP,
+Shadows,--elevation-1,0 1px 2px / 0 4px 12px rgb(7 27 37 / 8% 6%),src/styles/tokens.css,67,SectionPortal,UNSPECIFIED_BY_BRAND,NEEDS_DECISION,Ink-tinted shadow not Einstein. 6D.0 PENDING_VALIDATION.
+Shadows,--elevation-2,0 2px 4px / 0 12px 24px rgb(7 27 37 / 10% 8%),src/styles/tokens.css,68,drawer mobile-nav,UNSPECIFIED_BY_BRAND,NEEDS_DECISION,
+Shadows,hardcoded mark ring,0 0 0 4px rgb(22 149 160 / 18%),src/components/layout/GlobalHeader.astro,.brand__mark,1,CONFLICTS,DEPRECATE,Glow around generic CSS product mark; not an Einstein logo reconstruction. Tokenize/retire with header restyle in 6D.3.
+Shadows,inset current nav,inset 0 -2px 0 var(--teal-500),GlobalHeader.astro,.nav-item--current,1,CONFLICTS,MAP_TO_BRAND_TOKEN,Underline uses teal not brand blue.
+Shadows,shadow count,2 token elevations + 3 local (mark ring current-nav evidence inset),src,multiple,5,UNSPECIFIED_BY_BRAND,NEEDS_DECISION,
+Breakpoints,48rem / 64rem,grid 8col / desktop nav,src/styles/utilities.css; GlobalHeader; MobileNavigation,min-width,global,UNSPECIFIED_BY_BRAND,KEEP,DASHBOARD_DECISION. Not in Einstein guide.
+Container widths,--width-global / --width-wide / --width-editorial,80rem / 73.75rem / 48rem,src/styles/tokens.css,47-49,.container variants,UNSPECIFIED_BY_BRAND,KEEP,DASHBOARD_DECISION; 6D.0 deixa widths/layout sem prescrição institucional específica.
+Motion,--duration-fast/base/slow + --ease-standard,180/220/260ms cubic-bezier(0.2 0.8 0.2 1),src/styles/tokens.css,60-64,header glycogen skip-link,UNSPECIFIED_BY_BRAND,KEEP,prefers-reduced-motion in global.css. 6D.0 PENDING_VALIDATION.
+Motion,html scroll-behavior,smooth unless reduced,src/styles/global.css,5-21,global,UNSPECIFIED_BY_BRAND,KEEP,
+Focus,--focus-ring,var(--teal-500),src/styles/tokens.css,84,:focus-visible 2px offset 3px,CONFLICTS,MAP_TO_BRAND_TOKEN,Visible focus exists (FACT). Color is teal not brand blue. :focus{outline:none} relies on :focus-visible.
+Focus,:focus outline none,outline: none,src/styles/global.css,69-75,global,COMPATIBLE,KEEP,O padrão depende do :focus-visible existente; preservar anel visível e revalidar contraste quando a cor mudar.
+Z-index,--z-base to --z-skip,0 100 200 300 400 500 1000,src/styles/tokens.css,71-77,header overlay modal skip,UNSPECIFIED_BY_BRAND,KEEP,Documented scale.
+Chart styles,bar fill,background var(--teal-500),src/components/startups/StartupBarChart.tsx,.startup-bar-chart__bar,VIZ01-04 bars,NEEDS_VALIDATION,NEEDS_DECISION,NEEDS_SEMANTIC_COLOR_DECISION. Do not remap all series to three Einstein blues. Labels+values exist so color is not sole discriminator (FACT).
+Chart styles,track,paper-100 + line-200 + radius-md,StartupBarChart.tsx,.startup-bar-chart__track,observatory,UNSPECIFIED_BY_BRAND,RESTYLE,Visual only; aggregations frozen.
+Chart styles,GlycogenBranchVisual gradient,linearGradient cyan-300 to teal-500,src/components/home/GlycogenBranchVisual.astro,defs,Home hero,NEEDS_VALIDATION,NEEDS_DECISION,Authorial SVG not Einstein gradient. Einstein gradient formula PENDING_VALIDATION. Do not approximate.
+Chart styles,DataAbsentState hatch,repeating-linear-gradient paper-50/100,src/components/evidence/DataAbsentState.astro,.data-absent,absence pattern,UNSPECIFIED_BY_BRAND,KEEP,Semantic absence pattern; not brand identity. Do not convert to zero.
+Surfaces,--surface-executive-bg/fg,ink-950 / paper-50,src/styles/tokens.css,80-81,Home hero + ResearchHeader,CONFLICTS,MAP_TO_BRAND_TOKEN,Dark teal-ink band is current identity. 6D.0 prefers light header; executive dark is DASHBOARD_DECISION to re-map not a brand rule.
+Surfaces,--surface-editorial-bg/fg,paper-50 / ink-800,src/styles/tokens.css,82-83,body default,CONFLICTS,MAP_TO_BRAND_TOKEN,
+Surfaces,--overlay-scrim,rgb(7 27 37 / 55%),src/styles/tokens.css,88,drawers,UNSPECIFIED_BY_BRAND,RESTYLE,
+Surfaces,--touch-min,2.75rem,src/styles/tokens.css,85,controls,COMPATIBLE,KEEP,44px WCAG target. DASHBOARD_DECISION aligned with 6D.0 a11y.
+Hardcodes,component rgb outside tokens,5 literals,GlobalHeader utilities ResearchHeader,see Colors row,5,CONFLICTS,MAP_TO_BRAND_TOKEN,Split by phase: utilities.css 2 may tokenize in 6D.2 iff visual output unchanged; GlobalHeader 2 in 6D.3; ResearchHeader 1 in 6D.4.
+Hardcodes,font-family literals,Inter x2 Manrope x1,LocalFonts.astro,@font-face,3,CONFLICTS,MAP_TO_BRAND_TOKEN,Only local faces.
+Hardcodes,Einstein palette in production CSS,0,src,n/a,0,CONFLICTS,MAP_TO_BRAND_TOKEN,FACT: no #00539A #0096D2 #00DBFF in src.
