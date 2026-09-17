@@ -1,9 +1,18 @@
 ---
+import { publicSocioText } from '../../lib/copy/publicSocioText';
 import type { BurdenFinding } from '../../schemas/socioeconomic/domain';
 
 export interface Props {
   findings: BurdenFinding[];
 }
+
+const STATE_LABEL: Record<BurdenFinding['evidenceState'], string> = {
+  observed: 'Observado',
+  estimated: 'Estimado',
+  proxy: 'Proxy',
+  conceptual: 'Conceitual',
+  limited: 'Evidência limitada',
+};
 
 const { findings } = Astro.props;
 const caregiver = findings.filter((f) => f.actor === 'caregiver');
@@ -28,10 +37,12 @@ const caregiver = findings.filter((f) => f.actor === 'caregiver');
         <ul class="care-list">
           {caregiver.map((finding) => (
             <li>
-              <h3>{finding.gsdScope}</h3>
-              <p>{finding.summary}</p>
-              <p class="meta">Estado evidencial: {finding.evidenceState}</p>
-              <p class="limit">{finding.limitations.join(' ')}</p>
+              <h3>{publicSocioText(finding.gsdScope)}</h3>
+              <p>{publicSocioText(finding.summary)}</p>
+              <p class="meta">Estado evidencial: {STATE_LABEL[finding.evidenceState]}</p>
+              <p class="limit">
+                {finding.limitations.map((item) => publicSocioText(item)).join(' ')}
+              </p>
             </li>
           ))}
         </ul>

@@ -1,4 +1,5 @@
 ---
+import { publicSocioText } from '../../lib/copy/publicSocioText';
 import type { BurdenFinding } from '../../schemas/socioeconomic/domain';
 
 export interface Props {
@@ -45,12 +46,13 @@ const byActor = (Object.keys(ACTOR_LABEL) as BurdenFinding['actor'][]).filter((a
                 .map((finding) => (
                   <li>
                     <p>
-                      <strong>{finding.gsdScope}.</strong> {finding.summary}
+                      <strong>{publicSocioText(finding.gsdScope)}.</strong>{' '}
+                      {publicSocioText(finding.summary)}
                     </p>
-                    <p class="meta">
-                      Estado: {STATE_LABEL[finding.evidenceState]} · {finding.claimIds.join(', ')}
-                    </p>
-                    {finding.limitations[0] && <p class="limit">{finding.limitations[0]}</p>}
+                    <p class="meta">Estado: {STATE_LABEL[finding.evidenceState]}</p>
+                    {finding.limitations[0] && (
+                      <p class="limit">{publicSocioText(finding.limitations[0])}</p>
+                    )}
                   </li>
                 ))}
             </ul>

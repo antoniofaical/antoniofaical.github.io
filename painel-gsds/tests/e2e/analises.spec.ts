@@ -17,7 +17,28 @@ test.describe('bases clinicas', () => {
     await expect(page.getByRole('heading', { name: /classificação essencial/i })).toBeVisible();
     await expect(page.getByLabel(/filtrar por padrão clínico/i)).toBeVisible();
     await expect(page.getByText(/não é algoritmo clínico/i).first()).toBeVisible();
-    await expect(page.getByText(/conteúdo informativo/i).first()).toBeVisible();
+    const clinicalText = await page.locator('main').innerText();
+    const genericPrefix =
+      'Conteúdo informativo e não substitutivo de avaliação médica especializada.';
+    expect(clinicalText.split(genericPrefix).length - 1).toBe(1);
+    await expect(page.getByText('Não constitui algoritmo diagnóstico.')).toBeVisible();
+    await expect(page.getByText('Não constitui orientação terapêutica individual.')).toBeVisible();
+    await expect(page.getByText(/Isto não é um algoritmo clínico/i)).toBeVisible();
+    await expect(page.getByText(/Sem datas inventadas/i)).toBeVisible();
+    await expect(page.getByText(/Sem empresas, rankings/i)).toBeVisible();
+    expect(clinicalText).not.toMatch(/SoT/);
+    expect(clinicalText).not.toMatch(/clm-/);
+    expect(clinicalText).not.toMatch(/met-/);
+    expect(clinicalText).not.toMatch(/CAR-/);
+    expect(clinicalText).not.toMatch(/ECO-/);
+    expect(clinicalText).not.toMatch(/docs\/source-of-truth/);
+    expect(clinicalText).toMatch(/síntese médica/);
+    expect(clinicalText).toMatch(/sem detalhamento adicional na síntese/);
+    expect(clinicalText).toMatch(/proporção Ia\/Ib conforme síntese médica/);
+    expect(clinicalText).toMatch(/Estimativa aproximada reportada na síntese médica/);
+    expect(clinicalText).toMatch(/A síntese assinala elevada incerteza/);
+    await expect(page.locator('.research-header__notice')).toHaveCount(1);
+    await expect(page.locator('.footer-note')).toHaveCount(0);
   });
 
   test('GSD explorer filters by keyboard-accessible controls', async ({ page }) => {
@@ -72,7 +93,67 @@ test.describe('impacto socioeconômico', () => {
     await expect(page.getByRole('heading', { name: /camadas de custo/i })).toBeVisible();
     await expect(page.getByRole('heading', { name: /segmentos de mercado/i })).toBeVisible();
     await expect(page.getByText(/AIHs não equivalem a pacientes/i).first()).toBeVisible();
-    await expect(page.getByText(/Receita observada não é TAM/i).first()).toBeVisible();
+    await expect(page.getByText(/não de TAM, SAM ou SOM/i).first()).toBeVisible();
+    await expect(page.getByText('Perspectiva: Pagador')).toBeVisible();
+    await expect(page.getByText('Perspectiva: Sistema de saúde').first()).toBeVisible();
+    await expect(page.getByText('Perspectiva: Paciente')).toBeVisible();
+    await expect(page.getByText('Perspectiva: Sociedade')).toBeVisible();
+    await expect(page.getByText('Receita observada').first()).toBeVisible();
+    await expect(page.getByText(/≈ €1,4 bilhão/i).first()).toBeVisible();
+    await expect(page.locator('#visao-geral')).toHaveCount(0);
+    await expect(page.locator('#jornada')).toHaveCount(0);
+    await expect(page.locator('.research-header__notice')).toHaveCount(0);
+    await expect(page.locator('.footer-note')).toHaveCount(0);
+
+    const socioText = await page.locator('main').innerText();
+    expect(socioText).not.toMatch(/VAL_TOT/);
+    expect(socioText).not.toMatch(/observed-revenue/);
+    expect(socioText).not.toMatch(/clm-/);
+    expect(socioText).not.toMatch(/met-/);
+    expect(socioText).not.toMatch(/CAR-/);
+    expect(socioText).not.toMatch(/ECO-/);
+    expect(socioText).not.toMatch(/docs\/source-of-truth/);
+    expect(socioText).not.toMatch(/SoT/);
+    expect(socioText).not.toMatch(/fonte de verdade/i);
+
+    const order = await page.evaluate(() => {
+      const ids = [
+        'carga',
+        'cuidador',
+        'custos',
+        'brasil',
+        'segmentos',
+        'sizing',
+        'lacunas-evidencia',
+        'limitacoes-e-fontes',
+      ];
+      return ids.map((id) => {
+        const el = document.getElementById(id);
+        return el ? [...document.querySelectorAll('main *')].indexOf(el) : -1;
+      });
+    });
+    for (let index = 1; index < order.length; index += 1) {
+      expect(order[index], `order[${index}]`).toBeGreaterThan(order[index - 1]);
+    }
+
+    const carga = await page.locator('#carga').innerText();
+    const cuidador = await page.locator('#cuidador').innerText();
+    expect(carga).not.toMatch(/17,7 horas/);
+    expect(cuidador).toMatch(/17,7 horas/);
+
+    const callout = page.locator('.datasus-callout');
+    const groups = callout.locator('dl > div');
+    const groupCount = await groups.count();
+    expect(groupCount).toBeGreaterThan(0);
+    for (let index = 0; index < groupCount; index += 1) {
+      const group = groups.nth(index);
+      expect(await group.locator('dt').count(), `dl group[${index}] dt`).toBeGreaterThanOrEqual(1);
+      expect(await group.locator('dd').count(), `dl group[${index}] dd`).toBeGreaterThanOrEqual(1);
+    }
+    const somaAprovada = /Soma aprovada associada às AIHs E74\.0/;
+    await expect(callout.getByText(somaAprovada)).toBeVisible();
+    expect(await callout.locator('dl').innerText()).not.toMatch(somaAprovada);
+    expect(await callout.innerText()).not.toMatch(/VAL_TOT/);
   });
 
   test('forbids AIH=paciente and receita=TAM equivalences in page text', async ({ page }) => {
@@ -80,9 +161,9 @@ test.describe('impacto socioeconômico', () => {
     expect(body).not.toMatch(/997\s+pacientes/);
     expect(body).not.toMatch(/aih(?:s)?\s+(?:são|=)\s+pacientes?/);
     expect(body).not.toMatch(/\breceita(?:\s+observada)?\s*(?:é|=)\s*tam\b/);
-    expect(body).toMatch(/aihs não equivalem a pacientes/);
-    expect(body).toMatch(/receita observada não é tam/);
-    expect(body).toMatch(/não é total addressable market \(tam\)/);
+    expect(body).toMatch(/aihs não equivalem a pacientes nem a prevalência/);
+    expect(body).toMatch(/não de tam, sam ou som/);
+    expect(body).toMatch(/mercado observado não é necessidade total/);
   });
 
   test('has no serious accessibility violations', async ({ page }) => {

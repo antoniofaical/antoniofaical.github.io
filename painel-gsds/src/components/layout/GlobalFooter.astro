@@ -15,7 +15,7 @@ const {
 <footer class="site-footer">
   <div class="container footer-inner">
     <p class="footer-brand">Painel Global de Inovação em Glicogenoses</p>
-    <p class="footer-note">{note}</p>
+    {note ? <p class="footer-note">{note}</p> : null}
     <p class="footer-meta">
       © {year}
       {

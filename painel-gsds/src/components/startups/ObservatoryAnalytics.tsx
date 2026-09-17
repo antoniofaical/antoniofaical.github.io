@@ -54,11 +54,8 @@ export default function ObservatoryAnalytics({ snapshot }: { snapshot: StartupPu
       data-testid="observatory-analytics"
     >
       <header className="observatory-analytics__header">
-        <h2 id="observatory-analytics-title">Visão analítica da base publicada</h2>
-        <p>
-          Distribuições derivadas da base publicada. Esta visão considera toda a base publicada e
-          não muda com os filtros do explorador.
-        </p>
+        <h2 id="observatory-analytics-title">Visão analítica</h2>
+        <p>Totais gerais da base.</p>
       </header>
 
       <div className="observatory-analytics__group">
@@ -83,23 +80,21 @@ export default function ObservatoryAnalytics({ snapshot }: { snapshot: StartupPu
 
       <div className="observatory-analytics__group">
         <h3 className="observatory-analytics__group-title">
-          Players com relação direta (n={activity.directTotal})
+          Organizações com relação direta ({activity.directTotal})
         </h3>
         <p className="observatory-analytics__direct-note">
-          As duas visualizações abaixo consideram apenas os {activity.directTotal} players com
-          relação direta às GSDs. Presença no mapeamento não implica programa ativo atualmente.
+          Presença no mapeamento direto não implica programa atualmente ativo.
         </p>
         <div className="observatory-analytics__grid">
           <StartupBarChart
             id="viz-03-direct-activity"
-            title="Atividade GSD dos players diretos"
-            description={`Somente o recorte direto (n=${activity.directTotal}).`}
+            title="Atividade GSD das organizações com relação direta"
             data={activityData}
           />
           <StartupBarChart
             id="viz-04-direct-status"
-            title="Status corporativo dos players diretos"
-            description={`Status corporativo do recorte direto (n=${status.directTotal}), distinto do status operacional das 120 organizações.`}
+            title="Status corporativo das organizações com relação direta"
+            description="Status dos 28 com relação direta."
             data={statusData}
           />
         </div>

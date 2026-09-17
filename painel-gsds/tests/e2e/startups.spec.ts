@@ -265,9 +265,7 @@ test.describe('observatorio startups', () => {
   test('observatory analytics P0 renders audited counts without percents', async ({ page }) => {
     await page.goto('./inovacao/startups/');
     const analytics = page.getByTestId('observatory-analytics');
-    await expect(
-      page.getByRole('heading', { name: /Visão analítica da base publicada/i }),
-    ).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Visão analítica', exact: true })).toBeVisible();
     await expect(analytics).toBeVisible();
     await expect(page.getByTestId('viz-01-relations')).toBeVisible();
     await expect(page.getByTestId('viz-02-geography')).toBeVisible();
@@ -306,9 +304,38 @@ test.describe('observatorio startups', () => {
     await expect(viz04).toContainText('2');
     await expect(viz04).toContainText(/Status atual incerto/i);
 
-    await expect(analytics).toContainText(/n=28/i);
-    await expect(analytics).toContainText(/não implica programa ativo/i);
-    await expect(analytics).toContainText(/Esta visão considera toda a base publicada/i);
+    await expect(page.getByText('Totais gerais da base.')).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: 'Organizações com relação direta (28)' }),
+    ).toBeVisible();
+    await expect(page.getByText('Status dos 28 com relação direta.')).toBeVisible();
+    const pageText = await page.locator('main').innerText();
+    const a30 = 'Presença no mapeamento direto não implica programa atualmente ativo.';
+    expect(pageText.split(a30).length - 1).toBe(1);
+    expect(pageText).not.toMatch(/Nota metodológica/);
+    expect(pageText).not.toMatch(/Projeção pública/);
+    expect(pageText).not.toMatch(/Base curada/);
+    expect(pageText).not.toMatch(/Players/);
+    expect(pageText).not.toMatch(/players/);
+    expect(pageText).not.toMatch(/Somente relação direta\./);
+    expect(pageText).not.toMatch(/Somente o recorte direto/);
+    expect(pageText).not.toMatch(/não muda com os filtros do explorador/);
+    expect(pageText).not.toMatch(/n=28/);
+
+    const order = await page.evaluate(() => {
+      const nodes = [
+        document.getElementById('startup-explorer-title'),
+        document.querySelector('[data-testid="observatory-analytics"]'),
+        document.querySelector('[data-testid="startup-coverage-notice"]'),
+        document.getElementById('startup-about-data'),
+      ];
+      return nodes.map((el) => (el ? [...document.querySelectorAll('main *')].indexOf(el) : -1));
+    });
+    for (let index = 1; index < order.length; index += 1) {
+      expect(order[index], `obs order[${index}]`).toBeGreaterThan(order[index - 1]);
+    }
+
+    await expect(page.locator('.footer-note')).toHaveCount(0);
     await expect(viz01).toContainText(
       /nenhuma organização aparece em mais de uma categoria de relação/i,
     );
@@ -326,6 +353,7 @@ test.describe('observatorio startups', () => {
 
     await filters.getByLabel('Direta às GSDs', { exact: true }).check();
     await expect(page.getByRole('status')).toContainText(/28 organizações/i);
+    await expect(analytics).toBeVisible();
 
     const viz01 = page.getByTestId('viz-01-relations');
     await expect(viz01).toContainText('81');
@@ -334,13 +362,12 @@ test.describe('observatorio startups', () => {
     await expect(page.getByTestId('viz-02-geography')).toContainText('88');
     await expect(page.getByTestId('viz-03-direct-activity')).toContainText('13');
     await expect(page.getByTestId('viz-04-direct-status')).toContainText('8');
-    await expect(analytics).toContainText(/não muda com os filtros/i);
   });
 
   test('summary hides breakdown without filters and shows it when filtered', async ({ page }) => {
     await page.goto('./inovacao/startups/');
     await expect(page.getByTestId('startup-summary-count')).toHaveText(
-      /120 organizações na base publicada/i,
+      /120 organizações nesta base/i,
     );
     await expect(page.getByTestId('startup-summary-breakdown')).toHaveCount(0);
 

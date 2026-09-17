@@ -1,4 +1,5 @@
 ---
+import { publicSocioSecondaryText, publicSocioText } from '../../lib/copy/publicSocioText';
 import type { Metric } from '../../schemas/metric';
 
 type Point = {
@@ -17,13 +18,21 @@ export interface Props {
 }
 
 const { title, summary, points, datasusMetric } = Astro.props;
+
+function isAihPrincipalEcho(text: string): boolean {
+  return (
+    /não equivalem a pacientes/i.test(text) ||
+    /não correspondem a pacientes únicos/i.test(text) ||
+    /não prevalência/i.test(text)
+  );
+}
 ---
 
 <section id="brasil" class="section-space" aria-labelledby="brasil-title">
   <div class="container stack stack--lg">
     <header class="stack stack--tight">
       <h2 id="brasil-title">{title}</h2>
-      <p>{summary}</p>
+      <p>{publicSocioText(summary)}</p>
     </header>
 
     {
@@ -32,7 +41,7 @@ const { title, summary, points, datasusMetric } = Astro.props;
           <h3 id="datasus-title">SIH/SUS — leitura obrigatória do proxy hospitalar</h3>
           <p class="limit" role="note">
             AIHs com diagnóstico principal E74.0 (formato E740 nos microdados); AIHs não equivalem a
-            pacientes.
+            pacientes nem a prevalência.
           </p>
           <dl>
             <div>
@@ -55,21 +64,20 @@ const { title, summary, points, datasusMetric } = Astro.props;
                 Local da internação/estabelecimento nos microdados SIH, não residência do paciente.
               </dd>
             </div>
-            <div>
-              <dt>VAL_TOT</dt>
-              <dd>
-                Soma aprovada associada às AIHs E74.0 na camada de custo hospitalar (ver seção de
-                custos); não é custo total das GSDs.
-              </dd>
-            </div>
           </dl>
+          <p class="limit">
+            Soma aprovada associada às AIHs E74.0 na camada de custo hospitalar (ver seção de
+            custos); não é custo total das GSDs.
+          </p>
           <ul>
             <li>Longa permanência pode gerar múltiplas AIHs para a mesma pessoa.</li>
             <li>Não há deduplicação de pacientes nesta contagem.</li>
             <li>Cobertura e codificação limitam extrapolação epidemiológica.</li>
-            {datasusMetric.limitations.map((item) => (
-              <li>{item}</li>
-            ))}
+            {datasusMetric.limitations
+              .filter((item) => !isAihPrincipalEcho(item))
+              .map((item) => (
+                <li>{publicSocioText(item)}</li>
+              ))}
           </ul>
         </aside>
       )
@@ -80,11 +88,7 @@ const { title, summary, points, datasusMetric } = Astro.props;
         points.map((point) => (
           <li>
             <h3>{point.label}</h3>
-            <p>{point.detail}</p>
-            <p class="meta">
-              Alegações: {point.claimIds.join(', ')}
-              {point.metricIds?.length ? ` · Métricas: ${point.metricIds.join(', ')}` : ''}
-            </p>
+            <p>{publicSocioSecondaryText(point.detail)}</p>
           </li>
         ))
       }

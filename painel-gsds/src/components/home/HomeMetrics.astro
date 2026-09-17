@@ -11,8 +11,14 @@ export interface Props {
 
 const { heading = 'Números que enquadram o problema', framing, items } = Astro.props;
 
-function sanitizePeriod(period: string): string {
-  return period.replace(/síntese da SoT médica/gi, 'síntese médica');
+function sanitizeHomeCopy(value: string): string {
+  return value
+    .replace(/SoT socioeconômica/g, 'síntese socioeconômica')
+    .replace(/síntese da SoT médica/gi, 'síntese médica')
+    .replace(/SoT médica/g, 'síntese médica')
+    .replace(/\s*\[CAR-010 a CAR-013\]/g, '')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
 }
 
 function resolveMarketDisplay(metric: ResolvedHomeMetric['metric']): {
@@ -57,7 +63,7 @@ function resolveMarketDisplay(metric: ResolvedHomeMetric['metric']): {
                 context={claim.shortStatement ?? claim.statement}
                 evidenceState={metric.evidenceState as EvidenceState}
                 evidenceReason={metric.limitations[0]}
-                period={sanitizePeriod(metric.period)}
+                period={sanitizeHomeCopy(metric.period)}
                 geography={metric.geography.join(', ')}
                 limitation={metric.limitations[0]}
                 source={{
@@ -65,7 +71,7 @@ function resolveMarketDisplay(metric: ResolvedHomeMetric['metric']): {
                   publicationYear: primary.publicationYear,
                   sourceType: primary.sourceType,
                   identifier: primary.title,
-                  locator,
+                  locator: locator ? sanitizeHomeCopy(locator) : locator,
                   verifiedAt: metric.lastReviewedAt,
                 }}
               />
