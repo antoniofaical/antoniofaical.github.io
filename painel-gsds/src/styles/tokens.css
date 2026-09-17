@@ -86,4 +86,34 @@
 
   /* Overlay de modal / drawer */
   --overlay-scrim: rgb(7 27 37 / 55%);
+
+  /* 6D — Einstein brand primitives (additive; not consumed by production yet) */
+  --einstein-blue-dark: #00539a;
+  --einstein-blue-medium: #0096d2;
+  --einstein-blue-light: #00dbff;
+
+  --einstein-neutral-900: #212121;
+  --einstein-neutral-700: #545454;
+  --einstein-neutral-500: #ababab;
+  --einstein-neutral-400: #bababa;
+  --einstein-neutral-300: #d4d4d4;
+  --einstein-neutral-100: #ededed;
+  --einstein-neutral-50: #f2f2f2;
+  --einstein-white: #ffffff;
+
+  /* 6D — future semantic brand aliases; intentionally not wired into legacy surfaces */
+  --color-brand-primary: var(--einstein-blue-dark);
+  --color-brand-secondary: var(--einstein-blue-medium);
+  --color-brand-accent: var(--einstein-blue-light);
+
+  --color-text-primary: var(--einstein-neutral-900);
+  --color-text-secondary: var(--einstein-neutral-700);
+  --color-border-brand: var(--einstein-neutral-300);
+  --color-surface-subtle-brand: var(--einstein-neutral-50);
+  --color-surface-brand: var(--einstein-white);
+
+  /* 6D — target digital typography; activation is blocked until assets are validated */
+  --font-heading-brand: 'Work Sans', 'Montserrat', Arial, sans-serif;
+  --font-interface-brand: 'Inter', 'Montserrat', Arial, sans-serif;
+  --font-institutional-brand: 'Montserrat', Arial, sans-serif;
 }
