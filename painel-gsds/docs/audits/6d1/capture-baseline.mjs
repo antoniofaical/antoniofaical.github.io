@@ -43,7 +43,10 @@ await page.screenshot({
   path: path.join(outDir, 'observatory-filtered-1440.png'),
   fullPage: true,
 });
-await page.getByRole('button', { name: /Ver detalhe/i }).first().click();
+await page
+  .getByRole('button', { name: /Ver detalhe/i })
+  .first()
+  .click();
 await page.getByTestId('startup-detail').waitFor();
 await page.evaluate(() => document.fonts.ready);
 await page.screenshot({

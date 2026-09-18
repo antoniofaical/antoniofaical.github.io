@@ -3,7 +3,7 @@
 **Status:** COMPLETE — 6D.1.1 documentary normalization — stop for external audit  
 **Iteração:** 6D.1 (auditoria visual) + 6D.1.1 (normalização documental)  
 **Autoridade visual:** `docs/implementation/ESPECIFICACAO_VISUAL_INSTITUCIONAL_6D.md` (6D.0; única cópia canônica)  
-**Produção alterada:** 0 arquivos  
+**Produção alterada:** 0 arquivos
 
 Nenhuma fonte, ícone, CSS, componente, dado, screenshot ou copy de produção foi modificado. A 6D.1.1 corrige apenas schemas e enquadramento dos artefatos em `docs/audits/6d1/`.
 
@@ -30,26 +30,26 @@ A distância é de **identidade**, não de arquitetura. Layout, filtros, drawers
 
 ## B. Baseline
 
-| Item | Valor |
-|---|---|
-| Branch | `main` |
-| HEAD | `11f4f7b77bb4f1d9f9ad2ec7fedc728e57ef4b35` |
-| `origin/main` | `11f4f7b77bb4f1d9f9ad2ec7fedc728e57ef4b35` |
-| Commit | Merge pull request #12 (6C.1.3) |
-| Spec 6D.0 | `painel-gsds/docs/implementation/ESPECIFICACAO_VISUAL_INSTITUCIONAL_6D.md` (canônica; SHA-256 `88b23f8944a50dcffa97ea4cae9ec08c6042fae96929082cb279507d04aee4f4`) |
-| Build `BASE_PATH=/` | OK (2026-09-17) |
-| Build `BASE_PATH=/painel-gsds/` | OK; preview `http://127.0.0.1:4321/painel-gsds/` usado para screenshots |
-| Freeze orgs / assessments / sources / products | 120 / 121 / 217 / 0 |
-| VIZ01 | 81 / 28 / 11 / 0 |
-| VIZ02 | 88 / 33 |
-| VIZ03 | 13 / 4 / 11 |
-| VIZ04 | 8 / 9 / 9 / 2 |
-| Snapshot checksum | `4e72dfe49fce8b06ac8ad1379cf7cc9dc83943b56d969b15693d6bacbd3fe75c` |
-| `data:validate` | OK → `snap-ecosystem-cumulative-direct-2026-08-24` |
-| SoT Design System SHA-256 | `634a782dedac32d63b20fb7988e1bdc0c39db9c41187cbe92c2e5113cb2a7bd6` |
-| SoT Socio SHA-256 | `489fd652f5ce6853908f59c18745c18282a65e946af59ab4dff3a142c210c3d2` |
-| SoT Medical SHA-256 | `37e3fbea2513ff57f42937273622fee8592ce1d9df955c7467ef78f947866389` |
-| SoT INVENTORY SHA-256 | `266a341bf7f3d2e92d247b56554958edd027b4607db98642577c05da8923ae5c` |
+| Item                                           | Valor                                                                                                                                                             |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Branch                                         | `main`                                                                                                                                                            |
+| HEAD                                           | `11f4f7b77bb4f1d9f9ad2ec7fedc728e57ef4b35`                                                                                                                        |
+| `origin/main`                                  | `11f4f7b77bb4f1d9f9ad2ec7fedc728e57ef4b35`                                                                                                                        |
+| Commit                                         | Merge pull request #12 (6C.1.3)                                                                                                                                   |
+| Spec 6D.0                                      | `painel-gsds/docs/implementation/ESPECIFICACAO_VISUAL_INSTITUCIONAL_6D.md` (canônica; SHA-256 `88b23f8944a50dcffa97ea4cae9ec08c6042fae96929082cb279507d04aee4f4`) |
+| Build `BASE_PATH=/`                            | OK (2026-09-17)                                                                                                                                                   |
+| Build `BASE_PATH=/painel-gsds/`                | OK; preview `http://127.0.0.1:4321/painel-gsds/` usado para screenshots                                                                                           |
+| Freeze orgs / assessments / sources / products | 120 / 121 / 217 / 0                                                                                                                                               |
+| VIZ01                                          | 81 / 28 / 11 / 0                                                                                                                                                  |
+| VIZ02                                          | 88 / 33                                                                                                                                                           |
+| VIZ03                                          | 13 / 4 / 11                                                                                                                                                       |
+| VIZ04                                          | 8 / 9 / 9 / 2                                                                                                                                                     |
+| Snapshot checksum                              | `4e72dfe49fce8b06ac8ad1379cf7cc9dc83943b56d969b15693d6bacbd3fe75c`                                                                                                |
+| `data:validate`                                | OK → `snap-ecosystem-cumulative-direct-2026-08-24`                                                                                                                |
+| SoT Design System SHA-256                      | `634a782dedac32d63b20fb7988e1bdc0c39db9c41187cbe92c2e5113cb2a7bd6`                                                                                                |
+| SoT Socio SHA-256                              | `489fd652f5ce6853908f59c18745c18282a65e946af59ab4dff3a142c210c3d2`                                                                                                |
+| SoT Medical SHA-256                            | `37e3fbea2513ff57f42937273622fee8592ce1d9df955c7467ef78f947866389`                                                                                                |
+| SoT INVENTORY SHA-256                          | `266a341bf7f3d2e92d247b56554958edd027b4607db98642577c05da8923ae5c`                                                                                                |
 
 Screenshots (somente `docs/audits/6d1/screenshots/`; `tests/visual/**` não tocado):
 
@@ -88,12 +88,12 @@ Working tree além da produção: spec 6D.0 canônica em `docs/implementation/` 
 
 **Classificação por função**
 
-| Função | Face atual | 6D.0 | Ação |
-|---|---|---|---|
-| H1–H6 / display | Manrope | Work Sans | `RESTYLE_FONT` |
-| Corpo / labels / inputs / tabelas / filtros | Inter | Inter | `KEEP_STRUCTURE` |
-| Weights | variáveis; headings 700 comuns | evitar >2 pesos na mesma frase | `KEEP_STRUCTURE` + checar no piloto |
-| Scale / tracking | clamp + −0.02em | não especificado | `NEEDS_DECISION` / `RESTYLE_SCALE` só após Home |
+| Função                                      | Face atual                     | 6D.0                           | Ação                                            |
+| ------------------------------------------- | ------------------------------ | ------------------------------ | ----------------------------------------------- |
+| H1–H6 / display                             | Manrope                        | Work Sans                      | `RESTYLE_FONT`                                  |
+| Corpo / labels / inputs / tabelas / filtros | Inter                          | Inter                          | `KEEP_STRUCTURE`                                |
+| Weights                                     | variáveis; headings 700 comuns | evitar >2 pesos na mesma frase | `KEEP_STRUCTURE` + checar no piloto             |
+| Scale / tracking                            | clamp + −0.02em                | não especificado               | `NEEDS_DECISION` / `RESTYLE_SCALE` só após Home |
 
 **INFERENCE:** troca Manrope → Work Sans pode alterar wrapping do H1 da Home (“Glicogenoses: uma família…”), altura de cards, labels de gráficos e menu mobile. Não medido com Work Sans porque a fonte não foi instalada.
 
@@ -109,16 +109,16 @@ Working tree além da produção: spec 6D.0 canônica em `docs/implementation/` 
 
 **Mapeamento vs 6D.0**
 
-| Papel atual | Token atual | 6D.0 | Status |
-|---|---|---|---|
-| Brand / links / charts | teal-500/700 | brand-blue-dark/medium | `CONFLICTS` |
-| Accent hero | cyan-300 | brand-blue-light | `CONFLICTS` (não são o mesmo hex) |
-| Texto | ink-* | neutral-900/700 | `CONFLICTS` |
-| Superfície | paper-* | white / neutral-50 | `CONFLICTS` |
-| Borda | line-200 | #D4D4D4 | `CONFLICTS` |
-| White | --white | #FFFFFF | `MATCHES_6D0` |
-| Evidence estimated/limited | amber-500 | não mapear para azul | `NEEDS_SEMANTIC_COLOR_DECISION` |
-| Success/danger tokens | green/coral | não inventar a partir do guia | `NEEDS_SEMANTIC_COLOR_DECISION` |
+| Papel atual                | Token atual  | 6D.0                          | Status                            |
+| -------------------------- | ------------ | ----------------------------- | --------------------------------- |
+| Brand / links / charts     | teal-500/700 | brand-blue-dark/medium        | `CONFLICTS`                       |
+| Accent hero                | cyan-300     | brand-blue-light              | `CONFLICTS` (não são o mesmo hex) |
+| Texto                      | ink-*        | neutral-900/700               | `CONFLICTS`                       |
+| Superfície                 | paper-*      | white / neutral-50            | `CONFLICTS`                       |
+| Borda                      | line-200     | #D4D4D4                       | `CONFLICTS`                       |
+| White                      | --white      | #FFFFFF                       | `MATCHES_6D0`                     |
+| Evidence estimated/limited | amber-500    | não mapear para azul          | `NEEDS_SEMANTIC_COLOR_DECISION`   |
+| Success/danger tokens      | green/coral  | não inventar a partir do guia | `NEEDS_SEMANTIC_COLOR_DECISION`   |
 
 ### Spacing, radii, shadows, motion, z-index, containers
 
@@ -143,15 +143,15 @@ Working tree além da produção: spec 6D.0 canônica em `docs/implementation/` 
 
 Quantitativos pedidos:
 
-| Métrica | Contagem |
-|---|---|
-| Hex no DS (`tokens.css`) | 13 |
-| Hex Einstein em `src/` | 0 |
-| RGB hardcoded em componentes | 5 |
-| RGB em tokens (elevação/scrim) | 3 definições |
+| Métrica                         | Contagem                                             |
+| ------------------------------- | ---------------------------------------------------- |
+| Hex no DS (`tokens.css`)        | 13                                                   |
+| Hex Einstein em `src/`          | 0                                                    |
+| RGB hardcoded em componentes    | 5                                                    |
+| RGB em tokens (elevação/scrim)  | 3 definições                                         |
 | `font-family` matches em `src/` | 23 (3 literais Inter/Manrope; resto `var(--font-*)`) |
-| Shadows distintas | 5 (2 tokens + 3 locais) |
-| Radii distintos | 6 incluindo sm ausente |
+| Shadows distintas               | 5 (2 tokens + 3 locais)                              |
+| Radii distintos                 | 6 incluindo sm ausente                               |
 
 ---
 
@@ -159,14 +159,14 @@ Quantitativos pedidos:
 
 ### Logos / marks
 
-| Asset | Arquivo | Formato | Dimensões | Uso | Tipo | Duplicado? | Área livre | Mobile |
-|---|---|---|---|---|---|---|---|---|
-| Brand mark header | `GlobalHeader.astro` `.brand__mark` | CSS | 0.75rem × 0.75rem | todas as páginas | marca gráfica genérica em CSS, não institucional | não | gap `--space-3`; regra 2×E não se aplica a este disc | visível 375 |
-| Wordmark | texto “Painel GSDs” | HTML | type | header | nome de produto, não lockup Einstein | footer tem nome longo | n/a | wrapping ok em 375 |
-| Favicon SVG | `public/favicon.svg` | SVG | viewBox 128 | tab + `og:image` | Astro default rocket | ico separado | n/a | n/a |
-| Favicon ICO | `public/favicon.ico` | ICO | 655 bytes | legacy | não institucional | sim vs svg | n/a | n/a |
-| Lockup Eretz.bio × Einstein | **ausente** | — | — | — | — | — | — | — |
-| Estrela Einstein | **ausente** | — | — | — | — | — | — | — |
+| Asset                       | Arquivo                             | Formato | Dimensões         | Uso              | Tipo                                             | Duplicado?            | Área livre                                           | Mobile             |
+| --------------------------- | ----------------------------------- | ------- | ----------------- | ---------------- | ------------------------------------------------ | --------------------- | ---------------------------------------------------- | ------------------ |
+| Brand mark header           | `GlobalHeader.astro` `.brand__mark` | CSS     | 0.75rem × 0.75rem | todas as páginas | marca gráfica genérica em CSS, não institucional | não                   | gap `--space-3`; regra 2×E não se aplica a este disc | visível 375        |
+| Wordmark                    | texto “Painel GSDs”                 | HTML    | type              | header           | nome de produto, não lockup Einstein             | footer tem nome longo | n/a                                                  | wrapping ok em 375 |
+| Favicon SVG                 | `public/favicon.svg`                | SVG     | viewBox 128       | tab + `og:image` | Astro default rocket                             | ico separado          | n/a                                                  | n/a                |
+| Favicon ICO                 | `public/favicon.ico`                | ICO     | 655 bytes         | legacy           | não institucional                                | sim vs svg            | n/a                                                  | n/a                |
+| Lockup Eretz.bio × Einstein | **ausente**                         | —       | —                 | —                | —                                                | —                     | —                                                    | —                  |
+| Estrela Einstein            | **ausente**                         | —       | —                 | —                | —                                                | —                     | —                                                    | —                  |
 
 **FACT:** `PENDING_ASSET_IMPORT`.  
 **FACT:** `AUTHORIZATION_STATUS_PENDING_VALIDATION` para o lockup combinado.  
@@ -175,14 +175,14 @@ Não importado, não separado, não recriado a partir do asset oficial (ausente)
 
 ### Iconografia
 
-| icon | purpose | source | style | size | accessible_name | consistency | action |
-|---|---|---|---|---|---|---|---|
-| ☰ | abrir menu | Unicode | glyph | ~1em | botão tem texto “Menu”; ícone `aria-hidden` | único padrão de ícone de chrome | `REPLACE_WITH_SYSTEM_ICON` |
-| ✕ | fechar menu | Unicode | glyph | ~1em | “Fechar”; ícone `aria-hidden` | idem | `REPLACE_WITH_SYSTEM_ICON` |
-| `.brand__mark` | identidade | CSS circle | filled disc + glow | 12px | `aria-hidden` | não é ícone de sistema | `REPLACE` (asset oficial) |
-| EvidenceBadge mark | estado de evidência | CSS disc / dotted | filled or dotted | 0.55rem | label textual no botão | consistente no badge | `RESTYLE` + `NEEDS_DECISION` cor |
-| GlycogenBranchVisual | metáfora hero | SVG inline autoral | stroke round + nodes | max 28rem | title+desc | único ilustrativo | `NEEDS_DECISION` |
-| Flaticon / lib | — | — | — | — | — | ausente | não pesquisar / não baixar |
+| icon                 | purpose             | source             | style                | size      | accessible_name                             | consistency                     | action                           |
+| -------------------- | ------------------- | ------------------ | -------------------- | --------- | ------------------------------------------- | ------------------------------- | -------------------------------- |
+| ☰                   | abrir menu          | Unicode            | glyph                | ~1em      | botão tem texto “Menu”; ícone `aria-hidden` | único padrão de ícone de chrome | `REPLACE_WITH_SYSTEM_ICON`       |
+| ✕                    | fechar menu         | Unicode            | glyph                | ~1em      | “Fechar”; ícone `aria-hidden`               | idem                            | `REPLACE_WITH_SYSTEM_ICON`       |
+| `.brand__mark`       | identidade          | CSS circle         | filled disc + glow   | 12px      | `aria-hidden`                               | não é ícone de sistema          | `REPLACE` (asset oficial)        |
+| EvidenceBadge mark   | estado de evidência | CSS disc / dotted  | filled or dotted     | 0.55rem   | label textual no botão                      | consistente no badge            | `RESTYLE` + `NEEDS_DECISION` cor |
+| GlycogenBranchVisual | metáfora hero       | SVG inline autoral | stroke round + nodes | max 28rem | title+desc                                  | único ilustrativo               | `NEEDS_DECISION`                 |
+| Flaticon / lib       | —                   | —                  | —                    | —         | —                                           | ausente                         | não pesquisar / não baixar       |
 
 Onde iconografia será necessária na 6D (candidato da spec, **não** baixado): Clínica, Socioeconômico, Organizações, Busca, Filtro, Dados, Fonte, Informação, Alerta, Abrir detalhe, Fechar, Menu, Navegação.
 
@@ -194,14 +194,14 @@ Onde iconografia será necessária na 6D (candidato da spec, **não** baixado): 
 
 Síntese de `COMPONENT_INVENTORY_6D1.csv` (56 registros).
 
-| classification | count |
-|---|---|
-| KEEP | 2 |
-| RESTYLE | 45 |
-| REPLACE | 5 |
-| REMOVE | 0 |
-| NEEDS_DECISION | 3 |
-| DEFER | 1 (`BurdenPathway.astro` existe e **não é importado**) |
+| classification | count                                                  |
+| -------------- | ------------------------------------------------------ |
+| KEEP           | 2                                                      |
+| RESTYLE        | 45                                                     |
+| REPLACE        | 5                                                      |
+| REMOVE         | 0                                                      |
+| NEEDS_DECISION | 3                                                      |
+| DEFER          | 1 (`BurdenPathway.astro` existe e **não é importado**) |
 
 **KEEP:** `PageContainer` (fase `DEFER` — sem mudança foundation), `SkipLink` (estrutura KEEP; revalidar contraste no piloto 6D.3).
 
