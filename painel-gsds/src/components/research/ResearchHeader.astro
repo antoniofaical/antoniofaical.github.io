@@ -6,12 +6,27 @@ export interface Props {
   notice?: string;
   updatedAt?: string;
   cutoff?: string;
+  brandPilot?: boolean;
 }
 
-const { eyebrow = 'Análise', title, summary, notice, updatedAt, cutoff } = Astro.props;
+const {
+  eyebrow = 'Análise',
+  title,
+  summary,
+  notice,
+  updatedAt,
+  cutoff,
+  brandPilot = false,
+} = Astro.props;
 ---
 
-<header class="research-header section-space surface-executive">
+<header
+  class:list={[
+    'research-header',
+    'section-space',
+    brandPilot ? 'research-header--brand' : 'surface-executive',
+  ]}
+>
   <div class="container stack stack--lg">
     <p class="research-header__eyebrow">{eyebrow}</p>
     <h1 class="research-header__title">{title}</h1>
@@ -79,5 +94,35 @@ const { eyebrow = 'Análise', title, summary, notice, updatedAt, cutoff } = Astr
     opacity: 0.8;
     max-width: none;
     margin: 0;
+  }
+
+  .research-header--brand {
+    background: var(--einstein-white);
+    color: var(--einstein-neutral-700);
+  }
+
+  .research-header--brand .research-header__eyebrow {
+    color: var(--einstein-blue-dark);
+    opacity: 1;
+  }
+
+  .research-header--brand .research-header__title {
+    color: var(--einstein-neutral-900);
+  }
+
+  .research-header--brand .research-header__summary {
+    color: var(--einstein-neutral-700);
+    opacity: 1;
+  }
+
+  .research-header--brand .research-header__notice {
+    border-left-color: var(--einstein-blue-medium);
+    background: var(--einstein-neutral-50);
+    color: var(--einstein-neutral-700);
+  }
+
+  .research-header--brand .research-header__meta {
+    color: var(--einstein-neutral-700);
+    opacity: 1;
   }
 </style>
