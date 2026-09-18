@@ -1,4 +1,5 @@
 # GSD Dashboard — 6D.0
+
 # Especificação Visual Institucional para Rebranding
 
 **Status:** DRAFT FOR AUDIT  
@@ -146,9 +147,9 @@ Montserrat **não deve substituir automaticamente Work Sans + Inter na UI** apen
 Implementar stacks robustos:
 
 ```css
---font-heading: "Work Sans", "Montserrat", Arial, sans-serif;
---font-interface: "Inter", "Montserrat", Arial, sans-serif;
---font-institutional: "Montserrat", Arial, sans-serif;
+--font-heading: 'Work Sans', 'Montserrat', Arial, sans-serif;
+--font-interface: 'Inter', 'Montserrat', Arial, sans-serif;
+--font-institutional: 'Montserrat', Arial, sans-serif;
 ```
 
 Não utilizar mais de uma família na mesma função sem fallback técnico.
@@ -173,11 +174,11 @@ Evitar:
 
 ### `MANDATORY_BRAND`
 
-| Token semântico 6D | Nome no guia | RGB | HEX |
-|---|---|---:|---|
-| `brand-blue-dark` | Azul-escuro | 0, 83, 154 | `#00539A` |
-| `brand-blue-medium` | Azul-médio | 0, 150, 210 | `#0096D2` |
-| `brand-blue-light` | Azul-claro | 0, 219, 255 | `#00DBFF` |
+| Token semântico 6D  | Nome no guia |         RGB | HEX       |
+| ------------------- | ------------ | ----------: | --------- |
+| `brand-blue-dark`   | Azul-escuro  |  0, 83, 154 | `#00539A` |
+| `brand-blue-medium` | Azul-médio   | 0, 150, 210 | `#0096D2` |
+| `brand-blue-light`  | Azul-claro   | 0, 219, 255 | `#00DBFF` |
 
 O guia estabelece os tons de azul como cores preferenciais e indica que devem permear a comunicação.
 
@@ -195,16 +196,16 @@ Essa proporção é referência de identidade, não obrigação matemática por 
 
 ### `MANDATORY_BRAND`
 
-| Token 6D | HEX |
-|---|---|
+| Token 6D      | HEX       |
+| ------------- | --------- |
 | `neutral-900` | `#212121` |
 | `neutral-700` | `#545454` |
 | `neutral-500` | `#ABABAB` |
 | `neutral-400` | `#BABABA` |
 | `neutral-300` | `#D4D4D4` |
 | `neutral-100` | `#EDEDED` |
-| `neutral-50` | `#F2F2F2` |
-| `white` | `#FFFFFF` |
+| `neutral-50`  | `#F2F2F2` |
+| `white`       | `#FFFFFF` |
 
 ## 5.3 Uso semântico proposto
 
@@ -229,6 +230,7 @@ Baseline proposto:
 Estados funcionais como `success`, `warning`, `danger`, `focus`, `selected` e categorias dos gráficos **não devem ser inventados a partir da paleta Einstein nesta etapa**.
 
 Devem ser definidos posteriormente com:
+
 - necessidade semântica;
 - contraste;
 - consistência;
@@ -253,11 +255,13 @@ Portanto:
 ### `DASHBOARD_DECISION`
 
 Quando validado, reservar o gradiente para superfícies institucionais/de destaque, como:
+
 - hero;
 - faixa institucional;
 - pequenos accents.
 
 Evitar seu uso indiscriminado em:
+
 - cards de dados;
 - tabelas;
 - campos;
@@ -374,6 +378,7 @@ canvas          normalizado
 ```
 
 Evitar misturar:
+
 - filled + outline;
 - strokes de larguras muito diferentes;
 - ilustrações + pictogramas;
@@ -453,6 +458,7 @@ root/subpath
 Nenhuma combinação é aprovada apenas por “usar cores oficiais”.
 
 Para gráficos:
+
 - cor não pode ser único discriminador quando isso impedir leitura;
 - labels/legendas devem permanecer suficientes;
 - contraste deve ser testado no contexto real.
@@ -539,23 +545,23 @@ Estrutura conceitual:
 
 ```css
 /* BRAND PRIMITIVES */
---einstein-blue-dark: #00539A;
---einstein-blue-medium: #0096D2;
---einstein-blue-light: #00DBFF;
+--einstein-blue-dark: #00539a;
+--einstein-blue-medium: #0096d2;
+--einstein-blue-light: #00dbff;
 
 --einstein-neutral-900: #212121;
 --einstein-neutral-700: #545454;
---einstein-neutral-500: #ABABAB;
---einstein-neutral-400: #BABABA;
---einstein-neutral-300: #D4D4D4;
---einstein-neutral-100: #EDEDED;
---einstein-neutral-50: #F2F2F2;
---einstein-white: #FFFFFF;
+--einstein-neutral-500: #ababab;
+--einstein-neutral-400: #bababa;
+--einstein-neutral-300: #d4d4d4;
+--einstein-neutral-100: #ededed;
+--einstein-neutral-50: #f2f2f2;
+--einstein-white: #ffffff;
 
 /* TYPOGRAPHY */
---font-heading: "Work Sans", "Montserrat", Arial, sans-serif;
---font-interface: "Inter", "Montserrat", Arial, sans-serif;
---font-institutional: "Montserrat", Arial, sans-serif;
+--font-heading: 'Work Sans', 'Montserrat', Arial, sans-serif;
+--font-interface: 'Inter', 'Montserrat', Arial, sans-serif;
+--font-institutional: 'Montserrat', Arial, sans-serif;
 
 /* SEMANTIC — aliases, not new brand colors */
 --color-brand-primary: var(--einstein-blue-dark);
@@ -572,6 +578,7 @@ Estrutura conceitual:
 ### `PENDING_VALIDATION`
 
 Não congelar ainda:
+
 - gradient token;
 - semantic success/warning/danger colors;
 - chart categorical palette;
@@ -652,15 +659,19 @@ Spacing scale, container width, border radius e elevation só serão congelados 
 Durante o rebranding, preservar a arquitetura informacional aprovada ao final da 6C.
 
 ## Home
+
 Identidade institucional + entrada para as análises.
 
 ## Clínica
+
 Leitura científica/assistencial com alta legibilidade e menor ornamentação.
 
 ## Socioeconômico
+
 Leitura content-first com hierarquia explícita entre carga, evidência Brasil, segmentos e dimensionamento.
 
 ## Observatório
+
 Interface mais densa e operacional; busca/filtros/lista continuam como elemento principal, seguida por analytics.
 
 Não usar rebranding para reabrir decisões editoriais da 6C.
@@ -690,6 +701,7 @@ Footer:
 ### `PENDING_VALIDATION`
 
 A posição definitiva do lockup Eretz × Einstein depende de:
+
 - status de aprovação do asset;
 - dimensões disponíveis;
 - área de reserva;
@@ -704,6 +716,7 @@ A posição definitiva do lockup Eretz × Einstein depende de:
 A **Home** será a página piloto da 6D.3.
 
 Razões metodológicas:
+
 - exerce hero;
 - header/footer;
 - métricas;
@@ -824,9 +837,11 @@ perda de source/evidence content
 # 19. Fases seguintes
 
 ## 6D.0 — Brand extraction / specification
+
 **Este documento.**
 
 Saída:
+
 ```text
 ESPECIFICACAO_VISUAL_INSTITUCIONAL_6D.md
 ```
@@ -836,6 +851,7 @@ Nenhuma alteração de produção.
 ## 6D.1 — Auditoria visual do estado atual
 
 Objetivo:
+
 - inventariar componentes/tokens/CSS;
 - screenshots das quatro superfícies;
 - mapear inconsistências;
@@ -851,6 +867,7 @@ Nenhuma mudança ampla de UI nesta fase.
 ## 6D.2 — Foundations
 
 Implementar:
+
 - fontes;
 - brand primitives;
 - semantic tokens;
@@ -860,6 +877,7 @@ Implementar:
 ## 6D.3 — Components + Home pilot
 
 Implementar:
+
 - shell;
 - components;
 - página Home piloto.
@@ -869,6 +887,7 @@ Parar para validação visual humana.
 ## 6D.4 — Rollout + visual QA
 
 Após aprovação:
+
 - Clínica;
 - Socio;
 - Observatório;

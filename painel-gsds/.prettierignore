@@ -7,3 +7,4 @@ package-lock.json
 tests/visual/*.png
 docs/source-of-truth/**
 !docs/source-of-truth/INVENTORY.md
+CLAUDE.md
