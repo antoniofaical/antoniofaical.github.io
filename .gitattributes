@@ -1,2 +1,4 @@
 * text=auto eol=lf
 *.woff2 binary
+*.pdf binary
+painel-gsds/public/fonts/licenses/work-sans-OFL.txt whitespace=-trailing-space
