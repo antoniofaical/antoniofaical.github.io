@@ -8,22 +8,44 @@ export interface Props {
   currentPath?: string;
   title?: string;
   items?: NavItem[];
+  brandPilot?: boolean;
 }
 
 const {
   currentPath = Astro.url.pathname,
   title = 'Painel GSDs',
   items = SITE_NAV_ITEMS,
+  brandPilot = false,
 } = Astro.props;
 
 const homeHref = withBase('/');
+const lockupSrc = withBase('brand/eretz-einstein-lockup.svg');
 ---
 
-<header class="site-header">
+<header class:list={['site-header', brandPilot && 'site-header--brand-pilot']}>
   <div class="container header-inner">
-    <a class="brand" href={homeHref}>
-      <span class="brand__mark" aria-hidden="true"></span>
-      <span class="brand__text">{title}</span>
+    <a
+      class:list={['brand', brandPilot && 'brand--lockup']}
+      href={homeHref}
+      aria-label={brandPilot ? 'Início — GSD Dashboard' : undefined}
+    >
+      {
+        brandPilot ? (
+          <img
+            class="brand__lockup"
+            src={lockupSrc}
+            alt=""
+            width="205"
+            height="60"
+            decoding="async"
+          />
+        ) : (
+          <>
+            <span class="brand__mark" aria-hidden="true" />
+            <span class="brand__text">{title}</span>
+          </>
+        )
+      }
     </a>
 
     <nav class="desktop-nav" aria-label="Principal">
@@ -107,10 +129,24 @@ const homeHref = withBase('/');
     }
   }
 
+  @media (min-width: 64rem) and (max-width: 71.99rem) {
+    .site-header--brand-pilot .desktop-nav {
+      display: none;
+    }
+  }
+
   .desktop-nav__list {
     display: flex;
     gap: var(--space-2);
     align-items: center;
+  }
+
+  .site-header--brand-pilot .desktop-nav__list {
+    flex-wrap: nowrap;
+  }
+
+  .site-header--brand-pilot .desktop-nav__list > li {
+    flex-shrink: 0;
   }
 
   .nav-item {
@@ -146,5 +182,47 @@ const homeHref = withBase('/');
     text-transform: uppercase;
     letter-spacing: 0.04em;
     opacity: 0.8;
+  }
+
+  .site-header--brand-pilot {
+    background: var(--einstein-white);
+    backdrop-filter: none;
+    border-bottom: var(--border-thin) solid var(--einstein-neutral-300);
+  }
+
+  .site-header--brand-pilot .header-inner {
+    min-height: 4.75rem;
+  }
+
+  .site-header--brand-pilot .nav-item {
+    color: var(--einstein-blue-dark);
+    white-space: nowrap;
+  }
+
+  .site-header--brand-pilot .nav-item:hover,
+  .site-header--brand-pilot .nav-item:focus-visible {
+    background: var(--einstein-neutral-50);
+    color: var(--einstein-blue-dark);
+  }
+
+  .site-header--brand-pilot .nav-item--current {
+    color: var(--einstein-blue-dark);
+    box-shadow: inset 0 -2px 0 var(--einstein-blue-dark);
+  }
+
+  .brand--lockup {
+    gap: 0;
+  }
+
+  .brand__lockup {
+    display: block;
+    width: 10.25rem;
+    height: auto;
+  }
+
+  @media (min-width: 64rem) {
+    .brand__lockup {
+      width: 12.8125rem;
+    }
   }
 </style>

@@ -120,3 +120,66 @@ a:not([class]):focus-visible {
   text-align: center;
   letter-spacing: 0.02em;
 }
+
+/* 6D.3.1 — Home brand-pilot theme bridge. Does not rewrite :root legacy tokens. */
+.brand-pilot {
+  --font-display: var(--font-heading-brand);
+  --font-body: var(--font-interface-brand);
+  --ink-950: var(--einstein-neutral-900);
+  --ink-800: var(--einstein-neutral-900);
+  --ink-600: var(--einstein-neutral-700);
+  --paper-50: var(--einstein-white);
+  --paper-100: var(--einstein-neutral-50);
+  --teal-700: var(--einstein-blue-dark);
+  --teal-500: var(--einstein-blue-medium);
+  --cyan-300: var(--einstein-blue-light);
+  --line-200: var(--einstein-neutral-300);
+  --focus-ring: var(--einstein-blue-medium);
+  --surface-editorial-bg: var(--einstein-neutral-50);
+  --surface-editorial-fg: var(--einstein-neutral-900);
+  --white: var(--einstein-white);
+  --elevation-1: 0 1px 2px rgb(33 33 33 / 6%);
+  --elevation-2: 0 2px 6px rgb(33 33 33 / 8%);
+}
+
+.brand-pilot a:not([class]) {
+  color: var(--einstein-blue-dark);
+}
+
+.brand-pilot a:not([class]):hover,
+.brand-pilot a:not([class]):focus-visible {
+  color: var(--einstein-blue-medium);
+}
+
+.brand-pilot .site-footer {
+  background: var(--einstein-neutral-50);
+  border-top-color: var(--einstein-neutral-300);
+}
+
+.brand-pilot .mobile-nav__toggle,
+.brand-pilot .mobile-nav__close {
+  border-color: var(--einstein-blue-dark);
+  color: var(--einstein-blue-dark);
+  background: var(--einstein-white);
+}
+
+.brand-pilot .mobile-nav__panel-inner {
+  background-color: rgb(255 255 255);
+  color: var(--einstein-neutral-900);
+  box-shadow: none;
+}
+
+@media (max-width: 32rem) {
+  .brand-pilot .mobile-nav__panel-inner {
+    width: 100vw;
+    max-width: none;
+    left: 0;
+    right: 0;
+  }
+}
+
+.brand-pilot .mobile-nav__link:hover,
+.brand-pilot .mobile-nav__link:focus-visible {
+  background: var(--einstein-neutral-50);
+  color: var(--einstein-blue-dark);
+}

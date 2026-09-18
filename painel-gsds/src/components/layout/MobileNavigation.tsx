@@ -156,6 +156,11 @@ export default function MobileNavigation({
             display: none;
           }
         }
+        @media (min-width: 64rem) and (max-width: 71.99rem) {
+          .brand-pilot .mobile-nav {
+            display: block;
+          }
+        }
         .mobile-nav__toggle {
           display: inline-flex;
           align-items: center;

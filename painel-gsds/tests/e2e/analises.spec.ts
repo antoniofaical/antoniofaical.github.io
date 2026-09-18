@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { expectLegacyShell } from './legacyShell';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const shotsDir = path.resolve(__dirname, '../visual');
@@ -60,6 +61,10 @@ test.describe('bases clinicas', () => {
       () => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
     );
     expect(overflow).toBe(false);
+  });
+
+  test('keeps the legacy shell outside the Home brand-pilot', async ({ page }) => {
+    await expectLegacyShell(page);
   });
 
   test('screenshots clinical viewports and filtered explorer', async ({ page }) => {
@@ -177,6 +182,10 @@ test.describe('impacto socioeconômico', () => {
       () => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
     );
     expect(overflow).toBe(false);
+  });
+
+  test('keeps the legacy shell outside the Home brand-pilot', async ({ page }) => {
+    await expectLegacyShell(page);
   });
 
   test('screenshots socioeconomic viewports', async ({ page }) => {

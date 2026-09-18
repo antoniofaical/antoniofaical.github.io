@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { appBasePath } from './basePath';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const shotsDir = path.resolve(__dirname, '../visual');
@@ -113,5 +114,146 @@ test.describe('home executive', () => {
       path: path.join(shotsDir, 'home-mobile-menu-375.png'),
       fullPage: false,
     });
+  });
+
+  test('home brand-pilot uses institutional lockup, Work Sans and no evidence badges', async ({
+    page,
+  }) => {
+    await page.evaluate(() => document.fonts.ready);
+    await expect(page.locator('body')).toHaveClass(/brand-pilot/);
+
+    const lockup = page.locator('img.brand__lockup');
+    await expect(lockup).toBeVisible();
+    await expect(page.locator('.brand__mark')).toHaveCount(0);
+    const lockupSrc = await lockup.getAttribute('src');
+    expect(lockupSrc).toBe(`${appBasePath}brand/eretz-einstein-lockup.svg`);
+    const lockupLoaded = await lockup.evaluate(
+      (el) => el instanceof HTMLImageElement && el.complete && el.naturalWidth > 0,
+    );
+    expect(lockupLoaded).toBe(true);
+
+    const headingFont = await page.locator('#home-hero-title').evaluate((el) => {
+      return getComputedStyle(el).fontFamily;
+    });
+    const bodyFont = await page.locator('body').evaluate((el) => getComputedStyle(el).fontFamily);
+    expect(headingFont).toMatch(/Work Sans/i);
+    expect(bodyFont).toMatch(/Inter/i);
+
+    await expect(page.locator('.evidence-badge')).toHaveCount(0);
+    await expect(page.getByText('Estados de evidência')).toHaveCount(0);
+    await expect(page.getByRole('heading', { name: 'Atualização' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Limitações gerais desta Home' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Fontes utilizadas pela Home' })).toBeVisible();
+
+    const favicon = await page.locator('link[rel="icon"]').getAttribute('href');
+    expect(favicon).toBe(`${appBasePath}brand/gsd-favicon.svg`);
+
+    await expect(
+      page.getByRole('heading', {
+        name: /Glicogenoses: uma família de doenças, múltiplas jornadas/i,
+      }),
+    ).toBeVisible();
+    await expect(page.getByText('Visão executiva').first()).toBeVisible();
+    await expect(
+      page.getByText(
+        /O painel reúne contexto clínico, impacto socioeconômico e organizações relacionadas às GSDs/i,
+      ),
+    ).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Entender o problema' })).toBeVisible();
+    await expect(
+      page.getByRole('link', { name: 'Ver como os dados foram tratados' }),
+    ).toBeVisible();
+  });
+
+  test('home brand-pilot mobile menu is opaque and full-width on small viewports', async ({
+    page,
+  }) => {
+    for (const width of [375, 320] as const) {
+      await page.setViewportSize({ width, height: 812 });
+      await page.goto('./');
+      const toggle = page.locator('.mobile-nav__toggle');
+      await toggle.click();
+      await expect(page.getByRole('dialog')).toBeVisible();
+
+      const metrics = await page.evaluate(() => {
+        const inner = document.querySelector('.mobile-nav__panel-inner');
+        if (!(inner instanceof HTMLElement)) {
+          return { width: 0, viewport: window.innerWidth, alpha: 0, overflow: '' };
+        }
+        const color = getComputedStyle(inner).backgroundColor;
+        const parts = color
+          .replace(/[rgba()]/g, '')
+          .split(',')
+          .map((part) => Number(part.trim()));
+        const alpha = parts.length === 4 ? parts[3] : 1;
+        return {
+          width: inner.getBoundingClientRect().width,
+          viewport: window.innerWidth,
+          alpha,
+          overflow: document.body.style.overflow,
+        };
+      });
+
+      expect(metrics.width).toBeGreaterThanOrEqual(metrics.viewport - 1);
+      expect(metrics.alpha).toBe(1);
+      expect(metrics.overflow).toBe('hidden');
+
+      await page.keyboard.press('Escape');
+      await expect(page.getByRole('dialog')).toHaveCount(0);
+      await expect(toggle).toBeFocused();
+    }
+  });
+
+  test('brand-pilot uses mobile nav below 72rem and desktop nav from 72rem', async ({ page }) => {
+    async function navChrome(width: number) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.evaluate(() => document.fonts.ready);
+      const desktop = page.locator('.desktop-nav');
+      const toggle = page.locator('.mobile-nav__toggle');
+      const desktopVisible = await desktop.evaluate((el) => {
+        const style = getComputedStyle(el);
+        const box = el.getBoundingClientRect();
+        return style.display !== 'none' && box.width > 0 && box.height > 0;
+      });
+      const toggleVisible = await toggle.evaluate((el) => {
+        const style = getComputedStyle(el);
+        const box = el.getBoundingClientRect();
+        return style.display !== 'none' && box.width > 0 && box.height > 0;
+      });
+      return { desktopVisible, toggleVisible };
+    }
+
+    expect(await navChrome(1024)).toEqual({ desktopVisible: false, toggleVisible: true });
+    expect(await navChrome(1152)).toEqual({ desktopVisible: true, toggleVisible: false });
+    expect(await navChrome(1440)).toEqual({ desktopVisible: true, toggleVisible: false });
+
+    await page.setViewportSize({ width: 1152, height: 900 });
+    const wrapping = await page.locator('.desktop-nav .nav-item').evaluateAll((els) =>
+      els.map((el) => {
+        const style = getComputedStyle(el);
+        const lineHeight =
+          Number.parseFloat(style.lineHeight) || Number.parseFloat(style.fontSize) * 1.2;
+        const pad = Number.parseFloat(style.paddingTop) + Number.parseFloat(style.paddingBottom);
+        const minHeight = Number.parseFloat(style.minHeight) || 0;
+        return {
+          label: (el.textContent ?? '').replace(/\s+/g, ' ').trim(),
+          height: el.getBoundingClientRect().height,
+          oneLineMax: Math.max(minHeight, lineHeight + pad) + 4,
+        };
+      }),
+    );
+    for (const item of wrapping) {
+      expect(item.height, `${item.label} wraps at 1152`).toBeLessThanOrEqual(item.oneLineMax);
+    }
+  });
+
+  test('no horizontal overflow at 375px, 768px, 1024px, 1152px and 1440px', async ({ page }) => {
+    for (const width of [375, 768, 1024, 1152, 1440] as const) {
+      await page.setViewportSize({ width, height: 900 });
+      const overflow = await page.evaluate(() => {
+        return document.documentElement.scrollWidth > document.documentElement.clientWidth + 1;
+      });
+      expect(overflow, `overflow at ${width}px`).toBe(false);
+    }
   });
 });

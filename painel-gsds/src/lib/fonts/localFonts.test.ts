@@ -10,10 +10,11 @@ const REQUIRED_FONTS = [
   'inter-variable.woff2',
   'inter-italic-variable.woff2',
   'manrope-variable.woff2',
+  'work-sans-latin-variable.woff2',
 ] as const;
 
 describe('local fonts', () => {
-  it('ships the three variable WOFF2 files in public/fonts', () => {
+  it('ships the variable WOFF2 files in public/fonts', () => {
     for (const file of REQUIRED_FONTS) {
       const fullPath = path.join(fontsDir, file);
       expect(existsSync(fullPath), `${file} must exist`).toBe(true);
@@ -24,5 +25,6 @@ describe('local fonts', () => {
   it('ships OFL license files alongside fonts', () => {
     expect(existsSync(path.join(fontsDir, 'licenses', 'Inter-OFL.txt'))).toBe(true);
     expect(existsSync(path.join(fontsDir, 'licenses', 'Manrope-OFL.txt'))).toBe(true);
+    expect(existsSync(path.join(fontsDir, 'licenses', 'work-sans-OFL.txt'))).toBe(true);
   });
 });

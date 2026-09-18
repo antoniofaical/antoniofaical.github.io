@@ -16,6 +16,8 @@ export interface Props {
   surface?: 'editorial' | 'executive';
   lastReviewedAt?: string;
   ogImage?: string;
+  brandPilot?: boolean;
+  favicon?: string;
 }
 
 const {
@@ -27,6 +29,8 @@ const {
   surface = 'editorial',
   lastReviewedAt,
   ogImage = withBase('favicon.svg'),
+  brandPilot = false,
+  favicon = 'favicon.svg',
 } = Astro.props;
 
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
@@ -64,12 +68,16 @@ const footerNote = hideFooterMedicalNotice(Astro.url.pathname)
       property="og:image"
       content={new URL(ogImage, Astro.site ?? 'https://antoniofaical.github.io').toString()}
     />
-    <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
-    <LocalFonts />
+    <link rel="icon" type="image/svg+xml" href={withBase(favicon)} />
+    <LocalFonts includeWorkSans={brandPilot} />
     <title>{title}</title>
   </head>
   <body
-    class:list={['app-shell', surface === 'executive' ? 'surface-executive' : 'surface-editorial']}
+    class:list={[
+      'app-shell',
+      surface === 'executive' ? 'surface-executive' : 'surface-editorial',
+      brandPilot && 'brand-pilot',
+    ]}
   >
     {
       showFixtureBanner && (
@@ -77,7 +85,7 @@ const footerNote = hideFooterMedicalNotice(Astro.url.pathname)
       )
     }
     <SkipLink />
-    <GlobalHeader currentPath={currentPath}>
+    <GlobalHeader currentPath={currentPath} brandPilot={brandPilot}>
       <MobileNavigation client:load slot="mobile" />
     </GlobalHeader>
     <slot />

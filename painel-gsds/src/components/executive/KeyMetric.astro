@@ -23,6 +23,7 @@ export interface Props {
     verifiedAt?: string;
   };
   fixtureLabel?: boolean;
+  showEvidenceBadge?: boolean;
 }
 
 const {
@@ -37,6 +38,7 @@ const {
   limitation,
   source,
   fixtureLabel = false,
+  showEvidenceBadge = true,
 } = Astro.props;
 
 const isAbsent = evidenceState === 'not-calculable' || value === null;
@@ -51,7 +53,7 @@ const showUnit = unit && !(valueHasBillion && /bilh/i.test(unit));
   {fixtureLabel && <p class="key-metric__fixture">Fixture de interface — não é dado científico</p>}
   <header class="key-metric__header">
     <h3 class="key-metric__label">{label}</h3>
-    <EvidenceBadge state={evidenceState} reason={evidenceReason} />
+    {showEvidenceBadge && <EvidenceBadge state={evidenceState} reason={evidenceReason} />}
   </header>
 
   {
