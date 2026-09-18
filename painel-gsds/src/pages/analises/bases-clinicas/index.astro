@@ -72,6 +72,8 @@ const managementSpecificNotice = stripGenericMedicalPrefix(evidence.management.d
   description="Mecanismos, classificação, manifestações, diagnóstico, manejo e terapias emergentes nas doenças de armazenamento do glicogênio."
   currentPath={withBase('analises/bases-clinicas/')}
   lastReviewedAt={updatedAt}
+  brandPilot={true}
+  favicon="brand/gsd-favicon.svg"
 >
   <main id="conteudo-principal">
     <div class="container section-space stack stack--lg">
@@ -81,6 +83,7 @@ const managementSpecificNotice = stripGenericMedicalPrefix(evidence.management.d
     </div>
 
     <ResearchHeader
+      brandPilot={true}
       eyebrow="Análise clínica"
       title="Bases clínicas das glicogenoses"
       summary="Uma família de doenças metabólicas hereditárias: o tipo molecular, o tecido afetado e o momento do diagnóstico moldam jornadas muito diferentes."
@@ -211,7 +214,9 @@ const managementSpecificNotice = stripGenericMedicalPrefix(evidence.management.d
           Matriz representativa — apenas órgãos mencionados na síntese médica. Células vazias não
           significam ausência clínica.
         </p>
-        <div class="table-wrap" role="region" aria-label="Matriz de órgãos">
+        {/* Keyboard-focusable overflow wrapper: axe scrollable-region-focusable at 320px. */}
+        {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
+        <div class="table-wrap" role="region" aria-label="Matriz de órgãos" tabindex="0">
           <table>
             <thead>
               <tr>

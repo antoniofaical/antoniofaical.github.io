@@ -1,0 +1,181 @@
+{
+  "clinical1440": {
+    "overflow": false,
+    "bodyClass": "app-shell surface-editorial brand-pilot",
+    "h1": {
+      "fontFamily": "\"Work Sans\", Montserrat, Arial, sans-serif",
+      "color": "rgb(33, 33, 33)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderLeftColor": "rgb(33, 33, 33)",
+      "borderBottomColor": "rgb(33, 33, 33)"
+    },
+    "body": {
+      "fontFamily": "Inter, Montserrat, Arial, sans-serif",
+      "color": "rgb(33, 33, 33)",
+      "backgroundColor": "rgb(242, 242, 242)",
+      "borderLeftColor": "rgb(33, 33, 33)",
+      "borderBottomColor": "rgb(33, 33, 33)"
+    },
+    "header": {
+      "fontFamily": "Inter, Montserrat, Arial, sans-serif",
+      "color": "rgb(33, 33, 33)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderLeftColor": "rgb(33, 33, 33)",
+      "borderBottomColor": "rgb(212, 212, 212)"
+    },
+    "researchHeader": {
+      "fontFamily": "Inter, Montserrat, Arial, sans-serif",
+      "color": "rgb(84, 84, 84)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderLeftColor": "rgb(84, 84, 84)",
+      "borderBottomColor": "rgb(84, 84, 84)"
+    },
+    "eyebrow": {
+      "fontFamily": "Inter, Montserrat, Arial, sans-serif",
+      "color": "rgb(0, 83, 154)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderLeftColor": "rgb(0, 83, 154)",
+      "borderBottomColor": "rgb(0, 83, 154)"
+    },
+    "summary": {
+      "fontFamily": "Inter, Montserrat, Arial, sans-serif",
+      "color": "rgb(84, 84, 84)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderLeftColor": "rgb(84, 84, 84)",
+      "borderBottomColor": "rgb(84, 84, 84)"
+    },
+    "notice": {
+      "fontFamily": "Inter, Montserrat, Arial, sans-serif",
+      "color": "rgb(84, 84, 84)",
+      "backgroundColor": "rgb(242, 242, 242)",
+      "borderLeftColor": "rgb(0, 150, 210)",
+      "borderBottomColor": "rgb(84, 84, 84)"
+    },
+    "lockupCount": 1,
+    "brandMarkCount": 0,
+    "medicalNoticeCount": 1,
+    "genericMedicalCount": 1,
+    "favicon": "/brand/gsd-favicon.svg",
+    "researchHeaderClass": "research-header section-space research-header--brand",
+    "nav": {
+      "desktopDisplay": "block",
+      "toggleVisible": false
+    }
+  },
+  "clinical1152": {
+    "overflow": false,
+    "header": {
+      "desktopDisplay": "block",
+      "toggleVisible": false
+    },
+    "lockupCount": 1
+  },
+  "clinical1024": {
+    "overflow": false,
+    "header": {
+      "desktopDisplay": "none",
+      "toggleVisible": true
+    },
+    "lockupCount": 1
+  },
+  "clinical768": {
+    "overflow": false,
+    "header": {
+      "desktopDisplay": "none",
+      "toggleVisible": true
+    },
+    "lockupCount": 1
+  },
+  "clinical375": {
+    "overflow": false,
+    "h1": {
+      "fontFamily": "\"Work Sans\", Montserrat, Arial, sans-serif",
+      "color": "rgb(33, 33, 33)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderLeftColor": "rgb(33, 33, 33)",
+      "borderBottomColor": "rgb(33, 33, 33)"
+    },
+    "header": {
+      "desktopDisplay": "none",
+      "toggleVisible": true
+    }
+  },
+  "clinicalMenu375": {
+    "width": 375,
+    "viewport": 375,
+    "backgroundColor": "rgb(255, 255, 255)",
+    "overflow": "hidden",
+    "alpha": 1
+  },
+  "clinical320": {
+    "overflow": false,
+    "h1": {
+      "fontFamily": "\"Work Sans\", Montserrat, Arial, sans-serif",
+      "color": "rgb(33, 33, 33)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderLeftColor": "rgb(33, 33, 33)",
+      "borderBottomColor": "rgb(33, 33, 33)"
+    },
+    "header": {
+      "desktopDisplay": "none",
+      "toggleVisible": true
+    }
+  },
+  "clinicalMenu320": {
+    "width": 320,
+    "viewport": 320,
+    "backgroundColor": "rgb(255, 255, 255)",
+    "overflow": "hidden",
+    "alpha": 1
+  },
+  "clinicalTable320": {
+    "overflow": false,
+    "wrap": {
+      "overflowX": "auto",
+      "clientWidth": 278,
+      "scrollWidth": 371
+    }
+  },
+  "homeControl1440": {
+    "overflow": false,
+    "bodyClass": "app-shell surface-editorial brand-pilot",
+    "lockupCount": 1,
+    "glycogenBranchCount": 0,
+    "evidenceBadgeCount": 0,
+    "h1": {
+      "fontFamily": "\"Work Sans\", Montserrat, Arial, sans-serif",
+      "color": "rgb(33, 33, 33)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderLeftColor": "rgb(33, 33, 33)",
+      "borderBottomColor": "rgb(33, 33, 33)"
+    }
+  },
+  "socioControl1440": {
+    "overflow": false,
+    "bodyClass": "app-shell surface-editorial",
+    "lockupCount": 0,
+    "brandMarkCount": 1,
+    "h1": {
+      "fontFamily": "Manrope, \"Segoe UI\", \"Helvetica Neue\", Arial, sans-serif",
+      "color": "rgb(246, 248, 247)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderLeftColor": "rgb(246, 248, 247)",
+      "borderBottomColor": "rgb(246, 248, 247)"
+    },
+    "researchHeaderClass": "research-header section-space surface-executive"
+  },
+  "observatoryControl1440": {
+    "overflow": false,
+    "bodyClass": "app-shell surface-editorial",
+    "lockupCount": 0,
+    "brandMarkCount": 1,
+    "h1": {
+      "fontFamily": "Manrope, \"Segoe UI\", \"Helvetica Neue\", Arial, sans-serif",
+      "color": "rgb(246, 248, 247)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderLeftColor": "rgb(246, 248, 247)",
+      "borderBottomColor": "rgb(246, 248, 247)"
+    },
+    "researchHeaderClass": "research-header section-space surface-executive"
+  }
+}
