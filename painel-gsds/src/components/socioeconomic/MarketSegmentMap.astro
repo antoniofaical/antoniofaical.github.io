@@ -31,7 +31,9 @@ const { title, summary, segments } = Astro.props;
       <h2 id="segmentos-title">{title}</h2>
       <p>{summary}</p>
     </header>
-    <div class="table-wrap" role="region" aria-label="Segmentos de mercado">
+    {/* Keyboard-focusable overflow wrapper: axe scrollable-region-focusable at 375/320. */}
+    {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
+    <div class="table-wrap" role="region" aria-label="Segmentos de mercado" tabindex="0">
       <table>
         <thead>
           <tr>

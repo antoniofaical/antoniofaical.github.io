@@ -3,7 +3,6 @@ import AxeBuilder from '@axe-core/playwright';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { appBasePath } from './basePath';
-import { expectLegacyShell } from './legacyShell';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const shotsDir = path.resolve(__dirname, '../visual');
@@ -269,21 +268,135 @@ test.describe('impacto socioeconômico', () => {
     expect(body).toMatch(/mercado observado não é necessidade total/);
   });
 
-  test('has no serious accessibility violations', async ({ page }) => {
-    const results = await new AxeBuilder({ page }).analyze();
-    expect(results.violations).toEqual([]);
+  test('has no serious accessibility violations at 1440, 375 and 320', async ({ page }) => {
+    for (const width of [1440, 375, 320] as const) {
+      await page.setViewportSize({ width, height: width === 1440 ? 900 : 812 });
+      const results = await new AxeBuilder({ page }).analyze();
+      const blocking = results.violations.filter(
+        (violation) => violation.impact === 'serious' || violation.impact === 'critical',
+      );
+      expect(blocking, `axe blocking at ${width}`).toEqual([]);
+    }
   });
 
-  test('no horizontal overflow at 320px', async ({ page }) => {
+  test('no horizontal overflow at required viewports', async ({ page }) => {
+    for (const width of [1440, 1152, 1024, 768, 375, 320] as const) {
+      await page.setViewportSize({ width, height: 900 });
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
+      );
+      expect(overflow, `overflow at ${width}px`).toBe(false);
+    }
+  });
+
+  test('table wrapper can scroll internally at 320px without body overflow', async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 640 });
-    const overflow = await page.evaluate(
+    const wrap = page.locator('.table-wrap');
+    const metrics = await wrap.evaluate((el) => {
+      const style = getComputedStyle(el);
+      return {
+        overflowX: style.overflowX,
+        clientWidth: el.clientWidth,
+        scrollWidth: el.scrollWidth,
+        tabIndex: (el as HTMLElement).tabIndex,
+      };
+    });
+    expect(['auto', 'scroll']).toContain(metrics.overflowX);
+    expect(metrics.scrollWidth).toBeGreaterThan(metrics.clientWidth);
+    expect(metrics.tabIndex).toBe(0);
+    const bodyOverflow = await page.evaluate(
       () => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
     );
-    expect(overflow).toBe(false);
+    expect(bodyOverflow).toBe(false);
+    await wrap.focus();
+    await page.keyboard.press('Shift+Tab');
+    await page.keyboard.press('Tab');
+    await expect(wrap).toBeFocused();
+    const focusVisible = await wrap.evaluate((el) => {
+      const style = getComputedStyle(el);
+      return {
+        matches: el.matches(':focus-visible'),
+        outlineWidth: Number.parseFloat(style.outlineWidth),
+      };
+    });
+    expect(focusVisible.matches).toBe(true);
+    expect(focusVisible.outlineWidth).toBeGreaterThan(0);
   });
 
-  test('keeps the legacy shell outside the Home brand-pilot', async ({ page }) => {
-    await expectLegacyShell(page);
+  test('uses the Home-approved brand-pilot shell', async ({ page }) => {
+    await page.evaluate(() => document.fonts.ready);
+    await expect(page.locator('body')).toHaveClass(/brand-pilot/);
+    await expect(page.locator('img.brand__lockup')).toHaveCount(1);
+    await expect(page.locator('.brand__mark')).toHaveCount(0);
+    const headingFont = await page
+      .locator('h1')
+      .first()
+      .evaluate((el) => getComputedStyle(el).fontFamily);
+    const bodyFont = await page.locator('body').evaluate((el) => getComputedStyle(el).fontFamily);
+    expect(headingFont).toMatch(/Work Sans/i);
+    expect(bodyFont).toMatch(/Inter/i);
+    const favicon = await page.locator('link[rel="icon"]').getAttribute('href');
+    expect(favicon).toBe(`${appBasePath}brand/gsd-favicon.svg`);
+    await expect(page.locator('.research-header')).toHaveClass(/research-header--brand/);
+    await expect(page.locator('.research-header')).not.toHaveClass(/surface-executive/);
+    await expect(page.locator('.research-header__notice')).toHaveCount(0);
+    await expect(page.locator('.footer-note')).toHaveCount(0);
+    await expect(page.locator('.evidence-badge')).toHaveCount(0);
+  });
+
+  test('preserves DATASUS semantic amber', async ({ page }) => {
+    const border = await page.locator('.datasus-callout').evaluate((el) => {
+      return getComputedStyle(el).borderLeftColor;
+    });
+    expect(border).toBe('rgb(233, 166, 58)');
+  });
+
+  test('brand-pilot uses mobile nav below 72rem and desktop nav from 72rem', async ({ page }) => {
+    async function navChrome(width: number) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.evaluate(() => document.fonts.ready);
+      const desktop = page.locator('.desktop-nav');
+      const toggle = page.locator('.mobile-nav__toggle');
+      const desktopVisible = await desktop.evaluate((el) => {
+        const style = getComputedStyle(el);
+        const box = el.getBoundingClientRect();
+        return style.display !== 'none' && box.width > 0 && box.height > 0;
+      });
+      const toggleVisible = await toggle.evaluate((el) => {
+        const style = getComputedStyle(el);
+        const box = el.getBoundingClientRect();
+        return style.display !== 'none' && box.width > 0 && box.height > 0;
+      });
+      return { desktopVisible, toggleVisible };
+    }
+
+    expect(await navChrome(1024)).toEqual({ desktopVisible: false, toggleVisible: true });
+    expect(await navChrome(1152)).toEqual({ desktopVisible: true, toggleVisible: false });
+    expect(await navChrome(1440)).toEqual({ desktopVisible: true, toggleVisible: false });
+  });
+
+  test('mobile menu opens, locks body scroll, and returns focus on Escape', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
+    const toggle = page.locator('.mobile-nav__toggle');
+    await toggle.click();
+    await expect(page.getByRole('dialog')).toBeVisible();
+    const overflow = await page.evaluate(() => document.body.style.overflow);
+    expect(overflow).toBe('hidden');
+    await page.keyboard.press('Escape');
+    await expect(page.getByRole('dialog')).toHaveCount(0);
+    await expect(toggle).toBeFocused();
+  });
+
+  test('section nav and breadcrumbs remain intact', async ({ page }) => {
+    await page
+      .getByRole('navigation', { name: 'Nesta página' })
+      .getByRole('link', { name: 'Segmentos' })
+      .click();
+    await expect(page).toHaveURL(/#segmentos$/);
+    await expect(page.locator('#segmentos')).toBeVisible();
+    const breadcrumbs = page.getByRole('navigation', { name: 'Trilha de navegação' });
+    await expect(breadcrumbs).toBeVisible();
+    await expect(breadcrumbs.getByRole('link', { name: 'Início', exact: true })).toBeVisible();
   });
 
   test('screenshots socioeconomic viewports', async ({ page }) => {
