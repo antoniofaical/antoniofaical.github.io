@@ -182,6 +182,48 @@
   border-color: rgb(246 248 247 / 45%);
 }
 
+.brand-pilot .btn--primary {
+  background: var(--einstein-blue-dark);
+  color: var(--einstein-white);
+}
+
+.brand-pilot .btn--primary:hover,
+.brand-pilot .btn--primary:focus-visible {
+  background: var(--einstein-blue-medium);
+}
+
+.brand-pilot .btn--secondary {
+  color: var(--einstein-blue-dark);
+  border-color: var(--einstein-blue-dark);
+}
+
+.brand-pilot .btn--secondary:hover,
+.brand-pilot .btn--secondary:focus-visible {
+  background: rgb(0 83 154 / 8%);
+}
+
+.brand-pilot .btn--on-dark {
+  background: var(--einstein-blue-dark);
+  color: var(--einstein-white);
+}
+
+.brand-pilot .btn--on-dark:hover,
+.brand-pilot .btn--on-dark:focus-visible {
+  background: var(--einstein-blue-medium);
+  color: var(--einstein-white);
+}
+
+.brand-pilot .btn--on-dark-ghost {
+  background: transparent;
+  color: var(--einstein-blue-dark);
+  border-color: var(--einstein-blue-dark);
+}
+
+.brand-pilot .btn--on-dark-ghost:hover,
+.brand-pilot .btn--on-dark-ghost:focus-visible {
+  background: rgb(0 83 154 / 8%);
+}
+
 .motion-demo {
   display: inline-block;
   padding: var(--space-4) var(--space-5);

@@ -9,6 +9,7 @@ export interface Props {
   sotCutoff: string;
   limitations: string[];
   sources: Source[];
+  showEvidenceStates?: boolean;
 }
 
 const {
@@ -17,9 +18,12 @@ const {
   sotCutoff,
   limitations,
   sources,
+  showEvidenceStates = true,
 } = Astro.props;
 
-const homeStates = EVIDENCE_STATES.filter((state) => state !== 'not-calculable');
+const homeStates = showEvidenceStates
+  ? EVIDENCE_STATES.filter((state) => state !== 'not-calculable')
+  : [];
 ---
 
 <section id="metodologia" class="section-space" aria-labelledby="metodologia-title">
@@ -29,20 +33,22 @@ const homeStates = EVIDENCE_STATES.filter((state) => state !== 'not-calculable')
       <h2 id="metodologia-title">{heading}</h2>
     </header>
 
-    <div class="method-grid">
-      <article class="method-block">
-        <h3>Estados de evidência</h3>
-        <ul class="method-states">
-          {
-            homeStates.map((state) => (
-              <li>
-                <EvidenceBadge state={state} />
-                <span>{EVIDENCE_DESCRIPTIONS[state]}</span>
-              </li>
-            ))
-          }
-        </ul>
-      </article>
+    <div class:list={['method-grid', !showEvidenceStates && 'method-grid--single']}>
+      {
+        showEvidenceStates && (
+          <article class="method-block">
+            <h3>Estados de evidência</h3>
+            <ul class="method-states">
+              {homeStates.map((state) => (
+                <li>
+                  <EvidenceBadge state={state} />
+                  <span>{EVIDENCE_DESCRIPTIONS[state]}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        )
+      }
 
       <article class="method-block">
         <h3>Atualização</h3>
@@ -105,6 +111,11 @@ const homeStates = EVIDENCE_STATES.filter((state) => state !== 'not-calculable')
     .method-grid {
       grid-template-columns: 1.4fr 1fr;
     }
+  }
+
+  .method-grid--single {
+    grid-template-columns: 1fr;
+    max-width: 40rem;
   }
 
   .method-block {

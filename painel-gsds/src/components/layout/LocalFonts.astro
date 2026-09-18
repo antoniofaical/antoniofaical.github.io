@@ -5,9 +5,16 @@
  */
 import { withBase } from '../../lib/paths/withBase';
 
+export interface Props {
+  includeWorkSans?: boolean;
+}
+
+const { includeWorkSans = false } = Astro.props;
+
 const interRegular = withBase('fonts/inter-variable.woff2');
 const interItalic = withBase('fonts/inter-italic-variable.woff2');
 const manrope = withBase('fonts/manrope-variable.woff2');
+const workSans = withBase('fonts/work-sans-latin-variable.woff2');
 
 const fontFaceCss = `
 @font-face {
@@ -31,10 +38,26 @@ const fontFaceCss = `
   font-style: normal;
   font-display: swap;
 }
+${
+  includeWorkSans
+    ? `@font-face {
+  font-family: 'Work Sans';
+  src: url('${workSans}') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}`
+    : ''
+}
 `;
 ---
 
 <link rel="preload" href={interRegular} as="font" type="font/woff2" crossorigin="anonymous" />
 <link rel="preload" href={interItalic} as="font" type="font/woff2" crossorigin="anonymous" />
 <link rel="preload" href={manrope} as="font" type="font/woff2" crossorigin="anonymous" />
+{
+  includeWorkSans && (
+    <link rel="preload" href={workSans} as="font" type="font/woff2" crossorigin="anonymous" />
+  )
+}
 <style is:global set:html={fontFaceCss}></style>

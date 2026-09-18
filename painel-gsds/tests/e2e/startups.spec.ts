@@ -4,6 +4,7 @@ import { readFileSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { appBasePath } from './basePath';
+import { expectLegacyShell } from './legacyShell';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.resolve(__dirname, '../../dist');
@@ -208,6 +209,11 @@ test.describe('observatorio startups', () => {
       return document.documentElement.scrollWidth > document.documentElement.clientWidth + 1;
     });
     expect(overflow).toBe(false);
+  });
+
+  test('keeps the legacy shell outside the Home brand-pilot', async ({ page }) => {
+    await page.goto('./inovacao/startups/');
+    await expectLegacyShell(page);
   });
 
   test('production build excludes fixtures and raw scouting artifacts', async () => {

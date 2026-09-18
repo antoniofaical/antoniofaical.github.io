@@ -1,0 +1,115 @@
+{
+  "home1440": {
+    "overflow": false,
+    "bodyClass": "app-shell surface-editorial brand-pilot",
+    "h1": {
+      "fontFamily": "\"Work Sans\", Montserrat, Arial, sans-serif",
+      "color": "rgb(33, 33, 33)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderBottomColor": "rgb(33, 33, 33)"
+    },
+    "body": {
+      "fontFamily": "Inter, Montserrat, Arial, sans-serif",
+      "color": "rgb(33, 33, 33)",
+      "backgroundColor": "rgb(242, 242, 242)",
+      "borderBottomColor": "rgb(33, 33, 33)"
+    },
+    "header": {
+      "fontFamily": "Inter, Montserrat, Arial, sans-serif",
+      "color": "rgb(33, 33, 33)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderBottomColor": "rgb(212, 212, 212)"
+    },
+    "hero": {
+      "fontFamily": "Inter, Montserrat, Arial, sans-serif",
+      "color": "rgb(84, 84, 84)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderBottomColor": "rgb(84, 84, 84)"
+    },
+    "context": {
+      "fontFamily": "Inter, Montserrat, Arial, sans-serif",
+      "color": "rgb(0, 83, 154)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderBottomColor": "rgb(0, 83, 154)"
+    },
+    "subtitle": {
+      "fontFamily": "Inter, Montserrat, Arial, sans-serif",
+      "color": "rgb(84, 84, 84)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderBottomColor": "rgb(84, 84, 84)"
+    },
+    "primaryCta": {
+      "fontFamily": "Inter, Montserrat, Arial, sans-serif",
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgb(0, 83, 154)",
+      "borderBottomColor": "rgba(0, 0, 0, 0)"
+    },
+    "evidenceBadgeCount": 0,
+    "evidenceStatesHeading": 0,
+    "lockupCount": 1,
+    "heroSvgCount": 0,
+    "glycogenBranchCount": 0,
+    "heroCtaCount": 2,
+    "favicon": "/brand/gsd-favicon.svg",
+    "nav": {
+      "desktopDisplay": "block",
+      "toggleVisible": false
+    }
+  },
+  "home1152": {
+    "overflow": false,
+    "header": {
+      "desktopDisplay": "block",
+      "toggleVisible": false
+    },
+    "evidenceBadgeCount": 0
+  },
+  "home1024": {
+    "overflow": false,
+    "header": {
+      "desktopDisplay": "none",
+      "toggleVisible": true
+    },
+    "evidenceBadgeCount": 0
+  },
+  "home768": {
+    "overflow": false,
+    "header": {
+      "desktopDisplay": "none",
+      "toggleVisible": true
+    },
+    "evidenceBadgeCount": 0
+  },
+  "home375": {
+    "overflow": false,
+    "h1": {
+      "fontFamily": "\"Work Sans\", Montserrat, Arial, sans-serif",
+      "color": "rgb(33, 33, 33)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderBottomColor": "rgb(33, 33, 33)"
+    }
+  },
+  "homeMenu375": {
+    "width": 375,
+    "viewport": 375,
+    "backgroundColor": "rgb(255, 255, 255)",
+    "overflow": "hidden",
+    "alpha": 1
+  },
+  "home320": {
+    "overflow": false,
+    "h1": {
+      "fontFamily": "\"Work Sans\", Montserrat, Arial, sans-serif",
+      "color": "rgb(33, 33, 33)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderBottomColor": "rgb(33, 33, 33)"
+    }
+  },
+  "homeMenu320": {
+    "width": 320,
+    "viewport": 320,
+    "backgroundColor": "rgb(255, 255, 255)",
+    "overflow": "hidden",
+    "alpha": 1
+  }
+}

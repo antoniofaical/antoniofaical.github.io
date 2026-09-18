@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageContainer from '../components/layout/PageContainer.astro';
 import SectionPortal from '../components/executive/SectionPortal.astro';
-import GlycogenBranchVisual from '../components/home/GlycogenBranchVisual.astro';
 import ProblemInOneMinute from '../components/home/ProblemInOneMinute.astro';
 import MechanismToLife from '../components/home/MechanismToLife.astro';
 import HomeMetrics from '../components/home/HomeMetrics.astro';
@@ -31,14 +30,16 @@ const observedNote = `Receita observada de ≈ €1,4 bilhão em ${marketPeriodD
   currentPath={withBase('/')}
   lastReviewedAt={updatedAt}
   ogImage={withBase('favicon.svg')}
+  brandPilot={true}
+  favicon="brand/gsd-favicon.svg"
 >
   <main id="conteudo-principal">
     <section
       id="inicio"
-      class="home-hero section-space--executive surface-executive"
+      class="home-hero section-space--executive"
       aria-labelledby="home-hero-title"
     >
-      <div class="container home-hero__grid">
+      <div class="container">
         <div class="home-hero__copy stack stack--lg">
           <p class="home-hero__context">Visão executiva</p>
           <h1 id="home-hero-title" class="home-hero__title display">
@@ -54,9 +55,6 @@ const observedNote = `Receita observada de ≈ €1,4 bilhão em ${marketPeriodD
               >Ver como os dados foram tratados</a
             >
           </div>
-        </div>
-        <div class="home-hero__visual">
-          <GlycogenBranchVisual />
         </div>
       </div>
     </section>
@@ -194,6 +192,7 @@ const observedNote = `Receita observada de ≈ €1,4 bilhão em ${marketPeriodD
     <HomeMethodology
       updatedAt={updatedAt}
       sotCutoff={sotCutoff}
+      showEvidenceStates={false}
       sources={evidence.sources}
       limitations={[
         'Sínteses executivas não substituem as análises aprofundadas.',
@@ -207,6 +206,8 @@ const observedNote = `Receita observada de ≈ €1,4 bilhão em ${marketPeriodD
   .home-hero {
     position: relative;
     overflow: hidden;
+    background: var(--einstein-white);
+    color: var(--einstein-neutral-700);
   }
 
   .home-hero__context {
@@ -214,44 +215,46 @@ const observedNote = `Receita observada de ≈ €1,4 bilhão em ${marketPeriodD
     letter-spacing: 0.04em;
     text-transform: uppercase;
     font-weight: 700;
-    opacity: 0.85;
+    color: var(--einstein-blue-dark);
+    opacity: 1;
     max-width: none;
   }
 
   .home-hero__title {
     font-size: var(--display-lg);
-    max-width: 16ch;
-    color: var(--paper-50);
+    max-width: 18ch;
+    color: var(--einstein-neutral-900);
     margin: 0;
   }
 
   .home-hero__subtitle {
     font-size: var(--editorial);
     max-width: 42rem;
-    opacity: 0.92;
+    color: var(--einstein-neutral-700);
+    opacity: 1;
     margin: 0;
   }
 
-  .home-hero__grid {
-    display: grid;
-    gap: var(--space-7);
-    align-items: center;
+  .home-hero :global(.btn--on-dark) {
+    background: var(--einstein-blue-dark);
+    color: var(--einstein-white);
   }
 
-  @media (min-width: 64rem) {
-    .home-hero__grid {
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-      gap: var(--space-8);
-    }
-
-    .home-hero__visual {
-      justify-self: end;
-    }
+  .home-hero :global(.btn--on-dark:hover),
+  .home-hero :global(.btn--on-dark:focus-visible) {
+    background: var(--einstein-blue-medium);
+    color: var(--einstein-white);
   }
 
-  .home-hero__visual {
-    display: grid;
-    place-items: center;
+  .home-hero :global(.btn--on-dark-ghost) {
+    background: transparent;
+    color: var(--einstein-blue-dark);
+    border-color: var(--einstein-blue-dark);
+  }
+
+  .home-hero :global(.btn--on-dark-ghost:hover),
+  .home-hero :global(.btn--on-dark-ghost:focus-visible) {
+    background: rgb(0 83 154 / 8%);
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -262,11 +265,9 @@ const observedNote = `Receita observada de ≈ €1,4 bilhão em ${marketPeriodD
 
   @keyframes home-reveal {
     from {
-      opacity: 0;
       transform: translate3d(0, 0.6rem, 0);
     }
     to {
-      opacity: 1;
       transform: none;
     }
   }
