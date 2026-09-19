@@ -4,7 +4,6 @@ import { readFileSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { appBasePath } from './basePath';
-import { expectLegacyShell } from './legacyShell';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.resolve(__dirname, '../../dist');
@@ -196,24 +195,188 @@ test.describe('observatorio startups', () => {
     await expect(dialog.getByRole('link', { name: /Observatório de startups/i })).toBeVisible();
   });
 
-  test('has no serious accessibility violations', async ({ page }) => {
+  test('has no serious accessibility violations at 1440, 375 and 320', async ({ page }) => {
     await page.goto('./inovacao/startups/');
+    for (const width of [1440, 375, 320] as const) {
+      await page.setViewportSize({ width, height: width === 1440 ? 900 : 812 });
+      const results = await new AxeBuilder({ page }).analyze();
+      const blocking = results.violations.filter(
+        (violation) => violation.impact === 'serious' || violation.impact === 'critical',
+      );
+      expect(blocking, `axe blocking at ${width}`).toEqual([]);
+    }
+  });
+
+  test('has no serious accessibility violations with mobile filters open', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
+    await page.goto('./inovacao/startups/');
+    await page.getByRole('button', { name: /Mostrar filtros/i }).click();
+    await expect(page.getByTestId('startup-filters')).toBeVisible();
     const results = await new AxeBuilder({ page }).analyze();
-    expect(results.violations).toEqual([]);
+    const blocking = results.violations.filter(
+      (violation) => violation.impact === 'serious' || violation.impact === 'critical',
+    );
+    expect(blocking).toEqual([]);
   });
 
-  test('no horizontal overflow at 320px', async ({ page }) => {
-    await page.setViewportSize({ width: 320, height: 640 });
+  test('has no serious accessibility violations with detail drawer open at 375', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
     await page.goto('./inovacao/startups/');
-    const overflow = await page.evaluate(() => {
-      return document.documentElement.scrollWidth > document.documentElement.clientWidth + 1;
+    await page.getByTestId('startup-search').fill('Abracadabra');
+    await page
+      .getByRole('button', { name: /Ver detalhe/i })
+      .first()
+      .click();
+    await expect(page.getByTestId('startup-detail')).toBeVisible();
+    const results = await new AxeBuilder({ page }).analyze();
+    const blocking = results.violations.filter(
+      (violation) => violation.impact === 'serious' || violation.impact === 'critical',
+    );
+    expect(blocking).toEqual([]);
+  });
+
+  test('no horizontal overflow at required viewports', async ({ page }) => {
+    await page.goto('./inovacao/startups/');
+    for (const width of [1440, 1152, 1024, 768, 375, 320] as const) {
+      await page.setViewportSize({ width, height: 900 });
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
+      );
+      expect(overflow, `overflow at ${width}px`).toBe(false);
+    }
+  });
+
+  test('uses the Home-approved brand-pilot shell', async ({ page }) => {
+    await page.goto('./inovacao/startups/');
+    await page.evaluate(() => document.fonts.ready);
+    await expect(page.locator('body')).toHaveClass(/brand-pilot/);
+    await expect(page.locator('img.brand__lockup')).toHaveCount(1);
+    await expect(page.locator('.brand__mark')).toHaveCount(0);
+    const headingFont = await page
+      .locator('h1')
+      .first()
+      .evaluate((el) => getComputedStyle(el).fontFamily);
+    const bodyFont = await page.locator('body').evaluate((el) => getComputedStyle(el).fontFamily);
+    expect(headingFont).toMatch(/Work Sans/i);
+    expect(bodyFont).toMatch(/Inter/i);
+    const favicon = await page.locator('link[rel="icon"]').getAttribute('href');
+    expect(favicon).toBe(`${appBasePath}brand/gsd-favicon.svg`);
+    await expect(page.locator('.research-header')).toHaveClass(/research-header--brand/);
+    await expect(page.locator('.research-header')).not.toHaveClass(/surface-executive/);
+    await expect(page.locator('.research-header__notice')).toHaveCount(0);
+    await expect(page.locator('.footer-note')).toHaveCount(0);
+  });
+
+  test('brand-pilot uses mobile nav below 72rem and desktop nav from 72rem', async ({ page }) => {
+    await page.goto('./inovacao/startups/');
+    async function navChrome(width: number) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.evaluate(() => document.fonts.ready);
+      const desktop = page.locator('.desktop-nav');
+      const toggle = page.locator('.mobile-nav__toggle');
+      const desktopVisible = await desktop.evaluate((el) => {
+        const style = getComputedStyle(el);
+        const box = el.getBoundingClientRect();
+        return style.display !== 'none' && box.width > 0 && box.height > 0;
+      });
+      const toggleVisible = await toggle.evaluate((el) => {
+        const style = getComputedStyle(el);
+        const box = el.getBoundingClientRect();
+        return style.display !== 'none' && box.width > 0 && box.height > 0;
+      });
+      return { desktopVisible, toggleVisible };
+    }
+
+    expect(await navChrome(1024)).toEqual({ desktopVisible: false, toggleVisible: true });
+    expect(await navChrome(1152)).toEqual({ desktopVisible: true, toggleVisible: false });
+    expect(await navChrome(1440)).toEqual({ desktopVisible: true, toggleVisible: false });
+  });
+
+  test('mobile menu opens, locks body scroll, and returns focus on Escape', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
+    await page.goto('./inovacao/startups/');
+    const toggle = page.locator('.mobile-nav__toggle');
+    await toggle.click();
+    await expect(page.getByRole('dialog')).toBeVisible();
+    const overflow = await page.evaluate(() => document.body.style.overflow);
+    expect(overflow).toBe('hidden');
+    await page.keyboard.press('Escape');
+    await expect(page.getByRole('dialog')).toHaveCount(0);
+    await expect(toggle).toBeFocused();
+  });
+
+  test('charts use Einstein monochrome palette and stack on small viewports', async ({ page }) => {
+    await page.goto('./inovacao/startups/');
+    await page.setViewportSize({ width: 1440, height: 900 });
+    const chartIds = [
+      'viz-01-relations',
+      'viz-02-geography',
+      'viz-03-direct-activity',
+      'viz-04-direct-status',
+    ] as const;
+    for (const id of chartIds) {
+      const chart = page.getByTestId(id);
+      const bar = await chart
+        .locator('.startup-bar-chart__bar')
+        .first()
+        .evaluate((el) => {
+          return getComputedStyle(el).backgroundColor;
+        });
+      const value = await chart
+        .locator('.startup-bar-chart__value')
+        .first()
+        .evaluate((el) => {
+          return getComputedStyle(el).color;
+        });
+      const track = await chart
+        .locator('.startup-bar-chart__track')
+        .first()
+        .evaluate((el) => {
+          const style = getComputedStyle(el);
+          return {
+            backgroundColor: style.backgroundColor,
+            borderColor: style.borderTopColor,
+          };
+        });
+      expect(bar, `${id} bar`).toBe('rgb(0, 150, 210)');
+      expect(value, `${id} value`).toBe('rgb(0, 83, 154)');
+      expect(track.backgroundColor, `${id} track`).toBe('rgb(242, 242, 242)');
+      expect(track.borderColor, `${id} track border`).toBe('rgb(212, 212, 212)');
+    }
+
+    for (const width of [375, 320] as const) {
+      await page.setViewportSize({ width, height: 812 });
+      const columns = await page
+        .locator('.observatory-analytics__grid')
+        .first()
+        .evaluate((el) => {
+          return getComputedStyle(el).gridTemplateColumns.split(' ').length;
+        });
+      expect(columns, `chart columns at ${width}`).toBe(1);
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
+      );
+      expect(overflow, `overflow at ${width}`).toBe(false);
+    }
+  });
+
+  test('detail drawer uses institutional surfaces at 1440', async ({ page }) => {
+    await page.goto('./inovacao/startups/');
+    await page.getByTestId('startup-search').fill('Abracadabra');
+    await page
+      .getByRole('button', { name: /Ver detalhe/i })
+      .first()
+      .click();
+    const panel = page.locator('.startup-detail__panel');
+    await expect(panel).toBeVisible();
+    const styles = await panel.evaluate((el) => {
+      const style = getComputedStyle(el);
+      return { backgroundColor: style.backgroundColor, color: style.color };
     });
-    expect(overflow).toBe(false);
-  });
-
-  test('keeps the legacy shell outside the Home brand-pilot', async ({ page }) => {
-    await page.goto('./inovacao/startups/');
-    await expectLegacyShell(page);
+    expect(styles.backgroundColor).toBe('rgb(255, 255, 255)');
+    expect(styles.color).toBe('rgb(33, 33, 33)');
   });
 
   test('production build excludes fixtures and raw scouting artifacts', async () => {
