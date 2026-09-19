@@ -1,25 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <title>GSD Dashboard</title>
-  <path
-    d="M6.5 26.5C10.5 20.5 13.5 16 16.5 12"
-    stroke="#00539A"
-    stroke-width="2.25"
-    stroke-linecap="round"
-  />
-  <path
-    d="M16.5 12C20.5 8 24.25 6.25 28 5.25"
-    stroke="#00539A"
-    stroke-width="2.25"
-    stroke-linecap="round"
-  />
-  <path
-    d="M16.5 12C19.75 14.25 23.5 16.25 27.25 18.25"
-    stroke="#0096D2"
-    stroke-width="2.25"
-    stroke-linecap="round"
-  />
-  <circle cx="16.5" cy="12" r="2.15" fill="#0096D2" />
-  <circle cx="6.5" cy="26.5" r="1.7" fill="#00539A" />
-  <circle cx="28" cy="5.25" r="1.7" fill="#00539A" />
-  <circle cx="27.25" cy="18.25" r="1.7" fill="#0096D2" />
+<svg width="1608" height="1608" viewBox="0 0 1608 1608" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M263.379 665.413L106.475 403.884C38.7385 521.715 0 658.334 0 804C0 1248.04 359.962 1608 803.999 1608L652.496 1341.15C417.959 1275.14 246.033 1059.65 246.033 804.001C246.033 756.16 252.054 709.725 263.379 665.413Z" fill="url(#paint0_radial_293_378)"/>
+<path d="M1361.97 804C1361.97 757.034 1356.16 711.422 1345.24 667.844L1501.53 403.889C1569.26 521.719 1608 658.336 1608 804C1608 1248.04 1248.04 1608 803.999 1608L958.156 1340.4C1191.34 1273.51 1361.97 1058.68 1361.97 804Z" fill="url(#paint1_radial_293_378)"/>
+<path d="M106.475 403.884C245.22 162.529 505.63 0 804 0C1102.37 0 1362.78 162.531 1501.53 403.889L1192.9 403.89C1092.4 306.195 955.226 246.033 804 246.033C652.777 246.033 515.606 306.192 415.112 403.883L106.475 403.884Z" fill="url(#paint2_radial_293_378)"/>
+<defs>
+<radialGradient id="paint0_radial_293_378" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(804 1493) rotate(-90) scale(1733.5 1733.5)">
+<stop stop-color="#00539A"/>
+<stop offset="0.6" stop-color="#0096D2"/>
+<stop offset="0.85" stop-color="#00DBFF"/>
+</radialGradient>
+<radialGradient id="paint1_radial_293_378" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(804 1493) rotate(-90) scale(1733.5 1733.5)">
+<stop stop-color="#00539A"/>
+<stop offset="0.6" stop-color="#0096D2"/>
+<stop offset="0.85" stop-color="#00DBFF"/>
+</radialGradient>
+<radialGradient id="paint2_radial_293_378" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(804 1493) rotate(-90) scale(1733.5 1733.5)">
+<stop stop-color="#00539A"/>
+<stop offset="0.6" stop-color="#0096D2"/>
+<stop offset="0.85" stop-color="#00DBFF"/>
+</radialGradient>
+</defs>
 </svg>
