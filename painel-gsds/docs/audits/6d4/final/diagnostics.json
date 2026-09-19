@@ -1,0 +1,657 @@
+{
+  "facts": {
+    "baselineSha": "59f22297d26fdf20556b889e77dfa5fe4650583a",
+    "branch": "cursor/iteracao-6d44-final-transversal-qa",
+    "workingTreeState": "uncommitted-test-and-audit-artifacts-only",
+    "assetHashes": {
+      "lockup": "75002e60572743ba2c6a408e2d8cb5c4eee3a539abcb7d348245b90f59188443",
+      "workSans": "1dd49afc07fb2231b2ff686cbf007725fb2742271bb1f28ebd98f22a0d817343",
+      "workSansOfl": "749aca05078664ce682dce1b1b10096ac397cb088c1a6df4e1bb56f0092a9272",
+      "favicon": "b033677f20a9ca7de88bbd374861923da261de403ca8d12cb0d3d3da5443be05"
+    },
+    "sotHashes": {
+      "socio": "489fd652f5ce6853908f59c18745c18282a65e946af59ab4dff3a142c210c3d2",
+      "medical": "37e3fbea2513ff57f42937273622fee8592ce1d9df955c7467ef78f947866389",
+      "designSystem": "634a782dedac32d63b20fb7988e1bdc0c39db9c41187cbe92c2e5113cb2a7bd6",
+      "inventory": "266a341bf7f3d2e92d247b56554958edd027b4607db98642577c05da8923ae5c"
+    },
+    "snapshot": {
+      "organizations": 120,
+      "assessments": 121,
+      "sources": 217,
+      "products": 0,
+      "checksum": "4e72dfe49fce8b06ac8ad1379cf7cc9dc83943b56d969b15693d6bacbd3fe75c"
+    },
+    "routeMatrix": {
+      "home": {
+        "brandPilot": true,
+        "glycogenBranch": 0,
+        "evidenceBadge": 0
+      },
+      "clinical": {
+        "brandPilot": true,
+        "glycogenBranch": 0,
+        "evidenceBadge": 0
+      },
+      "socio": {
+        "brandPilot": true,
+        "glycogenBranch": 0,
+        "evidenceBadge": 0
+      },
+      "observatory": {
+        "brandPilot": true,
+        "glycogenBranch": 0,
+        "evidenceBadge": 0
+      }
+    },
+    "fonts": {
+      "home": {
+        "h1": "\"Work Sans\", Montserrat, Arial, sans-serif",
+        "body": "Inter, Montserrat, Arial, sans-serif"
+      },
+      "clinical": {
+        "h1": "\"Work Sans\", Montserrat, Arial, sans-serif",
+        "body": "Inter, Montserrat, Arial, sans-serif"
+      },
+      "socio": {
+        "h1": "\"Work Sans\", Montserrat, Arial, sans-serif",
+        "body": "Inter, Montserrat, Arial, sans-serif"
+      },
+      "observatory": {
+        "h1": "\"Work Sans\", Montserrat, Arial, sans-serif",
+        "body": "Inter, Montserrat, Arial, sans-serif"
+      }
+    },
+    "lockupCount": {
+      "home": 1,
+      "clinical": 1,
+      "socio": 1,
+      "observatory": 1
+    },
+    "brandMarkCount": {
+      "home": 0,
+      "clinical": 0,
+      "socio": 0,
+      "observatory": 0
+    },
+    "favicon": {
+      "home": "/brand/gsd-favicon.svg",
+      "clinical": "/brand/gsd-favicon.svg",
+      "socio": "/brand/gsd-favicon.svg",
+      "observatory": "/brand/gsd-favicon.svg"
+    },
+    "researchHeader": {
+      "home": {
+        "count": 0,
+        "className": null,
+        "hasBrand": 0,
+        "hasExecutive": 0
+      },
+      "clinical": {
+        "count": 1,
+        "className": "research-header section-space research-header--brand",
+        "hasBrand": 1,
+        "hasExecutive": 0
+      },
+      "socio": {
+        "count": 1,
+        "className": "research-header section-space research-header--brand",
+        "hasBrand": 1,
+        "hasExecutive": 0
+      },
+      "observatory": {
+        "count": 1,
+        "className": "research-header section-space research-header--brand",
+        "hasBrand": 1,
+        "hasExecutive": 0
+      }
+    },
+    "noticeCount": {
+      "home": {
+        "researchHeaderNotice": 0,
+        "footerNote": 0
+      },
+      "clinical": {
+        "researchHeaderNotice": 1,
+        "footerNote": 0
+      },
+      "socio": {
+        "researchHeaderNotice": 0,
+        "footerNote": 0
+      },
+      "observatory": {
+        "researchHeaderNotice": 0,
+        "footerNote": 0
+      }
+    },
+    "navMatrix": {
+      "home": {
+        "320": {
+          "desktopDisplay": "none",
+          "toggleVisible": true
+        },
+        "375": {
+          "desktopDisplay": "none",
+          "toggleVisible": true
+        },
+        "768": {
+          "desktopDisplay": "none",
+          "toggleVisible": true
+        },
+        "1024": {
+          "desktopDisplay": "none",
+          "toggleVisible": true
+        },
+        "1152": {
+          "desktopDisplay": "block",
+          "toggleVisible": false
+        },
+        "1440": {
+          "desktopDisplay": "block",
+          "toggleVisible": false
+        }
+      },
+      "clinical": {
+        "320": {
+          "desktopDisplay": "none",
+          "toggleVisible": true
+        },
+        "375": {
+          "desktopDisplay": "none",
+          "toggleVisible": true
+        },
+        "768": {
+          "desktopDisplay": "none",
+          "toggleVisible": true
+        },
+        "1024": {
+          "desktopDisplay": "none",
+          "toggleVisible": true
+        },
+        "1152": {
+          "desktopDisplay": "block",
+          "toggleVisible": false
+        },
+        "1440": {
+          "desktopDisplay": "block",
+          "toggleVisible": false
+        }
+      },
+      "socio": {
+        "320": {
+          "desktopDisplay": "none",
+          "toggleVisible": true
+        },
+        "375": {
+          "desktopDisplay": "none",
+          "toggleVisible": true
+        },
+        "768": {
+          "desktopDisplay": "none",
+          "toggleVisible": true
+        },
+        "1024": {
+          "desktopDisplay": "none",
+          "toggleVisible": true
+        },
+        "1152": {
+          "desktopDisplay": "block",
+          "toggleVisible": false
+        },
+        "1440": {
+          "desktopDisplay": "block",
+          "toggleVisible": false
+        }
+      },
+      "observatory": {
+        "320": {
+          "desktopDisplay": "none",
+          "toggleVisible": true
+        },
+        "375": {
+          "desktopDisplay": "none",
+          "toggleVisible": true
+        },
+        "768": {
+          "desktopDisplay": "none",
+          "toggleVisible": true
+        },
+        "1024": {
+          "desktopDisplay": "none",
+          "toggleVisible": true
+        },
+        "1152": {
+          "desktopDisplay": "block",
+          "toggleVisible": false
+        },
+        "1440": {
+          "desktopDisplay": "block",
+          "toggleVisible": false
+        }
+      }
+    },
+    "bodyOverflow": {
+      "home": {
+        "320": false,
+        "375": false,
+        "768": false,
+        "1024": false,
+        "1152": false,
+        "1440": false
+      },
+      "clinical": {
+        "320": false,
+        "375": false,
+        "768": false,
+        "1024": false,
+        "1152": false,
+        "1440": false
+      },
+      "socio": {
+        "320": false,
+        "375": false,
+        "768": false,
+        "1024": false,
+        "1152": false,
+        "1440": false
+      },
+      "observatory": {
+        "320": false,
+        "375": false,
+        "768": false,
+        "1024": false,
+        "1152": false,
+        "1440": false
+      }
+    },
+    "axe": {
+      "home": {
+        "320": [],
+        "375": [],
+        "1440": []
+      },
+      "clinical": {
+        "320": [],
+        "375": [],
+        "1440": []
+      },
+      "socio": {
+        "320": [],
+        "375": [],
+        "1440": []
+      },
+      "observatory": {
+        "320": [],
+        "375": [],
+        "1440": []
+      }
+    },
+    "consoleErrors": [],
+    "pageErrors": [],
+    "failedSameOriginRequests": [],
+    "sameOriginStatus400": [],
+    "forbiddenPublicStrings": {
+      "home": [],
+      "clinical": [],
+      "socio": [],
+      "observatory": []
+    },
+    "fontNetwork": {
+      "externalGoogleFonts": [],
+      "gstatic": []
+    },
+    "identityDrift": {
+      "home": [
+        {
+          "tag": "BODY",
+          "backgroundImage": "none"
+        },
+        {
+          "tag": "HEADER",
+          "backgroundImage": "none"
+        },
+        {
+          "tag": "H1",
+          "backgroundImage": "none"
+        }
+      ],
+      "clinical": [
+        {
+          "tag": "BODY",
+          "backgroundImage": "none"
+        },
+        {
+          "tag": "HEADER",
+          "backgroundImage": "none"
+        },
+        {
+          "tag": "H1",
+          "backgroundImage": "none"
+        }
+      ],
+      "socio": [
+        {
+          "tag": "BODY",
+          "backgroundImage": "none"
+        },
+        {
+          "tag": "HEADER",
+          "backgroundImage": "none"
+        },
+        {
+          "tag": "H1",
+          "backgroundImage": "none"
+        }
+      ],
+      "observatory": [
+        {
+          "tag": "BODY",
+          "backgroundImage": "none"
+        },
+        {
+          "tag": "HEADER",
+          "backgroundImage": "none"
+        },
+        {
+          "tag": "H1",
+          "backgroundImage": "none"
+        }
+      ]
+    },
+    "sameOriginLinks": [
+      {
+        "route": "home",
+        "leakedInternal": [],
+        "hrefs": [
+          "#conteudo-principal",
+          "/",
+          "/",
+          "/analises/bases-clinicas/",
+          "/analises/impacto-socioeconomico/",
+          "/inovacao/startups/",
+          "/#problema",
+          "/#metodologia",
+          "/analises/bases-clinicas/",
+          "/analises/impacto-socioeconomico/",
+          "/inovacao/startups/"
+        ]
+      },
+      {
+        "route": "clinical",
+        "leakedInternal": [],
+        "hrefs": [
+          "#conteudo-principal",
+          "/",
+          "/",
+          "/analises/bases-clinicas/",
+          "/analises/impacto-socioeconomico/",
+          "/inovacao/startups/",
+          "/",
+          "#visao-geral",
+          "#metabolismo",
+          "#padroes-clinicos",
+          "#tipos-e-subtipos",
+          "#nomenclatura",
+          "#orgaos",
+          "#epidemiologia",
+          "#diagnostico",
+          "#manejo",
+          "#terapias-emergentes",
+          "#lacunas",
+          "#limitacoes-e-fontes"
+        ]
+      },
+      {
+        "route": "socio",
+        "leakedInternal": [],
+        "hrefs": [
+          "#conteudo-principal",
+          "/",
+          "/",
+          "/analises/bases-clinicas/",
+          "/analises/impacto-socioeconomico/",
+          "/inovacao/startups/",
+          "/",
+          "#carga",
+          "#cuidador",
+          "#custos",
+          "#brasil",
+          "#segmentos",
+          "#sizing",
+          "#lacunas-evidencia",
+          "#limitacoes-e-fontes"
+        ]
+      },
+      {
+        "route": "observatory",
+        "leakedInternal": [],
+        "hrefs": [
+          "#conteudo-principal",
+          "/",
+          "/",
+          "/analises/bases-clinicas/",
+          "/analises/impacto-socioeconomico/",
+          "/inovacao/startups/",
+          "/"
+        ]
+      }
+    ],
+    "tableWraps": {
+      "clinical": {
+        "overflowX": "auto",
+        "clientWidth": 278,
+        "scrollWidth": 371,
+        "tabIndex": 0
+      },
+      "socio": {
+        "overflowX": "auto",
+        "clientWidth": 278,
+        "scrollWidth": 698,
+        "tabIndex": 0
+      }
+    },
+    "chartCounts": {
+      "viz01Text": "Organizações por relação com GSDs Contagem de organizações únicas por tipo de relação. Direta às GSDs 28 Adjacente às GSDs 81 Suporte ao ecossistema 0 Relevância não confirmada 11 Uma organização é contada uma vez em cada relação que possui. Na base atual, nenhuma organização aparece em mais de uma categoria de relação.",
+      "viz02Text": "Organizações por escopo geográfico Incidência de escopos Brasil e Global entre as organizações publicadas. Brasil 33 Global 88 Brasil e Global não são categorias mutuamente exclusivas: uma organização aparece nos dois escopos.",
+      "viz03Text": "Atividade GSD das organizações com relação direta Atividade GSD atual 13 Atividade atual incerta 4 Histórica 11",
+      "viz04Text": "Status corporativo das organizações com relação direta Status dos 28 com relação direta. Startup / privada 8 Biotecnologia de capital aberto 9 Adquirida ou inativa 9 Status atual incerto 2",
+      "contains": {
+        "adjacent81": true,
+        "direct28": true,
+        "unconfirmed11": true,
+        "ecosystem0": true,
+        "brazil33": true,
+        "global88": true,
+        "current13": true,
+        "uncertain4": true,
+        "historical11": true,
+        "private8": true,
+        "public9": true,
+        "acquired9": true,
+        "unresolved2": true
+      }
+    },
+    "screenshotHashes": {
+      "home-1440.png": "ae8d13f4fffe79c5083ade476442eee02fe3eeaba978f73192e534977b2426b4",
+      "home-320.png": "243a3dea21b3e62a92d17231ddc353740a1470ba143aa150094399420a9c355b",
+      "clinical-1440.png": "b5ce8d4ee6614b0f59cbf357931fa264b433eea110247c5a64aa09f7343a7911",
+      "clinical-320.png": "553370b7559efafa04365aaf1af8c304dc7efcbbcae3fc4baa656479747fa2bc",
+      "socio-1440.png": "e1893095280c5281c5d5b011013c587f0969c9a120a138fde094a4c788553fc8",
+      "socio-320.png": "3bc0174e4caf057cf2fa655bf6fb80f188ee609e05da5fbd08774302c3f72f2f",
+      "observatory-1440.png": "41cc9a445066170ef0d79bef4cf540120ac6724786ecba76f6262f5c27bb509a",
+      "observatory-320.png": "bbac3b522dfe6c7f1b394f77d3087eee553f1c772cdbc5e3c8cf7a0faf42f362",
+      "menu-320.png": "c606759c180375d9e190f193502662bf46871f9926850d02acdfbe6c5adb7fe9"
+    },
+    "menu320": {
+      "width": 320,
+      "viewport": 320,
+      "backgroundColor": "rgb(255, 255, 255)",
+      "overflow": "hidden",
+      "alpha": 1
+    },
+    "sameOriginLinkStatuses": [
+      {
+        "href": "http://127.0.0.1:4321/#conteudo-principal",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/bases-clinicas/",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/impacto-socioeconomico/",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/inovacao/startups/",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/#problema",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/#metodologia",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/bases-clinicas/#conteudo-principal",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/bases-clinicas/#visao-geral",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/bases-clinicas/#metabolismo",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/bases-clinicas/#padroes-clinicos",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/bases-clinicas/#tipos-e-subtipos",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/bases-clinicas/#nomenclatura",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/bases-clinicas/#orgaos",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/bases-clinicas/#epidemiologia",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/bases-clinicas/#diagnostico",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/bases-clinicas/#manejo",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/bases-clinicas/#terapias-emergentes",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/bases-clinicas/#lacunas",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/bases-clinicas/#limitacoes-e-fontes",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/impacto-socioeconomico/#conteudo-principal",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/impacto-socioeconomico/#carga",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/impacto-socioeconomico/#cuidador",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/impacto-socioeconomico/#custos",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/impacto-socioeconomico/#brasil",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/impacto-socioeconomico/#segmentos",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/impacto-socioeconomico/#sizing",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/impacto-socioeconomico/#lacunas-evidencia",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/analises/impacto-socioeconomico/#limitacoes-e-fontes",
+        "status": 200
+      },
+      {
+        "href": "http://127.0.0.1:4321/inovacao/startups/#conteudo-principal",
+        "status": 200
+      }
+    ],
+    "sameOrigin404": [],
+    "screenshotComparison": {
+      "home1440Approved": "ae8d13f4fffe79c5083ade476442eee02fe3eeaba978f73192e534977b2426b4",
+      "clinical1440Approved": "b5ce8d4ee6614b0f59cbf357931fa264b433eea110247c5a64aa09f7343a7911",
+      "socio1440Approved": "e1893095280c5281c5d5b011013c587f0969c9a120a138fde094a4c788553fc8",
+      "observatory1440Prior6d43": "b1f7db6c57b851f383aeb2b96eeec3be5ac6cde523e7ce7da0c3e3a9d1791745",
+      "observatory320Prior6d43Top": "bbac3b522dfe6c7f1b394f77d3087eee553f1c772cdbc5e3c8cf7a0faf42f362",
+      "home1440Match": true,
+      "clinical1440Match": true,
+      "socio1440Match": true,
+      "observatory1440Match": false,
+      "observatory320Match": true
+    },
+    "axeObservatoryInteractive": {
+      "filters-375": [],
+      "drawer-375": []
+    },
+    "qa": {
+      "formatCheck": "PASS",
+      "lint": "PASS",
+      "typecheck": "PASS",
+      "unit": "82 passed (13 files)",
+      "dataValidate": "PASS",
+      "buildRoot": "PASS",
+      "buildSubpath": "PASS",
+      "e2eRoot": "69 passed",
+      "e2eSubpath": "69 passed",
+      "gitDiffCheck": "PASS",
+      "gitDiffCheckScope": "baseline diff including approved new files via intent-to-add; index reset afterwards",
+      "zeroProductionChanges": true,
+      "transversalRegressionTestAdded": true
+    }
+  },
+  "inferences": [
+    "observatory-1440.png SHA-256 diverged from the 6D.4.3 full-page capture (b1f7db6c… vs 41cc9a44…). Visual inspection of both PNGs shows the same lockup, Work Sans H1, explorer list, charts and footer; no content, layout or brand-shell regression identified. Divergence is treated as non-deterministic raster of a long full-page PNG. observatory-320.png matches the 6D.4.3 top capture byte-for-byte (bbac3b52…). Historical 6D.4.3 screenshots were not replaced.",
+    "axe-core violations=[] at all severities for Home, Clínica, Socio and Observatório at 1440/375/320 (closed pages). Observatory filters-375 and drawer-375 also returned []. No minor/moderate violations remain to triage as production defects. Existing Observatório e2e still gates serious/critical across states and was not reverted to violations=[].",
+    "ZERO_PRODUCTION_CHANGES: no src/** or public/** edits. TRANSVERSAL_REGRESSION_TEST_ADDED in tests/e2e/brand-rollout.spec.ts."
+  ],
+  "pendings": [
+    "FORMAL_INSTITUTIONAL_AUTHORIZATION_PENDING",
+    "PENDING_OG_ASSET",
+    "FAVICON_DEFERRED_REFINEMENT"
+  ]
+}
