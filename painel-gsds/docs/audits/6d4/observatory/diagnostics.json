@@ -1,0 +1,213 @@
+{
+  "observatory1440": {
+    "overflow": false,
+    "bodyClass": "app-shell surface-editorial brand-pilot",
+    "h1": {
+      "fontFamily": "\"Work Sans\", Montserrat, Arial, sans-serif",
+      "color": "rgb(33, 33, 33)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderLeftColor": "rgb(33, 33, 33)",
+      "borderBottomColor": "rgb(33, 33, 33)"
+    },
+    "body": {
+      "fontFamily": "Inter, Montserrat, Arial, sans-serif",
+      "color": "rgb(33, 33, 33)",
+      "backgroundColor": "rgb(242, 242, 242)",
+      "borderLeftColor": "rgb(33, 33, 33)",
+      "borderBottomColor": "rgb(33, 33, 33)"
+    },
+    "header": {
+      "fontFamily": "Inter, Montserrat, Arial, sans-serif",
+      "color": "rgb(33, 33, 33)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderLeftColor": "rgb(33, 33, 33)",
+      "borderBottomColor": "rgb(212, 212, 212)"
+    },
+    "researchHeader": {
+      "fontFamily": "Inter, Montserrat, Arial, sans-serif",
+      "color": "rgb(84, 84, 84)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderLeftColor": "rgb(84, 84, 84)",
+      "borderBottomColor": "rgb(84, 84, 84)"
+    },
+    "lockupCount": 1,
+    "brandMarkCount": 0,
+    "noticeCount": 0,
+    "footerNoteCount": 0,
+    "favicon": "/brand/gsd-favicon.svg",
+    "researchHeaderClass": "research-header section-space research-header--brand",
+    "nav": {
+      "desktopDisplay": "block",
+      "toggleVisible": false
+    },
+    "charts": {
+      "viz-01-relations": {
+        "bar": "rgb(0, 150, 210)",
+        "value": "rgb(0, 83, 154)",
+        "track": "rgb(242, 242, 242)",
+        "trackBorder": "rgb(212, 212, 212)",
+        "gridColumns": 2
+      },
+      "viz-02-geography": {
+        "bar": "rgb(0, 150, 210)",
+        "value": "rgb(0, 83, 154)",
+        "track": "rgb(242, 242, 242)",
+        "trackBorder": "rgb(212, 212, 212)",
+        "gridColumns": 2
+      },
+      "viz-03-direct-activity": {
+        "bar": "rgb(0, 150, 210)",
+        "value": "rgb(0, 83, 154)",
+        "track": "rgb(242, 242, 242)",
+        "trackBorder": "rgb(212, 212, 212)",
+        "gridColumns": 2
+      },
+      "viz-04-direct-status": {
+        "bar": "rgb(0, 150, 210)",
+        "value": "rgb(0, 83, 154)",
+        "track": "rgb(242, 242, 242)",
+        "trackBorder": "rgb(212, 212, 212)",
+        "gridColumns": 2
+      }
+    },
+    "relationBadge": {
+      "color": "rgb(0, 83, 154)",
+      "borderColor": "rgb(0, 150, 210)",
+      "backgroundColor": "rgb(242, 242, 242)"
+    }
+  },
+  "observatoryDetail1440": {
+    "backgroundColor": "rgb(255, 255, 255)",
+    "color": "rgb(33, 33, 33)",
+    "width": 512
+  },
+  "observatory1152": {
+    "overflow": false,
+    "header": {
+      "desktopDisplay": "block",
+      "toggleVisible": false
+    },
+    "lockupCount": 1
+  },
+  "observatory1024": {
+    "overflow": false,
+    "header": {
+      "desktopDisplay": "none",
+      "toggleVisible": true
+    },
+    "lockupCount": 1
+  },
+  "observatory768": {
+    "overflow": false,
+    "header": {
+      "desktopDisplay": "none",
+      "toggleVisible": true
+    },
+    "lockupCount": 1
+  },
+  "observatory375": {
+    "overflow": false,
+    "h1": {
+      "fontFamily": "\"Work Sans\", Montserrat, Arial, sans-serif",
+      "color": "rgb(33, 33, 33)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderLeftColor": "rgb(33, 33, 33)",
+      "borderBottomColor": "rgb(33, 33, 33)"
+    },
+    "header": {
+      "desktopDisplay": "none",
+      "toggleVisible": true
+    },
+    "chartColumns": 1
+  },
+  "observatoryMenu375": {
+    "width": 375,
+    "viewport": 375,
+    "backgroundColor": "rgb(255, 255, 255)",
+    "overflow": "hidden",
+    "alpha": 1
+  },
+  "observatoryFilters375": {
+    "overflow": false,
+    "expanded": "true"
+  },
+  "observatoryDetail375": {
+    "backgroundColor": "rgb(255, 255, 255)",
+    "color": "rgb(33, 33, 33)",
+    "width": 375,
+    "overflowY": "auto"
+  },
+  "observatory320": {
+    "overflow": false,
+    "h1": {
+      "fontFamily": "\"Work Sans\", Montserrat, Arial, sans-serif",
+      "color": "rgb(33, 33, 33)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderLeftColor": "rgb(33, 33, 33)",
+      "borderBottomColor": "rgb(33, 33, 33)"
+    },
+    "header": {
+      "desktopDisplay": "none",
+      "toggleVisible": true
+    },
+    "chartColumns": 1
+  },
+  "observatoryMenu320": {
+    "width": 320,
+    "viewport": 320,
+    "backgroundColor": "rgb(255, 255, 255)",
+    "overflow": "hidden",
+    "alpha": 1
+  },
+  "observatoryFilters320": {
+    "overflow": false,
+    "expanded": "true"
+  },
+  "observatoryDetail320": {
+    "backgroundColor": "rgb(255, 255, 255)",
+    "color": "rgb(33, 33, 33)",
+    "width": 320,
+    "overflowY": "auto"
+  },
+  "homeControl1440": {
+    "overflow": false,
+    "bodyClass": "app-shell surface-editorial brand-pilot",
+    "lockupCount": 1,
+    "evidenceBadgeCount": 0,
+    "h1": {
+      "fontFamily": "\"Work Sans\", Montserrat, Arial, sans-serif",
+      "color": "rgb(33, 33, 33)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderLeftColor": "rgb(33, 33, 33)",
+      "borderBottomColor": "rgb(33, 33, 33)"
+    }
+  },
+  "clinicalControl1440": {
+    "overflow": false,
+    "bodyClass": "app-shell surface-editorial brand-pilot",
+    "lockupCount": 1,
+    "noticeCount": 1,
+    "h1": {
+      "fontFamily": "\"Work Sans\", Montserrat, Arial, sans-serif",
+      "color": "rgb(33, 33, 33)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderLeftColor": "rgb(33, 33, 33)",
+      "borderBottomColor": "rgb(33, 33, 33)"
+    },
+    "researchHeaderClass": "research-header section-space research-header--brand"
+  },
+  "socioControl1440": {
+    "overflow": false,
+    "bodyClass": "app-shell surface-editorial brand-pilot",
+    "lockupCount": 1,
+    "noticeCount": 0,
+    "h1": {
+      "fontFamily": "\"Work Sans\", Montserrat, Arial, sans-serif",
+      "color": "rgb(33, 33, 33)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderLeftColor": "rgb(33, 33, 33)",
+      "borderBottomColor": "rgb(33, 33, 33)"
+    },
+    "researchHeaderClass": "research-header section-space research-header--brand"
+  }
+}
