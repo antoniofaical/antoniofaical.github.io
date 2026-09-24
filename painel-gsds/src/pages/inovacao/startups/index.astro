@@ -1,38 +1,18 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import PageContainer from '../../../components/layout/PageContainer.astro';
 import Breadcrumbs from '../../../components/research/Breadcrumbs.astro';
 import ResearchHeader from '../../../components/research/ResearchHeader.astro';
-import StartupExplorer from '../../../components/startups/StartupExplorer';
-import StartupEmptyState from '../../../components/startups/StartupEmptyState';
-import StartupCoverageNotice from '../../../components/startups/StartupCoverageNotice';
-import ObservatoryAnalytics from '../../../components/startups/ObservatoryAnalytics';
-import { loadPublishedSnapshot } from '../../../lib/startups/loadPublishedSnapshot';
+import StartupObservatory from '../../../components/startups/StartupObservatory';
+import { DEFAULT_GSD_API_BASE_URL } from '../../../lib/startups/startupApi';
 import { withBase } from '../../../lib/paths/withBase';
-import { startupCoverageStatusLabels } from '../../../data/startups/taxonomies';
 
-const snapshot = loadPublishedSnapshot();
-const isEmpty =
-  snapshot.coverage.status === 'not-yet-populated' || snapshot.organizations.length === 0;
-const updatedAt = snapshot.publishedAt.slice(0, 10);
-
-const A30_ECHO =
-  /presença no recorte(?: direto)? não (?:equivale a um programa ativo hoje|significa programa GSD ativo hoje)/i;
-
-const coverageSummary = snapshot.coverage.summary
-  .replace(/\s*;?\s*presença no recorte não equivale a um programa ativo hoje\.?/i, '.')
-  .replace(/\.\s*\./g, '.')
-  .replace(/\s{2,}/g, ' ')
-  .trim();
-
-const coverageLimitations = snapshot.coverage.limitations.filter((item) => !A30_ECHO.test(item));
+const apiBaseUrl = import.meta.env.PUBLIC_GSD_API_BASE_URL ?? DEFAULT_GSD_API_BASE_URL;
 ---
 
 <BaseLayout
   title="Observatório de startups em glicogenoses"
-  description="Organizações com relevância direta, adjacente ou ainda não confirmada às glicogenoses. Base pública estática, sujeita a atualização editorial."
+  description="Organizações com relevância direta, adjacente ou ainda não confirmada às glicogenoses. Base pública consultada dinamicamente na plataforma de dados."
   currentPath={withBase('inovacao/startups/')}
-  lastReviewedAt={updatedAt}
   brandPilot={true}
   favicon="brand/gsd-favicon.svg"
 >
@@ -52,87 +32,8 @@ const coverageLimitations = snapshot.coverage.limitations.filter((item) => !A30_
       eyebrow="Observatório"
       title="Observatório de startups em glicogenoses"
       summary="Mapeamento curado — não exaustivo — de organizações com relações diretas, adjacentes e de relevância ainda não confirmada às GSDs."
-      updatedAt={updatedAt}
-      cutoff={updatedAt}
     />
 
-    <section class="section-space surface-editorial" aria-labelledby="startup-explorer-title">
-      <PageContainer class="stack stack--lg">
-        <header class="stack stack--tight">
-          <h2 id="startup-explorer-title">Organizações publicadas</h2>
-        </header>
-
-        {
-          isEmpty ? (
-            <StartupEmptyState
-              publishedAt={snapshot.publishedAt}
-              summary={coverageSummary}
-              limitations={coverageLimitations}
-            />
-          ) : (
-            <StartupExplorer client:load snapshot={snapshot} />
-          )
-        }
-      </PageContainer>
-    </section>
-
-    {
-      !isEmpty && (
-        <section class="section-space">
-          <PageContainer>
-            <ObservatoryAnalytics snapshot={snapshot} />
-          </PageContainer>
-        </section>
-      )
-    }
-
-    {
-      !isEmpty && (
-        <section class="section-space" aria-label="Cobertura da base">
-          <PageContainer>
-            <StartupCoverageNotice
-              statusLabel={startupCoverageStatusLabels[snapshot.coverage.status]}
-              summary={coverageSummary}
-              limitations={coverageLimitations}
-            />
-          </PageContainer>
-        </section>
-      )
-    }
-
-    <section class="section-space" aria-labelledby="startup-about-data">
-      <PageContainer class="stack stack--md">
-        <h2 id="startup-about-data">Sobre os dados</h2>
-        <ul class="startup-page__notes">
-          <li>A base não é um censo nem um inventário global de organizações.</li>
-          <li>
-            Classificações direta / adjacente / ecossistema / relevância não confirmada e Brasil /
-            global pertencem às avaliações de relevância ligadas a cada organização — não são bases
-            separadas.
-          </li>
-          <li>
-            Os dados públicos são sujeitos a atualização editorial periódica quando uma nova base
-            publicada é selecionada. Última atualização:{' '}
-            <time datetime={snapshot.publishedAt}>{updatedAt}</time>.
-          </li>
-          <li>
-            Quando uma fonte pública está vinculada ao registro, ela aparece no detalhe da
-            organização. Alguns registros diretos ainda não possuem uma fonte pública vinculada
-            nesta versão.
-          </li>
-        </ul>
-      </PageContainer>
-    </section>
+    <StartupObservatory client:load apiBaseUrl={apiBaseUrl} />
   </main>
 </BaseLayout>
-
-<style>
-  .startup-page__notes {
-    margin: 0;
-    padding-left: 1.15rem;
-    display: grid;
-    gap: var(--space-2);
-    color: var(--ink-700);
-    max-width: 48rem;
-  }
-</style>

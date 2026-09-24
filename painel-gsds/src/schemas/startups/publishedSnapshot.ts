@@ -241,11 +241,4 @@ export const startupPublishedSnapshotSchema = z
     }
   });
 
-export const startupCurrentSelectorSchema = z.object({
-  currentSnapshotId: z.string().regex(/^snap-[a-z0-9-]+$/),
-  selectedAt: isoDateTime,
-  note: z.string().min(1),
-});
-
 export type StartupPublishedSnapshot = z.infer<typeof startupPublishedSnapshotSchema>;
-export type StartupCurrentSelector = z.infer<typeof startupCurrentSelectorSchema>;

@@ -1,72 +1,51 @@
-# Contrato de dados — Observatório de Startups (projeção pública)
+# Contrato de dados — Observatório de Startups
 
-## Escopo
+## Fronteira de runtime
 
-Contrato da **projeção pública** consumida pelo site estático. Não cobre staging, candidatos, `ResearchRun` nem `ChangeSet`.
+O dashboard consulta:
 
-## Artefatos
+```text
+GET https://api.antoniofaical.dev.br/v1/observatory/current
+```
 
-| Artefato          | Caminho                                        | Papel                                            |
-| ----------------- | ---------------------------------------------- | ------------------------------------------------ |
-| Seletor corrente  | `src/data/startups/published/current.json`     | Apenas `currentSnapshotId`, `selectedAt`, `note` |
-| Snapshot imutável | `src/data/startups/published/snapshots/*.json` | Corpo completo validado                          |
-| Taxonomias        | `src/data/startups/taxonomies.ts`              | Enums + rótulos PT                               |
-| Schemas           | `src/schemas/startups/*.ts`                    | Zod + tipos TypeScript                           |
-| Fixtures          | `tests/fixtures/startups/`                     | Somente testes; nunca no registry de produção    |
+A API devolve o snapshot publicado corrente. O cliente verifica `response.ok`, desserializa JSON e
+valida integralmente o payload com `startupPublishedSnapshotSchema`. Uma resposta inválida não é
+renderizada como dado público.
 
-## Resolução do snapshot corrente
+## Responsabilidades
 
-O loader de produção descobre **automaticamente**, em build time, todos os JSON em `published/snapshots/` (via `import.meta.glob`) e indexa pelo `id` interno de cada snapshot. Não há registry manual por arquivo.
+| Responsabilidade                                   | Local                                            |
+| -------------------------------------------------- | ------------------------------------------------ |
+| PostgreSQL, migrações, seeds e seleção corrente    | `antoniofaical/gsd-data-platform`                |
+| API pública somente leitura                        | `antoniofaical/gsd-data-platform`                |
+| Cliente HTTP e validação Zod                       | `src/lib/startups/startupApi.ts`                 |
+| Estado de carregamento, erro, retry e renderização | `src/components/startups/StartupObservatory.tsx` |
+| Taxonomias e rótulos de interface                  | `src/data/startups/taxonomies.ts`                |
+| Fixtures sintéticas                                | `tests/fixtures/startups/`                       |
 
-Publicar uma nova versão exige somente:
-
-1. novo arquivo imutável em `published/snapshots/`;
-2. atualização de `published/current.json` para o novo `currentSnapshotId`;
-3. `npm run data:validate` e demais gates.
-
-Fixtures sob `tests/fixtures/` ficam fora desse glob.
-
-### Semântica de datas (5B / 5C)
-
-- Brazil indirect (`snap-brazil-indirect-2026-08-14`): `lastReviewedAt` / `assessedAt` / `firstDiscoveredAt` = Evidence QA do baseline (`2026-08-13`); timestamps de geração 5B preservados no snapshot histórico.
-- Global indirect (projeção 5C): `firstDiscoveredAt` / `lastReviewedAt` / `assessedAt` = `2026-08-12` (baseline do pacote Global auditado).
-- Snapshot cumulativo 5C: `generatedAt` / `publishedAt` / `selectedAt` = instante UTC único da geração/seleção (`2026-08-18T12:37:11.000Z`).
-
-### Checksum (5B+)
-
-Quando `checksum` ≠ `reserved-not-computed`, o valor deve ser o SHA-256 do JSON canônico do snapshot **excluindo** o próprio campo `checksum`. `npm run data:validate` verifica essa igualdade.
+Não existem snapshots de produção nem seletor corrente em `src/data/startups/`.
 
 ## `StartupPublishedSnapshot`
 
-Campos mínimos: `id`, `schemaVersion`, `period`, `generatedAt`, `publishedAt`, `protocolVersion`, `previousSnapshotId?`, `coverage`, `counts`, `organizations`, `productsOrPrograms`, `relevanceAssessments`, `publicSources`, `checksum`.
+Campos mínimos: `id`, `schemaVersion`, `period`, `generatedAt`, `publishedAt`,
+`protocolVersion`, `previousSnapshotId?`, `coverage`, `counts`, `organizations`,
+`productsOrPrograms`, `relevanceAssessments`, `publicSources`, `checksum`.
 
-- `checksum` na 5A é placeholder documentado (`reserved-not-computed`), não um digest calculado.
-- `coverage.status = not-yet-populated` exige coleções vazias e comunica infraestrutura pronta sem censo.
-- A 5C publica `snap-indirect-cumulative-2026-08-18` (`coverage.status = partial`) preservando os snapshots históricos Brazil e empty.
-- A 5D / 5D.1 publica `snap-ecosystem-cumulative-direct-2026-08-24` adicionando 28 assessments `direct-gsd` com `directContext` opcional (status da organização, atividade GSD e papel no ativo separados). Confidence pode ser `not-assigned`. Assessments `direct-gsd` podem ter `evidenceRefs = []` quando não há URL pública mapeável; assessments não-diretas continuam exigindo ≥1. Organizações exclusivamente diretas podem não vincular `publicSources`.
+`counts.*` deve coincidir com o derivado das coleções. `coverage.status = not-yet-populated`
+não pode conter organizações. Referências entre organizações, avaliações, produtos e fontes são
+verificadas pelo schema.
 
-## Contagens
+## Cache e atualização
 
-`counts.*` deve coincidir com o derivado das coleções. Contagens zeradas no snapshot vazio descrevem o artefato, não “zero startups no mundo”.
+A API publica `ETag` e `Cache-Control`. O browser trata revalidação e cache. Quando o backend
+seleciona um novo snapshot, visitantes passam a recebê-lo sem novo build ou deploy do dashboard.
 
-No snapshot cumulativo, `counts.adjacentGsd` / `counts.brazil` / `counts.global` / `counts.directGsd` são **por assessment**. A UI consolida por organização (Saventic conta em Brazil e Global), então facetas organizacionais podem somar acima do total de organizações.
+## Configuração
 
-### `directContext` (5D / 5D.1)
+`PUBLIC_GSD_API_BASE_URL` pode substituir a origem da API no build. Se ausente, o cliente usa
+`https://api.antoniofaical.dev.br`.
 
-Campo opcional em `PublishedGSDRelevanceAssessment`, usado somente no mapeamento direto. Não colapsar `organizationStatus`, `currentGsdActivity` e `assetRole`. `HISTORICAL_OWNER` publica-se como `historical-owner` (Maze/Valerion); Kriya permanece `historical-association-ownership-unverified`. `OUTLICENSED` usa label público inequívoco (`Licenciado a terceiro`). Status operacional dos 28 não mapeia `ACQUIRED_OR_INACTIVE`→`acquired` nem `PRIVATE_STARTUP`→`apparently-active`.
+## Testes
 
-## Validação
-
-```bash
-npm run data:validate
-```
-
-Falha com exit ≠ 0 se o seletor apontar para snapshot ausente/inválido ou se algum snapshot publicado violar o schema.
-
-## Fronteira
-
-```text
-(futuro) bot/staging → revisão humana → PublishedSnapshot → build Astro → GitHub Pages
-```
-
-Na 5A apenas `PublishedSnapshot → dashboard` está implementado.
+Testes unitários usam apenas fixtures sintéticas. A validação dos snapshots reais, da importação
+relacional e da paridade da API pertence ao repositório de dados.

@@ -8,7 +8,7 @@ import {
   aggregateOrgGeographyIncidence,
   aggregateOrgRelationCounts,
 } from './aggregateObservatoryCharts';
-import { loadPublishedSnapshot, parseStartupPublishedSnapshot } from './loadPublishedSnapshot';
+import { parseStartupPublishedSnapshot } from './startupApi';
 import type { StartupPublishedSnapshot } from '../../schemas/startups/publishedSnapshot';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -22,77 +22,33 @@ function readSyntheticRaw(): StartupPublishedSnapshot {
   ) as StartupPublishedSnapshot;
 }
 
-describe('aggregateObservatoryCharts — baseline snapshot auditado', () => {
-  const snapshot = loadPublishedSnapshot();
+describe('aggregateObservatoryCharts — synthetic contract fixture', () => {
+  const snapshot = parseStartupPublishedSnapshot(readSyntheticRaw());
 
-  it('VIZ-01 relation incidence por unique organization = 81/28/11/0', () => {
+  it('counts unique organizations by relation', () => {
     const counts = aggregateOrgRelationCounts(snapshot);
     expect(counts).toEqual({
-      'adjacent-gsd': 81,
-      'direct-gsd': 28,
-      'relevance-unconfirmed': 11,
+      'adjacent-gsd': 1,
+      'direct-gsd': 1,
+      'relevance-unconfirmed': 0,
       'ecosystem-support': 0,
     });
-    // Não assume exclusividade futura: neste snapshot a soma coincide com n orgs.
-    expect(
-      counts['adjacent-gsd'] +
-        counts['direct-gsd'] +
-        counts['relevance-unconfirmed'] +
-        counts['ecosystem-support'],
-    ).toBe(120);
-    expect(snapshot.counts.adjacentGsd).toBe(82);
   });
 
-  it('VIZ-02 geography incidence = global 88 / brazil 33 / both 1', () => {
+  it('counts geography incidence independently', () => {
     const { counts, bothCount } = aggregateOrgGeographyIncidence(snapshot);
-    expect(counts.global).toBe(88);
-    expect(counts.brazil).toBe(33);
+    expect(counts.global).toBe(2);
+    expect(counts.brazil).toBe(1);
     expect(bothCount).toBe(1);
-    expect(counts.global + counts.brazil).toBeGreaterThan(snapshot.organizations.length);
   });
 
-  it('VIZ-03 activity dos 28 diretos = 13/4/11', () => {
+  it('isolates direct activity and organization status', () => {
     const result = aggregateDirectGsdActivityCounts(snapshot);
-    expect(result.directTotal).toBe(28);
-    expect(result.missingCount).toBe(0);
-    expect(result.counts).toEqual({
-      'confirmed-current': 13,
-      'current-uncertain': 4,
-      'historical-only': 11,
-    });
-  });
-
-  it('VIZ-04 status corporativo dos 28 diretos = 8/9/9/2', () => {
-    const result = aggregateDirectOrganizationStatusCounts(snapshot);
-    expect(result.directTotal).toBe(28);
-    expect(result.missingCount).toBe(0);
-    expect(result.counts).toEqual({
-      'private-startup': 8,
-      'public-biotech': 9,
-      'acquired-or-inactive': 9,
-      'identity-unresolved': 2,
-    });
-  });
-
-  it('Saventic: 1 org · 2 assessments · relation adjacent 1 · geo both', () => {
-    const saventicId = 'org-gsd-br-002';
-    const assessments = snapshot.relevanceAssessments.filter(
-      (a) => a.organizationId === saventicId,
-    );
-    expect(assessments).toHaveLength(2);
-    expect(new Set(assessments.map((a) => a.relationship))).toEqual(new Set(['adjacent-gsd']));
-    expect(new Set(assessments.flatMap((a) => a.geographicScopes))).toEqual(
-      new Set(['brazil', 'global']),
-    );
-
-    const relations = aggregateOrgRelationCounts(snapshot);
-    // Saventic contributes only once to adjacent despite 2 assessments.
-    expect(relations['adjacent-gsd']).toBe(81);
-
-    const geo = aggregateOrgGeographyIncidence(snapshot);
-    expect(geo.bothCount).toBe(1);
-    expect(geo.counts.brazil).toBe(33);
-    expect(geo.counts.global).toBe(88);
+    expect(result.directTotal).toBe(1);
+    expect(result.missingCount).toBe(1);
+    const status = aggregateDirectOrganizationStatusCounts(snapshot);
+    expect(status.directTotal).toBe(1);
+    expect(status.missingCount).toBe(1);
   });
 });
 

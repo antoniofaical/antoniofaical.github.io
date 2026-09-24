@@ -1,22 +1,11 @@
 # Painel Global de Inovação em Glicogenoses
 
-Fundação técnica e demonstração interna do Design System (Iteração 1).
+Dashboard público em Astro + TypeScript estrito, hospedado no Netlify sob
+`https://antoniofaical.dev.br/gsd/`.
 
-## Escopo desta iteração
-
-Inclui:
-
-- Astro estático + TypeScript estrito + React (ilhas);
-- tokens e componentes mínimos;
-- página interna `/design-system/`;
-- preservação das SoTs e do pacote de implementação.
-
-Não inclui:
-
-- Home final;
-- páginas científicas;
-- gráficos de dados reais;
-- deploy.
+O Observatório de startups é uma ilha React carregada no navegador. Ela consulta a API pública
+`https://api.antoniofaical.dev.br/v1/observatory/current` e valida a resposta com Zod antes de
+renderizar. Dados editoriais de organizações e snapshots não ficam no bundle do dashboard.
 
 ## Setup
 
@@ -40,15 +29,16 @@ npm run dev
 | `npm run test:e2e`     | Playwright          |
 | `npm run ci`           | pipeline local      |
 
-## GitHub Pages
+## Build e publicação
 
 `site` e `base` são parametrizáveis:
 
 ```bash
-SITE_URL=https://usuario.github.io BASE_PATH=/nome-do-repositorio/ npm run build
+SITE_URL=https://antoniofaical.dev.br BASE_PATH=/gsd/ npm run build
 ```
 
-Padrão local: `SITE_URL=https://example.github.io`, `BASE_PATH=/`.
+`PUBLIC_GSD_API_BASE_URL` é opcional; o padrão é `https://api.antoniofaical.dev.br`.
+O padrão local de `BASE_PATH` é `/`.
 
 ## Documentação
 
@@ -56,7 +46,8 @@ Padrão local: `SITE_URL=https://example.github.io`, `BASE_PATH=/`.
 - Pacote: `docs/implementation/`
 - Regras: `AGENTS.md`
 
-## Pendências conhecidas
+## Responsabilidade pelos dados
 
-- Fontes Manrope/Inter ainda não hospedadas localmente (fallbacks ativos).
-- Deploy Pages permanece desabilitado até aprovação.
+- Schemas e apresentação: este repositório.
+- Snapshots publicados, migrações, seeds e API: `antoniofaical/gsd-data-platform`.
+- Fixtures sintéticas: `tests/fixtures/startups/`, usadas somente em testes.

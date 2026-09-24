@@ -477,7 +477,7 @@ test.describe('observatorio startups', () => {
     await expect(
       page.getByRole('heading', { name: 'Organizações com relação direta (28)' }),
     ).toBeVisible();
-    await expect(page.getByText('Status dos 28 com relação direta.')).toBeVisible();
+    await expect(page.getByText('Status das organizações com relação direta.')).toBeVisible();
     const pageText = await page.locator('main').innerText();
     const a30 = 'Presença no mapeamento direto não implica programa atualmente ativo.';
     expect(pageText.split(a30).length - 1).toBe(1);
