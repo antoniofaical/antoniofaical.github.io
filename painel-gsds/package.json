@@ -18,8 +18,7 @@
     "typecheck": "astro check && tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "data:validate": "tsx scripts/validate-startup-data.ts",
-    "ci": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run data:validate && npm run build",
+    "ci": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build",
     "test:e2e": "playwright test"
   },
   "dependencies": {

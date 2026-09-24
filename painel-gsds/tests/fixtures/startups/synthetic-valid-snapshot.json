@@ -11,7 +11,7 @@
     "summary": "SYNTHETIC FIXTURE ONLY — not a real mapping of GSD startups. Names, URLs and claims are invented for automated tests.",
     "limitations": [
       "All organizations in this file are fictional (SYNTHETIC FIXTURE).",
-      "Do not import this snapshot into published/snapshots/.",
+      "Do not import this synthetic snapshot into production data.",
       "Counts describe the fixture only."
     ]
   },

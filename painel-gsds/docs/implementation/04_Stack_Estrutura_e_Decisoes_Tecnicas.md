@@ -90,27 +90,25 @@ Adaptar incrementalmente; não mover arquivos existentes apenas por estética.
 
 ## 5. Observatório longitudinal
 
-### 5.1 MVP estático
+### 5.1 Runtime público
 
 ```text
-src/data/startups/published/current.json          # seletor apenas
-src/data/startups/published/snapshots/*.json      # corpos imutáveis
-tests/fixtures/startups/*.json                    # sintéticos de teste
+api.antoniofaical.dev.br/v1/observatory/current  # snapshot corrente
+src/lib/startups/startupApi.ts                    # fetch + validação Zod
+tests/fixtures/startups/*.json                    # sintéticos; somente testes
 ```
 
-O nome legado `startups-current.json` / `snapshot-manifest.json` da especificação v0.3 foi consolidado no par `current.json` + `snapshots/` (ADR-0005). O estado público deriva exclusivamente do snapshot selecionado; não editar snapshots publicados in-place. O loader descobre automaticamente, em build time, todos os JSON em `published/snapshots/` e os indexa pelo `id` interno — publicar um snapshot novo não exige editar o código do registry.
+O banco, os snapshots e a seleção corrente pertencem ao repositório
+`antoniofaical/gsd-data-platform`. O dashboard não empacota cópias dos dados de organizações.
+Uma ilha React consulta o endpoint corrente em runtime e só renderiza após validar o contrato.
 
-### 5.2 Evolução futura
+### 5.2 Operação
 
-Um banco/API só será adotado se houver:
-
-- edição simultânea por múltiplos revisores;
-- autenticação e workflow de aprovação;
-- volume que torne snapshots impraticáveis;
-- atualização mais frequente que o ciclo de publicação;
-- necessidade de consulta privada.
-
-Até lá, Git + schemas + revisão humana são a SoT operacional.
+- PostgreSQL e API permanecem em loopback no VPS.
+- Caddy é o único serviço público e termina HTTPS.
+- A API usa papel PostgreSQL somente leitura.
+- O browser usa cache HTTP e `ETag` fornecidos pela API.
+- Publicar um novo snapshot no backend não exige rebuild do dashboard.
 
 ## 6. Pipeline mensal
 

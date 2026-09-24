@@ -94,7 +94,7 @@ export default function ObservatoryAnalytics({ snapshot }: { snapshot: StartupPu
           <StartupBarChart
             id="viz-04-direct-status"
             title="Status corporativo das organizações com relação direta"
-            description="Status dos 28 com relação direta."
+            description="Status das organizações com relação direta."
             data={statusData}
           />
         </div>
