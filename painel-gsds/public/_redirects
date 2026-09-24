@@ -1,0 +1,2 @@
+# Serve the Astro build under the public /gsd/ prefix.
+/gsd/* /:splat 200
